@@ -1,0 +1,36 @@
+{
+  "results": [
+    {
+      "match": 1,
+      "bot1_avg_step_time": 0.0001515351,
+      "bot1_tags": [],
+      "bot2_avg_step_time": 0.00014810749,
+      "bot2_tags": [],
+      "type": "Player1Win",
+      "game_steps": 2176
+    },
+    {
+      "match": 2,
+      "bot1_avg_step_time": 0.0,
+      "bot1_tags": [],
+      "type": "Error",
+      "game_steps": 0
+    },
+    {
+      "match": 3,
+      "bot1_avg_step_time": 0.00016460395,
+      "bot1_tags": [],
+      "bot2_avg_step_time": 0.00016344246,
+      "bot2_tags": [],
+      "type": "Player1Win",
+      "game_steps": 2176
+    },
+    {
+      "match": 4,
+      "bot1_avg_step_time": 0.0,
+      "bot1_tags": [],
+      "type": "Error",
+      "game_steps": 0
+    }
+  ]
+}
