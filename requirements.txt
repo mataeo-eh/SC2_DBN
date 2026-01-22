@@ -3,8 +3,7 @@ aiohttp==3.13.3
 aiosignal==1.4.0
 altgraph==0.17.4
 anyio==4.12.1
-ares-sc2 @ file:///C:/Users/matae/OneDrive/Desktop/Coding-Projects/local-play-bootstrap-main/bots/whySC2Bot/ares-sc2
--e git+https://github.com/mataeo-eh/whySC2Bot@94776eb2781998eb7100a1a1c5dd002b17721a4d#egg=ares_sc2_starter_bot
+ares-sc2
 argon2-cffi==25.1.0
 argon2-cffi-bindings==25.1.0
 arrow==1.4.0
