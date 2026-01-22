@@ -3,7 +3,7 @@ aiohttp==3.13.3
 aiosignal==1.4.0
 altgraph==0.17.4
 anyio==4.12.1
-ares-sc2
+git+https://github.com/AresSC2/ares-sc2 
 argon2-cffi==25.1.0
 argon2-cffi-bindings==25.1.0
 arrow==1.4.0
