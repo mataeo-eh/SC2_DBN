@@ -1,0 +1,9 @@
+[submodule "bots/reallySC2Bot"]
+	path = bots/reallySC2Bot
+	url = https://github.com/mataeo-eh/reallySC2Bot
+[submodule "bots/whatSC2Bot"]
+	path = bots/whatSC2Bot
+	url = https://github.com/mataeo-eh/whatSC2Bot
+[submodule "bots/whySC2Bot"]
+	path = bots/whySC2Bot
+	url = https://github.com/mataeo-eh/whySC2Bot

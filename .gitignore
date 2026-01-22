@@ -1,6 +1,6 @@
 .idea/
 
-results
+results*
 runners
 
 .venv-sc2/

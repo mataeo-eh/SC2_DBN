@@ -1,4 +1,6 @@
 # Ignore everything in this directory
-*
+basic_bot/
+loser_bot/
+Testing_bot/
 # Except this file
 !.gitignore

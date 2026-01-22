@@ -1,0 +1,11 @@
+{
+	"Bots": {
+		"MicroMachine": {
+			"Race": "Terran",
+			"Type": "cpplinux",
+			"RootPath": "./",
+			"FileName": "MicroMachine",
+			"Debug": true
+		}
+	}
+}
