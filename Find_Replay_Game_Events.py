@@ -4,7 +4,7 @@ from collections import Counter
 import json
 
 # Open the replay
-archive = mpyq.MPQArchive("replays/1_basic_bot_vs_loser_bot.SC2Replay")
+archive = mpyq.MPQArchive("replays/4533040_what_why_PylonAIE_v4.SC2Replay")
 
 # Get protocol version
 contents = archive.header['user_data_header']['content']

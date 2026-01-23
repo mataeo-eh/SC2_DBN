@@ -2,7 +2,7 @@ import mpyq
 from s2protocol import versions
 
 # Open the replay
-archive = mpyq.MPQArchive("replays/1_basic_bot_vs_loser_bot.SC2Replay")
+archive = mpyq.MPQArchive("replays/4533040_what_why_PylonAIE_v4.SC2Replay")
 
 # Get protocol version
 contents = archive.header['user_data_header']['content']
@@ -32,9 +32,4 @@ print(f"Found {len(cmd_events)} command events")
 if selection_events:
     print("\nExample selection event:")
     for key, value in selection_events[0].items():
-        print(f"  {key}: {value}")
-
-if cmd_events:
-    print("\nExample command event:")
-    for key, value in cmd_events.items():
         print(f"  {key}: {value}")
