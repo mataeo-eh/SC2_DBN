@@ -15,7 +15,7 @@ beautifulsoup4==4.14.3
 black==23.12.1
 bleach==6.3.0
 build==1.4.0
-burnysc2 @ git+https://github.com/august-k/python-sc2@29995bbdc1c0822f5798782e40d3331507080d64
+burnysc2
 CacheControl==0.14.4
 certifi==2025.1.31
 cffi==2.0.0
@@ -78,7 +78,7 @@ kiwisolver==1.4.9
 lark==1.3.1
 line_profiler==4.2.0
 loguru==0.7.3
-map_analyzer @ git+https://github.com/spudde123/SC2MapAnalysis@dada4724b96cb7586d4c00dfff1ace7b13bb4d12
+map_analyzer
 MarkupSafe==3.0.3
 matplotlib==3.10.7
 matplotlib-inline==0.2.1
