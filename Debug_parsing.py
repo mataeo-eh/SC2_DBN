@@ -68,3 +68,8 @@ for abil_link in [42, 45, 184, 119]:
         print(f"    Data type: {list(cmd['m_data'].keys())[0] if cmd['m_data'] else 'None'}")
         if cmd['m_data']:
             print(f"    Data: {cmd['m_data']}")
+
+
+import s2protocol
+
+print(protocol)

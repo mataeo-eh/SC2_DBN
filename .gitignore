@@ -1,7 +1,7 @@
 .idea/
 
 results*
-runners
+runners/
 
 .venv-sc2/
 .venv*/
