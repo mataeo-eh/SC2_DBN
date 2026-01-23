@@ -1,0 +1,4628 @@
+{
+  "4": {
+    "name": "COLOSSUS",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      }
+    ]
+  },
+  "10": {
+    "name": "MOTHERSHIP",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "MASSRECALL_MASSRECALL",
+        "id": 142
+      },
+      {
+        "name": "EFFECT_TIMEWARP",
+        "id": 2244
+      }
+    ]
+  },
+  "59": {
+    "name": "NEXUS",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "NEXUSTRAINMOTHERSHIP_MOTHERSHIP",
+        "id": 110
+      },
+      {
+        "name": "RALLY_NEXUS",
+        "id": 207
+      },
+      {
+        "name": "NEXUSTRAIN_PROBE",
+        "id": 1006
+      },
+      {
+        "name": "EFFECT_CHRONOBOOSTENERGYCOST",
+        "id": 3755
+      },
+      {
+        "name": "EFFECT_MASSRECALL_NEXUS",
+        "id": 3757
+      }
+    ]
+  },
+  "60": {
+    "name": "PYLON",
+    "abilities": []
+  },
+  "61": {
+    "name": "ASSIMILATOR",
+    "abilities": []
+  },
+  "62": {
+    "name": "GATEWAY",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "RALLY_BUILDING",
+        "id": 195
+      },
+      {
+        "name": "GATEWAYTRAIN_ZEALOT",
+        "id": 916
+      },
+      {
+        "name": "GATEWAYTRAIN_STALKER",
+        "id": 917
+      },
+      {
+        "name": "GATEWAYTRAIN_HIGHTEMPLAR",
+        "id": 919
+      },
+      {
+        "name": "GATEWAYTRAIN_DARKTEMPLAR",
+        "id": 920
+      },
+      {
+        "name": "GATEWAYTRAIN_SENTRY",
+        "id": 921
+      },
+      {
+        "name": "TRAIN_ADEPT",
+        "id": 922
+      },
+      {
+        "name": "MORPH_WARPGATE",
+        "id": 1518
+      }
+    ]
+  },
+  "63": {
+    "name": "FORGE",
+    "abilities": [
+      {
+        "name": "FORGERESEARCH_PROTOSSGROUNDWEAPONSLEVEL1",
+        "id": 1062
+      },
+      {
+        "name": "FORGERESEARCH_PROTOSSGROUNDWEAPONSLEVEL2",
+        "id": 1063
+      },
+      {
+        "name": "FORGERESEARCH_PROTOSSGROUNDWEAPONSLEVEL3",
+        "id": 1064
+      },
+      {
+        "name": "FORGERESEARCH_PROTOSSGROUNDARMORLEVEL1",
+        "id": 1065
+      },
+      {
+        "name": "FORGERESEARCH_PROTOSSGROUNDARMORLEVEL2",
+        "id": 1066
+      },
+      {
+        "name": "FORGERESEARCH_PROTOSSGROUNDARMORLEVEL3",
+        "id": 1067
+      },
+      {
+        "name": "FORGERESEARCH_PROTOSSSHIELDSLEVEL1",
+        "id": 1068
+      },
+      {
+        "name": "FORGERESEARCH_PROTOSSSHIELDSLEVEL2",
+        "id": 1069
+      },
+      {
+        "name": "FORGERESEARCH_PROTOSSSHIELDSLEVEL3",
+        "id": 1070
+      },
+      {
+        "name": "RESEARCH_CHARGE",
+        "id": 1592
+      }
+    ]
+  },
+  "64": {
+    "name": "FLEETBEACON",
+    "abilities": [
+      {
+        "name": "RESEARCH_PHOENIXANIONPULSECRYSTALS",
+        "id": 46
+      }
+    ]
+  },
+  "65": {
+    "name": "TWILIGHTCOUNCIL",
+    "abilities": [
+      {
+        "name": "RESEARCH_CHARGE",
+        "id": 1592
+      },
+      {
+        "name": "RESEARCH_BLINK",
+        "id": 1593
+      },
+      {
+        "name": "RESEARCH_ADEPTRESONATINGGLAIVES",
+        "id": 1594
+      }
+    ]
+  },
+  "66": {
+    "name": "PHOTONCANNON",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      }
+    ]
+  },
+  "67": {
+    "name": "STARGATE",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "RALLY_BUILDING",
+        "id": 195
+      },
+      {
+        "name": "STARGATETRAIN_PHOENIX",
+        "id": 946
+      },
+      {
+        "name": "STARGATETRAIN_CARRIER",
+        "id": 948
+      },
+      {
+        "name": "STARGATETRAIN_VOIDRAY",
+        "id": 950
+      },
+      {
+        "name": "STARGATETRAIN_ORACLE",
+        "id": 954
+      },
+      {
+        "name": "STARGATETRAIN_TEMPEST",
+        "id": 955
+      }
+    ]
+  },
+  "68": {
+    "name": "TEMPLARARCHIVE",
+    "abilities": [
+      {
+        "name": "RESEARCH_PSISTORM",
+        "id": 1126
+      }
+    ]
+  },
+  "69": {
+    "name": "DARKSHRINE",
+    "abilities": [
+      {
+        "name": "RESEARCH_SHADOWSTRIKE",
+        "id": 2720
+      }
+    ]
+  },
+  "70": {
+    "name": "ROBOTICSBAY",
+    "abilities": [
+      {
+        "name": "RESEARCH_GRAVITICBOOSTER",
+        "id": 1093
+      },
+      {
+        "name": "RESEARCH_GRAVITICDRIVE",
+        "id": 1094
+      },
+      {
+        "name": "RESEARCH_EXTENDEDTHERMALLANCE",
+        "id": 1097
+      }
+    ]
+  },
+  "71": {
+    "name": "ROBOTICSFACILITY",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "RALLY_BUILDING",
+        "id": 195
+      },
+      {
+        "name": "ROBOTICSFACILITYTRAIN_WARPPRISM",
+        "id": 976
+      },
+      {
+        "name": "ROBOTICSFACILITYTRAIN_OBSERVER",
+        "id": 977
+      },
+      {
+        "name": "ROBOTICSFACILITYTRAIN_COLOSSUS",
+        "id": 978
+      },
+      {
+        "name": "ROBOTICSFACILITYTRAIN_IMMORTAL",
+        "id": 979
+      },
+      {
+        "name": "TRAIN_DISRUPTOR",
+        "id": 994
+      }
+    ]
+  },
+  "72": {
+    "name": "CYBERNETICSCORE",
+    "abilities": [
+      {
+        "name": "CYBERNETICSCORERESEARCH_PROTOSSAIRWEAPONSLEVEL1",
+        "id": 1562
+      },
+      {
+        "name": "CYBERNETICSCORERESEARCH_PROTOSSAIRWEAPONSLEVEL2",
+        "id": 1563
+      },
+      {
+        "name": "CYBERNETICSCORERESEARCH_PROTOSSAIRWEAPONSLEVEL3",
+        "id": 1564
+      },
+      {
+        "name": "CYBERNETICSCORERESEARCH_PROTOSSAIRARMORLEVEL1",
+        "id": 1565
+      },
+      {
+        "name": "CYBERNETICSCORERESEARCH_PROTOSSAIRARMORLEVEL2",
+        "id": 1566
+      },
+      {
+        "name": "CYBERNETICSCORERESEARCH_PROTOSSAIRARMORLEVEL3",
+        "id": 1567
+      },
+      {
+        "name": "RESEARCH_WARPGATE",
+        "id": 1568
+      }
+    ]
+  },
+  "73": {
+    "name": "ZEALOT",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "EFFECT_CHARGE",
+        "id": 1819
+      }
+    ]
+  },
+  "74": {
+    "name": "STALKER",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "EFFECT_BLINK_STALKER",
+        "id": 1442
+      }
+    ]
+  },
+  "75": {
+    "name": "HIGHTEMPLAR",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "SCAN_MOVE",
+        "id": 19
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "FEEDBACK_FEEDBACK",
+        "id": 140
+      },
+      {
+        "name": "PSISTORM_PSISTORM",
+        "id": 1036
+      },
+      {
+        "name": "MORPH_ARCHON",
+        "id": 1766
+      }
+    ]
+  },
+  "76": {
+    "name": "DARKTEMPLAR",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "MORPH_ARCHON",
+        "id": 1766
+      },
+      {
+        "name": "EFFECT_SHADOWSTRIDE",
+        "id": 2700
+      }
+    ]
+  },
+  "77": {
+    "name": "SENTRY",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "GUARDIANSHIELD_GUARDIANSHIELD",
+        "id": 76
+      },
+      {
+        "name": "HALLUCINATION_ARCHON",
+        "id": 146
+      },
+      {
+        "name": "HALLUCINATION_COLOSSUS",
+        "id": 148
+      },
+      {
+        "name": "HALLUCINATION_HIGHTEMPLAR",
+        "id": 150
+      },
+      {
+        "name": "HALLUCINATION_IMMORTAL",
+        "id": 152
+      },
+      {
+        "name": "HALLUCINATION_PHOENIX",
+        "id": 154
+      },
+      {
+        "name": "HALLUCINATION_PROBE",
+        "id": 156
+      },
+      {
+        "name": "HALLUCINATION_STALKER",
+        "id": 158
+      },
+      {
+        "name": "HALLUCINATION_VOIDRAY",
+        "id": 160
+      },
+      {
+        "name": "HALLUCINATION_WARPPRISM",
+        "id": 162
+      },
+      {
+        "name": "HALLUCINATION_ZEALOT",
+        "id": 164
+      },
+      {
+        "name": "FORCEFIELD_FORCEFIELD",
+        "id": 1526
+      },
+      {
+        "name": "HALLUCINATION_ORACLE",
+        "id": 2114
+      },
+      {
+        "name": "HALLUCINATION_DISRUPTOR",
+        "id": 2389
+      },
+      {
+        "name": "HALLUCINATION_ADEPT",
+        "id": 2391
+      }
+    ]
+  },
+  "78": {
+    "name": "PHOENIX",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "GRAVITONBEAM_GRAVITONBEAM",
+        "id": 173
+      }
+    ]
+  },
+  "79": {
+    "name": "CARRIER",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "CANCEL_HANGARQUEUE5",
+        "id": 1038
+      },
+      {
+        "name": "BUILD_INTERCEPTORS",
+        "id": 1042
+      }
+    ]
+  },
+  "80": {
+    "name": "VOIDRAY",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "EFFECT_VOIDRAYPRISMATICALIGNMENT",
+        "id": 2393
+      }
+    ]
+  },
+  "81": {
+    "name": "WARPPRISM",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "SCAN_MOVE",
+        "id": 19
+      },
+      {
+        "name": "LOAD_WARPPRISM",
+        "id": 911
+      },
+      {
+        "name": "MORPH_WARPPRISMPHASINGMODE",
+        "id": 1528
+      }
+    ]
+  },
+  "82": {
+    "name": "OBSERVER",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "SCAN_MOVE",
+        "id": 19
+      },
+      {
+        "name": "MORPH_SURVEILLANCEMODE",
+        "id": 3741
+      }
+    ]
+  },
+  "83": {
+    "name": "IMMORTAL",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      }
+    ]
+  },
+  "84": {
+    "name": "PROBE",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "EFFECT_SPRAY_PROTOSS",
+        "id": 30
+      },
+      {
+        "name": "HARVEST_GATHER_PROBE",
+        "id": 298
+      },
+      {
+        "name": "PROTOSSBUILD_NEXUS",
+        "id": 880
+      },
+      {
+        "name": "PROTOSSBUILD_PYLON",
+        "id": 881
+      },
+      {
+        "name": "PROTOSSBUILD_ASSIMILATOR",
+        "id": 882
+      },
+      {
+        "name": "PROTOSSBUILD_GATEWAY",
+        "id": 883
+      },
+      {
+        "name": "PROTOSSBUILD_FORGE",
+        "id": 884
+      },
+      {
+        "name": "PROTOSSBUILD_FLEETBEACON",
+        "id": 885
+      },
+      {
+        "name": "PROTOSSBUILD_TWILIGHTCOUNCIL",
+        "id": 886
+      },
+      {
+        "name": "PROTOSSBUILD_PHOTONCANNON",
+        "id": 887
+      },
+      {
+        "name": "PROTOSSBUILD_STARGATE",
+        "id": 889
+      },
+      {
+        "name": "PROTOSSBUILD_TEMPLARARCHIVE",
+        "id": 890
+      },
+      {
+        "name": "PROTOSSBUILD_DARKSHRINE",
+        "id": 891
+      },
+      {
+        "name": "PROTOSSBUILD_ROBOTICSBAY",
+        "id": 892
+      },
+      {
+        "name": "PROTOSSBUILD_ROBOTICSFACILITY",
+        "id": 893
+      },
+      {
+        "name": "PROTOSSBUILD_CYBERNETICSCORE",
+        "id": 894
+      },
+      {
+        "name": "BUILD_SHIELDBATTERY",
+        "id": 895
+      }
+    ]
+  },
+  "85": {
+    "name": "INTERCEPTOR",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      }
+    ]
+  },
+  "133": {
+    "name": "WARPGATE",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "WARPGATETRAIN_ZEALOT",
+        "id": 1413
+      },
+      {
+        "name": "WARPGATETRAIN_STALKER",
+        "id": 1414
+      },
+      {
+        "name": "WARPGATETRAIN_HIGHTEMPLAR",
+        "id": 1416
+      },
+      {
+        "name": "WARPGATETRAIN_DARKTEMPLAR",
+        "id": 1417
+      },
+      {
+        "name": "WARPGATETRAIN_SENTRY",
+        "id": 1418
+      },
+      {
+        "name": "TRAINWARP_ADEPT",
+        "id": 1419
+      },
+      {
+        "name": "MORPH_GATEWAY",
+        "id": 1520
+      }
+    ]
+  },
+  "135": {
+    "name": "FORCEFIELD",
+    "abilities": []
+  },
+  "136": {
+    "name": "WARPPRISMPHASING",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "LOAD_WARPPRISM",
+        "id": 911
+      },
+      {
+        "name": "MORPH_WARPPRISMTRANSPORTMODE",
+        "id": 1530
+      }
+    ]
+  },
+  "141": {
+    "name": "ARCHON",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      }
+    ]
+  },
+  "311": {
+    "name": "ADEPT",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "ADEPTPHASESHIFT_ADEPTPHASESHIFT",
+        "id": 2544
+      }
+    ]
+  },
+  "495": {
+    "name": "ORACLE",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "SCAN_MOVE",
+        "id": 19
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "ORACLEREVELATION_ORACLEREVELATION",
+        "id": 2146
+      },
+      {
+        "name": "BEHAVIOR_PULSARBEAMON",
+        "id": 2375
+      },
+      {
+        "name": "BUILD_STASISTRAP",
+        "id": 2505
+      }
+    ]
+  },
+  "496": {
+    "name": "TEMPEST",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      }
+    ]
+  },
+  "694": {
+    "name": "DISRUPTOR",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "SCAN_MOVE",
+        "id": 19
+      },
+      {
+        "name": "EFFECT_PURIFICATIONNOVA",
+        "id": 2346
+      }
+    ]
+  },
+  "732": {
+    "name": "ORACLESTASISTRAP",
+    "abilities": []
+  },
+  "733": {
+    "name": "DISRUPTORPHASED",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "SCAN_MOVE",
+        "id": 19
+      }
+    ]
+  },
+  "801": {
+    "name": "ADEPTPHASESHIFT",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "SCAN_MOVE",
+        "id": 19
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "CANCEL_ADEPTSHADEPHASESHIFT",
+        "id": 2596
+      }
+    ]
+  },
+  "1910": {
+    "name": "SHIELDBATTERY",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "EFFECT_RESTORE",
+        "id": 3765
+      }
+    ]
+  },
+  "1911": {
+    "name": "OBSERVERSIEGEMODE",
+    "abilities": [
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MORPH_OBSERVERMODE",
+        "id": 3739
+      }
+    ]
+  },
+  "1944": {
+    "name": "ASSIMILATORRICH",
+    "abilities": []
+  },
+  "5": {
+    "name": "TECHLAB",
+    "abilities": [
+      {
+        "name": "BARRACKSTECHLABRESEARCH_STIMPACK",
+        "id": 730
+      },
+      {
+        "name": "RESEARCH_COMBATSHIELD",
+        "id": 731
+      },
+      {
+        "name": "RESEARCH_CONCUSSIVESHELLS",
+        "id": 732
+      },
+      {
+        "name": "RESEARCH_INFERNALPREIGNITER",
+        "id": 761
+      },
+      {
+        "name": "RESEARCH_DRILLINGCLAWS",
+        "id": 764
+      },
+      {
+        "name": "RESEARCH_BANSHEECLOAKINGFIELD",
+        "id": 790
+      },
+      {
+        "name": "STARPORTTECHLABRESEARCH_RESEARCHMEDIVACENERGYUPGRADE",
+        "id": 792
+      },
+      {
+        "name": "RESEARCH_RAVENCORVIDREACTOR",
+        "id": 793
+      },
+      {
+        "name": "STARPORTTECHLABRESEARCH_RESEARCHDURABLEMATERIALS",
+        "id": 797
+      }
+    ]
+  },
+  "6": {
+    "name": "REACTOR",
+    "abilities": []
+  },
+  "18": {
+    "name": "COMMANDCENTER",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "RALLY_COMMANDCENTER",
+        "id": 203
+      },
+      {
+        "name": "LOADALL_COMMANDCENTER",
+        "id": 416
+      },
+      {
+        "name": "LIFT_COMMANDCENTER",
+        "id": 417
+      },
+      {
+        "name": "COMMANDCENTERTRAIN_SCV",
+        "id": 524
+      },
+      {
+        "name": "UPGRADETOPLANETARYFORTRESS_PLANETARYFORTRESS",
+        "id": 1450
+      },
+      {
+        "name": "UPGRADETOORBITAL_ORBITALCOMMAND",
+        "id": 1516
+      }
+    ]
+  },
+  "19": {
+    "name": "SUPPLYDEPOT",
+    "abilities": [
+      {
+        "name": "MORPH_SUPPLYDEPOT_LOWER",
+        "id": 556
+      }
+    ]
+  },
+  "20": {
+    "name": "REFINERY",
+    "abilities": []
+  },
+  "21": {
+    "name": "BARRACKS",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "RALLY_BUILDING",
+        "id": 195
+      },
+      {
+        "name": "BUILD_TECHLAB_BARRACKS",
+        "id": 421
+      },
+      {
+        "name": "BUILD_REACTOR_BARRACKS",
+        "id": 422
+      },
+      {
+        "name": "LIFT_BARRACKS",
+        "id": 452
+      },
+      {
+        "name": "BARRACKSTRAIN_MARINE",
+        "id": 560
+      },
+      {
+        "name": "BARRACKSTRAIN_REAPER",
+        "id": 561
+      },
+      {
+        "name": "BARRACKSTRAIN_GHOST",
+        "id": 562
+      },
+      {
+        "name": "BARRACKSTRAIN_MARAUDER",
+        "id": 563
+      }
+    ]
+  },
+  "22": {
+    "name": "ENGINEERINGBAY",
+    "abilities": [
+      {
+        "name": "RESEARCH_HISECAUTOTRACKING",
+        "id": 650
+      },
+      {
+        "name": "RESEARCH_TERRANSTRUCTUREARMORUPGRADE",
+        "id": 651
+      },
+      {
+        "name": "ENGINEERINGBAYRESEARCH_TERRANINFANTRYWEAPONSLEVEL1",
+        "id": 652
+      },
+      {
+        "name": "ENGINEERINGBAYRESEARCH_TERRANINFANTRYWEAPONSLEVEL2",
+        "id": 653
+      },
+      {
+        "name": "ENGINEERINGBAYRESEARCH_TERRANINFANTRYWEAPONSLEVEL3",
+        "id": 654
+      },
+      {
+        "name": "ENGINEERINGBAYRESEARCH_TERRANINFANTRYARMORLEVEL1",
+        "id": 656
+      },
+      {
+        "name": "ENGINEERINGBAYRESEARCH_TERRANINFANTRYARMORLEVEL2",
+        "id": 657
+      },
+      {
+        "name": "ENGINEERINGBAYRESEARCH_TERRANINFANTRYARMORLEVEL3",
+        "id": 658
+      }
+    ]
+  },
+  "24": {
+    "name": "BUNKER",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "EFFECT_SALVAGE",
+        "id": 32
+      },
+      {
+        "name": "RALLY_BUILDING",
+        "id": 195
+      },
+      {
+        "name": "LOAD_BUNKER",
+        "id": 407
+      }
+    ]
+  },
+  "25": {
+    "name": "SENSORTOWER",
+    "abilities": []
+  },
+  "26": {
+    "name": "GHOSTACADEMY",
+    "abilities": [
+      {
+        "name": "BUILD_NUKE",
+        "id": 710
+      },
+      {
+        "name": "RESEARCH_PERSONALCLOAKING",
+        "id": 820
+      }
+    ]
+  },
+  "27": {
+    "name": "FACTORY",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "RALLY_BUILDING",
+        "id": 195
+      },
+      {
+        "name": "BUILD_TECHLAB_FACTORY",
+        "id": 454
+      },
+      {
+        "name": "BUILD_REACTOR_FACTORY",
+        "id": 455
+      },
+      {
+        "name": "LIFT_FACTORY",
+        "id": 485
+      },
+      {
+        "name": "FACTORYTRAIN_SIEGETANK",
+        "id": 591
+      },
+      {
+        "name": "FACTORYTRAIN_THOR",
+        "id": 594
+      },
+      {
+        "name": "FACTORYTRAIN_HELLION",
+        "id": 595
+      },
+      {
+        "name": "TRAIN_HELLBAT",
+        "id": 596
+      },
+      {
+        "name": "TRAIN_CYCLONE",
+        "id": 597
+      },
+      {
+        "name": "FACTORYTRAIN_WIDOWMINE",
+        "id": 614
+      }
+    ]
+  },
+  "28": {
+    "name": "STARPORT",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "RALLY_BUILDING",
+        "id": 195
+      },
+      {
+        "name": "BUILD_TECHLAB_STARPORT",
+        "id": 487
+      },
+      {
+        "name": "BUILD_REACTOR_STARPORT",
+        "id": 488
+      },
+      {
+        "name": "LIFT_STARPORT",
+        "id": 518
+      },
+      {
+        "name": "STARPORTTRAIN_MEDIVAC",
+        "id": 620
+      },
+      {
+        "name": "STARPORTTRAIN_BANSHEE",
+        "id": 621
+      },
+      {
+        "name": "STARPORTTRAIN_RAVEN",
+        "id": 622
+      },
+      {
+        "name": "STARPORTTRAIN_BATTLECRUISER",
+        "id": 623
+      },
+      {
+        "name": "STARPORTTRAIN_VIKINGFIGHTER",
+        "id": 624
+      },
+      {
+        "name": "STARPORTTRAIN_LIBERATOR",
+        "id": 626
+      }
+    ]
+  },
+  "29": {
+    "name": "ARMORY",
+    "abilities": [
+      {
+        "name": "ARMORYRESEARCH_TERRANVEHICLEPLATINGLEVEL1",
+        "id": 852
+      },
+      {
+        "name": "ARMORYRESEARCH_TERRANVEHICLEPLATINGLEVEL2",
+        "id": 853
+      },
+      {
+        "name": "ARMORYRESEARCH_TERRANVEHICLEPLATINGLEVEL3",
+        "id": 854
+      },
+      {
+        "name": "ARMORYRESEARCH_TERRANVEHICLEWEAPONSLEVEL1",
+        "id": 855
+      },
+      {
+        "name": "ARMORYRESEARCH_TERRANVEHICLEWEAPONSLEVEL2",
+        "id": 856
+      },
+      {
+        "name": "ARMORYRESEARCH_TERRANVEHICLEWEAPONSLEVEL3",
+        "id": 857
+      },
+      {
+        "name": "ARMORYRESEARCH_TERRANSHIPWEAPONSLEVEL1",
+        "id": 861
+      },
+      {
+        "name": "ARMORYRESEARCH_TERRANSHIPWEAPONSLEVEL2",
+        "id": 862
+      },
+      {
+        "name": "ARMORYRESEARCH_TERRANSHIPWEAPONSLEVEL3",
+        "id": 863
+      }
+    ]
+  },
+  "30": {
+    "name": "FUSIONCORE",
+    "abilities": [
+      {
+        "name": "RESEARCH_BATTLECRUISERWEAPONREFIT",
+        "id": 1532
+      }
+    ]
+  },
+  "31": {
+    "name": "AUTOTURRET",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      }
+    ]
+  },
+  "32": {
+    "name": "SIEGETANKSIEGED",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "UNSIEGE_UNSIEGE",
+        "id": 390
+      }
+    ]
+  },
+  "33": {
+    "name": "SIEGETANK",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "SIEGEMODE_SIEGEMODE",
+        "id": 388
+      }
+    ]
+  },
+  "34": {
+    "name": "VIKINGASSAULT",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "MORPH_VIKINGFIGHTERMODE",
+        "id": 405
+      }
+    ]
+  },
+  "35": {
+    "name": "VIKINGFIGHTER",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "MORPH_VIKINGASSAULTMODE",
+        "id": 403
+      }
+    ]
+  },
+  "36": {
+    "name": "COMMANDCENTERFLYING",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "LOADALL_COMMANDCENTER",
+        "id": 416
+      },
+      {
+        "name": "LAND_COMMANDCENTER",
+        "id": 419
+      }
+    ]
+  },
+  "37": {
+    "name": "BARRACKSTECHLAB",
+    "abilities": [
+      {
+        "name": "BARRACKSTECHLABRESEARCH_STIMPACK",
+        "id": 730
+      },
+      {
+        "name": "RESEARCH_COMBATSHIELD",
+        "id": 731
+      },
+      {
+        "name": "RESEARCH_CONCUSSIVESHELLS",
+        "id": 732
+      }
+    ]
+  },
+  "38": {
+    "name": "BARRACKSREACTOR",
+    "abilities": []
+  },
+  "39": {
+    "name": "FACTORYTECHLAB",
+    "abilities": [
+      {
+        "name": "RESEARCH_INFERNALPREIGNITER",
+        "id": 761
+      },
+      {
+        "name": "FACTORYTECHLABRESEARCH_CYCLONERESEARCHLOCKONDAMAGEUPGRADE",
+        "id": 769
+      }
+    ]
+  },
+  "40": {
+    "name": "FACTORYREACTOR",
+    "abilities": []
+  },
+  "41": {
+    "name": "STARPORTTECHLAB",
+    "abilities": [
+      {
+        "name": "RESEARCH_BANSHEECLOAKINGFIELD",
+        "id": 790
+      },
+      {
+        "name": "RESEARCH_RAVENCORVIDREACTOR",
+        "id": 793
+      },
+      {
+        "name": "RESEARCH_BANSHEEHYPERFLIGHTROTORS",
+        "id": 799
+      },
+      {
+        "name": "RESEARCH_HIGHCAPACITYFUELTANKS",
+        "id": 804
+      }
+    ]
+  },
+  "42": {
+    "name": "STARPORTREACTOR",
+    "abilities": []
+  },
+  "43": {
+    "name": "FACTORYFLYING",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "BUILD_TECHLAB_FACTORY",
+        "id": 454
+      },
+      {
+        "name": "BUILD_REACTOR_FACTORY",
+        "id": 455
+      },
+      {
+        "name": "LAND_FACTORY",
+        "id": 520
+      }
+    ]
+  },
+  "44": {
+    "name": "STARPORTFLYING",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "BUILD_TECHLAB_STARPORT",
+        "id": 487
+      },
+      {
+        "name": "BUILD_REACTOR_STARPORT",
+        "id": 488
+      },
+      {
+        "name": "LAND_STARPORT",
+        "id": 522
+      }
+    ]
+  },
+  "45": {
+    "name": "SCV",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "EFFECT_SPRAY_TERRAN",
+        "id": 26
+      },
+      {
+        "name": "HARVEST_GATHER_SCV",
+        "id": 295
+      },
+      {
+        "name": "EFFECT_REPAIR_SCV",
+        "id": 316
+      },
+      {
+        "name": "TERRANBUILD_COMMANDCENTER",
+        "id": 318
+      },
+      {
+        "name": "TERRANBUILD_SUPPLYDEPOT",
+        "id": 319
+      },
+      {
+        "name": "TERRANBUILD_REFINERY",
+        "id": 320
+      },
+      {
+        "name": "TERRANBUILD_BARRACKS",
+        "id": 321
+      },
+      {
+        "name": "TERRANBUILD_ENGINEERINGBAY",
+        "id": 322
+      },
+      {
+        "name": "TERRANBUILD_MISSILETURRET",
+        "id": 323
+      },
+      {
+        "name": "TERRANBUILD_BUNKER",
+        "id": 324
+      },
+      {
+        "name": "TERRANBUILD_SENSORTOWER",
+        "id": 326
+      },
+      {
+        "name": "TERRANBUILD_GHOSTACADEMY",
+        "id": 327
+      },
+      {
+        "name": "TERRANBUILD_FACTORY",
+        "id": 328
+      },
+      {
+        "name": "TERRANBUILD_STARPORT",
+        "id": 329
+      },
+      {
+        "name": "TERRANBUILD_ARMORY",
+        "id": 331
+      },
+      {
+        "name": "TERRANBUILD_FUSIONCORE",
+        "id": 333
+      }
+    ]
+  },
+  "46": {
+    "name": "BARRACKSFLYING",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "BUILD_TECHLAB_BARRACKS",
+        "id": 421
+      },
+      {
+        "name": "BUILD_REACTOR_BARRACKS",
+        "id": 422
+      },
+      {
+        "name": "LAND_BARRACKS",
+        "id": 554
+      }
+    ]
+  },
+  "47": {
+    "name": "SUPPLYDEPOTLOWERED",
+    "abilities": [
+      {
+        "name": "MORPH_SUPPLYDEPOT_RAISE",
+        "id": 558
+      }
+    ]
+  },
+  "48": {
+    "name": "MARINE",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "EFFECT_STIM_MARINE",
+        "id": 380
+      }
+    ]
+  },
+  "49": {
+    "name": "REAPER",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "KD8CHARGE_KD8CHARGE",
+        "id": 2588
+      }
+    ]
+  },
+  "50": {
+    "name": "GHOST",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "BEHAVIOR_HOLDFIREON_GHOST",
+        "id": 36
+      },
+      {
+        "name": "BEHAVIOR_CLOAKON_GHOST",
+        "id": 382
+      },
+      {
+        "name": "EMP_EMP",
+        "id": 1628
+      },
+      {
+        "name": "EFFECT_GHOSTSNIPE",
+        "id": 2714
+      }
+    ]
+  },
+  "51": {
+    "name": "MARAUDER",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "EFFECT_STIM_MARAUDER",
+        "id": 253
+      }
+    ]
+  },
+  "52": {
+    "name": "THOR",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "MORPH_THORHIGHIMPACTMODE",
+        "id": 2362
+      }
+    ]
+  },
+  "53": {
+    "name": "HELLION",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "MORPH_HELLBAT",
+        "id": 1998
+      }
+    ]
+  },
+  "54": {
+    "name": "MEDIVAC",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "SCAN_MOVE",
+        "id": 19
+      },
+      {
+        "name": "MEDIVACHEAL_HEAL",
+        "id": 386
+      },
+      {
+        "name": "LOAD_MEDIVAC",
+        "id": 394
+      },
+      {
+        "name": "EFFECT_MEDIVACIGNITEAFTERBURNERS",
+        "id": 2116
+      }
+    ]
+  },
+  "55": {
+    "name": "BANSHEE",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "BEHAVIOR_CLOAKON_BANSHEE",
+        "id": 392
+      }
+    ]
+  },
+  "56": {
+    "name": "RAVEN",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "SCAN_MOVE",
+        "id": 19
+      },
+      {
+        "name": "BUILDAUTOTURRET_AUTOTURRET",
+        "id": 1764
+      },
+      {
+        "name": "EFFECT_INTERFERENCEMATRIX",
+        "id": 3747
+      },
+      {
+        "name": "EFFECT_ANTIARMORMISSILE",
+        "id": 3753
+      }
+    ]
+  },
+  "57": {
+    "name": "BATTLECRUISER",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "YAMATO_YAMATOGUN",
+        "id": 401
+      },
+      {
+        "name": "EFFECT_TACTICALJUMP",
+        "id": 2358
+      },
+      {
+        "name": "BATTLECRUISERATTACK_ATTACK",
+        "id": 3771
+      },
+      {
+        "name": "BATTLECRUISERMOVE_MOVE",
+        "id": 3776
+      },
+      {
+        "name": "BATTLECRUISERMOVE_MOVEPATROL",
+        "id": 3777
+      },
+      {
+        "name": "BATTLECRUISERMOVE_MOVEHOLDPOSITION",
+        "id": 3778
+      },
+      {
+        "name": "BATTLECRUISERSTOP_STOP",
+        "id": 3783
+      }
+    ]
+  },
+  "58": {
+    "name": "NUKE",
+    "abilities": []
+  },
+  "130": {
+    "name": "PLANETARYFORTRESS",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "RALLY_COMMANDCENTER",
+        "id": 203
+      },
+      {
+        "name": "LOADALL_COMMANDCENTER",
+        "id": 416
+      },
+      {
+        "name": "COMMANDCENTERTRAIN_SCV",
+        "id": 524
+      }
+    ]
+  },
+  "132": {
+    "name": "ORBITALCOMMAND",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "CALLDOWNMULE_CALLDOWNMULE",
+        "id": 171
+      },
+      {
+        "name": "RALLY_COMMANDCENTER",
+        "id": 203
+      },
+      {
+        "name": "SUPPLYDROP_SUPPLYDROP",
+        "id": 255
+      },
+      {
+        "name": "SCANNERSWEEP_SCAN",
+        "id": 399
+      },
+      {
+        "name": "COMMANDCENTERTRAIN_SCV",
+        "id": 524
+      },
+      {
+        "name": "LIFT_ORBITALCOMMAND",
+        "id": 1522
+      }
+    ]
+  },
+  "134": {
+    "name": "ORBITALCOMMANDFLYING",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "LAND_ORBITALCOMMAND",
+        "id": 1524
+      }
+    ]
+  },
+  "268": {
+    "name": "MULE",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "SCAN_MOVE",
+        "id": 19
+      },
+      {
+        "name": "EFFECT_REPAIR_MULE",
+        "id": 78
+      },
+      {
+        "name": "HARVEST_GATHER_MULE",
+        "id": 166
+      }
+    ]
+  },
+  "484": {
+    "name": "HELLIONTANK",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "MORPH_HELLION",
+        "id": 1978
+      }
+    ]
+  },
+  "498": {
+    "name": "WIDOWMINE",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "SCAN_MOVE",
+        "id": 19
+      },
+      {
+        "name": "BURROWDOWN_WIDOWMINE",
+        "id": 2095
+      }
+    ]
+  },
+  "500": {
+    "name": "WIDOWMINEBURROWED",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "BURROWUP_WIDOWMINE",
+        "id": 2097
+      },
+      {
+        "name": "WIDOWMINEATTACK_WIDOWMINEATTACK",
+        "id": 2099
+      }
+    ]
+  },
+  "689": {
+    "name": "LIBERATOR",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "MORPH_LIBERATORAGMODE",
+        "id": 2558
+      }
+    ]
+  },
+  "691": {
+    "name": "THORAP",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "MORPH_THOREXPLOSIVEMODE",
+        "id": 2364
+      }
+    ]
+  },
+  "692": {
+    "name": "CYCLONE",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "LOCKON_LOCKON",
+        "id": 2350
+      }
+    ]
+  },
+  "734": {
+    "name": "LIBERATORAG",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "MORPH_LIBERATORAAMODE",
+        "id": 2560
+      }
+    ]
+  },
+  "807": {
+    "name": "THORAALANCE",
+    "abilities": []
+  },
+  "830": {
+    "name": "KD8CHARGE",
+    "abilities": []
+  },
+  "1949": {
+    "name": "REFINERYRICH",
+    "abilities": []
+  },
+  "7": {
+    "name": "INFESTORTERRAN",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "BURROWDOWN_INFESTORTERRAN",
+        "id": 1394
+      }
+    ]
+  },
+  "8": {
+    "name": "BANELINGCOCOON",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "RALLY_BUILDING",
+        "id": 195
+      }
+    ]
+  },
+  "9": {
+    "name": "BANELING",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "EXPLODE_EXPLODE",
+        "id": 42
+      },
+      {
+        "name": "BURROWDOWN_BANELING",
+        "id": 1374
+      },
+      {
+        "name": "BEHAVIOR_BUILDINGATTACKON",
+        "id": 2081
+      }
+    ]
+  },
+  "12": {
+    "name": "CHANGELING",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "SCAN_MOVE",
+        "id": 19
+      }
+    ]
+  },
+  "13": {
+    "name": "CHANGELINGZEALOT",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "SCAN_MOVE",
+        "id": 19
+      }
+    ]
+  },
+  "14": {
+    "name": "CHANGELINGMARINESHIELD",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "SCAN_MOVE",
+        "id": 19
+      }
+    ]
+  },
+  "15": {
+    "name": "CHANGELINGMARINE",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "SCAN_MOVE",
+        "id": 19
+      }
+    ]
+  },
+  "16": {
+    "name": "CHANGELINGZERGLINGWINGS",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "SCAN_MOVE",
+        "id": 19
+      }
+    ]
+  },
+  "17": {
+    "name": "CHANGELINGZERGLING",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "SCAN_MOVE",
+        "id": 19
+      }
+    ]
+  },
+  "86": {
+    "name": "HATCHERY",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "RALLY_HATCHERY_UNITS",
+        "id": 211
+      },
+      {
+        "name": "RALLY_HATCHERY_WORKERS",
+        "id": 212
+      },
+      {
+        "name": "UPGRADETOLAIR_LAIR",
+        "id": 1216
+      },
+      {
+        "name": "RESEARCH_PNEUMATIZEDCARAPACE",
+        "id": 1223
+      },
+      {
+        "name": "RESEARCH_BURROW",
+        "id": 1225
+      },
+      {
+        "name": "TRAINQUEEN_QUEEN",
+        "id": 1632
+      }
+    ]
+  },
+  "87": {
+    "name": "CREEPTUMOR",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "BUILD_CREEPTUMOR_TUMOR",
+        "id": 1733
+      }
+    ]
+  },
+  "88": {
+    "name": "EXTRACTOR",
+    "abilities": []
+  },
+  "89": {
+    "name": "SPAWNINGPOOL",
+    "abilities": [
+      {
+        "name": "RESEARCH_ZERGLINGADRENALGLANDS",
+        "id": 1252
+      },
+      {
+        "name": "RESEARCH_ZERGLINGMETABOLICBOOST",
+        "id": 1253
+      }
+    ]
+  },
+  "90": {
+    "name": "EVOLUTIONCHAMBER",
+    "abilities": [
+      {
+        "name": "RESEARCH_ZERGMELEEWEAPONSLEVEL1",
+        "id": 1186
+      },
+      {
+        "name": "RESEARCH_ZERGMELEEWEAPONSLEVEL2",
+        "id": 1187
+      },
+      {
+        "name": "RESEARCH_ZERGMELEEWEAPONSLEVEL3",
+        "id": 1188
+      },
+      {
+        "name": "RESEARCH_ZERGGROUNDARMORLEVEL1",
+        "id": 1189
+      },
+      {
+        "name": "RESEARCH_ZERGGROUNDARMORLEVEL2",
+        "id": 1190
+      },
+      {
+        "name": "RESEARCH_ZERGGROUNDARMORLEVEL3",
+        "id": 1191
+      },
+      {
+        "name": "RESEARCH_ZERGMISSILEWEAPONSLEVEL1",
+        "id": 1192
+      },
+      {
+        "name": "RESEARCH_ZERGMISSILEWEAPONSLEVEL2",
+        "id": 1193
+      },
+      {
+        "name": "RESEARCH_ZERGMISSILEWEAPONSLEVEL3",
+        "id": 1194
+      }
+    ]
+  },
+  "91": {
+    "name": "HYDRALISKDEN",
+    "abilities": [
+      {
+        "name": "RESEARCH_GROOVEDSPINES",
+        "id": 1282
+      },
+      {
+        "name": "RESEARCH_MUSCULARAUGMENTS",
+        "id": 1283
+      }
+    ]
+  },
+  "92": {
+    "name": "SPIRE",
+    "abilities": [
+      {
+        "name": "UPGRADETOGREATERSPIRE_GREATERSPIRE",
+        "id": 1220
+      },
+      {
+        "name": "RESEARCH_ZERGFLYERATTACKLEVEL1",
+        "id": 1312
+      },
+      {
+        "name": "RESEARCH_ZERGFLYERATTACKLEVEL2",
+        "id": 1313
+      },
+      {
+        "name": "RESEARCH_ZERGFLYERATTACKLEVEL3",
+        "id": 1314
+      },
+      {
+        "name": "RESEARCH_ZERGFLYERARMORLEVEL1",
+        "id": 1315
+      },
+      {
+        "name": "RESEARCH_ZERGFLYERARMORLEVEL2",
+        "id": 1316
+      },
+      {
+        "name": "RESEARCH_ZERGFLYERARMORLEVEL3",
+        "id": 1317
+      }
+    ]
+  },
+  "93": {
+    "name": "ULTRALISKCAVERN",
+    "abilities": [
+      {
+        "name": "ULTRALISKCAVERNRESEARCH_EVOLVEANABOLICSYNTHESIS2",
+        "id": 263
+      },
+      {
+        "name": "RESEARCH_CHITINOUSPLATING",
+        "id": 265
+      }
+    ]
+  },
+  "94": {
+    "name": "INFESTATIONPIT",
+    "abilities": [
+      {
+        "name": "RESEARCH_PATHOGENGLANDS",
+        "id": 1454
+      },
+      {
+        "name": "RESEARCH_NEURALPARASITE",
+        "id": 1455
+      }
+    ]
+  },
+  "95": {
+    "name": "NYDUSNETWORK",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "RALLY_BUILDING",
+        "id": 195
+      },
+      {
+        "name": "LOAD_NYDUSNETWORK",
+        "id": 1437
+      },
+      {
+        "name": "BUILD_NYDUSWORM",
+        "id": 1768
+      }
+    ]
+  },
+  "96": {
+    "name": "BANELINGNEST",
+    "abilities": []
+  },
+  "97": {
+    "name": "ROACHWARREN",
+    "abilities": []
+  },
+  "98": {
+    "name": "SPINECRAWLER",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "SPINECRAWLERUPROOT_SPINECRAWLERUPROOT",
+        "id": 1725
+      }
+    ]
+  },
+  "99": {
+    "name": "SPORECRAWLER",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "SPORECRAWLERUPROOT_SPORECRAWLERUPROOT",
+        "id": 1727
+      }
+    ]
+  },
+  "100": {
+    "name": "LAIR",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "RALLY_HATCHERY_UNITS",
+        "id": 211
+      },
+      {
+        "name": "RALLY_HATCHERY_WORKERS",
+        "id": 212
+      },
+      {
+        "name": "UPGRADETOHIVE_HIVE",
+        "id": 1218
+      },
+      {
+        "name": "RESEARCH_PNEUMATIZEDCARAPACE",
+        "id": 1223
+      },
+      {
+        "name": "RESEARCH_BURROW",
+        "id": 1225
+      },
+      {
+        "name": "TRAINQUEEN_QUEEN",
+        "id": 1632
+      }
+    ]
+  },
+  "101": {
+    "name": "HIVE",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "RALLY_HATCHERY_UNITS",
+        "id": 211
+      },
+      {
+        "name": "RALLY_HATCHERY_WORKERS",
+        "id": 212
+      },
+      {
+        "name": "RESEARCH_PNEUMATIZEDCARAPACE",
+        "id": 1223
+      },
+      {
+        "name": "RESEARCH_BURROW",
+        "id": 1225
+      },
+      {
+        "name": "TRAINQUEEN_QUEEN",
+        "id": 1632
+      }
+    ]
+  },
+  "102": {
+    "name": "GREATERSPIRE",
+    "abilities": [
+      {
+        "name": "RESEARCH_ZERGFLYERATTACKLEVEL1",
+        "id": 1312
+      },
+      {
+        "name": "RESEARCH_ZERGFLYERARMORLEVEL1",
+        "id": 1315
+      }
+    ]
+  },
+  "103": {
+    "name": "EGG",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "RALLY_BUILDING",
+        "id": 195
+      }
+    ]
+  },
+  "104": {
+    "name": "DRONE",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "EFFECT_SPRAY_ZERG",
+        "id": 28
+      },
+      {
+        "name": "ZERGBUILD_HATCHERY",
+        "id": 1152
+      },
+      {
+        "name": "ZERGBUILD_EXTRACTOR",
+        "id": 1154
+      },
+      {
+        "name": "ZERGBUILD_SPAWNINGPOOL",
+        "id": 1155
+      },
+      {
+        "name": "ZERGBUILD_EVOLUTIONCHAMBER",
+        "id": 1156
+      },
+      {
+        "name": "ZERGBUILD_HYDRALISKDEN",
+        "id": 1157
+      },
+      {
+        "name": "ZERGBUILD_SPIRE",
+        "id": 1158
+      },
+      {
+        "name": "ZERGBUILD_ULTRALISKCAVERN",
+        "id": 1159
+      },
+      {
+        "name": "ZERGBUILD_INFESTATIONPIT",
+        "id": 1160
+      },
+      {
+        "name": "ZERGBUILD_NYDUSNETWORK",
+        "id": 1161
+      },
+      {
+        "name": "ZERGBUILD_BANELINGNEST",
+        "id": 1162
+      },
+      {
+        "name": "BUILD_LURKERDEN",
+        "id": 1163
+      },
+      {
+        "name": "ZERGBUILD_ROACHWARREN",
+        "id": 1165
+      },
+      {
+        "name": "ZERGBUILD_SPINECRAWLER",
+        "id": 1166
+      },
+      {
+        "name": "ZERGBUILD_SPORECRAWLER",
+        "id": 1167
+      },
+      {
+        "name": "HARVEST_GATHER_DRONE",
+        "id": 1183
+      },
+      {
+        "name": "BURROWDOWN_DRONE",
+        "id": 1378
+      }
+    ]
+  },
+  "105": {
+    "name": "ZERGLING",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "MORPHZERGLINGTOBANELING_BANELING",
+        "id": 80
+      },
+      {
+        "name": "BURROWDOWN_ZERGLING",
+        "id": 1390
+      }
+    ]
+  },
+  "106": {
+    "name": "OVERLORD",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "SCAN_MOVE",
+        "id": 19
+      },
+      {
+        "name": "MORPH_OVERSEER",
+        "id": 1448
+      },
+      {
+        "name": "BEHAVIOR_GENERATECREEPON",
+        "id": 1692
+      },
+      {
+        "name": "MORPH_OVERLORDTRANSPORT",
+        "id": 2708
+      }
+    ]
+  },
+  "107": {
+    "name": "HYDRALISK",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "BURROWDOWN_HYDRALISK",
+        "id": 1382
+      },
+      {
+        "name": "MORPH_LURKER",
+        "id": 2332
+      }
+    ]
+  },
+  "108": {
+    "name": "MUTALISK",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      }
+    ]
+  },
+  "109": {
+    "name": "ULTRALISK",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "BURROWDOWN_ULTRALISK",
+        "id": 1512
+      }
+    ]
+  },
+  "110": {
+    "name": "ROACH",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "BURROWDOWN_ROACH",
+        "id": 1386
+      },
+      {
+        "name": "MORPHTORAVAGER_RAVAGER",
+        "id": 2330
+      }
+    ]
+  },
+  "111": {
+    "name": "INFESTOR",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "SCAN_MOVE",
+        "id": 19
+      },
+      {
+        "name": "FUNGALGROWTH_FUNGALGROWTH",
+        "id": 74
+      },
+      {
+        "name": "INFESTEDTERRANS_INFESTEDTERRANS",
+        "id": 247
+      },
+      {
+        "name": "NEURALPARASITE_NEURALPARASITE",
+        "id": 249
+      },
+      {
+        "name": "BURROWDOWN_INFESTORTERRAN",
+        "id": 1394
+      },
+      {
+        "name": "BURROWDOWN_INFESTOR",
+        "id": 1444
+      }
+    ]
+  },
+  "112": {
+    "name": "CORRUPTOR",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "MORPHTOBROODLORD_BROODLORD",
+        "id": 1372
+      },
+      {
+        "name": "CAUSTICSPRAY_CAUSTICSPRAY",
+        "id": 2324
+      }
+    ]
+  },
+  "113": {
+    "name": "BROODLORDCOCOON",
+    "abilities": []
+  },
+  "114": {
+    "name": "BROODLORD",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      }
+    ]
+  },
+  "115": {
+    "name": "BANELINGBURROWED",
+    "abilities": [
+      {
+        "name": "EXPLODE_EXPLODE",
+        "id": 42
+      },
+      {
+        "name": "BURROWUP_BANELING",
+        "id": 1376
+      }
+    ]
+  },
+  "116": {
+    "name": "DRONEBURROWED",
+    "abilities": [
+      {
+        "name": "BURROWUP_DRONE",
+        "id": 1380
+      }
+    ]
+  },
+  "117": {
+    "name": "HYDRALISKBURROWED",
+    "abilities": [
+      {
+        "name": "BURROWUP_HYDRALISK",
+        "id": 1384
+      }
+    ]
+  },
+  "118": {
+    "name": "ROACHBURROWED",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "SCAN_MOVE",
+        "id": 19
+      },
+      {
+        "name": "BURROWUP_ROACH",
+        "id": 1388
+      }
+    ]
+  },
+  "119": {
+    "name": "ZERGLINGBURROWED",
+    "abilities": [
+      {
+        "name": "BURROWUP_ZERGLING",
+        "id": 1392
+      }
+    ]
+  },
+  "120": {
+    "name": "INFESTORTERRANBURROWED",
+    "abilities": [
+      {
+        "name": "BURROWUP_INFESTORTERRAN",
+        "id": 1396
+      }
+    ]
+  },
+  "125": {
+    "name": "QUEENBURROWED",
+    "abilities": [
+      {
+        "name": "BURROWUP_QUEEN",
+        "id": 1435
+      }
+    ]
+  },
+  "126": {
+    "name": "QUEEN",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "EFFECT_INJECTLARVA",
+        "id": 251
+      },
+      {
+        "name": "BURROWDOWN_QUEEN",
+        "id": 1433
+      },
+      {
+        "name": "TRANSFUSION_TRANSFUSION",
+        "id": 1664
+      },
+      {
+        "name": "BUILD_CREEPTUMOR_QUEEN",
+        "id": 1694
+      },
+      {
+        "name": "BUILD_CREEPTUMOR",
+        "id": 3691
+      }
+    ]
+  },
+  "127": {
+    "name": "INFESTORBURROWED",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "SCAN_MOVE",
+        "id": 19
+      },
+      {
+        "name": "INFESTEDTERRANS_INFESTEDTERRANS",
+        "id": 247
+      },
+      {
+        "name": "NEURALPARASITE_NEURALPARASITE",
+        "id": 249
+      },
+      {
+        "name": "BURROWUP_INFESTORTERRAN",
+        "id": 1396
+      },
+      {
+        "name": "BURROWUP_INFESTOR",
+        "id": 1446
+      }
+    ]
+  },
+  "128": {
+    "name": "OVERLORDCOCOON",
+    "abilities": []
+  },
+  "129": {
+    "name": "OVERSEER",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "SCAN_MOVE",
+        "id": 19
+      },
+      {
+        "name": "SPAWNCHANGELING_SPAWNCHANGELING",
+        "id": 181
+      },
+      {
+        "name": "CONTAMINATE_CONTAMINATE",
+        "id": 1825
+      },
+      {
+        "name": "MORPH_OVERSIGHTMODE",
+        "id": 3743
+      }
+    ]
+  },
+  "131": {
+    "name": "ULTRALISKBURROWED",
+    "abilities": [
+      {
+        "name": "BURROWUP_ULTRALISK",
+        "id": 1514
+      }
+    ]
+  },
+  "137": {
+    "name": "CREEPTUMORBURROWED",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "BUILD_CREEPTUMOR_TUMOR",
+        "id": 1733
+      },
+      {
+        "name": "BUILD_CREEPTUMOR",
+        "id": 3691
+      }
+    ]
+  },
+  "138": {
+    "name": "CREEPTUMORQUEEN",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "BUILD_CREEPTUMOR_TUMOR",
+        "id": 1733
+      }
+    ]
+  },
+  "139": {
+    "name": "SPINECRAWLERUPROOTED",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "SCAN_MOVE",
+        "id": 19
+      }
+    ]
+  },
+  "140": {
+    "name": "SPORECRAWLERUPROOTED",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "SCAN_MOVE",
+        "id": 19
+      }
+    ]
+  },
+  "142": {
+    "name": "NYDUSCANAL",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "RALLY_BUILDING",
+        "id": 195
+      },
+      {
+        "name": "LOAD_NYDUSWORM",
+        "id": 2370
+      }
+    ]
+  },
+  "150": {
+    "name": "INFESTEDTERRANSEGG",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      }
+    ]
+  },
+  "151": {
+    "name": "LARVA",
+    "abilities": [
+      {
+        "name": "LARVATRAIN_DRONE",
+        "id": 1342
+      },
+      {
+        "name": "LARVATRAIN_ZERGLING",
+        "id": 1343
+      },
+      {
+        "name": "LARVATRAIN_OVERLORD",
+        "id": 1344
+      },
+      {
+        "name": "LARVATRAIN_HYDRALISK",
+        "id": 1345
+      },
+      {
+        "name": "LARVATRAIN_MUTALISK",
+        "id": 1346
+      },
+      {
+        "name": "LARVATRAIN_ULTRALISK",
+        "id": 1348
+      },
+      {
+        "name": "LARVATRAIN_ROACH",
+        "id": 1351
+      },
+      {
+        "name": "LARVATRAIN_INFESTOR",
+        "id": 1352
+      },
+      {
+        "name": "LARVATRAIN_CORRUPTOR",
+        "id": 1353
+      },
+      {
+        "name": "LARVATRAIN_VIPER",
+        "id": 1354
+      },
+      {
+        "name": "TRAIN_SWARMHOST",
+        "id": 1356
+      }
+    ]
+  },
+  "289": {
+    "name": "BROODLING",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      }
+    ]
+  },
+  "339": {
+    "name": "INFESTEDTERRANSEGGPLACEMENT",
+    "abilities": []
+  },
+  "489": {
+    "name": "LOCUSTMP",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      }
+    ]
+  },
+  "493": {
+    "name": "SWARMHOSTBURROWEDMP",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "EFFECT_SPAWNLOCUSTS",
+        "id": 2704
+      }
+    ]
+  },
+  "494": {
+    "name": "SWARMHOSTMP",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "SCAN_MOVE",
+        "id": 19
+      },
+      {
+        "name": "BURROWDOWN_SWARMHOST",
+        "id": 2014
+      },
+      {
+        "name": "EFFECT_SPAWNLOCUSTS",
+        "id": 2704
+      }
+    ]
+  },
+  "499": {
+    "name": "VIPER",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "SCAN_MOVE",
+        "id": 19
+      },
+      {
+        "name": "BLINDINGCLOUD_BLINDINGCLOUD",
+        "id": 2063
+      },
+      {
+        "name": "EFFECT_ABDUCT",
+        "id": 2067
+      },
+      {
+        "name": "VIPERCONSUMESTRUCTURE_VIPERCONSUME",
+        "id": 2073
+      },
+      {
+        "name": "PARASITICBOMB_PARASITICBOMB",
+        "id": 2542
+      }
+    ]
+  },
+  "501": {
+    "name": "LURKERMPEGG",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "RALLY_BUILDING",
+        "id": 195
+      }
+    ]
+  },
+  "502": {
+    "name": "LURKERMP",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "SCAN_MOVE",
+        "id": 19
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "BURROWDOWN_LURKER",
+        "id": 2108
+      }
+    ]
+  },
+  "503": {
+    "name": "LURKERMPBURROWED",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "BURROWUP_LURKER",
+        "id": 2110
+      },
+      {
+        "name": "BEHAVIOR_HOLDFIREON_LURKER",
+        "id": 2550
+      }
+    ]
+  },
+  "504": {
+    "name": "LURKERDENMP",
+    "abilities": []
+  },
+  "687": {
+    "name": "RAVAGERCOCOON",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "RALLY_BUILDING",
+        "id": 195
+      }
+    ]
+  },
+  "688": {
+    "name": "RAVAGER",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "EFFECT_CORROSIVEBILE",
+        "id": 2338
+      },
+      {
+        "name": "BURROWDOWN_RAVAGER",
+        "id": 2340
+      }
+    ]
+  },
+  "690": {
+    "name": "RAVAGERBURROWED",
+    "abilities": [
+      {
+        "name": "BURROWUP_RAVAGER",
+        "id": 2342
+      }
+    ]
+  },
+  "693": {
+    "name": "LOCUSTMPFLYING",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "ATTACK_ATTACK",
+        "id": 23
+      },
+      {
+        "name": "EFFECT_LOCUSTSWOOP",
+        "id": 2387
+      }
+    ]
+  },
+  "892": {
+    "name": "TRANSPORTOVERLORDCOCOON",
+    "abilities": []
+  },
+  "893": {
+    "name": "OVERLORDTRANSPORT",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "MOVE",
+        "id": 16
+      },
+      {
+        "name": "PATROL",
+        "id": 17
+      },
+      {
+        "name": "HOLDPOSITION",
+        "id": 18
+      },
+      {
+        "name": "SCAN_MOVE",
+        "id": 19
+      },
+      {
+        "name": "LOAD_OVERLORD",
+        "id": 1406
+      },
+      {
+        "name": "MORPH_OVERSEER",
+        "id": 1448
+      },
+      {
+        "name": "BEHAVIOR_GENERATECREEPON",
+        "id": 1692
+      }
+    ]
+  },
+  "1912": {
+    "name": "OVERSEERSIEGEMODE",
+    "abilities": [
+      {
+        "name": "SMART",
+        "id": 1
+      },
+      {
+        "name": "STOP_STOP",
+        "id": 4
+      },
+      {
+        "name": "SPAWNCHANGELING_SPAWNCHANGELING",
+        "id": 181
+      },
+      {
+        "name": "CONTAMINATE_CONTAMINATE",
+        "id": 1825
+      },
+      {
+        "name": "MORPH_OVERSEERMODE",
+        "id": 3745
+      }
+    ]
+  },
+  "1945": {
+    "name": "EXTRACTORRICH",
+    "abilities": []
+  }
+}
