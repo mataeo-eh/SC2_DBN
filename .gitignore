@@ -17,7 +17,7 @@ venv.bak/
 .venv-3_12/
 
 .claude/
-promppts/
+prompts/
 .prompts/
 claude.md
 *.log
