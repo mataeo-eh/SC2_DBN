@@ -8,7 +8,7 @@ def main():
     # Initialize extractor
     extractor = ReplayExtractor(
         output_format='parquet',  # Use Parquet for batch processing
-        frame_interval=112,       # 5 seconds @ Faster speed
+        frame_interval=1,       # 5 seconds @ Faster speed
         output_dir='data/processed',
         verbose=True
     )
