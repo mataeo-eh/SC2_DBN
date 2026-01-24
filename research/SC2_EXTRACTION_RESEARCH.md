@@ -15,7 +15,7 @@ This research evaluates Python libraries for extracting frame-by-frame game stat
 - ✅ **All required data points can be extracted** from SC2 replays
 - ✅ **Recommended library:** `sc2reader` (v1.8.0)
 - ✅ **Technical feasibility confirmed** - no blockers identified
-- ⚠️ **Limitation:** AI Arena replays may have compatibility issues
+- ✅ **AI Arena bot replays:** Fully compatible with patch (see AI_ARENA_COMPATIBILITY.md)
 - 📊 **Performance:** Fast parsing (~0.04s per replay, 164k events/sec)
 
 **Primary Recommendation:** Use `sc2reader` as the main extraction library due to its high-level API, comprehensive event coverage, active maintenance, and excellent performance characteristics.
@@ -69,8 +69,9 @@ Three primary Python libraries exist for SC2 replay parsing:
 - Production-ready and battle-tested (used by GGTracker, etc.)
 
 **Weaknesses:**
-- Some compatibility issues with AI Arena replays (cache_handles bug)
+- ~~Some compatibility issues with AI Arena replays (cache_handles bug)~~ ✅ RESOLVED with patch
 - Slightly higher abstraction means less control over raw data
+- Game events (load_level=4) fail on bot replays → use load_level=3 instead
 
 **Best For:** Our use case - extracting structured game state data for ML training
 
@@ -817,7 +818,7 @@ def get_building_state(unit_id, frame):
 - Handle missing attributes gracefully
 - Version-specific feature extraction if needed
 
-### 7.4 AI Arena Replay Compatibility
+### 7.4 AI Arena Replay Compatibility ✅ RESOLVED
 
 **Observed issue:** Test replays from AI Arena bots failed to load:
 ```
@@ -825,12 +826,23 @@ IndexError: list index out of range
   at replay.details["cache_handles"][0].server.lower()
 ```
 
-**Root cause:** AI Arena replays may lack standard ladder metadata (cache_handles)
+**Root cause:** AI Arena bot replays have empty `cache_handles` list, while sc2reader blindly accesses `[0]` without checking.
 
-**Workaround options:**
-1. Skip problematic replays (filter during batch processing)
-2. Patch sc2reader to handle missing cache_handles
-3. Use human/ladder replays for training instead
+**✅ SOLUTION IMPLEMENTED:**
+
+1. **Monkey Patch** - Apply `sc2reader_patch.py` to handle empty cache_handles
+2. **Use load_level=3** - Avoid game events parser (unknown event type 0x76 in bot replays)
+
+**Status:** ✅ **WORKING** - All required data successfully extracted from bot replays
+
+**See:** `research/AI_ARENA_COMPATIBILITY.md` for complete details, testing results, and implementation code.
+
+**Key Points:**
+- Patch sets `region="local"` for bot replays
+- load_level=3 provides all tracker events (units, buildings, upgrades, stats)
+- Tested with local bot matches and AI Arena replays
+- All required data points available
+- No blockers remaining
 4. Use s2protocol (lower-level, might avoid this check)
 
 **Impact on project:**
@@ -1286,10 +1298,10 @@ def get_closest_stats(stats_by_frame, target_frame, pid):
    - Add error handling and validation
    - Test on sample replays (10-100)
 
-3. **Address AI Arena compatibility**
-   - Test workaround for cache_handles bug
-   - OR switch to human/ladder replays
-   - OR contribute fix to sc2reader
+3. **~~Address AI Arena compatibility~~** ✅ RESOLVED
+   - Apply `sc2reader_patch.py` before loading replays
+   - Use `load_level=3` for bot replays
+   - See `research/AI_ARENA_COMPATIBILITY.md` for details
 
 ### 10.2 Planning Phase Requirements
 

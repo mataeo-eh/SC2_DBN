@@ -1,0 +1,443 @@
+SC2 Replay Extraction System - File Structure
+==============================================
+
+sc2_replay_extraction/
+│
+├── README.md                          # Project overview, quick start, examples
+├── LICENSE                            # License file (choose appropriate)
+├── setup.py                           # Package installation configuration
+├── requirements.txt                   # Python dependencies
+├── .gitignore                         # Git ignore rules
+├── sc2reader_patch.py                 # Bot replay compatibility patch (CRITICAL)
+│
+├── src/                               # Source code
+│   ├── __init__.py                    # Package initialization
+│   ├── main.py                        # Entry point, CLI interface
+│   ├── config.py                      # Configuration management
+│   │
+│   ├── parser/                        # Replay parsing
+│   │   ├── __init__.py
+│   │   └── replay_parser.py           # Load replays, extract metadata, validate
+│   │
+│   ├── processors/                    # Event processing
+│   │   ├── __init__.py
+│   │   ├── event_processor.py         # Main event dispatcher
+│   │   ├── unit_handler.py            # Handle unit birth/death events
+│   │   ├── building_handler.py        # Handle building lifecycle events
+│   │   ├── upgrade_handler.py         # Handle upgrade completion events
+│   │   ├── stats_handler.py           # Handle player stats events
+│   │   └── message_handler.py         # Handle chat/message events
+│   │
+│   ├── models/                        # Data models
+│   │   ├── __init__.py
+│   │   ├── replay_data.py             # ReplayMetadata, PlayerInfo dataclasses
+│   │   ├── frame_data.py              # FrameState, PlayerFrameState dataclasses
+│   │   └── event_data.py              # UnitEvent, BuildingEvent, etc. dataclasses
+│   │
+│   ├── state/                         # State tracking
+│   │   ├── __init__.py
+│   │   ├── game_state_tracker.py      # Main state tracker (maintains game state)
+│   │   ├── unit_tracker.py            # Track unit lifecycles
+│   │   ├── building_tracker.py        # Track building lifecycles
+│   │   ├── upgrade_tracker.py         # Track upgrade accumulation
+│   │   └── frame_sampler.py           # Sample game state at intervals
+│   │
+│   ├── output/                        # Output formatting and writing
+│   │   ├── __init__.py
+│   │   ├── output_formatter.py        # Format game state for output
+│   │   ├── parquet_writer.py          # Write Parquet files
+│   │   ├── json_writer.py             # Write JSON files
+│   │   └── csv_writer.py              # Write CSV files
+│   │
+│   └── utils/                         # Utility functions
+│       ├── __init__.py
+│       ├── validation.py              # Data validation functions
+│       ├── unit_types.py              # Unit/building type definitions
+│       └── logging_config.py          # Logging setup
+│
+├── tests/                             # Test suite
+│   ├── __init__.py
+│   ├── conftest.py                    # Pytest configuration and fixtures
+│   ├── test_parser.py                 # Test replay loading and validation
+│   ├── test_event_processors.py       # Test event handlers
+│   ├── test_state_tracker.py          # Test state tracking
+│   ├── test_output_formatter.py       # Test output formatting
+│   ├── test_integration.py            # End-to-end integration tests
+│   │
+│   └── fixtures/                      # Test replay files
+│       ├── ladder_pvp.SC2Replay       # Protoss vs Protoss ladder game
+│       ├── ladder_tvt.SC2Replay       # Terran vs Terran ladder game
+│       ├── ladder_zvz.SC2Replay       # Zerg vs Zerg ladder game
+│       ├── bot_match.SC2Replay        # AI Arena bot replay
+│       ├── short_game.SC2Replay       # Short game (< 2 min)
+│       └── long_game.SC2Replay        # Long game (> 20 min)
+│
+├── config/                            # Configuration files
+│   ├── default_config.yaml            # Default extraction configuration
+│   └── extraction_profiles.yaml       # Preset extraction profiles
+│       ├── quick.yaml                 # Quick extraction (30-sec intervals)
+│       ├── standard.yaml              # Standard extraction (5-sec intervals)
+│       └── detailed.yaml              # Detailed extraction (1-sec intervals)
+│
+├── data/                              # Data directory
+│   ├── raw/                           # Input replays
+│   │   └── .gitkeep
+│   │
+│   └── processed/                     # Output data
+│       ├── metadata/                  # Replay metadata files
+│       ├── frame_states/              # Frame state data
+│       └── events/                    # Event logs (optional)
+│
+├── docs/                              # Documentation
+│   ├── architecture.md                # System architecture overview
+│   ├── data_schema.md                 # Data schema reference
+│   ├── usage_guide.md                 # Detailed usage guide
+│   ├── api_reference.md               # API documentation
+│   └── development.md                 # Development guide
+│
+├── scripts/                           # Utility scripts
+│   ├── batch_extract.py               # Batch process multiple replays
+│   ├── validate_output.py             # Validate extracted data
+│   ├── benchmark.py                   # Performance benchmarking
+│   └── export_to_csv.py               # Convert Parquet to CSV
+│
+└── logs/                              # Log files
+    └── .gitkeep
+
+
+File Descriptions
+=================
+
+Core Source Files
+-----------------
+
+src/main.py
+  - Entry point for the extraction system
+  - Command-line argument parsing
+  - Orchestrates the extraction pipeline
+  - Example: python -m src.main extract replay.SC2Replay
+
+src/config.py
+  - Configuration management (load from YAML)
+  - ExtractionConfig dataclass
+  - Configuration validation
+
+src/parser/replay_parser.py
+  - load_replay(file_path) -> Replay
+  - validate_replay(replay) -> (is_valid, errors)
+  - extract_metadata(replay) -> ReplayMetadata
+  - CRITICAL: Must import sc2reader_patch BEFORE sc2reader
+
+src/processors/event_processor.py
+  - EventProcessor class
+  - Dispatches events to appropriate handlers
+  - Integrates with GameStateTracker
+  - Processes all tracker events in chronological order
+
+src/state/game_state_tracker.py
+  - GameStateTracker class
+  - Maintains current game state across all frames
+  - Key method: get_state_at_frame(frame) -> FrameState
+  - Tracks units, buildings, upgrades, stats
+
+src/state/frame_sampler.py
+  - FrameSampler class
+  - Samples game state at regular intervals
+  - Default: 112 frames (5 seconds @ Faster speed)
+  - Returns List[FrameState]
+
+src/output/parquet_writer.py
+  - ParquetWriter class
+  - Writes data to Parquet format
+  - Creates multiple tables:
+    * replay_metadata.parquet
+    * frame_states.parquet
+    * unit_counts.parquet
+    * building_counts.parquet
+    * upgrades.parquet
+    * messages.parquet
+
+Data Models
+-----------
+
+src/models/replay_data.py
+  - @dataclass ReplayMetadata
+  - @dataclass PlayerInfo
+  - Replay-level information
+
+src/models/frame_data.py
+  - @dataclass FrameState
+  - @dataclass PlayerFrameState
+  - Frame-level game state
+
+src/models/event_data.py
+  - @dataclass UnitEvent
+  - @dataclass BuildingEvent
+  - @dataclass UpgradeEvent
+  - @dataclass MessageEvent
+  - Individual event types
+
+Configuration Files
+-------------------
+
+config/default_config.yaml
+  - Default extraction configuration
+  - Sampling interval: 112 frames (5 seconds)
+  - Output format: parquet
+  - Load level: 3 (tracker events only)
+  - Validation thresholds
+  - Performance settings
+
+config/extraction_profiles.yaml
+  - Preset configurations for different use cases
+  - quick: 30-second intervals (fast, less data)
+  - standard: 5-second intervals (balanced)
+  - detailed: 1-second intervals (slow, more data)
+
+Scripts
+-------
+
+scripts/batch_extract.py
+  - Batch process multiple replays
+  - Parallel processing support
+  - Progress reporting
+  - Error handling and logging
+  - Example: python scripts/batch_extract.py data/raw/ --workers 4
+
+scripts/validate_output.py
+  - Validate extracted data quality
+  - Check for negative values
+  - Verify supply constraints
+  - Check frame ordering
+  - Report data statistics
+  - Example: python scripts/validate_output.py data/processed/
+
+scripts/benchmark.py
+  - Performance benchmarking
+  - Measure extraction speed (replays/sec)
+  - Measure memory usage
+  - Test scalability
+  - Example: python scripts/benchmark.py data/raw/ --replays 100
+
+Test Files
+----------
+
+tests/conftest.py
+  - Pytest fixtures
+  - Sample replay loading
+  - Temporary directory setup
+  - Mock configurations
+
+tests/test_parser.py
+  - Test replay loading (ladder + bot replays)
+  - Test metadata extraction
+  - Test validation logic
+  - Test error handling
+
+tests/test_event_processors.py
+  - Test each event handler
+  - Test event dispatcher
+  - Test state updates
+  - Test edge cases
+
+tests/test_state_tracker.py
+  - Test GameStateTracker
+  - Test unit/building tracking
+  - Test state reconstruction
+  - Test frame sampling
+
+tests/test_integration.py
+  - End-to-end extraction tests
+  - Test with various replay types
+  - Test batch processing
+  - Test output validation
+
+Documentation
+-------------
+
+docs/architecture.md
+  - System architecture diagram
+  - Component descriptions
+  - Data flow explanation
+  - Design decisions
+
+docs/data_schema.md
+  - Complete data schema reference
+  - Field descriptions
+  - Example data
+  - Parquet table schemas
+
+docs/usage_guide.md
+  - Installation instructions
+  - Quick start guide
+  - Configuration options
+  - CLI examples
+  - Python API examples
+  - Troubleshooting
+
+docs/api_reference.md
+  - Auto-generated API documentation
+  - Function/class descriptions
+  - Parameters and return values
+  - Code examples
+
+
+Output File Structure
+=====================
+
+After extraction, the data/ directory will look like:
+
+data/
+├── raw/                                    # Input replays
+│   ├── replay_001.SC2Replay
+│   ├── replay_002.SC2Replay
+│   └── ...
+│
+└── processed/                              # Extracted data
+    │
+    ├── replay_metadata.parquet             # All replay metadata (one row per replay)
+    ├── players.parquet                     # Player info (one row per player per replay)
+    │
+    ├── frame_states.parquet                # Main frame state data
+    │   # Columns: replay_hash, frame, game_time_seconds, player_id,
+    │   #          minerals, vespene, supply_used, supply_made, workers_active,
+    │   #          army_value_minerals, army_value_vespene, tech_tier, base_count, ...
+    │
+    ├── unit_counts.parquet                 # Unit counts per frame
+    │   # Columns: replay_hash, frame, player_id, unit_type, count
+    │
+    ├── building_counts.parquet             # Building counts per frame
+    │   # Columns: replay_hash, frame, player_id, building_type, state, count
+    │
+    ├── upgrades.parquet                    # Upgrade completions
+    │   # Columns: replay_hash, frame, player_id, upgrade_name, upgrade_level
+    │
+    ├── unit_events.parquet                 # Detailed unit events (optional)
+    │   # Columns: replay_hash, frame, event_type, unit_id, unit_type, player_id, x, y, killer_player_id
+    │
+    ├── building_events.parquet             # Detailed building events (optional)
+    │   # Columns: replay_hash, frame, event_type, unit_id, building_type, player_id, x, y, started_frame, build_time_frames
+    │
+    └── messages.parquet                    # Chat messages
+        # Columns: replay_hash, frame, game_time_seconds, player_id, text, target
+
+
+Alternative: Per-Replay Output
+================================
+
+If config.output.separate_files = true:
+
+data/processed/
+├── a3f2b9c8.../                            # Replay hash as directory name
+│   ├── metadata.json
+│   ├── frame_states.parquet
+│   ├── unit_counts.parquet
+│   ├── building_counts.parquet
+│   └── upgrades.parquet
+│
+├── d4e5f6a7.../
+│   └── ... (same structure)
+│
+└── ...
+
+
+Dependencies
+============
+
+requirements.txt contains:
+
+# Core dependencies
+sc2reader==1.8.0                # Replay parsing (with bot replay patch)
+pandas>=2.0.0                   # Data manipulation
+pyarrow>=10.0.0                 # Parquet file I/O
+
+# Optional
+numpy>=1.24.0                   # Numerical operations
+tqdm>=4.65.0                    # Progress bars
+pyyaml>=6.0                     # YAML config parsing
+
+# Development
+pytest>=7.3.0                   # Testing framework
+pytest-cov>=4.1.0               # Test coverage
+black>=23.0.0                   # Code formatting
+flake8>=6.0.0                   # Linting
+mypy>=1.3.0                     # Type checking
+
+
+Installation
+============
+
+# 1. Clone repository
+git clone <repo_url>
+cd sc2_replay_extraction
+
+# 2. Create virtual environment
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+
+# 3. Install dependencies
+pip install -r requirements.txt
+
+# 4. Install package in development mode
+pip install -e .
+
+# 5. Run tests
+pytest
+
+# 6. Extract a replay
+python -m src.main extract tests/fixtures/ladder_pvp.SC2Replay
+
+
+Git Ignore Rules
+================
+
+.gitignore should include:
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+
+# Data files
+data/raw/*.SC2Replay
+data/processed/*.parquet
+data/processed/*.json
+data/processed/*.csv
+
+# Logs
+logs/*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Keep directory structure
+!.gitkeep
+
+
+Notes
+=====
+
+1. CRITICAL: sc2reader_patch.py must be in project root and imported BEFORE sc2reader
+2. Use load_level=3 for bot replays (tracker events only)
+3. Default sampling: 112 frames (5 seconds @ Faster speed)
+4. Parquet format recommended for production (smaller, faster than JSON)
+5. All timestamps are UTC
+6. Frame numbers start at 0
+7. Player IDs start at 1
+8. Replay hash is SHA256 of file content
+9. Building states: started, existing, destroyed, cancelled
+10. Tech tier: 1 (basic), 2 (mid), 3 (advanced)

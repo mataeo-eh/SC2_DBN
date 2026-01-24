@@ -1,0 +1,664 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SC2 Replay Extraction Data Schema",
+  "version": "1.0",
+  "description": "Complete data schema for SC2 replay frame-by-frame extraction",
+
+  "definitions": {
+    "ReplayMetadata": {
+      "type": "object",
+      "description": "Replay-level metadata",
+      "properties": {
+        "replay_hash": {
+          "type": "string",
+          "description": "Unique replay identifier (SHA256 hash of file)"
+        },
+        "file_path": {
+          "type": "string",
+          "description": "Path to original replay file"
+        },
+        "map_name": {
+          "type": "string",
+          "description": "Map name"
+        },
+        "map_hash": {
+          "type": ["string", "null"],
+          "description": "Map hash from cache_handles (null for bot replays)"
+        },
+        "region": {
+          "type": "string",
+          "enum": ["us", "eu", "kr", "cn", "sea", "local"],
+          "description": "Server region (local for bot replays)"
+        },
+        "game_version": {
+          "type": "string",
+          "description": "SC2 version (e.g., '5.0.11')"
+        },
+        "expansion": {
+          "type": "string",
+          "enum": ["LotV", "HotS", "WoL"],
+          "description": "Game expansion"
+        },
+        "game_mode": {
+          "type": "string",
+          "enum": ["1v1", "2v2", "3v3", "4v4", "FFA"],
+          "description": "Game mode"
+        },
+        "speed": {
+          "type": "string",
+          "enum": ["Slower", "Slow", "Normal", "Fast", "Faster"],
+          "description": "Game speed"
+        },
+        "game_length_frames": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total frames in replay"
+        },
+        "game_length_seconds": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Game duration in real-time seconds"
+        },
+        "end_time": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When replay ended (UTC)"
+        },
+        "player_count": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8,
+          "description": "Number of players"
+        },
+        "players": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PlayerInfo"
+          },
+          "description": "Player information"
+        },
+        "winner_id": {
+          "type": ["integer", "null"],
+          "description": "Winning player ID (null if draw/disconnect)"
+        },
+        "extraction_version": {
+          "type": "string",
+          "description": "Version of extraction code used"
+        },
+        "extraction_timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When extraction was performed"
+        },
+        "is_complete": {
+          "type": "boolean",
+          "description": "Game finished normally (has winner)"
+        },
+        "is_valid": {
+          "type": "boolean",
+          "description": "Passed all validation checks"
+        },
+        "has_errors": {
+          "type": "boolean",
+          "description": "Encountered errors during extraction"
+        },
+        "error_messages": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Error/warning messages"
+        }
+      },
+      "required": [
+        "replay_hash",
+        "file_path",
+        "map_name",
+        "game_length_frames",
+        "player_count",
+        "is_complete",
+        "is_valid"
+      ]
+    },
+
+    "PlayerInfo": {
+      "type": "object",
+      "description": "Information about a player in the replay",
+      "properties": {
+        "player_id": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Player ID (1, 2, 3, etc.)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Player name (may be empty for bot replays)"
+        },
+        "race": {
+          "type": "string",
+          "enum": ["Protoss", "Terran", "Zerg", "Random"],
+          "description": "Player's race"
+        },
+        "result": {
+          "type": "string",
+          "enum": ["Win", "Loss", "Tie", "Unknown"],
+          "description": "Game result for this player"
+        },
+        "handicap": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Handicap value"
+        },
+        "color": {
+          "type": "string",
+          "description": "Player color (e.g., 'Red', 'Blue')"
+        },
+        "mmr": {
+          "type": ["integer", "null"],
+          "description": "Match-making rating (if available)"
+        },
+        "highest_league": {
+          "type": ["string", "null"],
+          "enum": ["Bronze", "Silver", "Gold", "Platinum", "Diamond", "Master", "GrandMaster", null],
+          "description": "Highest league achieved"
+        },
+        "final_units": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Final unit count"
+        },
+        "final_buildings": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Final building count"
+        },
+        "final_upgrades": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total upgrades completed"
+        },
+        "final_minerals": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Minerals at game end"
+        },
+        "final_vespene": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Vespene at game end"
+        },
+        "final_supply_used": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Supply used at end"
+        },
+        "final_supply_made": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Supply capacity at end"
+        }
+      },
+      "required": ["player_id", "race", "result"]
+    },
+
+    "FrameState": {
+      "type": "object",
+      "description": "Complete game state at a specific frame",
+      "properties": {
+        "frame": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Frame number"
+        },
+        "game_time_seconds": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Game time in seconds"
+        },
+        "player_states": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/PlayerFrameState"
+          },
+          "description": "Per-player states (keyed by player_id)"
+        },
+        "units_born": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UnitEvent"
+          },
+          "description": "Units born in this interval (optional)"
+        },
+        "units_died": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UnitEvent"
+          },
+          "description": "Units died in this interval (optional)"
+        },
+        "buildings_started": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BuildingEvent"
+          },
+          "description": "Buildings started in this interval (optional)"
+        },
+        "buildings_completed": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BuildingEvent"
+          },
+          "description": "Buildings completed in this interval (optional)"
+        },
+        "buildings_destroyed": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BuildingEvent"
+          },
+          "description": "Buildings destroyed in this interval (optional)"
+        },
+        "upgrades_completed": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UpgradeEvent"
+          },
+          "description": "Upgrades completed in this interval (optional)"
+        },
+        "messages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MessageEvent"
+          },
+          "description": "Messages sent in this interval (optional)"
+        }
+      },
+      "required": ["frame", "game_time_seconds", "player_states"]
+    },
+
+    "PlayerFrameState": {
+      "type": "object",
+      "description": "Per-player state at a specific frame",
+      "properties": {
+        "player_id": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Player ID"
+        },
+        "minerals": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Current minerals"
+        },
+        "vespene": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Current vespene gas"
+        },
+        "minerals_collection_rate": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Mineral income rate"
+        },
+        "vespene_collection_rate": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Vespene income rate"
+        },
+        "supply_used": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Current supply used"
+        },
+        "supply_made": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Current supply capacity"
+        },
+        "supply_cap": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 200,
+          "description": "Maximum supply cap"
+        },
+        "workers_active": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Active worker count"
+        },
+        "workers_total": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total worker count"
+        },
+        "minerals_spent_economy": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Minerals spent on economy"
+        },
+        "vespene_spent_economy": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Vespene spent on economy"
+        },
+        "army_value_minerals": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Current army value (minerals)"
+        },
+        "army_value_vespene": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Current army value (vespene)"
+        },
+        "army_supply": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Supply used by army"
+        },
+        "minerals_spent_army": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total minerals spent on army"
+        },
+        "vespene_spent_army": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total vespene spent on army"
+        },
+        "minerals_spent_technology": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Minerals spent on tech/upgrades"
+        },
+        "vespene_spent_technology": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Vespene spent on tech/upgrades"
+        },
+        "minerals_lost": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total minerals lost (units/buildings destroyed)"
+        },
+        "vespene_lost": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total vespene lost"
+        },
+        "minerals_killed": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Enemy value destroyed (minerals)"
+        },
+        "vespene_killed": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Enemy value destroyed (vespene)"
+        },
+        "unit_counts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "description": "Unit counts by type (e.g., {'Probe': 16, 'Zealot': 5})"
+        },
+        "buildings_existing": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "description": "Completed building counts by type"
+        },
+        "buildings_constructing": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "description": "Under-construction building counts by type"
+        },
+        "upgrades_completed": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true,
+          "description": "Set of completed upgrade names"
+        },
+        "tech_tier": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3,
+          "description": "Current tech tier (1/2/3)"
+        },
+        "base_count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of bases (Nexus/CC/Hatchery)"
+        },
+        "production_capacity": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of production buildings"
+        }
+      },
+      "required": [
+        "player_id",
+        "minerals",
+        "vespene",
+        "supply_used",
+        "supply_made",
+        "unit_counts",
+        "buildings_existing",
+        "upgrades_completed",
+        "tech_tier",
+        "base_count"
+      ]
+    },
+
+    "UnitEvent": {
+      "type": "object",
+      "description": "Unit lifecycle event (birth or death)",
+      "properties": {
+        "frame": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Event frame"
+        },
+        "event_type": {
+          "type": "string",
+          "enum": ["born", "died"],
+          "description": "Event type"
+        },
+        "unit_id": {
+          "type": "integer",
+          "description": "Unique unit identifier"
+        },
+        "unit_type": {
+          "type": "string",
+          "description": "Unit type name (e.g., 'Probe', 'Marine')"
+        },
+        "player_id": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Owner player ID"
+        },
+        "x": {
+          "type": "integer",
+          "description": "X position on map"
+        },
+        "y": {
+          "type": "integer",
+          "description": "Y position on map"
+        },
+        "killer_player_id": {
+          "type": ["integer", "null"],
+          "description": "Killer player ID (for death events)"
+        },
+        "killer_unit_id": {
+          "type": ["integer", "null"],
+          "description": "Killer unit ID (for death events)"
+        }
+      },
+      "required": ["frame", "event_type", "unit_id", "unit_type", "player_id", "x", "y"]
+    },
+
+    "BuildingEvent": {
+      "type": "object",
+      "description": "Building lifecycle event",
+      "properties": {
+        "frame": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Event frame"
+        },
+        "event_type": {
+          "type": "string",
+          "enum": ["started", "completed", "destroyed", "cancelled"],
+          "description": "Event type"
+        },
+        "unit_id": {
+          "type": "integer",
+          "description": "Unique building identifier"
+        },
+        "building_type": {
+          "type": "string",
+          "description": "Building type name (e.g., 'Pylon', 'Gateway')"
+        },
+        "player_id": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Owner player ID"
+        },
+        "x": {
+          "type": "integer",
+          "description": "X position on map"
+        },
+        "y": {
+          "type": "integer",
+          "description": "Y position on map"
+        },
+        "killer_player_id": {
+          "type": ["integer", "null"],
+          "description": "Killer player ID (for destroyed events)"
+        },
+        "started_frame": {
+          "type": ["integer", "null"],
+          "description": "When construction started (for completed buildings)"
+        },
+        "build_time_frames": {
+          "type": ["integer", "null"],
+          "description": "Time to complete construction (frames)"
+        }
+      },
+      "required": ["frame", "event_type", "unit_id", "building_type", "player_id", "x", "y"]
+    },
+
+    "UpgradeEvent": {
+      "type": "object",
+      "description": "Upgrade completion event",
+      "properties": {
+        "frame": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Completion frame"
+        },
+        "upgrade_name": {
+          "type": "string",
+          "description": "Upgrade name (e.g., 'WarpGateResearch')"
+        },
+        "player_id": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Player ID"
+        },
+        "upgrade_level": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3,
+          "description": "Upgrade level (for multi-level upgrades)"
+        }
+      },
+      "required": ["frame", "upgrade_name", "player_id", "upgrade_level"]
+    },
+
+    "MessageEvent": {
+      "type": "object",
+      "description": "Chat/game message event",
+      "properties": {
+        "frame": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Message frame"
+        },
+        "game_time_seconds": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Game time when message was sent"
+        },
+        "player_id": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Sender player ID"
+        },
+        "text": {
+          "type": "string",
+          "description": "Message content"
+        },
+        "target": {
+          "type": "string",
+          "enum": ["all", "allies", "observers"],
+          "description": "Message target"
+        }
+      },
+      "required": ["frame", "game_time_seconds", "player_id", "text", "target"]
+    }
+  },
+
+  "type": "object",
+  "description": "Root schema - represents complete extraction output",
+  "properties": {
+    "metadata": {
+      "$ref": "#/definitions/ReplayMetadata"
+    },
+    "frame_states": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/FrameState"
+      },
+      "description": "Sampled frame states"
+    },
+    "unit_events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/UnitEvent"
+      },
+      "description": "All unit lifecycle events (optional)"
+    },
+    "building_events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/BuildingEvent"
+      },
+      "description": "All building lifecycle events (optional)"
+    },
+    "upgrade_events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/UpgradeEvent"
+      },
+      "description": "All upgrade completion events (optional)"
+    },
+    "message_events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/MessageEvent"
+      },
+      "description": "All chat messages (optional)"
+    }
+  },
+  "required": ["metadata", "frame_states"]
+}
