@@ -7,8 +7,8 @@ from src.main import ReplayExtractor
 def main():
     # Initialize extractor
     extractor = ReplayExtractor(
-        output_format='parquet',  # Use Parquet for batch processing
-        frame_interval=1,       # 5 seconds @ Faster speed
+        output_format='parquet',  # Use Parquet for batch processing option are 'parquet' and 'json'
+        frame_interval=1,       # 5 seconds @ Faster speed is 112 frames
         output_dir='data/processed',
         verbose=True
     )
