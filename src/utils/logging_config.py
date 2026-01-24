@@ -22,6 +22,9 @@ def setup_logging(level: str = "DEBUG", log_file: str = None, console_output: bo
     # Clear existing handlers
     logger.handlers = []
 
+    # Suppress noisy sc2reader logging
+    logging.getLogger('sc2reader').setLevel(logging.CRITICAL)
+
     # Create formatter
     formatter = logging.Formatter(
         '%(asctime)s %(levelname)-8s [%(name)s] %(message)s',

@@ -2,6 +2,7 @@
 Game state tracker - maintains current game state across all frames
 """
 import logging
+import math
 from collections import defaultdict
 from typing import Dict, Set, List, Optional, Tuple
 
@@ -153,6 +154,12 @@ class GameStateTracker:
         # Count workers
         workers_total = sum(unit_counts.get(worker, 0) for worker in ['Probe', 'SCV', 'Drone'])
 
+        # Calculate army position data
+        army_center_x, army_center_y, army_spread = self._calculate_army_position(player_id, frame)
+
+        # Get message data for this frame
+        message_sent, last_message_frame = self._get_message_data(player_id, frame)
+
         return PlayerFrameState(
             player_id=player_id,
             minerals=stats.minerals_current if stats else 0,
@@ -179,7 +186,12 @@ class GameStateTracker:
             upgrades_completed=upgrades,
             tech_tier=tech_tier,
             base_count=base_count,
-            production_capacity=production_capacity
+            production_capacity=production_capacity,
+            army_center_x=army_center_x,
+            army_center_y=army_center_y,
+            army_spread=army_spread,
+            message_sent=message_sent,
+            last_message_frame=last_message_frame
         )
 
     def _count_units(self, player_id: int, frame: int) -> Dict[str, int]:
@@ -250,3 +262,66 @@ class GameStateTracker:
                 latest_frame = event_frame
 
         return latest
+
+    def _calculate_army_position(self, player_id: int, frame: int) -> Tuple[float, float, float]:
+        """
+        Calculate army centroid and spread for a player at specific frame
+
+        Returns:
+            (center_x, center_y, spread) where spread is standard deviation from centroid
+        """
+        positions = []
+
+        for unit_id, lifecycle in self.units.items():
+            # Skip if not owned by this player
+            if lifecycle.player_id != player_id:
+                continue
+
+            # Skip buildings and workers (only count army units)
+            if is_building(lifecycle.unit_type) or is_worker(lifecycle.unit_type):
+                continue
+
+            # Check if alive at this frame
+            if lifecycle.is_alive_at_frame(frame):
+                positions.append((lifecycle.x, lifecycle.y))
+
+        if not positions:
+            return 0.0, 0.0, 0.0
+
+        # Calculate centroid
+        center_x = sum(p[0] for p in positions) / len(positions)
+        center_y = sum(p[1] for p in positions) / len(positions)
+
+        # Calculate spread (standard deviation from centroid)
+        if len(positions) > 1:
+            variance = sum(
+                (p[0] - center_x) ** 2 + (p[1] - center_y) ** 2
+                for p in positions
+            ) / len(positions)
+            spread = math.sqrt(variance)
+        else:
+            spread = 0.0
+
+        return center_x, center_y, spread
+
+    def _get_message_data(self, player_id: int, frame: int) -> Tuple[bool, int]:
+        """
+        Get message data for a player at specific frame
+
+        Returns:
+            (message_sent_this_frame, last_message_frame)
+        """
+        message_sent = False
+        last_message_frame = 0
+
+        for message in self.messages:
+            if message.player_id != player_id:
+                continue
+
+            if message.frame == frame:
+                message_sent = True
+
+            if message.frame <= frame and message.frame > last_message_frame:
+                last_message_frame = message.frame
+
+        return message_sent, last_message_frame

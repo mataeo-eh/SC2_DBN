@@ -60,6 +60,15 @@ class PlayerFrameState:
     base_count: int = 0  # Number of bases (Nexus/CC/Hatchery)
     production_capacity: int = 0  # Number of production buildings
 
+    # Army position data
+    army_center_x: float = 0.0
+    army_center_y: float = 0.0
+    army_spread: float = 0.0  # Standard deviation of unit positions from centroid
+
+    # Message tracking
+    message_sent: bool = False  # Whether a message was sent this frame
+    last_message_frame: int = 0  # Frame of last message sent
+
 
 @dataclass
 class FrameState:

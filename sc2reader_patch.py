@@ -99,6 +99,3 @@ def patched_load_details(self):
 
 # Apply the monkey patch
 Replay.load_details = patched_load_details
-
-print("sc2reader patch applied successfully!")
-print("Bot replays with empty cache_handles will now work.")

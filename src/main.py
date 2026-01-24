@@ -93,12 +93,12 @@ class ReplayExtractor:
             # PHASE 5: Write output
             if self.output_format == "json":
                 writer = JSONWriter(output_dir)
+                writer.write_all(metadata, frame_states)
             elif self.output_format == "parquet":
                 writer = ParquetWriter(output_dir)
+                writer.write_all(metadata, frame_states, replay_hash=metadata.replay_hash)
             else:
                 raise ValueError(f"Unsupported output format: {self.output_format}")
-
-            writer.write_all(metadata, frame_states)
 
             logger.info(f"Extraction complete: {len(frame_states)} frames extracted")
 
