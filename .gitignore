@@ -21,3 +21,6 @@ prompts/
 .prompts/
 claude.md
 *.log
+
+data/
+logs/
