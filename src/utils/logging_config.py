@@ -4,9 +4,9 @@ Logging configuration for SC2 extraction system
 import logging
 import sys
 from pathlib import Path
+ROOT_DIR = Path(__file__).resolve().parents[2]
 
-
-def setup_logging(level: str = "INFO", log_file: str = None, console_output: bool = True):
+def setup_logging(level: str = "DEBUG", log_file: str = None, console_output: bool = True):
     """
     Configure logging for the extraction system
 
@@ -17,7 +17,7 @@ def setup_logging(level: str = "INFO", log_file: str = None, console_output: boo
     """
     # Create logger
     logger = logging.getLogger()
-    logger.setLevel(getattr(logging, level.upper()))
+    logger.setLevel(level)
 
     # Clear existing handlers
     logger.handlers = []
@@ -31,9 +31,13 @@ def setup_logging(level: str = "INFO", log_file: str = None, console_output: boo
     # Console handler
     if console_output:
         console_handler = logging.StreamHandler(sys.stdout)
-        console_handler.setLevel(getattr(logging, level.upper()))
+        console_handler.setLevel(level)
         console_handler.setFormatter(formatter)
         logger.addHandler(console_handler)
+
+    # Create Log File if not passed
+    if not log_file:
+        log_file = ROOT_DIR / "logs" / "replay_extraction.log"
 
     # File handler
     if log_file:
@@ -42,7 +46,7 @@ def setup_logging(level: str = "INFO", log_file: str = None, console_output: boo
         log_path.parent.mkdir(parents=True, exist_ok=True)
 
         file_handler = logging.FileHandler(log_file)
-        file_handler.setLevel(getattr(logging, level.upper()))
+        file_handler.setLevel(level)
         file_handler.setFormatter(formatter)
         logger.addHandler(file_handler)
 

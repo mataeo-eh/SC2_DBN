@@ -43,7 +43,7 @@ class ReplayExtractor:
         self.output_dir = output_dir
 
         # Setup logging
-        log_level = logging.INFO if verbose else logging.WARNING
+        log_level = logging.DEBUG if verbose else logging.INFO
         setup_logging(log_level)
 
         # Initialize components
