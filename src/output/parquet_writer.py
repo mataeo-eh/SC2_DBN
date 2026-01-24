@@ -19,17 +19,18 @@ class ParquetWriter:
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
-    def write_all(self, metadata: ReplayMetadata, frame_states: List[FrameState], replay_hash: str = None):
+    def write_all(self, metadata: ReplayMetadata, frame_states: List[FrameState], replay_name: str = None):
         """
         Write replay data to a single Parquet file with wide format
 
         Args:
             metadata: Replay metadata
             frame_states: List of frame state snapshots
-            replay_hash: Optional replay hash for filename (uses metadata.replay_hash if not provided)
+            replay_name: Optional replay name for filename (uses metadata.replay_hash if not provided)
         """
-        replay_hash = replay_hash or metadata.replay_hash
-        output_file = self.output_dir / f"{replay_hash}.parquet"
+        # Use replay_name if provided, otherwise fall back to replay_hash
+        base_name = replay_name if replay_name else metadata.replay_hash
+        output_file = self.output_dir / f"{base_name}_parsed.parquet"
 
         # Collect all unique column names across all frames
         all_unit_types = self._collect_all_unit_types(frame_states)
@@ -48,7 +49,7 @@ class ParquetWriter:
             rows.append(row)
 
         if not rows:
-            logger.warning(f"No frames to write for replay {replay_hash}")
+            logger.warning(f"No frames to write for replay {base_name}")
             return
 
         df = pd.DataFrame(rows)

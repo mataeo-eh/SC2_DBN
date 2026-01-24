@@ -79,6 +79,9 @@ class ReplayExtractor:
             # Extract metadata
             metadata = self.parser.extract_metadata(replay, replay_path)
 
+            # Extract replay name for output file naming
+            replay_name = Path(replay_path).stem  # Gets filename without .SC2Replay extension
+
             # PHASE 2: Initialize state tracking
             state_tracker = GameStateTracker()
 
@@ -93,10 +96,10 @@ class ReplayExtractor:
             # PHASE 5: Write output
             if self.output_format == "json":
                 writer = JSONWriter(output_dir)
-                writer.write_all(metadata, frame_states)
+                writer.write_all(metadata, frame_states, replay_name=replay_name)
             elif self.output_format == "parquet":
                 writer = ParquetWriter(output_dir)
-                writer.write_all(metadata, frame_states, replay_hash=metadata.replay_hash)
+                writer.write_all(metadata, frame_states, replay_name=replay_name)
             else:
                 raise ValueError(f"Unsupported output format: {self.output_format}")
 

@@ -20,22 +20,24 @@ class JSONWriter:
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
-    def write_all(self, metadata: ReplayMetadata, frame_states: List[FrameState]):
+    def write_all(self, metadata: ReplayMetadata, frame_states: List[FrameState], replay_name: str = None):
         """
         Write metadata and frame states to JSON files
 
         Args:
             metadata: Replay metadata
             frame_states: List of frame state snapshots
+            replay_name: Optional replay name for filename (uses metadata.replay_hash if not provided)
         """
-        replay_hash = metadata.replay_hash
+        # Use replay_name if provided, otherwise fall back to replay_hash
+        base_name = replay_name if replay_name else metadata.replay_hash
 
         # Write metadata
-        metadata_file = self.output_dir / f"{replay_hash}_metadata.json"
+        metadata_file = self.output_dir / f"{base_name}_parsed_metadata.json"
         self._write_metadata(metadata, metadata_file)
 
         # Write frame states
-        frames_file = self.output_dir / f"{replay_hash}_frames.json"
+        frames_file = self.output_dir / f"{base_name}_parsed_frames.json"
         self._write_frames(frame_states, frames_file)
 
         logger.info(f"JSON output written to {self.output_dir}")
