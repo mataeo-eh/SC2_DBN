@@ -1,0 +1,770 @@
+# Configuration Specification for SC2 Replay Ground Truth Extraction Pipeline
+# Version 1.0
+# Date: 2026-01-24
+
+---
+
+# ==============================================================================
+# PYSC2 CONFIGURATION
+# ==============================================================================
+
+pysc2:
+  description: "Settings for pysc2 interface and SC2 engine"
+
+  interface_options:
+    raw:
+      type: boolean
+      default: true
+      required: true
+      description: "Enable raw data interface (CRITICAL - must be true for ground truth)"
+      validation:
+        - must_be: true
+      notes: "This is the only way to access obs.observation.raw_data"
+
+    score:
+      type: boolean
+      default: true
+      required: false
+      description: "Enable detailed score data"
+      notes: "Provides additional statistics, recommended but optional"
+
+    feature_layer:
+      type: boolean
+      default: false
+      required: false
+      description: "Enable feature layers (not needed for ground truth)"
+      notes: "Can disable to save memory and processing time"
+
+    render:
+      type: boolean
+      default: false
+      required: false
+      description: "Enable RGB rendering (not needed for ground truth)"
+      notes: "Only enable if visual debugging is needed"
+
+  replay_options:
+    observed_player_id:
+      type: integer
+      default: 1
+      required: true
+      description: "Player perspective for observations (1 or 2)"
+      values: [1, 2]
+      validation:
+        - min: 1
+        - max: 2
+      notes: |
+        - Process replay twice (once for each player) for complete ground truth
+        - Controls fog of war perspective
+
+    step_mul:
+      type: integer
+      default: 8
+      required: true
+      description: "Number of game loops per observation"
+      recommended: 8
+      values:
+        1: "Every loop (maximum detail, slowest)"
+        8: "Every 8 loops (~0.36 seconds, balanced)"
+        16: "Every 16 loops (~0.71 seconds, faster)"
+        22: "Every 22 loops (~1 second, fast)"
+      validation:
+        - min: 1
+        - max: 100
+      notes: |
+        - Lower = more detail but slower processing
+        - Higher = less detail but faster processing
+        - step_mul=8 is good balance for most use cases
+        - At 22.4 loops/sec, step_mul=8 means ~5.6 observations/sec
+
+    disable_fog:
+      type: boolean
+      default: false
+      required: false
+      description: "Disable fog of war (may not work in replays)"
+      notes: |
+        - Generally not available in replay mode
+        - Use observed_player_id switching instead
+
+  sc2_version:
+    type: string
+    default: null
+    required: false
+    description: "Specific SC2 version to use (e.g., '5.0.12')"
+    values: ["auto", "latest", "4.10.0", "5.0.12", etc.]
+    notes: |
+      - If null or "auto", automatically match replay version
+      - Can specify exact version if needed
+      - Must have corresponding SC2 binary installed
+
+  sc2_binary_path:
+    type: path
+    default: null
+    required: false
+    description: "Custom path to SC2 binary"
+    notes: "If null, uses pysc2 default search paths"
+
+# ==============================================================================
+# PARALLEL PROCESSING CONFIGURATION
+# ==============================================================================
+
+parallel_processing:
+  description: "Settings for multi-worker batch processing"
+
+  num_workers:
+    type: integer
+    default: 4
+    required: true
+    description: "Number of parallel worker processes"
+    recommended:
+      8_gb_ram: 2-3
+      16_gb_ram: 4-6
+      32_gb_ram: 8-12
+      64_gb_ram: 16-24
+    validation:
+      - min: 1
+      - max: 32
+    notes: |
+      - Each worker uses ~1-2 GB RAM (SC2 instance)
+      - Formula: workers = (RAM_GB - 8) / 2
+      - Leave headroom for OS and other processes
+
+  queue_size:
+    type: integer
+    default: null
+    required: false
+    description: "Size of replay queue (null = auto = num_workers * 10)"
+    validation:
+      - min: 1
+    notes: "Larger queue = more memory, but better work distribution"
+
+  max_replays_per_instance:
+    type: integer
+    default: 300
+    required: false
+    description: "Maximum replays to process before restarting SC2 instance"
+    recommended: 300
+    validation:
+      - min: 1
+    notes: |
+      - Prevents memory leaks in long-running SC2 instances
+      - 300 is value used in pysc2's replay_actions.py
+
+  progress_update_interval:
+    type: integer
+    default: 10
+    required: false
+    description: "Seconds between progress updates"
+    unit: seconds
+    validation:
+      - min: 1
+      - max: 300
+    notes: "Stats printer thread updates every N seconds"
+
+  timeout_per_replay:
+    type: integer
+    default: 600
+    required: false
+    description: "Maximum seconds to process one replay"
+    unit: seconds
+    validation:
+      - min: 60
+      - max: 3600
+    notes: |
+      - If replay takes longer, it's marked as failed
+      - Prevents hanging on problematic replays
+
+# ==============================================================================
+# OUTPUT FORMAT CONFIGURATION
+# ==============================================================================
+
+output:
+  description: "Settings for output file format and structure"
+
+  format:
+    type: string
+    default: "parquet"
+    required: true
+    description: "Output file format"
+    values: ["parquet"]
+    notes: "Currently only Parquet is supported"
+
+  directory:
+    type: path
+    default: "data/processed"
+    required: true
+    description: "Output directory for processed files"
+    notes: "Directory will be created if it doesn't exist"
+
+  naming_convention:
+    replay_file_pattern:
+      type: string
+      default: "{replay_name}_parsed.parquet"
+      required: true
+      description: "Output filename pattern for game state"
+      variables:
+        - replay_name: "Original replay filename without extension"
+        - player_id: "Player ID (1 or 2)"
+        - timestamp: "Processing timestamp"
+        - map_name: "Map name (sanitized)"
+      examples:
+        - "game_001_parsed.parquet"
+        - "{replay_name}_p{player_id}.parquet"
+        - "{timestamp}_{replay_name}.parquet"
+
+    schema_file_pattern:
+      type: string
+      default: "{replay_name}_schema.json"
+      required: false
+      description: "Schema file naming pattern"
+
+    dictionary_file_pattern:
+      type: string
+      default: "{replay_name}_dictionary.md"
+      required: false
+      description: "Data dictionary naming pattern"
+
+  parquet_options:
+    compression:
+      type: string
+      default: "snappy"
+      required: true
+      description: "Parquet compression codec"
+      values:
+        snappy: "Fast compression, 2-3x ratio (recommended)"
+        gzip: "Better compression, 3-5x ratio, slower"
+        zstd: "Modern codec, good balance"
+        none: "No compression (not recommended)"
+      notes: "Snappy is best balance of speed and compression for sparse data"
+
+    compression_level:
+      type: integer
+      default: null
+      required: false
+      description: "Compression level (codec-specific)"
+      notes: "If null, uses codec default"
+
+    use_dictionary:
+      type: boolean
+      default: true
+      required: false
+      description: "Use dictionary encoding for string columns"
+      notes: "Highly effective for state columns with few unique values"
+
+    write_index:
+      type: boolean
+      default: false
+      required: false
+      description: "Write DataFrame index to Parquet"
+      notes: "game_loop serves as index, so index not needed"
+
+    engine:
+      type: string
+      default: "pyarrow"
+      required: true
+      description: "Parquet engine to use"
+      values: ["pyarrow", "fastparquet"]
+      notes: "pyarrow is recommended"
+
+  metadata:
+    include_metadata:
+      type: boolean
+      default: true
+      required: false
+      description: "Include metadata in Parquet file"
+      notes: "Stores replay info, extraction params, etc."
+
+    metadata_fields:
+      type: list
+      default:
+        - replay_name
+        - replay_path
+        - map_name
+        - sc2_version
+        - player_1_name
+        - player_2_name
+        - player_1_race
+        - player_2_race
+        - game_duration_loops
+        - step_mul
+        - extraction_timestamp
+        - pysc2_version
+        - pipeline_version
+      description: "Fields to include in Parquet metadata"
+
+  generate_schema:
+    type: boolean
+    default: true
+    required: false
+    description: "Generate schema JSON file for each replay"
+    notes: "Useful for documentation and validation"
+
+  generate_dictionary:
+    type: boolean
+    default: true
+    required: false
+    description: "Generate data dictionary markdown for each replay"
+    notes: "Helpful for understanding the data structure"
+
+# ==============================================================================
+# COLUMN NAMING CONVENTIONS
+# ==============================================================================
+
+column_naming:
+  description: "Conventions for generating column names"
+
+  patterns:
+    unit_position_x: "p{player_id}_{unit_name}_{id:03d}_x"
+    unit_position_y: "p{player_id}_{unit_name}_{id:03d}_y"
+    unit_position_z: "p{player_id}_{unit_name}_{id:03d}_z"
+    unit_state: "p{player_id}_{unit_name}_{id:03d}_state"
+    unit_health: "p{player_id}_{unit_name}_{id:03d}_health"
+    unit_health_max: "p{player_id}_{unit_name}_{id:03d}_health_max"
+    unit_shields: "p{player_id}_{unit_name}_{id:03d}_shields"
+    unit_shields_max: "p{player_id}_{unit_name}_{id:03d}_shields_max"
+    unit_energy: "p{player_id}_{unit_name}_{id:03d}_energy"
+    unit_energy_max: "p{player_id}_{unit_name}_{id:03d}_energy_max"
+    unit_count: "p{player_id}_{unit_name}_count"
+
+    building_position_x: "p{player_id}_{building_name}_{id:03d}_x"
+    building_position_y: "p{player_id}_{building_name}_{id:03d}_y"
+    building_position_z: "p{player_id}_{building_name}_{id:03d}_z"
+    building_status: "p{player_id}_{building_name}_{id:03d}_status"
+    building_progress: "p{player_id}_{building_name}_{id:03d}_progress"
+    building_started_loop: "p{player_id}_{building_name}_{id:03d}_started_loop"
+    building_completed_loop: "p{player_id}_{building_name}_{id:03d}_completed_loop"
+    building_destroyed_loop: "p{player_id}_{building_name}_{id:03d}_destroyed_loop"
+    building_count: "p{player_id}_{building_name}_count"
+
+    economy: "p{player_id}_{resource_name}"
+    upgrade: "p{player_id}_upgrade_{upgrade_name}"
+
+  id_format:
+    type: string
+    default: "{id:03d}"
+    description: "Format for unit/building IDs"
+    examples:
+      - "001, 002, 003, ..."
+      - "p1_marine_001, p1_marine_002"
+
+  case_style:
+    type: string
+    default: "snake_case"
+    description: "Naming case style"
+    values: ["snake_case", "camelCase", "PascalCase"]
+    notes: "snake_case is Python/SQL convention"
+
+  name_sanitization:
+    type: object
+    description: "Rules for sanitizing unit/building names"
+    rules:
+      - "Convert to lowercase"
+      - "Replace spaces with underscores"
+      - "Remove special characters"
+      - "Remove prefixes like 'Terran', 'Protoss', 'Zerg'"
+    examples:
+      TerranMarine: "marine"
+      ProtossZealot: "zealot"
+      ZergZergling: "zergling"
+      "Siege Tank": "siege_tank"
+
+# ==============================================================================
+# DATA PROCESSING CONFIGURATION
+# ==============================================================================
+
+processing:
+  description: "Settings for data extraction and processing"
+
+  strategy:
+    type: string
+    default: "two_pass"
+    required: true
+    description: "Processing strategy"
+    values:
+      two_pass: "Pass 1: schema discovery, Pass 2: extraction (recommended)"
+      single_pass: "Extract data with dynamic schema (faster but more complex)"
+    notes: |
+      - two_pass is more robust and produces better Parquet files
+      - single_pass may be useful for very large batches where time is critical
+
+  multi_player:
+    type: boolean
+    default: true
+    required: true
+    description: "Extract data for both players"
+    notes: |
+      - If true, processes replay twice (once per player)
+      - If false, only processes observed_player_id
+      - Recommended: true for complete ground truth
+
+  merge_strategy:
+    type: string
+    default: "single_file"
+    required: false
+    description: "How to merge multi-player data"
+    values:
+      single_file: "Merge into one wide table (recommended)"
+      separate_files: "Create separate files for each player"
+      player_column: "Single file with player ID column indicator"
+    notes: "single_file is most convenient for ML applications"
+
+  max_units_per_type:
+    type: integer
+    default: null
+    required: false
+    description: "Maximum units per type to track (null = unlimited)"
+    recommended: 50
+    validation:
+      - min: 1
+    notes: |
+      - Prevents column explosion in extreme cases
+      - Null = track all units (can create 1000+ columns)
+      - 50 is reasonable for most competitive games
+
+  max_buildings_per_type:
+    type: integer
+    default: null
+    required: false
+    description: "Maximum buildings per type to track (null = unlimited)"
+    recommended: 20
+    notes: "Most games have < 20 of any building type"
+
+  track_hallucinations:
+    type: boolean
+    default: false
+    required: false
+    description: "Track hallucination units separately"
+    notes: |
+      - If true, hallucinations get separate columns/IDs
+      - If false, hallucinations are treated as real units
+      - Recommended: false (simpler, hallucinations are rare)
+
+  exclude_unit_types:
+    type: list
+    default: []
+    required: false
+    description: "Unit types to exclude from extraction"
+    examples:
+      - [larva, egg]
+      - [larva, egg, creep_tumor]
+    notes: |
+      - Useful to exclude frequently-changing but unimportant units
+      - Can significantly reduce column count for Zerg games
+
+  buffer_size:
+    type: integer
+    default: 10000
+    required: false
+    description: "Number of rows to buffer before writing"
+    unit: rows
+    validation:
+      - min: 100
+    notes: |
+      - Only used for very long games (> 30k loops)
+      - Most games fit entirely in memory
+
+# ==============================================================================
+# VALIDATION CONFIGURATION
+# ==============================================================================
+
+validation:
+  description: "Settings for replay validation and data quality checks"
+
+  replay_validation:
+    enabled:
+      type: boolean
+      default: true
+      description: "Enable replay validation before processing"
+
+    min_duration_loops:
+      type: integer
+      default: 1000
+      description: "Minimum game length in loops (~45 seconds)"
+      validation:
+        - min: 0
+
+    max_duration_loops:
+      type: integer
+      default: null
+      description: "Maximum game length (null = unlimited)"
+      notes: "Use to filter out unusually long games"
+
+    min_mmr:
+      type: integer
+      default: 0
+      description: "Minimum player MMR"
+      notes: "Use to filter low-quality games"
+
+    require_1v1:
+      type: boolean
+      default: true
+      description: "Only process 1v1 games"
+      notes: "Set false to allow team games, FFA, etc."
+
+    allowed_races:
+      type: list
+      default: ["Terran", "Protoss", "Zerg"]
+      description: "Allowed player races"
+      notes: "Can restrict to specific matchups"
+
+  data_validation:
+    enabled:
+      type: boolean
+      default: true
+      description: "Enable data validation after extraction"
+
+    checks:
+      - name: "unique_game_loops"
+        description: "Ensure game_loop values are unique"
+        enabled: true
+
+      - name: "monotonic_game_loops"
+        description: "Ensure game_loop is strictly increasing"
+        enabled: true
+
+      - name: "no_gaps"
+        description: "Ensure no missing loops (based on step_mul)"
+        enabled: false
+        notes: "May have legitimate gaps due to replay structure"
+
+      - name: "unit_counts_match"
+        description: "Unit count columns match actual unit entries"
+        enabled: true
+
+      - name: "supply_constraint"
+        description: "supply_used <= supply_cap"
+        enabled: true
+
+      - name: "health_constraint"
+        description: "health <= health_max"
+        enabled: true
+
+      - name: "position_bounds"
+        description: "Positions within map bounds"
+        enabled: true
+
+      - name: "building_progress_range"
+        description: "Building progress is 0-100"
+        enabled: true
+
+    on_validation_failure:
+      type: string
+      default: "warn"
+      values:
+        warn: "Log warning and continue"
+        error: "Raise error and stop"
+        skip: "Skip this replay"
+      description: "Action to take when validation fails"
+
+# ==============================================================================
+# ERROR HANDLING CONFIGURATION
+# ==============================================================================
+
+error_handling:
+  description: "Settings for error handling and recovery"
+
+  retry_attempts:
+    type: integer
+    default: 3
+    description: "Number of times to retry failed replays"
+    validation:
+      - min: 0
+      - max: 10
+    notes: "Useful for transient SC2 errors"
+
+  retry_delay:
+    type: integer
+    default: 5
+    unit: seconds
+    description: "Delay between retry attempts"
+
+  continue_on_error:
+    type: boolean
+    default: true
+    description: "Continue processing batch if individual replay fails"
+    notes: "Recommended: true for batch processing"
+
+  save_partial_data:
+    type: boolean
+    default: false
+    description: "Save partial data if extraction fails mid-replay"
+    notes: |
+      - If true, saves what was extracted before failure
+      - If false, discards all data for failed replay
+
+  log_level:
+    type: string
+    default: "INFO"
+    description: "Logging verbosity"
+    values: ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
+
+  log_file:
+    type: path
+    default: "logs/extraction_{timestamp}.log"
+    description: "Log file path"
+    notes: "Timestamp is insertion point for uniqueness"
+
+  error_log_file:
+    type: path
+    default: "logs/errors_{timestamp}.log"
+    description: "Separate file for errors only"
+
+# ==============================================================================
+# PERFORMANCE TUNING
+# ==============================================================================
+
+performance:
+  description: "Settings for performance optimization"
+
+  memory_limit_mb:
+    type: integer
+    default: 2000
+    unit: megabytes
+    description: "Memory limit per worker process"
+    notes: "Worker will be restarted if it exceeds this limit"
+
+  use_numba:
+    type: boolean
+    default: false
+    description: "Use Numba JIT compilation for hot loops"
+    notes: "Experimental, may provide 2-3x speedup"
+
+  cache_unit_names:
+    type: boolean
+    default: true
+    description: "Cache unit name lookups"
+    notes: "Significant speedup, minimal memory cost"
+
+  batch_write:
+    type: boolean
+    default: true
+    description: "Write all rows at once instead of incrementally"
+    notes: "Much faster for Parquet"
+
+  optimize_dtypes:
+    type: boolean
+    default: true
+    description: "Use smallest dtype that fits data"
+    notes: |
+      - Converts int64 to int32/int16 where possible
+      - Converts float64 to float32
+      - Can reduce file size by 30-50%
+
+# ==============================================================================
+# DEVELOPMENT & DEBUGGING
+# ==============================================================================
+
+development:
+  description: "Settings for development and debugging"
+
+  dry_run:
+    type: boolean
+    default: false
+    description: "Process replays but don't write output"
+    notes: "Useful for testing without creating files"
+
+  limit_replays:
+    type: integer
+    default: null
+    description: "Limit number of replays to process (null = all)"
+    notes: "Useful for testing on subset"
+
+  limit_loops:
+    type: integer
+    default: null
+    description: "Limit number of loops to process per replay"
+    notes: "Useful for testing without processing entire replays"
+
+  save_debug_info:
+    type: boolean
+    default: false
+    description: "Save additional debug information"
+    notes: "Creates additional files with intermediate data"
+
+  profile_performance:
+    type: boolean
+    default: false
+    description: "Profile performance and generate reports"
+    notes: "Uses cProfile, creates .prof files"
+
+  verbose:
+    type: boolean
+    default: false
+    description: "Extra verbose output"
+    notes: "Shows detailed progress for debugging"
+
+# ==============================================================================
+# EXAMPLE CONFIGURATIONS
+# ==============================================================================
+
+examples:
+  description: "Example configuration presets"
+
+  fast_extraction:
+    description: "Optimized for speed over detail"
+    config:
+      pysc2:
+        replay_options:
+          step_mul: 16
+      parallel_processing:
+        num_workers: 8
+      processing:
+        strategy: "single_pass"
+        max_units_per_type: 30
+        max_buildings_per_type: 15
+      output:
+        parquet_options:
+          compression: "snappy"
+
+  detailed_extraction:
+    description: "Maximum detail extraction"
+    config:
+      pysc2:
+        replay_options:
+          step_mul: 1
+      processing:
+        strategy: "two_pass"
+        max_units_per_type: null
+        track_hallucinations: true
+      output:
+        parquet_options:
+          compression: "gzip"
+        generate_schema: true
+        generate_dictionary: true
+
+  production:
+    description: "Balanced production settings"
+    config:
+      pysc2:
+        replay_options:
+          step_mul: 8
+      parallel_processing:
+        num_workers: 4
+      processing:
+        strategy: "two_pass"
+        multi_player: true
+        max_units_per_type: 50
+      validation:
+        replay_validation:
+          min_duration_loops: 2000
+          min_mmr: 1000
+      error_handling:
+        retry_attempts: 3
+        continue_on_error: true
+      output:
+        parquet_options:
+          compression: "snappy"
+        generate_schema: true
+        generate_dictionary: true
+
+  testing:
+    description: "Settings for testing/development"
+    config:
+      parallel_processing:
+        num_workers: 1
+      development:
+        limit_replays: 5
+        limit_loops: 1000
+        verbose: true
+        save_debug_info: true
+      error_handling:
+        log_level: "DEBUG"

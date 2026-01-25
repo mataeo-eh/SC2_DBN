@@ -1,0 +1,743 @@
+# Column Schema Definition for SC2 Replay Ground Truth Extraction
+# This schema defines all possible columns in the wide-format output
+
+---
+version: "1.0"
+description: "Wide-format schema for SC2 replay ground truth game state"
+generated_date: "2026-01-24"
+
+# Schema Generation Strategy:
+# - Columns are generated dynamically based on units/buildings seen in replay
+# - This schema shows the PATTERN and DATA TYPES for each column type
+# - Actual column count varies per replay
+
+metadata:
+  replay_name:
+    type: string
+    description: "Original replay file name"
+    required: true
+    example: "game_2024_01_15.SC2Replay"
+
+  map_name:
+    type: string
+    description: "Map name from replay info"
+    required: true
+    example: "Goldenaura LE"
+
+  sc2_version:
+    type: string
+    description: "StarCraft II version used for extraction"
+    required: true
+    example: "5.0.12.91115"
+
+  game_duration_loops:
+    type: int32
+    description: "Total game length in game loops"
+    required: true
+    example: 15234
+
+  step_mul:
+    type: int8
+    description: "Game loops per observation"
+    required: true
+    example: 8
+
+  extraction_timestamp:
+    type: timestamp
+    description: "When extraction was performed"
+    required: true
+    example: "2026-01-24T12:34:56"
+
+  player_1_name:
+    type: string
+    description: "Player 1 name"
+    nullable: true
+    example: "PlayerName"
+
+  player_2_name:
+    type: string
+    description: "Player 2 name"
+    nullable: true
+    example: "OpponentName"
+
+  player_1_race:
+    type: string
+    description: "Player 1 race (Terran/Protoss/Zerg)"
+    nullable: true
+    example: "Terran"
+
+  player_2_race:
+    type: string
+    description: "Player 2 race (Terran/Protoss/Zerg)"
+    nullable: true
+    example: "Zerg"
+
+# Core Columns (always present)
+core_columns:
+  game_loop:
+    type: int32
+    description: "Game loop number (primary key / time dimension)"
+    required: true
+    nullable: false
+    unique: true
+    index: true
+    example: 1000
+    notes: "At 22.4 loops/second, loop 1000 ≈ 45 seconds of game time"
+
+# Dynamic Column Patterns
+# These define the PATTERN for columns that are generated based on replay content
+# Actual columns: p{player_id}_{unit_type}_{id:03d}_{field}
+
+column_patterns:
+  # UNIT COLUMNS
+  # Pattern: p{player_id}_{unit_name}_{id:03d}_{field}
+  # Example: p1_marine_001_x, p1_marine_002_x, ..., p2_zergling_001_x
+
+  unit_position_x:
+    pattern: "p{player_id}_{unit_name}_{id:03d}_x"
+    type: float32
+    description: "X-coordinate of unit position in world coordinates"
+    nullable: true
+    nan_meaning: "Unit does not exist at this game loop"
+    unit: "game units"
+    range: "0.0 to map_width (typically 0-200)"
+    example_column: "p1_marine_001_x"
+    example_value: 50.25
+
+  unit_position_y:
+    pattern: "p{player_id}_{unit_name}_{id:03d}_y"
+    type: float32
+    description: "Y-coordinate of unit position in world coordinates"
+    nullable: true
+    nan_meaning: "Unit does not exist at this game loop"
+    unit: "game units"
+    range: "0.0 to map_height (typically 0-200)"
+    example_column: "p1_marine_001_y"
+    example_value: 30.75
+
+  unit_position_z:
+    pattern: "p{player_id}_{unit_name}_{id:03d}_z"
+    type: float32
+    description: "Z-coordinate (terrain height) of unit position"
+    nullable: true
+    nan_meaning: "Unit does not exist at this game loop"
+    unit: "game units"
+    range: "0.0 to ~20.0 (varies by map)"
+    example_column: "p1_marine_001_z"
+    example_value: 8.0
+
+  unit_state:
+    pattern: "p{player_id}_{unit_name}_{id:03d}_state"
+    type: string
+    description: "Unit state indicator"
+    nullable: true
+    nan_meaning: "Unit does not exist at this game loop"
+    values:
+      - "built": "Unit was created this game loop"
+      - "existing": "Unit exists and is alive this game loop"
+      - "killed": "Unit died this game loop"
+    example_column: "p1_marine_001_state"
+    example_value: "existing"
+
+  unit_health:
+    pattern: "p{player_id}_{unit_name}_{id:03d}_health"
+    type: float32
+    description: "Current health of unit"
+    nullable: true
+    nan_meaning: "Unit does not exist at this game loop"
+    unit: "hit points"
+    range: "0.0 to health_max"
+    example_column: "p1_marine_001_health"
+    example_value: 40.0
+
+  unit_health_max:
+    pattern: "p{player_id}_{unit_name}_{id:03d}_health_max"
+    type: float32
+    description: "Maximum health of unit"
+    nullable: true
+    nan_meaning: "Unit does not exist at this game loop"
+    unit: "hit points"
+    example_column: "p1_marine_001_health_max"
+    example_value: 45.0
+
+  unit_shields:
+    pattern: "p{player_id}_{unit_name}_{id:03d}_shields"
+    type: float32
+    description: "Current shields of unit (Protoss only)"
+    nullable: true
+    nan_meaning: "Unit does not exist or has no shields"
+    unit: "shield points"
+    range: "0.0 to shields_max"
+    example_column: "p2_zealot_001_shields"
+    example_value: 50.0
+
+  unit_shields_max:
+    pattern: "p{player_id}_{unit_name}_{id:03d}_shields_max"
+    type: float32
+    description: "Maximum shields of unit (Protoss only)"
+    nullable: true
+    nan_meaning: "Unit does not exist or has no shields"
+    unit: "shield points"
+    example_column: "p2_zealot_001_shields_max"
+    example_value: 50.0
+
+  unit_energy:
+    pattern: "p{player_id}_{unit_name}_{id:03d}_energy"
+    type: float32
+    description: "Current energy of unit (for casters)"
+    nullable: true
+    nan_meaning: "Unit does not exist or has no energy"
+    unit: "energy points"
+    range: "0.0 to energy_max"
+    example_column: "p1_medivac_001_energy"
+    example_value: 75.0
+
+  unit_energy_max:
+    pattern: "p{player_id}_{unit_name}_{id:03d}_energy_max"
+    type: float32
+    description: "Maximum energy of unit"
+    nullable: true
+    nan_meaning: "Unit does not exist or has no energy"
+    unit: "energy points"
+    example_column: "p1_medivac_001_energy_max"
+    example_value: 200.0
+
+  # UNIT COUNT COLUMNS
+  # Pattern: p{player_id}_{unit_name}_count
+  # Example: p1_marine_count, p2_zergling_count
+
+  unit_count:
+    pattern: "p{player_id}_{unit_name}_count"
+    type: int16
+    description: "Total count of this unit type alive for this player"
+    nullable: false
+    default_value: 0
+    range: "0 to ~200"
+    example_column: "p1_marine_count"
+    example_value: 15
+
+  # BUILDING COLUMNS
+  # Pattern: p{player_id}_{building_name}_{id:03d}_{field}
+  # Example: p1_barracks_001_x, p1_hatchery_001_status
+
+  building_position_x:
+    pattern: "p{player_id}_{building_name}_{id:03d}_x"
+    type: float32
+    description: "X-coordinate of building position"
+    nullable: true
+    nan_meaning: "Building does not exist at this game loop"
+    unit: "game units"
+    example_column: "p1_barracks_001_x"
+    example_value: 100.5
+
+  building_position_y:
+    pattern: "p{player_id}_{building_name}_{id:03d}_y"
+    type: float32
+    description: "Y-coordinate of building position"
+    nullable: true
+    nan_meaning: "Building does not exist at this game loop"
+    unit: "game units"
+    example_column: "p1_barracks_001_y"
+    example_value: 80.3
+
+  building_position_z:
+    pattern: "p{player_id}_{building_name}_{id:03d}_z"
+    type: float32
+    description: "Z-coordinate (terrain height) of building"
+    nullable: true
+    nan_meaning: "Building does not exist at this game loop"
+    unit: "game units"
+    example_column: "p1_barracks_001_z"
+    example_value: 8.0
+
+  building_status:
+    pattern: "p{player_id}_{building_name}_{id:03d}_status"
+    type: string
+    description: "Building lifecycle status"
+    nullable: true
+    nan_meaning: "Building does not exist at this game loop"
+    values:
+      - "started": "Construction just started this loop"
+      - "building": "Currently under construction"
+      - "completed": "Construction complete, building is operational"
+      - "destroyed": "Building was destroyed this loop"
+    example_column: "p1_barracks_001_status"
+    example_value: "building"
+
+  building_progress:
+    pattern: "p{player_id}_{building_name}_{id:03d}_progress"
+    type: float32
+    description: "Construction progress percentage"
+    nullable: true
+    nan_meaning: "Building does not exist at this game loop"
+    unit: "percentage"
+    range: "0.0 to 100.0"
+    example_column: "p1_barracks_001_progress"
+    example_value: 75.5
+
+  building_started_loop:
+    pattern: "p{player_id}_{building_name}_{id:03d}_started_loop"
+    type: int32
+    description: "Game loop when building construction started"
+    nullable: true
+    nan_meaning: "Building has not been started or does not exist"
+    example_column: "p1_barracks_001_started_loop"
+    example_value: 500
+
+  building_completed_loop:
+    pattern: "p{player_id}_{building_name}_{id:03d}_completed_loop"
+    type: int32
+    description: "Game loop when building construction completed"
+    nullable: true
+    nan_meaning: "Building not yet completed or does not exist"
+    example_column: "p1_barracks_001_completed_loop"
+    example_value: 850
+
+  building_destroyed_loop:
+    pattern: "p{player_id}_{building_name}_{id:03d}_destroyed_loop"
+    type: int32
+    description: "Game loop when building was destroyed"
+    nullable: true
+    nan_meaning: "Building not destroyed or does not exist"
+    example_column: "p1_barracks_001_destroyed_loop"
+    example_value: 5000
+
+  # BUILDING COUNT COLUMNS
+  building_count:
+    pattern: "p{player_id}_{building_name}_count"
+    type: int16
+    description: "Total count of this building type for this player"
+    nullable: false
+    default_value: 0
+    range: "0 to ~100"
+    example_column: "p1_barracks_count"
+    example_value: 3
+
+  # ECONOMY COLUMNS
+  # Pattern: p{player_id}_{resource}
+  # These are always present for both players
+
+  minerals:
+    pattern: "p{player_id}_minerals"
+    type: int32
+    description: "Current mineral count for player"
+    nullable: false
+    default_value: 0
+    unit: "minerals"
+    range: "0 to ~9999"
+    example_column: "p1_minerals"
+    example_value: 450
+
+  vespene:
+    pattern: "p{player_id}_vespene"
+    type: int32
+    description: "Current vespene gas count for player"
+    nullable: false
+    default_value: 0
+    unit: "vespene"
+    range: "0 to ~9999"
+    example_column: "p1_vespene"
+    example_value: 200
+
+  supply_used:
+    pattern: "p{player_id}_supply_used"
+    type: int16
+    description: "Current supply used by player"
+    nullable: false
+    default_value: 0
+    unit: "supply"
+    range: "0 to 200"
+    example_column: "p1_supply_used"
+    example_value: 45
+
+  supply_cap:
+    pattern: "p{player_id}_supply_cap"
+    type: int16
+    description: "Current supply cap for player"
+    nullable: false
+    default_value: 0
+    unit: "supply"
+    range: "0 to 200"
+    example_column: "p1_supply_cap"
+    example_value: 60
+
+  supply_workers:
+    pattern: "p{player_id}_supply_workers"
+    type: int16
+    description: "Supply used by workers"
+    nullable: false
+    default_value: 0
+    unit: "supply"
+    range: "0 to 200"
+    example_column: "p1_supply_workers"
+    example_value: 25
+
+  supply_army:
+    pattern: "p{player_id}_supply_army"
+    type: int16
+    description: "Supply used by army units"
+    nullable: false
+    default_value: 0
+    unit: "supply"
+    range: "0 to 200"
+    example_column: "p1_supply_army"
+    example_value: 20
+
+  idle_workers:
+    pattern: "p{player_id}_idle_workers"
+    type: int16
+    description: "Number of idle worker units"
+    nullable: false
+    default_value: 0
+    range: "0 to ~100"
+    example_column: "p1_idle_workers"
+    example_value: 2
+
+  army_count:
+    pattern: "p{player_id}_army_count"
+    type: int16
+    description: "Total count of army units"
+    nullable: false
+    default_value: 0
+    range: "0 to ~200"
+    example_column: "p1_army_count"
+    example_value: 25
+
+  # UPGRADE COLUMNS
+  # Pattern: p{player_id}_upgrade_{upgrade_name}
+  # Boolean or integer (for level-based upgrades)
+
+  upgrade_boolean:
+    pattern: "p{player_id}_upgrade_{upgrade_name}"
+    type: bool
+    description: "Whether upgrade is completed (for non-leveled upgrades)"
+    nullable: false
+    default_value: false
+    example_column: "p1_upgrade_stim_pack"
+    example_value: true
+
+  upgrade_level:
+    pattern: "p{player_id}_upgrade_{category}_{level}"
+    type: bool
+    description: "Whether specific upgrade level is completed"
+    nullable: false
+    default_value: false
+    example_column: "p1_upgrade_ground_weapons_1"
+    example_value: true
+    notes: "Separate column for each level (1, 2, 3)"
+
+# Common Unit Types (examples - actual set varies by replay)
+common_unit_types:
+  terran:
+    - marine
+    - marauder
+    - reaper
+    - hellion
+    - siege_tank
+    - thor
+    - viking
+    - medivac
+    - banshee
+    - raven
+    - battlecruiser
+    - scv  # worker
+
+  protoss:
+    - zealot
+    - stalker
+    - sentry
+    - adept
+    - high_templar
+    - dark_templar
+    - archon
+    - immortal
+    - colossus
+    - disruptor
+    - phoenix
+    - void_ray
+    - oracle
+    - tempest
+    - carrier
+    - probe  # worker
+
+  zerg:
+    - zergling
+    - baneling
+    - roach
+    - ravager
+    - hydralisk
+    - lurker
+    - infestor
+    - swarm_host
+    - ultralisk
+    - mutalisk
+    - corruptor
+    - brood_lord
+    - viper
+    - drone  # worker
+
+# Common Building Types (examples)
+common_building_types:
+  terran:
+    - command_center
+    - supply_depot
+    - barracks
+    - factory
+    - starport
+    - engineering_bay
+    - missile_turret
+    - bunker
+
+  protoss:
+    - nexus
+    - pylon
+    - gateway
+    - cybernetics_core
+    - robotics_facility
+    - stargate
+    - forge
+    - photon_cannon
+
+  zerg:
+    - hatchery
+    - spawning_pool
+    - roach_warren
+    - hydralisk_den
+    - spire
+    - evolution_chamber
+    - spine_crawler
+    - spore_crawler
+
+# Common Upgrades (examples)
+common_upgrades:
+  terran:
+    - ground_weapons_1
+    - ground_weapons_2
+    - ground_weapons_3
+    - ground_armor_1
+    - ground_armor_2
+    - ground_armor_3
+    - air_weapons_1
+    - air_weapons_2
+    - air_weapons_3
+    - air_armor_1
+    - air_armor_2
+    - air_armor_3
+    - stim_pack
+    - combat_shield
+    - concussive_shells
+
+  protoss:
+    - ground_weapons_1
+    - ground_weapons_2
+    - ground_weapons_3
+    - ground_armor_1
+    - ground_armor_2
+    - ground_armor_3
+    - shields_1
+    - shields_2
+    - shields_3
+    - air_weapons_1
+    - air_weapons_2
+    - air_weapons_3
+    - air_armor_1
+    - air_armor_2
+    - air_armor_3
+    - warp_gate
+    - charge
+
+  zerg:
+    - melee_attacks_1
+    - melee_attacks_2
+    - melee_attacks_3
+    - ground_armor_1
+    - ground_armor_2
+    - ground_armor_3
+    - missile_attacks_1
+    - missile_attacks_2
+    - missile_attacks_3
+    - flyer_attacks_1
+    - flyer_attacks_2
+    - flyer_attacks_3
+    - flyer_armor_1
+    - flyer_armor_2
+    - flyer_armor_3
+    - metabolic_boost  # zergling speed
+    - adrenal_glands  # zergling attack speed
+
+# Example Complete Row Structure
+example_row:
+  description: "Example of a complete row at game_loop=1000"
+  columns:
+    game_loop: 1000
+    # Player 1 (Terran) - Units
+    p1_marine_001_x: 50.25
+    p1_marine_001_y: 30.75
+    p1_marine_001_z: 8.0
+    p1_marine_001_state: "existing"
+    p1_marine_001_health: 40.0
+    p1_marine_001_health_max: 45.0
+    p1_marine_002_x: 52.1
+    p1_marine_002_y: 31.2
+    p1_marine_002_z: 8.0
+    p1_marine_002_state: "existing"
+    p1_marine_count: 2
+    # Player 1 - Buildings
+    p1_barracks_001_x: 100.5
+    p1_barracks_001_y: 80.3
+    p1_barracks_001_z: 8.0
+    p1_barracks_001_status: "completed"
+    p1_barracks_001_progress: 100.0
+    p1_barracks_001_started_loop: 500
+    p1_barracks_001_completed_loop: 850
+    p1_barracks_count: 1
+    # Player 1 - Economy
+    p1_minerals: 450
+    p1_vespene: 200
+    p1_supply_used: 45
+    p1_supply_cap: 60
+    p1_supply_workers: 25
+    p1_supply_army: 20
+    # Player 1 - Upgrades
+    p1_upgrade_stim_pack: true
+    p1_upgrade_ground_weapons_1: true
+    # Player 2 (Zerg) - Similar structure
+    p2_zergling_count: 30
+    p2_minerals: 380
+    p2_vespene: 150
+    # ... etc
+
+# Data Type Reference
+data_types:
+  int8:
+    description: "8-bit integer"
+    range: "-128 to 127"
+    pandas_dtype: "Int8"
+    parquet_type: "INT8"
+
+  int16:
+    description: "16-bit integer"
+    range: "-32,768 to 32,767"
+    pandas_dtype: "Int16"
+    parquet_type: "INT16"
+
+  int32:
+    description: "32-bit integer"
+    range: "-2,147,483,648 to 2,147,483,647"
+    pandas_dtype: "Int32"
+    parquet_type: "INT32"
+
+  float32:
+    description: "32-bit floating point"
+    pandas_dtype: "float32"
+    parquet_type: "FLOAT"
+
+  bool:
+    description: "Boolean true/false"
+    pandas_dtype: "boolean"
+    parquet_type: "BOOLEAN"
+
+  string:
+    description: "Variable-length string"
+    pandas_dtype: "string"
+    parquet_type: "STRING"
+
+  timestamp:
+    description: "ISO 8601 timestamp"
+    pandas_dtype: "datetime64[ns]"
+    parquet_type: "TIMESTAMP_MILLIS"
+
+# NaN Handling
+nan_handling:
+  philosophy: "NaN indicates absence of data, not zero"
+
+  units:
+    description: "NaN means unit doesn't exist at this loop"
+    example: "p1_marine_003_x is NaN if only 2 marines exist"
+
+  buildings:
+    description: "NaN means building doesn't exist at this loop"
+    example: "p1_barracks_002_status is NaN if only 1 barracks exists"
+
+  timestamps:
+    description: "NaN means event hasn't occurred"
+    example: "completed_loop is NaN if building not yet completed"
+
+  economy:
+    description: "Always has value, uses 0 for zero resources"
+    example: "minerals never NaN, uses 0 at game start"
+
+  upgrades:
+    description: "Boolean false for not completed, no NaN"
+    example: "upgrade_stim_pack is false until researched"
+
+# Performance Considerations
+performance:
+  typical_row_size:
+    description: "Estimated size of one row"
+    min_columns: 50
+    max_columns: 2000
+    typical_columns: 500
+    bytes_per_row: "2-8 KB"
+
+  typical_file_size:
+    description: "Estimated Parquet file size"
+    short_game: "5-15 MB (< 5000 loops)"
+    medium_game: "15-50 MB (5000-15000 loops)"
+    long_game: "50-200 MB (> 15000 loops)"
+    compression_ratio: "3-5x with snappy"
+
+# Validation Rules
+validation:
+  game_loop:
+    - "Must be unique (no duplicates)"
+    - "Must be monotonically increasing"
+    - "No gaps (every step_mul loops represented)"
+
+  positions:
+    - "x, y, z must all be NaN or all be values (not mixed)"
+    - "Positions should be within map bounds"
+
+  health:
+    - "health <= health_max"
+    - "health >= 0"
+
+  supply:
+    - "supply_used <= supply_cap"
+    - "supply_workers + supply_army <= supply_used"
+
+  unit_counts:
+    - "Count should match number of non-NaN unit entries"
+    - "Count >= 0"
+
+  building_progress:
+    - "0.0 <= progress <= 100.0"
+    - "If completed_loop is set, progress should be 100.0"
+
+# Usage Notes
+usage_notes:
+  loading_data:
+    description: "How to load and use the data"
+    pandas: |
+      import pandas as pd
+      df = pd.read_parquet('game_parsed.parquet')
+      # Access specific loop
+      loop_1000 = df[df['game_loop'] == 1000]
+      # Get unit positions
+      marine_positions = df[['game_loop', 'p1_marine_001_x', 'p1_marine_001_y']]
+
+  filtering:
+    description: "Common filtering operations"
+    example: |
+      # Get data for specific time range
+      early_game = df[df['game_loop'] < 5000]
+      # Get rows where specific unit exists
+      with_marine = df[df['p1_marine_001_x'].notna()]
+
+  aggregation:
+    description: "Computing derived metrics"
+    example: |
+      # Average minerals over time
+      df['p1_minerals'].mean()
+      # Max army count
+      df['p1_army_count'].max()
