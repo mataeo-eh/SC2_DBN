@@ -1,8 +1,15 @@
+# IDE
 .idea/
+.vscode/
+*.swp
+*.swo
+*~
 
+# Results and runners
 results*
 runners/
 
+# Python virtual environments
 .venv-sc2/
 .venv*/
 __pycache__/
@@ -15,16 +22,73 @@ ENV/
 env.bak/
 venv.bak/
 .venv-3_12/
+.venv-3_11/
 
+# Claude artifacts
 .claude/
 prompts/
 .prompts/
 claude.md
+
+# Logs
 *.log
+logs/
+
+# Data directories
 data-not-usable/
 data/processed/
 data/raw/
-logs/
+data/quickstart/
+data/test/
 
-
+# SC2 and pysc2
 pysc2/
+
+# Output files
+*.parquet
+*.SC2Replay
+replays/*.SC2Replay
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+*.cover
+.hypothesis/
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# Documentation builds
+docs/_build/
+docs/_static/
+docs/_templates/
+
+# OS
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
