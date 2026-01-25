@@ -25,3 +25,6 @@ data-not-usable/
 data/processed/
 data/raw/
 logs/
+
+
+pysc2/
