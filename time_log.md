@@ -9,4 +9,5 @@
 | 2026-01-24 |  5:30 |  8:00 |  2.5h    | Troubleshooting Claude's parsing implementation. Testing Parsing. Checking parsed info integrity.    |
 | 2026-01-24 | 14:30 | 18:00 |  3.5h    | Beginning EDA of parsed data to confirm what is and is not present. Switching to using game engine to capture Ground Truth Game State    |
 | 2026-01-25 | 10:00 | 11:00 |  1h      | Using claude code to help build new data extraction pipeline using pysc2.        |
+| 2026-01-26 | 06:30 | 07:45 |  1.25h   | Testing data extraction pipeline. Exploring extracted data structure.        |
 |            |       |       |          |            |

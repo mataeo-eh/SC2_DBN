@@ -6,7 +6,7 @@ from typing import Optional
 from pathlib import Path
 
 # Import patch FIRST
-import sc2reader_patch  # noqa: F401
+import Reference_Files.sc2reader_extraction.sc2reader_patch as sc2reader_patch  # noqa: F401
 
 from src.parser.replay_parser import ReplayParser
 from src.processors.event_processor import EventProcessor

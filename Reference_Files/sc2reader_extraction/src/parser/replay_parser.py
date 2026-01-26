@@ -8,7 +8,7 @@ from typing import Tuple, List
 import logging
 
 # CRITICAL: Import patch BEFORE sc2reader
-import sc2reader_patch  # noqa: F401
+import Reference_Files.sc2reader_extraction.sc2reader_patch as sc2reader_patch  # noqa: F401
 import sc2reader
 
 from src.models.replay_data import ReplayMetadata, PlayerInfo
