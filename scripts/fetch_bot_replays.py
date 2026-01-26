@@ -84,11 +84,14 @@ def fetch_bot_matches(auth, base_url, bot_id: int, max: int = 5, print_output: b
     if replay_url:  # Check it's not null
         replay_response = requests.get(replay_url)
         
-        # Save the binary content to a file
-        with open('match_12345.SC2Replay', 'wb') as f:
+        os.makedirs('../replays', exist_ok=True)
+
+        # Use the actual match_id variable instead of hardcoded "12345"
+        filename = f'replays/match_{match_id}.SC2Replay'
+        with open(filename, 'wb') as f:
             f.write(replay_response.content)
-        
-        print("Downloaded replay file")
+
+        print(f"Downloaded: {filename}")
 
 if __name__ == "__main__":
     auth, base_url = authorize()
