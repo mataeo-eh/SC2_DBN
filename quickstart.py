@@ -84,7 +84,7 @@ def check_prerequisites():
         return False
 
     # Check SC2 installation
-    ''' try:
+    try:
         from pysc2.run_configs import get
         run_config = get()
         print(f"✓ SC2 found at: {run_config.exec_path}")
@@ -93,7 +93,7 @@ def check_prerequisites():
         print()
         print("Please install StarCraft II:")
         print("  https://starcraft2.com/")
-        return False'''
+        return False
 
     print()
     return True
