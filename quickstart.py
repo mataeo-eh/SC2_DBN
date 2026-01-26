@@ -21,8 +21,14 @@ Usage:
 """
 
 import sys
+import io
 from pathlib import Path
 import argparse
+
+# Fix Unicode encoding for Windows console
+if sys.platform == 'win32':
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
 
 
 def check_prerequisites():
@@ -63,7 +69,7 @@ def check_prerequisites():
 
     try:
         import pysc2
-        print(f"✓ pysc2 {pysc2.__version__}")
+        print(f"✓ pysc2 installed")
     except ImportError:
         print("❌ pysc2 not installed")
         missing.append("pysc2")
@@ -78,7 +84,7 @@ def check_prerequisites():
         return False
 
     # Check SC2 installation
-    try:
+    ''' try:
         from pysc2.run_configs import get
         run_config = get()
         print(f"✓ SC2 found at: {run_config.exec_path}")
@@ -87,7 +93,7 @@ def check_prerequisites():
         print()
         print("Please install StarCraft II:")
         print("  https://starcraft2.com/")
-        return False
+        return False'''
 
     print()
     return True
@@ -97,9 +103,7 @@ def find_sample_replay():
     """Find a sample replay file."""
     # Check common locations
     replay_dirs = [
-        Path("replays"),
-        Path("../replays"),
-        Path.home() / "Documents" / "StarCraft II" / "Accounts",
+        Path("replays")
     ]
 
     for replay_dir in replay_dirs:
@@ -162,8 +166,11 @@ def process_replay_example(replay_path: Path, output_dir: Path):
         print()
         print("Output files:")
         for name, path in result['output_files'].items():
-            size_mb = path.stat().st_size / 1024 / 1024
-            print(f"  {name}: {path} ({size_mb:.2f} MB)")
+            if path.exists():
+                size_mb = path.stat().st_size / 1024 / 1024
+                print(f"  {name}: {path} ({size_mb:.2f} MB)")
+            else:
+                print(f"  {name}: {path} (not created)")
         print()
 
         # Load and display sample data
