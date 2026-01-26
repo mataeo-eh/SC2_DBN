@@ -92,3 +92,10 @@ docs/_templates/
 Thumbs.db
 ehthumbs.db
 Desktop.ini
+
+# Secrets/Environment variables
+.env
+.env.*.local
+.envrc
+.secrets/
+.secrets.local/ 
