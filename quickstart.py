@@ -15,15 +15,41 @@ Usage:
 
     # With custom replay:
     python quickstart.py --replay path/to/replay.SC2Replay
+    python quickstart.py -r path/to/replay.SC2Replay
 
     # With custom output directory:
     python quickstart.py --output data/my_output
+    python quickstart.py -o data/my_output
+
+    # With parallel processing of full directory
+    python quickstart.py --process-replay-directory path/to/replay/directory
+    python quickstart.py -batch path/to/replay/directory
+
+    # With custom number of workers for parallel processing 
+    python quickstart.py --process-replay-directory path/to/replay/directory --workers 3
+    python quickstart.py -batch path/to/replay/directory -w 3
+
+    # With downloading new replays
+    python quickstart.py --bots really why what --download-replays
+    python quickstart.py --bots really why what -dr
+
+        # Downloading custom number of replays (default is all)
+        python quickstart.py --bots really why what --download-replays --num-replays 1
+        python quickstart.py --bots really why what -dr -nr 1
+
+    # With updating kaggle dataset
+    python quickstart.py --update-kaggle-dataset
+    python quickstart.py -dataset
+
+    # Full pipeline usage
+    python quickstart.py --process-replay-directory replays --output data/quickstart --workers 3 --download-replays --bots really why what -dataset --verbose
 """
 
 import sys
 import io
 from pathlib import Path
 import argparse
+import multiprocessing
 
 # Fix Unicode encoding for Windows console
 if sys.platform == 'win32':
@@ -246,15 +272,51 @@ def main():
         description="Quick start for SC2 Replay Extraction Pipeline"
     )
     parser.add_argument(
-        '--replay',
+        '-r', '--replay',
         type=Path,
-        help='Path to replay file (auto-detect if not provided)'
+        help='Path to single replay file (auto-detect if not provided)'
     )
     parser.add_argument(
-        '--output',
+        '-o', '--output',
         type=Path,
         default=Path('data/quickstart'),
         help='Output directory (default: data/quickstart)'
+    )
+    parser.add_argument(
+        '-v', '--verbose',
+        action='store_true',
+        help='Enable verbose output'
+    )
+    parser.add_argument(
+        '-dr', '--download-replays',
+        action='store_true',
+        help='Download new replays from aiarena before processing'
+    )
+    parser.add_argument(
+        '-nr', '--num-replays',
+        type=int,
+        help='Number of replays to download (default: all)'
+    )
+    parser.add_argument(
+        '-b', '--bots',
+        nargs='+',
+        help='List of bot names to download replays for (default: None)'
+    )
+    parser.add_argument(
+        '-batch', '--process-replay-directory',
+        type=Path,
+        help="Process all replays in specified directory using parallel replay processing"
+    )
+    parser.add_argument(
+        '-dataset', '--update-kaggle-dataset',
+        action="store_true",
+        help="Optional: Use if you want to update the kaggle dataset after replays are parsed"
+    )
+    parser.add_argument(
+        '-w', '--workers',
+        type=int,
+        default=multiprocessing.cpu_count() // 2,
+        help="CPU threads to use for parallel processing. Default is half of CPU's available threads"
     )
     args = parser.parse_args()
 
@@ -270,11 +332,49 @@ def main():
         print("Please fix the issues above and try again.")
         sys.exit(1)
 
-    # Find replay
-    if args.replay:
+    # Downlaod replays if passed
+    if args.download_replays:
+        from scripts.fetch_bot_replays import main as download_replays
+        if not args.bots:
+            raise RuntimeError("You must pass names of bots to download replays for to download_replays")
+        download_replays(args.bots, max_replays = args.num_replays, print_output = args.verbose)
+
+    # Process all replays in directory if passed
+    if args.process_replay_directory:
+        from src_new.pipeline.parallel_processor import ParallelReplayProcessor
+        processor = ParallelReplayProcessor(num_workers=args.workers)
+        # Process all replays in a directory
+        results = processor.process_replay_directory(
+            replay_dir=args.replay,
+            output_dir=args.output,
+            pattern="*.SC2Replay"  # Optional pattern
+        )
+        # Print summary
+        summary = processor.get_processing_summary(results)
+        print(summary)
+
+    # Find replay if passed and process_replay_directory is not
+    elif args.replay:
         replay_path = args.replay
         if not replay_path.exists():
             print(f"❌ Replay not found: {replay_path}")
+            sys.exit(1)
+        # Create output directory
+        args.output.mkdir(parents=True, exist_ok=True)
+
+        # Process replay
+        success = process_replay_example(replay_path, args.output)
+
+        if success:
+            print("✓ Quick start complete!")
+            print()
+            print("For more information, see:")
+            print("  README_SC2_PIPELINE.md - Project overview")
+            print("  docs/usage.md - Detailed usage guide")
+            print("  docs/data_dictionary.md - Output schema reference")
+            sys.exit(0)
+        else:
+            print("❌ Quick start failed. See errors above.")
             sys.exit(1)
     else:
         print("Looking for sample replay...")
@@ -290,23 +390,10 @@ def main():
         print(f"✓ Found: {replay_path}")
         print()
 
-    # Create output directory
-    args.output.mkdir(parents=True, exist_ok=True)
-
-    # Process replay
-    success = process_replay_example(replay_path, args.output)
-
-    if success:
-        print("✓ Quick start complete!")
-        print()
-        print("For more information, see:")
-        print("  README_SC2_PIPELINE.md - Project overview")
-        print("  docs/usage.md - Detailed usage guide")
-        print("  docs/data_dictionary.md - Output schema reference")
-        sys.exit(0)
-    else:
-        print("❌ Quick start failed. See errors above.")
-        sys.exit(1)
+    if args.update_kaggle_dataset:
+        from src_new.pipeline.dataset_pipeline import upload_to_kaggle
+        upload_to_kaggle()
+    
 
 
 if __name__ == "__main__":
