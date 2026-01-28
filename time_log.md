@@ -11,4 +11,6 @@
 | 2026-01-25 | 10:00 | 11:00 |  1h      | Using claude code to help build new data extraction pipeline using pysc2.        |
 | 2026-01-26 | 06:30 | 07:45 |  1.25h   | Testing data extraction pipeline. Exploring extracted data structure.        |
 | 2026-01-26 | 09:15 | 12:15 |  3h      | Validating data extraction, exploring available data, setting up kaggle dataset. Began using aiarena.net API to download replays.       |
+| 2026-01-28 | 07:30 | 09:00 |  1.5h    | Attempting to finish programmatic replay extraction, game state parsing, and data set building pathway.      |
+| 2026-01-28 | 10:00 | 13:00 |  3h      | Testing programmatic replay extraction, attemtping to finish game state parsing, and data set building pathway.      |
 |            |       |       |          |            |

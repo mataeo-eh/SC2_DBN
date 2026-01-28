@@ -111,7 +111,13 @@ def check_prerequisites():
 
     # Check SC2 installation
     try:
+        from absl import flags
         from pysc2.run_configs import get
+        
+        # Parse flags if not already parsed
+        if not flags.FLAGS.is_parsed():
+            flags.FLAGS([''])  # Parse with empty args
+        
         run_config = get()
         print(f"✓ SC2 found at: {run_config.exec_path}")
     except Exception as e:
