@@ -119,7 +119,7 @@ def check_prerequisites():
             flags.FLAGS([''])  # Parse with empty args
         
         run_config = get()
-        print(f"✓ SC2 found at: {run_config.exec_path}")
+        print(f"✓ SC2 found")
     except Exception as e:
         print(f"❌ SC2 not found: {e}")
         print()
