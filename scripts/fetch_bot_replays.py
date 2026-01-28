@@ -43,7 +43,7 @@ def fetch_bots_list(auth, base_url, max: int = 5, print_output: bool = True, bot
         # Initialize progress bar once
         if pbar is None:
             total = data.get("count")
-            pbar = tqdm(total=total, desc="Fetching bots", unit="bot")
+            pbar = tqdm(total=total, desc="Fetching bots", unit="bots")
 
         bots.extend(data["results"])
         pbar.update(len(data["results"]))
@@ -62,39 +62,132 @@ def fetch_bots_list(auth, base_url, max: int = 5, print_output: bool = True, bot
 
     return bots
 
-def fetch_bot_matches(auth, base_url, bot_id: int, max: int = 5, print_output: bool = True):
+def fetch_bot_id(auth, url, bot_name: str):
+    """ 
+    Finds the bot ID for a given bot name 
+    Args: 
+        auth: Authorization header
+        url: Base URL for the API
+        bot_name (str): Name of the bot to find
+    """
+    bots = fetch_bots_list(auth, url, bot=bot_name, print_output=False)
+    if bots:
+        return bots[0]["id"]
+    return None
+
+
+def fetch_bot_match_ids(auth, base_url, bot_ids: list, max_replays: int = None, print_output: bool = True):
     """ 
     Fetches a list of matches for a specific bot from the AI Arena API 
     Args: 
         auth: Authorization header
         base_url: Base URL for the API
-        bot_id (int): ID of the bot to fetch matches for
+        bot_ids (list): List of bot IDs to fetch matches for
     Kwargs:
-        max (int): Maximum number of matches to fetch (default = 5)
+        max_replays (int): Maximum number of matches to fetch (default = None)
         print_output (bool): Whether to print the output (default = True)
+    Returns:
+        Number of match ID's collected (int)
+        List of match IDs collected (list)
     """
-    matches = requests.get(f'{base_url}/match-participations/?bot={bot_id}', headers=auth).json()
+    match_ids = []
+    # Make replays directory if it doesn't exist
+    os.makedirs('replays', exist_ok=True)
+    # Iterate over bot IDs
+    for bot_id in tqdm(bot_ids, desc="Processing bots"):
+        # Get matches for a given bot id
+        matches = requests.get(f'{base_url}/match-participations/?bot={bot_id}', headers=auth).json()
+        # Iterate over matches to get each ID
+        for match in tqdm(matches['results'][:max_replays], desc=f"Processing matches for bot {bot_id}"):
+            match_ids.append(match['match'])
+    if print_output:
+        print(f"Total match IDs fetched: {len(match_ids)}")
+        pprint.pprint(match_ids)
+    return len(match_ids), match_ids
 
-    # Get match results with replay URLs
-    match_id = matches['results'][0]['match']
-    result = requests.get(f'{base_url}/results/?match={match_id}', headers=auth).json()
-    print("replay file?", result['results'][0]['replay_file'])
-    replay_url = result['results'][0]['replay_file']
 
-    if replay_url:  # Check it's not null
-        replay_response = requests.get(replay_url)
-        
-        os.makedirs('../replays', exist_ok=True)
 
-        # Use the actual match_id variable instead of hardcoded "12345"
-        filename = f'replays/match_{match_id}.SC2Replay'
-        with open(filename, 'wb') as f:
-            f.write(replay_response.content)
 
-        print(f"Downloaded: {filename}")
+def download_replays(auth, base_url, match_ids: list, print_output: bool = True):
+    """
+    Downloads replays for given match IDs
+    Args:
+        auth: Authorization header
+        base_url: Base URL for the API
+        match_ids (list): List of match IDs to download replays for
+    Kwargs:
+        print_output (bool): Whether to print the output (default = True)
+    Returns:
+        Number of replays downloaded (int)
+    """
+    num_replays = 0
+    # Iterate over match IDs to download replays
+    for match_id in tqdm(match_ids, desc="Downloading replays", leave=False):
+        # Check if replay has already been downloaded
+        if os.path.exists(f'replays/match_{match_id}.SC2Replay'):
+            print(f"Replay for match {match_id} already exists. Skipping download.")
+            continue
+        # Get info for each match
+        result = requests.get(f'{base_url}/results/?match={match_id}', headers=auth).json()
+        # Get replay URL
+        if print_output:
+            pprint.pprint(result)
+        replay_url = result['results'][0]['replay_file']
+        if replay_url:  # Check it's not null
+            replay_response = requests.get(replay_url)
+
+            # Use the actual match_id variable instead of hardcoded "12345" for filename
+            filename = f'replays/match_{match_id}.SC2Replay'
+            # Save replay file
+            with open(filename, 'wb') as f:
+                f.write(replay_response.content)
+
+            print(f"Downloaded: {filename}")
+            num_replays += 1
+    return num_replays
+
+def main(bots: list, print_output = True, max_replays=None):
+    """ 
+    Main function to fetch and download bot replays 
+    Args: 
+        bots (list): List of bot names to fetch replays for
+    Kwargs:
+        print_output (bool): Whether to print the output (default = True)
+        max_replays (int): Maximum number of replays to download per bot (default = None)
+    """
+    try:
+        # Authorize API usage for this session
+        auth, url = authorize()
+        # Initialize list to hold bot IDs
+        bot_ids = []
+        # Populate bot IDs from names using helper function
+        for bot_name in (pbar := tqdm(bots)):
+            pbar.set_description(f"Fetching bot ID for {bot_name}")
+            bot_id = fetch_bot_id(auth, url, bot_name)
+            if bot_id:
+                bot_ids.append(bot_id)
+            else:
+                print(f"Bot '{bot_name}' not found.")
+        # Fetch and download matches for the bot IDs
+        match_ids = fetch_bot_match_ids(auth, url, bot_ids, max_replays=max_replays, print_output=print_output)[1]
+        if print_output:
+            print("Finished fetching match IDs.")
+        if match_ids:
+            # Download replays for the fetched match IDs
+            num_replays = download_replays(auth, url, match_ids, print_output=print_output)
+    except Exception as e:
+        raise RuntimeError(f"Error in replay download pipeline: {e}")
+    if print_output:
+        print(f"Total replays downloaded: {num_replays}")
+
+
 
 if __name__ == "__main__":
-    auth, base_url = authorize()
-    #fetch_bots_list(auth, base_url, max=10, print_output=True, bot="really")
-    fetch_bot_matches(auth, base_url, bot_id=934, max=5, print_output=True)
+    bots = ["really","why","what"]
+    main(bots, max_replays = 1, print_output=True)
+    #auth, base_url = authorize()
+    #bots = fetch_bot_id(auth, base_url, bot_name="really")
+    #bots = fetch_bots_list(auth, base_url, max=10, bot="really")
+    #print(bots)
+    #fetch_bot_match_ids(auth, base_url, bot_ids=[934], print_output=True)
 
