@@ -42,7 +42,7 @@ Usage:
     python quickstart.py -dataset
 
     # Full pipeline usage
-    python quickstart.py --process-replay-directory replays --output data/quickstart --workers 3 --download-replays --bots really why what -dataset --verbose
+    python quickstart.py --process-replay-directory replays --output data/quickstart --workers 3 --download-replays --bots really why what -dataset
 """
 
 import sys
