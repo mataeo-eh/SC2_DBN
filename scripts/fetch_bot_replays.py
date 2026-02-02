@@ -34,8 +34,9 @@ def fetch_bots_list(auth, base_url, max: int = 5, print_output: bool = True, bot
     bots = []
     url = f"{base_url}/bots/"
     pbar = None
+    found_target_bot = False # A flag for when the target bot is found for early exit loop logic
 
-    while url:
+    while url and not found_target_bot:
         response = requests.get(url, headers=auth)
         response.raise_for_status()
         data = response.json()
@@ -45,17 +46,19 @@ def fetch_bots_list(auth, base_url, max: int = 5, print_output: bool = True, bot
             total = data.get("count")
             pbar = tqdm(total=total, desc="Fetching bots", unit="bots")
 
-        bots.extend(data["results"])
+        for b in data["results"]:
+            bots.append(b)
+            if bot and bot.lower() in b.get("name", "").lower():
+                found_target_bot = True
+                break  # Stop processing this page
+
+        # Update the progress bar
         pbar.update(len(data["results"]))
 
+        # Fetch the next page of results
         url = data.get("next")
 
-    if pbar:
-        pbar.close()
-
-    if bot:
-        bots = [b for b in bots if bot.lower() in b.get("name", "").lower()]
-
+  
     if print_output:
         print(f"Total bots fetched: {len(bots)}")
         print(json.dumps(bots[:max], indent=2))
