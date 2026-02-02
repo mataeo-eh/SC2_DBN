@@ -42,7 +42,7 @@ Usage:
     python quickstart.py -dataset
 
     # Full pipeline usage
-    python quickstart.py --process-replay-directory replays --output data/quickstart --workers 3 --download-replays --bots really why what -dataset
+    python quickstart.py --process-replay-directory replays --output data/quickstart --workers 3 --download-replays --bots really -dataset --num-replays 105
 """
 
 import sys
@@ -351,7 +351,7 @@ def main():
         processor = ParallelReplayProcessor(num_workers=args.workers)
         # Process all replays in a directory
         results = processor.process_replay_directory(
-            replay_dir=args.replay,
+            replay_dir=args.process_replay_directory,
             output_dir=args.output,
             pattern="*.SC2Replay"  # Optional pattern
         )
