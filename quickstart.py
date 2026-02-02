@@ -44,12 +44,15 @@ Usage:
     # Full pipeline usage
     python quickstart.py --process-replay-directory replays --output data/quickstart --workers 3 --download-replays --bots really -dataset --num-replays 105
 """
-
+from absl import flags
 import sys
 import io
 from pathlib import Path
 import argparse
 import multiprocessing
+
+# Define flags once at top of the code
+FLAGS = flags.FLAGS
 
 # Fix Unicode encoding for Windows console
 if sys.platform == 'win32':
@@ -332,6 +335,8 @@ def main():
     print("Quick Start")
     print("=" * 70)
     print()
+
+    FLAGS(sys.argv)  # Parse flags once at the programs entry point
 
     # Check prerequisites
     if not check_prerequisites():
