@@ -47,67 +47,6 @@ def get_bot_id_by_name(auth, base_url, bot_name: str, print_output: bool = True,
     return None  # Not found
 
 
-def fetch_bots_list(auth, base_url, max: int = 5, print_output: bool = True, bot: str = None):
-    """ 
-    Fetches a list of bots from the AI Arena API 
-    Args: 
-        auth: Authorization header
-        base_url: Base URL for the API
-    Kwargs:
-        max (int): Maximum number of bots to fetch (default = 5)
-        print_output (bool): Whether to print the output (default = True)
-        bot (str): Specific bot name to filter (default = None)
-    Returns:
-        List of bots (dict)
-    """
-    bots = []
-    url = f"{base_url}/bots/"
-    pbar = None
-    found_target_bot = False # A flag for when the target bot is found for early exit loop logic
-
-    while url and not found_target_bot:
-        response = requests.get(url, headers=auth)
-        response.raise_for_status()
-        data = response.json()
-
-        # Initialize progress bar once
-        if pbar is None:
-            total = data.get("count")
-            pbar = tqdm(total=total, desc="Fetching bots", unit="bots")
-
-        for b in data["results"]:
-            bots.append(b)
-            if bot and bot.lower() in b.get("name", "").lower():
-                found_target_bot = True
-                break  # Stop processing this page
-
-        # Update the progress bar
-        pbar.update(len(data["results"]))
-
-        # Fetch the next page of results
-        url = data.get("next")
-
-  
-    if print_output:
-        print(f"Total bots fetched: {len(bots)}")
-        print(json.dumps(bots[:max], indent=2))
-
-    return bots
-
-def fetch_bot_id(auth, url, bot_name: str):
-    """ 
-    Finds the bot ID for a given bot name 
-    Args: 
-        auth: Authorization header
-        url: Base URL for the API
-        bot_name (str): Name of the bot to find
-    """
-    bots = fetch_bots_list(auth, url, bot=bot_name, print_output=False)
-    if bots:
-        return bots[0]["id"]
-    return None
-
-
 def fetch_bot_match_ids(auth, base_url, bot_ids: list, max_replays: int = None, print_output: bool = True):
     """ 
     Fetches a list of matches for a specific bot from the AI Arena API 
@@ -213,16 +152,10 @@ def main(bots: list, print_output = True, max_replays=None):
     try:
         # Authorize API usage for this session
         auth, url = authorize()
-        # Initialize list to hold bot IDs
-        bot_ids = []
-        # Populate bot IDs from names using helper function
-        for bot_name in (pbar := tqdm(bots)):
-            pbar.set_description(f"Fetching bot ID for {bot_name}")
-            bot_id = fetch_bot_id(auth, url, bot_name)
-            if bot_id:
-                bot_ids.append(bot_id)
-            else:
-                print(f"Bot '{bot_name}' not found.")
+
+        bot_ids = [get_bot_id_by_name(auth, url, name, print_output=print_output) for name in bots]
+        bot_ids = [id for id in bot_ids if id is not None]  # Filter out any not-found
+
         # Fetch and download matches for the bot IDs
         match_ids = fetch_bot_match_ids(auth, url, bot_ids, max_replays=max_replays, print_output=print_output)[1]
         if print_output:
@@ -239,7 +172,7 @@ def main(bots: list, print_output = True, max_replays=None):
 
 if __name__ == "__main__":
     bots = ["really","why","what"]
-    main(bots, max_replays = 120, print_output=True)
+    main(bots, max_replays = 1, print_output=True)
     #auth, base_url = authorize()
     #bots = fetch_bot_id(auth, base_url, bot_name="really")
     #bots = fetch_bots_list(auth, base_url, max=10, bot="really")
