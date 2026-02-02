@@ -36,7 +36,7 @@ def get_bot_id_by_name(auth, base_url, bot_name: str, print_output: bool = True,
         for bot in data["results"]:
             if bot_name.lower() in bot.get("name", "").lower():
                 if print_output:
-                    print(f'ID found for {bot_name}: {bot['id']}')
+                    print(f"ID found for {bot_name}: {bot['id']}")
                 return bot["id"]  # Found it, return immediately
         
         # Update the progress bar
