@@ -51,8 +51,6 @@ from pathlib import Path
 import argparse
 import multiprocessing
 
-# Define flags once at top of the code
-FLAGS = flags.FLAGS
 
 # Fix Unicode encoding for Windows console
 if sys.platform == 'win32':
@@ -329,6 +327,15 @@ def main():
     )
     args = parser.parse_args()
 
+    FLAGS = flags.FLAGS
+
+    # Import pysc2 so its flags get registered
+    from pysc2 import run_configs  
+
+    # Now parse FLAGS - give it a clean argv without argparse flags
+    FLAGS(['quickstart.py'], known_only=True)
+
+
     print()
     print("=" * 70)
     print("SC2 Replay Ground Truth Extraction Pipeline")
@@ -336,7 +343,7 @@ def main():
     print("=" * 70)
     print()
 
-    FLAGS(['quickstart.py'])  # Initialize FLAGS with just the program name, no actual flags
+    
 
     # Check prerequisites
     if not check_prerequisites():
