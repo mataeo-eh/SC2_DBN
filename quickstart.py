@@ -42,7 +42,7 @@ Usage:
     python quickstart.py -dataset
 
     # Full pipeline usage
-    python quickstart.py --process-replay-directory replays --output data/quickstart --workers 3 --download-replays --bots really -dataset --num-replays 105
+    python quickstart.py --process-replay-directory replays --output data/quickstart --workers 3 --download-replays --bots really what why -dataset --num-replays 105
 """
 from absl import flags
 import sys
