@@ -336,7 +336,7 @@ def main():
     print("=" * 70)
     print()
 
-    FLAGS(sys.argv)  # Parse flags once at the programs entry point
+    FLAGS(['quickstart.py'])  # Initialize FLAGS with just the program name, no actual flags
 
     # Check prerequisites
     if not check_prerequisites():
