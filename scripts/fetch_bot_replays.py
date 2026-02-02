@@ -15,7 +15,36 @@ def authorize():
     auth = {'Authorization': f'Token {token}'}
     return auth, base_url
 
+def get_bot_id_by_name(auth, base_url, bot_name: str, print_output: bool = True,):
+    """
+    Finds and returns the bot ID for a given bot name.
+    Returns None if not found.
+    """
+    url = f"{base_url}/bots/"
+    pbar = None
+    while url:
+        response = requests.get(url, headers=auth)
+        response.raise_for_status()
+        data = response.json()
+        
+        # Initialize progress bar once
+        if pbar is None:
+            total = data.get("count")
+            pbar = tqdm(total=total, desc="Fetching bots", unit="bots")
 
+        # Check each bot on this page
+        for bot in data["results"]:
+            if bot_name.lower() in bot.get("name", "").lower():
+                if print_output:
+                    print(f'ID found for {bot_name}: {bot['id']}')
+                return bot["id"]  # Found it, return immediately
+        
+        # Update the progress bar
+        pbar.update(len(data["results"]))
+
+        url = data.get("next")  # Check next page
+    
+    return None  # Not found
 
 
 def fetch_bots_list(auth, base_url, max: int = 5, print_output: bool = True, bot: str = None):
@@ -210,7 +239,7 @@ def main(bots: list, print_output = True, max_replays=None):
 
 if __name__ == "__main__":
     bots = ["really","why","what"]
-    main(bots, max_replays = 1, print_output=True)
+    main(bots, max_replays = 120, print_output=True)
     #auth, base_url = authorize()
     #bots = fetch_bot_id(auth, base_url, bot_name="really")
     #bots = fetch_bots_list(auth, base_url, max=10, bot="really")
