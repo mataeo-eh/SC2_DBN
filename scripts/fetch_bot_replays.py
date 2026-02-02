@@ -95,11 +95,34 @@ def fetch_bot_match_ids(auth, base_url, bot_ids: list, max_replays: int = None, 
     os.makedirs('replays', exist_ok=True)
     # Iterate over bot IDs
     for bot_id in tqdm(bot_ids, desc="Processing bots"):
+        # Reset replay counter for each bot
+        bot_match_count = 0
         # Get matches for a given bot id
-        matches = requests.get(f'{base_url}/match-participations/?bot={bot_id}', headers=auth).json()
-        # Iterate over matches to get each ID
-        for match in tqdm(matches['results'][:max_replays], desc=f"Processing matches for bot {bot_id}"):
-            match_ids.append(match['match'])
+        url = f'{base_url}/match-participations/?bot={bot_id}'
+        pbar = None
+        while url and (max_replays is None or bot_match_count < max_replays):
+            response = requests.get(url, headers=auth)
+            response.raise_for_status()
+            matches = response.json()
+
+            # Initialize pbar once
+            if pbar is None:
+                total = matches.get("count")
+                pbar = tqdm(total=total, desc="Fetching match ID's", units="matches")
+            
+            # Iterate over matches to get each ID
+            for match in matches['results']:
+                # Add each match ID to the list of Id's
+                match_ids.append(match['match'])
+                bot_match_count += 1 # Increment the per-bot replay counter
+                if max_replays and bot_match_count >= max_replays:
+                    break  # Stop once we hit the limit
+
+            # Update progress after processing each page
+            pbar.update(len(matches['results']))
+
+            url = matches.get('next') # Fetch the next page of matches
+
     if print_output:
         print(f"Total match IDs fetched: {len(match_ids)}")
         pprint.pprint(match_ids)
