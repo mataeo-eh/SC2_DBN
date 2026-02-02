@@ -108,7 +108,7 @@ def fetch_bot_match_ids(auth, base_url, bot_ids: list, max_replays: int = None, 
             # Initialize pbar once
             if pbar is None:
                 total = matches.get("count")
-                pbar = tqdm(total=total, desc="Fetching match ID's", units="matches")
+                pbar = tqdm(total=total, desc="Fetching match ID's", unit="matches")
             
             # Iterate over matches to get each ID
             for match in matches['results']:
