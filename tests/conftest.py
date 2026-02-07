@@ -279,7 +279,7 @@ def sample_extracted_state() -> Dict[str, Any]:
 
 @pytest.fixture
 def sample_wide_row() -> Dict[str, Any]:
-    """Sample wide-format row from WideTableBuilder."""
+    """Sample wide-format row from WideTableBuilder with bot names."""
     return {
         'game_loop': 100,
         'timestamp_seconds': 4.464,  # 100 / 22.4
@@ -291,17 +291,17 @@ def sample_wide_row() -> Dict[str, Any]:
         'p2_vespene': 75,
         'p2_supply_used': 10,
         'p2_supply_cap': 15,
-        'p1_marine_001_x': 30.0,
-        'p1_marine_001_y': 30.0,
-        'p1_marine_001_z': 8.0,
-        'p1_marine_001_health': 45.0,
-        'p1_marine_001_state': 'existing',
+        'p1_testbot1_marine_001_x': 30.0,
+        'p1_testbot1_marine_001_y': 30.0,
+        'p1_testbot1_marine_001_z': 8.0,
+        'p1_testbot1_marine_001_health': 45.0,
+        'p1_testbot1_marine_001_state': 'existing',
     }
 
 
 @pytest.fixture
 def sample_parquet_dataframe() -> pd.DataFrame:
-    """Sample DataFrame for parquet writing tests."""
+    """Sample DataFrame for parquet writing tests with bot names."""
     data = {
         'game_loop': [0, 100, 200, 300],
         'timestamp_seconds': [0.0, 4.464, 8.929, 13.393],
@@ -311,8 +311,8 @@ def sample_parquet_dataframe() -> pd.DataFrame:
         'p1_supply_cap': [15, 15, 23, 23],
         'p2_minerals': [50, 200, 300, 400],
         'p2_vespene': [0, 75, 125, 175],
-        'p1_marine_001_x': [30.0, 30.5, 31.0, np.nan],  # Marine dies at frame 300
-        'p1_marine_001_health': [45.0, 40.0, 35.0, np.nan],
+        'p1_testbot1_marine_001_x': [30.0, 30.5, 31.0, np.nan],  # Marine dies at frame 300
+        'p1_testbot1_marine_001_health': [45.0, 40.0, 35.0, np.nan],
     }
     return pd.DataFrame(data)
 
@@ -323,7 +323,7 @@ def sample_parquet_dataframe() -> pd.DataFrame:
 
 @pytest.fixture
 def sample_schema_columns() -> List[str]:
-    """Sample schema column list."""
+    """Sample schema column list with bot names in unit/building columns."""
     return [
         'game_loop',
         'timestamp_seconds',
@@ -339,16 +339,16 @@ def sample_schema_columns() -> List[str]:
         'p2_supply_cap',
         'p2_workers',
         'p2_idle_workers',
-        'p1_marine_001_x',
-        'p1_marine_001_y',
-        'p1_marine_001_z',
-        'p1_marine_001_health',
-        'p1_marine_001_health_max',
-        'p1_marine_001_shields',
-        'p1_marine_001_shields_max',
-        'p1_marine_001_energy',
-        'p1_marine_001_energy_max',
-        'p1_marine_001_state',
+        'p1_testbot1_marine_001_x',
+        'p1_testbot1_marine_001_y',
+        'p1_testbot1_marine_001_z',
+        'p1_testbot1_marine_001_health',
+        'p1_testbot1_marine_001_health_max',
+        'p1_testbot1_marine_001_shields',
+        'p1_testbot1_marine_001_shields_max',
+        'p1_testbot1_marine_001_energy',
+        'p1_testbot1_marine_001_energy_max',
+        'p1_testbot1_marine_001_state',
     ]
 
 

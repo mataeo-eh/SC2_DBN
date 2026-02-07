@@ -26,8 +26,10 @@ class TestWideTableBuilder:
 
     @pytest.fixture
     def builder(self, mock_schema):
-        """Create WideTableBuilder instance."""
-        return WideTableBuilder(mock_schema)
+        """Create WideTableBuilder instance with sample player names."""
+        b = WideTableBuilder(mock_schema)
+        b.set_player_names({1: 'TestBot1', 2: 'TestBot2'})
+        return b
 
     def test_initialization(self, mock_schema):
         """Test WideTableBuilder initializes correctly."""
@@ -76,7 +78,7 @@ class TestWideTableBuilder:
         assert row['p1_minerals'] == 50
 
     def test_add_unit_to_row(self, builder):
-        """Test adding unit data to row."""
+        """Test adding unit data to row with bot name in column."""
         row = {}
         unit_data = {
             'x': 30.0,
@@ -91,18 +93,19 @@ class TestWideTableBuilder:
             'state': 'existing',
         }
 
-        # Mock schema to include unit columns
+        # Mock schema to include unit columns with bot name format
+        # unit_id='p1_marine_001' -> stripped to 'marine_001', bot_name='testbot1'
         builder.schema.get_missing_value.return_value = np.nan
         for attr in ['x', 'y', 'z', 'health', 'health_max', 'shields',
                      'shields_max', 'energy', 'energy_max', 'state']:
-            row[f'p1_marine_001_{attr}'] = np.nan
+            row[f'p1_testbot1_marine_001_{attr}'] = np.nan
 
-        builder.add_unit_to_row(row, 'p1', 'marine_001', unit_data)
+        builder.add_unit_to_row(row, 'p1', 'p1_marine_001', unit_data)
 
-        assert row['p1_marine_001_x'] == 30.0
-        assert row['p1_marine_001_y'] == 30.0
-        assert row['p1_marine_001_health'] == 45.0
-        assert row['p1_marine_001_state'] == 'existing'
+        assert row['p1_testbot1_marine_001_x'] == 30.0
+        assert row['p1_testbot1_marine_001_y'] == 30.0
+        assert row['p1_testbot1_marine_001_health'] == 45.0
+        assert row['p1_testbot1_marine_001_state'] == 'existing'
 
     def test_add_unit_to_row_killed(self, builder):
         """Test adding killed unit sets only state column."""
@@ -111,17 +114,17 @@ class TestWideTableBuilder:
             'state': 'killed',
         }
 
-        # Initialize row with NaN
-        row['p1_marine_001_state'] = np.nan
-        row['p1_marine_001_x'] = np.nan
-        row['p1_marine_001_health'] = np.nan
+        # Initialize row with NaN using bot name format
+        row['p1_testbot1_marine_001_state'] = np.nan
+        row['p1_testbot1_marine_001_x'] = np.nan
+        row['p1_testbot1_marine_001_health'] = np.nan
 
-        builder.add_unit_to_row(row, 'p1', 'marine_001', unit_data)
+        builder.add_unit_to_row(row, 'p1', 'p1_marine_001', unit_data)
 
-        assert row['p1_marine_001_state'] == 'killed'
+        assert row['p1_testbot1_marine_001_state'] == 'killed'
         # Other columns should remain NaN
-        assert np.isnan(row['p1_marine_001_x'])
-        assert np.isnan(row['p1_marine_001_health'])
+        assert np.isnan(row['p1_testbot1_marine_001_x'])
+        assert np.isnan(row['p1_testbot1_marine_001_health'])
 
     def test_calculate_unit_counts(self, builder):
         """Test calculating unit counts by type."""
@@ -179,12 +182,12 @@ class TestWideTableBuilder:
         assert row['p1_idle_workers'] == 0
 
     def test_add_building_to_row(self, builder):
-        """Test adding building data to row."""
+        """Test adding building data to row with bot name in column."""
         row = {
-            'p1_building_5001_x': np.nan,
-            'p1_building_5001_y': np.nan,
-            'p1_building_5001_status': np.nan,
-            'p1_building_5001_progress': np.nan,
+            'p1_testbot1_barracks_001_x': np.nan,
+            'p1_testbot1_barracks_001_y': np.nan,
+            'p1_testbot1_barracks_001_status': np.nan,
+            'p1_testbot1_barracks_001_progress': np.nan,
         }
         building_data = {
             'x': 40.0,
@@ -197,12 +200,12 @@ class TestWideTableBuilder:
             'destroyed_loop': None,
         }
 
-        builder.add_building_to_row(row, 'p1', 'building_5001', building_data)
+        builder.add_building_to_row(row, 'p1', 'p1_barracks_001', building_data)
 
-        assert row['p1_building_5001_x'] == 40.0
-        assert row['p1_building_5001_y'] == 40.0
-        assert row['p1_building_5001_status'] == 'completed'
-        assert row['p1_building_5001_progress'] == 100
+        assert row['p1_testbot1_barracks_001_x'] == 40.0
+        assert row['p1_testbot1_barracks_001_y'] == 40.0
+        assert row['p1_testbot1_barracks_001_status'] == 'completed'
+        assert row['p1_testbot1_barracks_001_progress'] == 100
 
     def test_validate_row_success(self, builder, sample_schema_columns):
         """Test validating a correct row."""
@@ -242,8 +245,8 @@ class TestWideTableBuilder:
             'p2_minerals': 300,
             'p1_supply_used': 45,
             'p2_supply_used': 50,
-            'p1_marine_001_x': 30.0,
-            'p1_marine_001_y': np.nan,  # Missing value
+            'p1_testbot1_marine_001_x': 30.0,
+            'p1_testbot1_marine_001_y': np.nan,  # Missing value
         }
 
         summary = builder.get_row_summary(row)
