@@ -47,9 +47,12 @@ Usage:
 from absl import flags
 import sys
 import io
+import logging
 from pathlib import Path
 import argparse
 import multiprocessing
+
+from src_new.pipeline.logging_config import setup_logging
 
 
 # Fix Unicode encoding for Windows console
@@ -335,6 +338,11 @@ def main():
     # Now parse FLAGS - give it a clean argv without argparse flags
     FLAGS(['quickstart.py'], known_only=True)
 
+    # Set up file-based logging before any processing begins
+    log_file_path = setup_logging()
+
+    logger = logging.getLogger(__name__)
+    logger.info("SC2 Replay Ground Truth Extraction Pipeline starting")
 
     print()
     print("=" * 70)
@@ -360,7 +368,7 @@ def main():
     # Process all replays in directory if passed
     if args.process_replay_directory:
         from src_new.pipeline.parallel_processor import ParallelReplayProcessor
-        processor = ParallelReplayProcessor(num_workers=args.workers)
+        processor = ParallelReplayProcessor(num_workers=args.workers, log_file_path=log_file_path)
         # Process all replays in a directory
         results = processor.process_replay_directory(
             replay_dir=args.process_replay_directory,
