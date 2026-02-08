@@ -29,6 +29,7 @@ venv.bak/
 prompts/
 .prompts/
 claude.md
+plan/
 
 # Logs
 *.log
