@@ -1,8 +1,10 @@
 import pandas as pd
 from pathlib import Path
 import numpy as np
+from collections import Counter
+import matplotlib.pyplot as plt
 
-data_dir = Path("data/quickstart/parquet")
+
 
 def check_for_messages_column(data_dir):
     if not data_dir.exists():
@@ -104,5 +106,63 @@ def messages_column_summary(data_dir):
     print("- " * 70)
     print(f"Total replays with no Messages column: {null_files}")
 
+def collect_column_frequencies(data_dir):
+    """Count how many files each column appears in."""
+    parquet_files = list(data_dir.glob("*_game_state.parquet"))
+    column_counts = Counter()
+    
+    for file in parquet_files:
+        df = pd.read_parquet(file)
+        # Add 1 to the count for each unique column in this file
+        column_counts.update(df.columns)
+    
+    return column_counts, len(parquet_files)
+
+
+def plot_column_frequency_distribution(column_counts, total_files):
+    """Show distribution of how many files columns appear in."""
+    frequencies = list(column_counts.values())
+    
+    plt.figure(figsize=(10, 6))
+    plt.hist(frequencies, bins=50, edgecolor='black')
+    plt.xlabel('Number of files column appears in')
+    plt.ylabel('Number of columns (log scale)')
+    plt.yscale('log')
+    plt.title(f'Column Frequency Distribution\n({len(column_counts)} unique columns across {total_files} files)')
+    plt.legend()
+    
+    # Add summary statistics to the plot
+    stats_text = (
+        f"Total unique columns: {len(column_counts)}\n"
+        f"In all {total_files} files: {sum(1 for count in frequencies if count == total_files)}\n"
+        f"In >75% of files: {sum(1 for count in frequencies if count > total_files * 0.75)}\n"
+        f"In >50% of files: {sum(1 for count in frequencies if count > total_files * 0.5)}\n"
+        f"In only 1 file: {sum(1 for count in frequencies if count == 1)}"
+    )
+    
+    plt.text(0.98, 0.97, stats_text, transform=plt.gca().transAxes,
+             fontsize=9, verticalalignment='top', horizontalalignment='right',
+             bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
+    
+    plt.tight_layout()
+    plt.show()
+    
+    # Still print to console as well
+    print(f"\nColumn Frequency Summary:")
+    print(f"Total unique columns: {len(column_counts)}")
+    print(f"Columns in all {total_files} files: {sum(1 for count in frequencies if count == total_files)}")
+    print(f"Columns in >75% of files: {sum(1 for count in frequencies if count > total_files * 0.75)}")
+    print(f"Columns in >50% of files: {sum(1 for count in frequencies if count > total_files * 0.5)}")
+    print(f"Columns in only 1 file: {sum(1 for count in frequencies if count == 1)}")
+
+
+def show_unique_columns(data_dir):
+    column_counts, total_files = collect_column_frequencies(data_dir)
+    plot_column_frequency_distribution(column_counts, total_files)
+    return column_counts
+
+
 if __name__ == "__main__":
-    messages_column_summary(data_dir)
+    data_dir = Path("data/quickstart/parquet")
+    show_unique_columns(data_dir)
+
