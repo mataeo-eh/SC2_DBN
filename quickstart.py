@@ -53,7 +53,7 @@ Usage:
     python quickstart.py --process-replay-directory replays --output data/quickstart --workers 3 --download-replays --bots really what why -dataset --num-replays 105
 
     # Feature Engineering and Discretization
-    python quickstart.py --process-replay-directory replays --output data/quickstart --engineer-features --discretize
+    python quickstart.py --output data/quickstart --engineer-features --discretize -dataset
 """
 from absl import flags
 import sys
@@ -407,7 +407,7 @@ def main():
         print(summary)
         # Add the unit count columns to all processed files
         from src_new.data_processing.create_unit_counts import main as create_unit_counts
-        create_unit_counts(args.process_replay_directory, args.output)
+        create_unit_counts(args.process_replay_directory, Path(f"{args.output}/parquet"))
 
     # Find replay if passed and process_replay_directory is not
     elif args.replay:
@@ -449,12 +449,14 @@ def main():
     # Create the engineered features dataset if passed
     if args.engineer_features:
         from src_new.data_processing.engineer_army_features import main as engineer_army_features
-        engineer_army_features(args.output, os.getenv("ENGINEER_FEATURES_OUTPUT_DIR"))
+        engineer_army_features(Path(f"{args.output}/parquet"), Path(os.getenv("ENGINEER_FEATURES_OUTPUT_DIR")))
+        print(f"✓ Engineered features dataset created at {os.getenv('ENGINEER_FEATURES_OUTPUT_DIR')}")
 
     # Create the discretized dataset if passed
     if args.discretize:
         from src_new.data_processing.discretize import main as discretize_main      
-        discretize_main(os.getenv("DISCRETIZE_INPUT_DIR"), os.getenv("DISCRETIZE_OUTPUT_DIR"))
+        discretize_main(Path(os.getenv("DISCRETIZE_INPUT_DIR")), Path(os.getenv("DISCRETIZE_OUTPUT_DIR")))
+        print(f"✓ Discretized dataset created at {os.getenv('DISCRETIZE_OUTPUT_DIR')}")
 
         # After discretization is done, update the kaggle dataset if passed
         # Note: The discretized data is a separate dataset from the raw information and engineered features dataset 
