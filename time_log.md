@@ -17,5 +17,5 @@
 | 2026-02-07 | 11:30 | 14:30 |  3h      |  Fixing dataset building pipeline. Adding logging to debug why some replays do not parse.         |
 | 2026-02-08 | 09:00 | 10:00 |  1h      |  Adding some engineered features and discretized features to begin simple modelling on   |
 | 2026-02-08 | 12:30 | 15:30 |  3h      |  Continue adding some engineered features and discretized features to begin simple modelling on. Adding some EDA to understand data pulled from replays already.   |
-| 2026-02-09 | 08:30 | 11:30 |  3h      |  Working to integrate data collection fixes and feature engineering into the quickstart.py pipeline for a full data run   |
+| 2026-02-09 | 08:30 | 12:30 |  4h      |  Working to integrate data collection fixes and feature engineering into the quickstart.py pipeline for a full data run   |
 |            |       |       |          |            |
