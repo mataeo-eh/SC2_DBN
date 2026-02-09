@@ -41,8 +41,19 @@ Usage:
     python quickstart.py --update-kaggle-dataset
     python quickstart.py -dataset
 
+    # With engineering features
+    python quickstart.py --engineer-features
+    python quickstart.py -e
+
+    # With discretization 
+    python quickstart.py --discretize
+    python quickstart.py -d
+
     # Full pipeline usage
     python quickstart.py --process-replay-directory replays --output data/quickstart --workers 3 --download-replays --bots really what why -dataset --num-replays 105
+
+    # Feature Engineering and Discretization
+    python quickstart.py --process-replay-directory replays --output data/quickstart --engineer-features --discretize
 """
 from absl import flags
 import sys
@@ -54,6 +65,11 @@ import multiprocessing
 
 from src_new.pipeline.logging_config import setup_logging
 
+from dotenv import load_dotenv
+import os
+
+# Load variables from .env file
+load_dotenv()
 
 # Fix Unicode encoding for Windows console
 if sys.platform == 'win32':
@@ -433,12 +449,12 @@ def main():
     # Create the engineered features dataset if passed
     if args.engineer_features:
         from src_new.data_processing.engineer_army_features import main as engineer_army_features
-        engineer_army_features(args.output, "data/quickstart/features")
+        engineer_army_features(args.output, os.getenv("ENGINEER_FEATURES_OUTPUT_DIR"))
 
     # Create the discretized dataset if passed
     if args.discretize:
         from src_new.data_processing.discretize import main as discretize_main      
-        discretize_main("data/quickstart/features", "data/discretized")
+        discretize_main(os.getenv("DISCRETIZE_INPUT_DIR"), os.getenv("DISCRETIZE_OUTPUT_DIR"))
 
         # After discretization is done, update the kaggle dataset if passed
         # Note: The discretized data is a separate dataset from the raw information and engineered features dataset 
