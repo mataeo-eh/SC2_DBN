@@ -328,6 +328,17 @@ def main():
         default=multiprocessing.cpu_count() // 2,
         help="CPU threads to use for parallel processing. Default is half of CPU's available threads"
     )
+    parser.add_argument(
+        "-e", "--engineer-features",
+        action="store_true",
+        help="Whether to engineer additional features like army composition and movement."
+    )
+    parser.add_argument(
+        "-d", "--discretize",
+        action="store_true",
+        help="Whether to create a simplified dataset with only the engineered features for quick baseline model training."
+    )
+
     args = parser.parse_args()
 
     FLAGS = flags.FLAGS
@@ -360,7 +371,7 @@ def main():
 
     # Downlaod replays if passed
     if args.download_replays:
-        from scripts.fetch_bot_replays import main as download_replays
+        from src_new.data_processing.fetch_bot_replays import main as download_replays
         if not args.bots:
             raise RuntimeError("You must pass names of bots to download replays for to download_replays")
         download_replays(args.bots, max_replays = args.num_replays, print_output = args.verbose)
@@ -378,6 +389,9 @@ def main():
         # Print summary
         summary = processor.get_processing_summary(results)
         print(summary)
+        # Add the unit count columns to all processed files
+        from src_new.data_processing.create_unit_counts import main as create_unit_counts
+        create_unit_counts(args.process_replay_directory, args.output)
 
     # Find replay if passed and process_replay_directory is not
     elif args.replay:
@@ -416,9 +430,26 @@ def main():
         print(f"✓ Found: {replay_path}")
         print()
 
+    # Create the engineered features dataset if passed
+    if args.engineer_features:
+        from src_new.data_processing.engineer_army_features import main as engineer_army_features
+        engineer_army_features(args.output, "data/quickstart/features")
+
+    # Create the discretized dataset if passed
+    if args.discretize:
+        from src_new.data_processing.discretize import main as discretize_main      
+        discretize_main("data/quickstart/features", "data/discretized")
+
+        # After discretization is done, update the kaggle dataset if passed
+        # Note: The discretized data is a separate dataset from the raw information and engineered features dataset 
+        if args.update_kaggle_dataset:
+            from src_new.pipeline.dataset_pipeline import main as upload_to_kaggle
+            upload_to_kaggle(dataset_name = "mataeoanderson/sc2-replay-data-discretized", download_path = Path("data/discretized"), Title = "SC2 Discretized Dataset")
+
+    # After processing, update the kaggle dataset if passed
     if args.update_kaggle_dataset:
-        from src_new.pipeline.dataset_pipeline import upload_to_kaggle
-        upload_to_kaggle()
+        from src_new.pipeline.dataset_pipeline import main as upload_to_kaggle
+        upload_to_kaggle(dataset_name = "mataeoanderson/sc2-replay-data", download_path = Path("data/quickstart"))
     
 
 
