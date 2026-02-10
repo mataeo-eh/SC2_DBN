@@ -1,0 +1,3 @@
+- Automate pushing to github after a data run with subprocess
+- Add discretized data visualization to the EDA notebook
+- Automate running the EDA notebook and saving it using papermill as pm
