@@ -50,7 +50,7 @@ Usage:
     python quickstart.py -d
 
     # Full pipeline usage
-    python quickstart.py --process-replay-directory replays --output data/quickstart --workers 3 --download-replays --bots really what why -dataset --num-replays 105
+    python quickstart.py --process-replay-directory replays --output data/quickstart --workers 3 --download-replays --bots really what why -dataset --num-replays 105 -e -d
 
     # Feature Engineering and Discretization
     python quickstart.py --output data/quickstart --engineer-features --discretize -dataset
@@ -407,7 +407,7 @@ def main():
         print(summary)
         # Add the unit count columns to all processed files
         from src_new.data_processing.create_unit_counts import main as create_unit_counts
-        create_unit_counts(args.process_replay_directory, Path(f"{args.output}/parquet"))
+        create_unit_counts(Path(f"{args.output}/parquet"), Path(f"{args.output}/parquet"))
 
     # Find replay if passed and process_replay_directory is not
     elif args.replay:
