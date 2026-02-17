@@ -19,4 +19,7 @@
 | 2026-02-08 | 12:30 | 15:30 |  3h      |  Continue adding some engineered features and discretized features to begin simple modelling on. Adding some EDA to understand data pulled from replays already.   |
 | 2026-02-09 | 08:30 | 12:30 |  4h      |  Working to integrate data collection fixes and feature engineering into the quickstart.py pipeline for a full data run   |
 | 2026-02-10 | 15:00 | 16:30 |  1.5h    |  Checking status after doing full pipeline run. Using claude code to troubleshoot and fix pipeline problems. Making small tweaks to dataset to make it better for machine learning.   |
+| 2026-02-13 | 10:30 | 12:30 |  2h      |  Researching sc2 API documentation to see what exactly is available for raw information from the game from a replay   |
+| 2026-02-13 | 13:30 | 16:00 |  2.5h    |  Researching sc2 API documentation to see what exactly is available for raw information from the game from a replay. Editing Claude's research file to reflect. Attempting claude code implementation of new structure.   |
+| 2026-02-13 | 07:00 | 08:30 |  1.5h    |  Attempting claude code re-write of data parsing. Iterating on change to fix new bugs.   |
 |            |       |       |          |            |
