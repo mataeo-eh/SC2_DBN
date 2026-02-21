@@ -19,3 +19,5 @@ Dimension reduction on the fly
                 - one matches more closer prolly the predicting label 
 
 
+hidden markov models
+    make observations, make inferences about behind the scenes

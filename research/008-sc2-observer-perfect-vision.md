@@ -23,7 +23,7 @@ message RequestStartReplay {
     bytes replay_data = 5;
   }
   optional bytes map_data = 6;
-  optional int32 observed_player_id = 2;  // Player perspective (1 or 2)
+  optional int32 observed_player_id = 2;
   optional InterfaceOptions options = 3;
   optional bool disable_fog = 4;          // Disable fog of war
   optional bool realtime = 7;
@@ -33,9 +33,13 @@ message RequestStartReplay {
 
 **Critical fields:**
 
-- **`observed_player_id`**: Specifies which player's perspective to use. Must be 1 or 2 for a standard 1v1 game. There is **no observer value** (0 or otherwise) that provides a neutral/global perspective. The SC2 game engine always renders the observation from a specific player's viewpoint.
+- **`observed_player_id`**: Specifies which player's perspective to use. THIS FIELD SHOULD NOT BE PASSED. In the raw sc2-api documentation, this field is optional. If not passed, the game will load in the observer perspective. This is the behaviour the user wants.
+
+- **`options`**: Specifies which interface(s) to return data for when loading the replay. Multiple interfaces CAN be loaded at once. Acceptable inputs come from the InterfaceOptions class. For this project, the desired interface options to use is raw = True, show_cloaked = true, show_burrowed_shadows = True, and show_placeholders = True.
 
 - **`disable_fog`**: When `true`, removes fog of war so that all units on the map are visible regardless of the observed player's actual vision. This affects `raw_data.units` -- all units from all players become visible with full attribute data. However, `player_common` and `score` remain scoped to the `observed_player_id`.
+
+- **`raw_data`**: Belongs to the ObservationRaw class. This is passed when option has raw= True passed. The ObservationRaw class will return player information, (where there camera is oriented etc.,), Unit (The full unit information), and event (the units that have died) as the most critical pieces of information to utilize. The unit class contains the full information of each unit including who it belongs to, its position, health, etc. This is the important information the user wants to parse for each unit. The exact information each unit can return needs to be verified, and then confirm with the user how that information should be parsed and displayed in the dataframe (I.E. position coordinates as a (x,y,z) tuple or one column per coordinate, capture all available information (shields, energy health, etc.) for all units, or only the units that have each attribute respectively, etc.,)
 
 ### 2.2 InterfaceOptions
 
@@ -100,11 +104,19 @@ message Observation {
 | `raw_data.player.upgrade_ids` | YES | Upgrades for the observed player only |
 | `raw_data.event.dead_units` | NO (with disable_fog) | Global death events |
 
+**`Critical`**: When the observed_player_id parameter is not passed when loading a replay (which is the user's desired behaviour) the player common field is available for ALL PLAYERS IN THE MATCH and can be called specifically per player BY THE PLAYER ID. This is critical. It means the player_common values are available for both players at every game step by passing the player ID parameter when requesting information from the player_common field.
+
 ### 2.5 disable_fog vs. Observer Perspective
 
 - **`disable_fog=True`**: Removes visibility restrictions on `raw_data.units`. All units on the map are included with full data (health, position, orders, etc.), regardless of whether the observed player could actually see them. However, `player_common` and `score` still reflect only the observed player.
 
-- **There is no "neutral observer" perspective**: The SC2 engine always runs the observation from a player's viewpoint. In the in-game replay viewer, the "Everyone" perspective is a UI-level feature that switches between views -- it is not a single unified observation. The API does not replicate this.
+- **There is no "neutral observer" perspective**: The SC2 engine always runs the observation from a player's viewpoint. In the in-game replay viewer, the "Everyone" perspective is a UI-level feature that switches between views -- it is not a single unified observation. The API does not replicate this. ### This was found to be NOT TRUE!!!!! The SC2 engine can run from a neutral observation perspective if the observed_player_id field is not passed. This is acceptable behaviour since it is denoted as optional in the documentation. The default way to load a replay is from the neutral observer view. This enables full information to be captured from both players, including the player_common and score by additionally passing the player id for each player when requesting those fields.
+
+### Notes
+
+- **`Some wrapper such as pysc2 may not allow the observed_player_id field (or other fields) to be left blank. But many fields/parameters are denoted as optional in the base sc2-api (s2client-proto). This means if a field that MUST be NOT PASSED (Like the observed_player_id when requesting to load a replay - this field MUST NOT BE PASSED) is not allowed by a wrapper, that wrapper should not be used and the pipeline should default to using the official Blizzard sc2-api s2client-proto directly instead of the wrappers. Most wrappers are intended to provide tools making it easier for agents or scripted bots to interact with the game. Since this project does not need this, it is simply focused on pulling information directly from the game from replays, the official API can be used directly.`**
+
+- **`It is important to note, that when processing replays, using the RequestStartReplay request, if realtime = False is passed, replays can be processed directly at CPU processing speed. If proper use of requesting the next step is made, replays can be processed at the fastest speed all the information can be pulled out of the replay at instead of being limited to processing them at a set speed. This will allow better processing efficiency and helps improve the utility of the multi-thread replay processing scripts. `**
 
 ---
 
@@ -166,6 +178,8 @@ Looking at pysc2's source code and tests (e.g., `replay_obs_test.py`, `replay_ac
 - There is no special handling for value 0.
 - The SC2 engine will reject or produce undefined behavior with `observed_player_id=0`.
 
+This may mean that the pysc2 wrapper cannot be relied on to gain perfect information if it defaults the observed_player_id to 1. This makes sense since pysc2 is intended for training agents to play sc2 and less for extracting perfect game state information. 
+
 ### 3.4 pysc2 Configuration for Full Map Vision
 
 The closest to "perfect information" in pysc2:
@@ -200,7 +214,7 @@ This gives:
 
 If pysc2 is insufficient, you can use the raw protobuf API over a websocket connection. This is what pysc2 does internally, but direct usage gives more control.
 
-However, the fundamental limitation remains: **`player_common` and `score` are always per-player**. No amount of raw API manipulation changes this because the SC2 game engine itself only computes these values for the observed player.
+However, the fundamental limitation remains: **`player_common` and `score` are always per-player**. No amount of raw API manipulation changes this because the SC2 game engine itself only computes these values for the observed player. BUT these can be fetched per player by also passing a player ID and then the game engine will compute them for the specified player. But this behaviour only exists when the observed_player_id field is not passed using the raw API approach - this is because then the game engine computes BOTH players simultaneously.
 
 ### 4.2 ResponseObservation with All Players' Unit Data
 
@@ -349,6 +363,7 @@ for event in tracker_events:
 - Does not provide precise unit positions, health, or other per-unit data
 - Cannot provide ground truth unit state (only aggregated stats)
 - Tracker events were introduced in version 2.0.8 and do not exist in older replays
+- User has already attempted this and says it provides a poor representation of the game-state and should not be used.
 
 ### 5.2 sc2reader
 
@@ -360,7 +375,7 @@ sc2reader is a community Python library that parses replay files. It provides:
 - Unit selection and hotkey events
 - Resource transfers and requests
 
-**Limitation**: sc2reader explicitly states it provides "Resource Transfers and Requests (but not collection rate or unspent totals!)". It **cannot** provide current mineral/vespene counts for either player.
+**Limitation**: sc2reader explicitly states it provides "Resource Transfers and Requests (but not collection rate or unspent totals!)". It **cannot** provide current mineral/vespene counts for either player. The user has already explored this option and says it provides a poor reconstruction of the game state and should not be used.
 
 ### 5.3 zephyrus-sc2-parser
 
@@ -372,7 +387,7 @@ A more modern parser that combines tracker and game events to reconstruct game s
 - Unit compositions
 - Game state snapshots at 5-second intervals
 
-This could be a useful supplementary data source, though its 5-second interval is coarser than the game engine's per-frame data.
+This could be a useful supplementary data source, though its 5-second interval is coarser than the game engine's per-frame data. The user has already explored this option and says it provides a poor reconstruction of the game state and should not be used.
 
 ### 5.4 SC2EGSet Dataset Tools
 
@@ -384,7 +399,7 @@ The SC2EGSet research project processed thousands of tournament replays. Their t
 
 ## 6. Recommended Implementation Plan
 
-### Option A: Hybrid Approach (Recommended)
+### Option A: Hybrid Approach (Most difficult. Confirm with user before attempting)
 
 Combine game engine extraction (for unit data) with s2protocol tracker events (for economy data) to eliminate the second replay pass.
 
@@ -434,6 +449,18 @@ No-engine supplementary:
 ```
 
 This would reduce the pipeline from 2+ engine passes to a single engine pass.
+
+### Option C: Use the raw API directly, do not pass `observed_player_id` when making the start replay request (Recommended)
+
+- This allows getting full game state information when the other paramters are used correctly to gain perfect map vision and show cloaked and burrowed units.
+
+- the raw observation state provides rich, precise, information about each unit
+
+- The documentation is available to review to fully understand the full structure of every class to make building a programmatic method of extracting all information in the desired output format ultimately very possible.
+
+- Economy for BOTH players is available and can be requested by passing a player_id field to the `player_common` and `score` requests. Player id's are usually 1 for player 1 and 2 for player 2 but can be parsed from other available information before the player_common call is made if necessary. 
+
+- Allows very fine-grained control over exact dataset structure and information parsed from replays in an understandable way. Also ensures perfect information is retrieved. Allows gaining information about other map characteristics (minerals, vespene geysers, etc.,) not just player data if desired. User has not expressed desire to extract this information, but it can be extracted if requested using the raw API. 
 
 ---
 
