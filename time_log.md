@@ -21,5 +21,7 @@
 | 2026-02-10 | 15:00 | 16:30 |  1.5h    |  Checking status after doing full pipeline run. Using claude code to troubleshoot and fix pipeline problems. Making small tweaks to dataset to make it better for machine learning.   |
 | 2026-02-13 | 10:30 | 12:30 |  2h      |  Researching sc2 API documentation to see what exactly is available for raw information from the game from a replay   |
 | 2026-02-13 | 13:30 | 16:00 |  2.5h    |  Researching sc2 API documentation to see what exactly is available for raw information from the game from a replay. Editing Claude's research file to reflect. Attempting claude code implementation of new structure.   |
-| 2026-02-13 | 07:00 | 08:30 |  1.5h    |  Attempting claude code re-write of data parsing. Iterating on change to fix new bugs.   |
+| 2026-02-14 | 07:00 | 08:30 |  1.5h    |  Attempting claude code re-write of data parsing. Iterating on change to fix new bugs.   |
+| 2026-02-14 | 16:00 | 17:30 |  1.5h    |  Convincing Claude not to screw up my pipeline but to actually fix the bugs (:   |
+| 2026-02-21 | 05:00 | 07:30 |  2.5h    |  Confirming bug fixes. Confirmed replays now load with "perfect info." Using Claude to confirm data integrity. Data extraction is now bugged, but game messages are successfully extracted now (helps for automatic labelling)  |
 |            |       |       |          |            |

@@ -54,6 +54,9 @@ Usage:
 
     # Feature Engineering and Discretization
     python quickstart.py --output data/quickstart --engineer-features --discretize -dataset
+
+    # Testing
+    python quickstart.py --process-replay-directory replays --output data/quickstart --workers 1 -dataset --num-replays 1 -e -d
 """
 from absl import flags
 import sys
@@ -408,6 +411,7 @@ def main():
         # Add the unit count columns to all processed files
         from src_new.data_processing.create_unit_counts import main as create_unit_counts
         create_unit_counts(Path(f"{args.output}/parquet"), Path(f"{args.output}/parquet"))
+        print("✓ Unit count columns added to all processed files")
 
     # Find replay if passed and process_replay_directory is not
     elif args.replay:
