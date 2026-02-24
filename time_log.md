@@ -24,4 +24,5 @@
 | 2026-02-14 | 07:00 | 08:30 |  1.5h    |  Attempting claude code re-write of data parsing. Iterating on change to fix new bugs.   |
 | 2026-02-14 | 16:00 | 17:30 |  1.5h    |  Convincing Claude not to screw up my pipeline but to actually fix the bugs (:   |
 | 2026-02-21 | 05:00 | 07:30 |  2.5h    |  Confirming bug fixes. Confirmed replays now load with "perfect info." Using Claude to confirm data integrity. Data extraction is now bugged, but game messages are successfully extracted now (helps for automatic labelling)  |
+| 2026-02-24 | 05:30 | 06:00 |  1.5h    |  Working with claude to continue implementing pipeline fixes   |
 |            |       |       |          |            |
