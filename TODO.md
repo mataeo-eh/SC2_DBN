@@ -1,8 +1,9 @@
 - Automate pushing to github after a data run with subprocess
 - Add discretized data visualization to the EDA notebook
 - Automate running the EDA notebook and saving it using papermill as pm
-
-
+- Need to improve the EDA notebook to help assess the quality of gathered data
+- Need to remove the messages.parquet writer - no longer needed
+- After improving the EDA notebook, manually verify the data extracted for the 5 downloaded replays
 
 
 Look into hidden markov chains 
@@ -17,7 +18,11 @@ Dimension reduction on the fly
         - one recognizes macro
             - run data stream through both and see which one matched it better
                 - one matches more closer prolly the predicting label 
+    - autoencoders, after being trained, are light and run quite quickly... just saying
 
 
 hidden markov models
     make observations, make inferences about behind the scenes
+
+
+
