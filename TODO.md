@@ -4,6 +4,8 @@
 - Need to improve the EDA notebook to help assess the quality of gathered data
 - Need to remove the messages.parquet writer - no longer needed
 - After improving the EDA notebook, manually verify the data extracted for the 5 downloaded replays
+- Data visualization skill for claude grounded in Stephen Few and Edward Tufte's work for better visualization graphics.
+
 
 
 Look into hidden markov chains 
