@@ -5,6 +5,7 @@
 - Need to remove the messages.parquet writer - no longer needed
 - After improving the EDA notebook, manually verify the data extracted for the 5 downloaded replays
 - Data visualization skill for claude grounded in Stephen Few and Edward Tufte's work for better visualization graphics.
+- Add parameters for choosing which columns to write to parquet files after the information has been extracted from a replay.
 
 
 
