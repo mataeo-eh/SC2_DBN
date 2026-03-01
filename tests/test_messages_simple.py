@@ -74,7 +74,7 @@ def main():
         ("parquet_dir.mkdir(parents=True, exist_ok=True)", "Ensures parquet dir exists"),
         ("json_dir.mkdir(parents=True, exist_ok=True)", "Ensures json dir exists"),
         ("parquet_dir / f\"{replay_name}_game_state.parquet\"", "Saves game state to parquet dir"),
-        ("json_dir / f\"{replay_name}_schema.json\"", "Saves schema to json dir"),
+        ("json_dir / f\"{replay_name}_metadata.json\"", "Saves metadata to json dir"),
     ]
 
     for pattern, desc in checks:
