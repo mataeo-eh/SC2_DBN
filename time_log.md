@@ -26,4 +26,5 @@
 | 2026-02-21 | 05:00 | 07:30 |  2.5h    |  Confirming bug fixes. Confirmed replays now load with "perfect info." Using Claude to confirm data integrity. Data extraction is now bugged, but game messages are successfully extracted now (helps for automatic labelling)  |
 | 2026-02-24 | 05:30 | 06:00 |  1.5h    |  Working with claude to continue implementing pipeline fixes   |
 | 2026-02-26 | 06:30 | 08:00 |  1.5h    |  Working with claude to continue implementing pipeline fixes   |
+| 2026-03-03 | 07:30 | 08:00 |  0.5h    |  Working with claude to create data visualization to confirm data extraction pipeline   |
 |            |       |       |          |            |
