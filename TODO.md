@@ -2,7 +2,6 @@
 - Add discretized data visualization to the EDA notebook
 - Automate running the EDA notebook and saving it using papermill as pm
 - Need to improve the EDA notebook to help assess the quality of gathered data -> Maybe done; needs verify
-- Need to remove the messages.parquet writer - no longer needed -> prompt written
 - After improving the EDA notebook, manually verify the data extracted for the 5 downloaded replays -> Need to run data extraction first
 - Data visualization skill for claude grounded in Stephen Few and Edward Tufte's work for better visualization graphics. -> Excellent idea!
 - Add parameters for choosing which columns to write to parquet files after the information has been extracted from a replay.

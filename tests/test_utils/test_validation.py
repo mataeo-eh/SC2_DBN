@@ -168,46 +168,6 @@ class TestOutputValidator:
         assert report['valid'] is False
         assert report['checks']['building_progress_monotonic'] is False
 
-    def test_validate_messages_parquet(self, validator, create_mock_parquet):
-        """Test validating messages parquet."""
-        messages_data = {
-            'game_loop': [100, 200, 500],
-            'player_id': [1, 2, 1],
-            'message': ['glhf', 'u2', 'gg'],
-        }
-        messages_parquet = create_mock_parquet('messages.parquet', messages_data)
-
-        report = validator.validate_messages_parquet(messages_parquet)
-
-        assert report['valid'] is True
-        assert report['checks']['required_columns'] is True
-        assert report['checks']['has_messages'] is True
-        assert report['stats']['total_messages'] == 3
-
-    def test_validate_empty_messages(self, validator, create_mock_parquet):
-        """Test validating empty messages file (no chat)."""
-        empty_messages = create_mock_parquet('empty_messages.parquet', {
-            'game_loop': [],
-            'player_id': [],
-            'message': [],
-        })
-
-        report = validator.validate_messages_parquet(empty_messages)
-
-        # Empty messages is acceptable (no chat in game)
-        assert report['valid'] is True
-        assert report['checks']['has_messages'] is False
-        assert 'acceptable' in str(report['warnings']).lower()
-
-    def test_validate_messages_missing_file(self, validator, tmp_path):
-        """Test validating missing messages file (optional)."""
-        nonexistent = tmp_path / "missing_messages.parquet"
-
-        report = validator.validate_messages_parquet(nonexistent)
-
-        # Missing messages file is acceptable (generates warning, not error)
-        assert 'optional' in str(report['warnings']).lower()
-
     def test_generate_validation_report_empty(self, validator):
         """Test generating report from empty validation list."""
         report = validator.generate_validation_report([])
