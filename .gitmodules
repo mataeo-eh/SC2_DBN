@@ -7,3 +7,6 @@
 [submodule "bots/whySC2Bot"]
 	path = bots/whySC2Bot
 	url = https://github.com/mataeo-eh/whySC2Bot
+[submodule "src_new"]
+	path = src_new
+	url = https://github.com/mataeo-eh/SC2-gamestate-extractor.git
