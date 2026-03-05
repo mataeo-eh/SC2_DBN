@@ -24,6 +24,7 @@ Dimension reduction on the fly
             - run data stream through both and see which one matched it better
                 - one matches more closer prolly the predicting label 
     - autoencoders, after being trained, are light and run quite quickly... just saying
+        - autoencoders are used in stable diffusion arent they?
 
 
 hidden markov models
