@@ -1,9 +1,13 @@
 - Automate running the EDA notebook and saving it using papermill as pm
+- Look into Pushing the updated EDA notebooks to kaggle as well to update the kaggle dataset notebooks when the EDA notebooks get updated
 - After improving the EDA notebook, manually verify the data extracted for the 5 downloaded replays -> Need to run data extraction first
 - Add parameters for choosing which columns to write to parquet files after the information has been extracted from a replay.
 - Ensure .json writer contains helpful information in the json files -> Manual verification check needed here -> Some info missing, wrote claude prompt to address it.
 - Look more into feature selection algorithms to determine what features to pass a model for strategy prediction
 - Look more into the different strategies for turning huge matrices into tensor's attenable to ML
+
+- Need to re-run data extraction pipeline now that the "tag recycling" bug has been diagnosed and addressed
+
 
 
 
