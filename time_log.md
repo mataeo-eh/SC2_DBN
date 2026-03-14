@@ -30,4 +30,5 @@
 | 2026-03-05 | 06:30 | 08:00 |  2.0h    |  Turning data extraction tool into its own github repository and using it in main project as a submodule   |
 | 2026-03-10 | 05:00 | 06:00 |  1.0h    |  Doing some repo maintenance and improving claude's ability to work with this codebase.   |
 | 2026-03-12 | 06:00 | 07:00 |  1.0h    |  Running EDA notebooks and looking through them to verify data. Documented data discrepancies; diagnosing and addressing with claude.   |
+| 2026-03-14 | 07:00 | 08:00 |  1.0h    |  Re-running data extraction with new fixes to extraction pipeline. Adding EDA notebook running hooks into pipeline.   |
 |            |       |       |          |            |
