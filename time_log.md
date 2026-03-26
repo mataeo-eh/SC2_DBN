@@ -32,4 +32,5 @@
 | 2026-03-12 | 06:00 | 07:00 |  1.0h    |  Running EDA notebooks and looking through them to verify data. Documented data discrepancies; diagnosing and addressing with claude.   |
 | 2026-03-14 | 07:00 | 08:00 |  1.0h    |  Re-running data extraction with new fixes to extraction pipeline. Adding EDA notebook running hooks into pipeline.   |
 | 2026-03-20 | 06:00 | 07:00 |  1.0h    |  Checking data. Found some discrepencies. Working with claude to diagnose and fix.   |
+| 2026-03-26 | 06:00 | 07:30 |  1.5h    |  Checking data. Cleaning up data visualizations.   |
 |            |       |       |          |            |
