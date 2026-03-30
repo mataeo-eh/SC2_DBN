@@ -1,0 +1,1282 @@
+Using replay: C:\Users\matae\OneDrive\Desktop\Coding-Projects\local-play-bootstrap-main\replays\match_4184936.SC2Replay
+
+Map: Persephone AIE
+Duration: 8886 loops
+
+Calling controller.data_raw()...
+Total UnitTypeData entries: 2005
+
+================================================================================
+ALL UNIT TYPES WITH ATTRIBUTES
+================================================================================
+    ID  Name                                      Attributes
+--------------------------------------------------------------------------------
+     2  Ball                                      Biological
+     4  Colossus                                  Armored, Mechanical, Massive
+     5  TechLab                                   Armored, Mechanical, Structure [STRUCTURE]
+     6  Reactor                                   Armored, Mechanical, Structure [STRUCTURE]
+     7  InfestorTerran                            Light, Biological
+     8  BanelingCocoon                            Biological
+     9  Baneling                                  Biological
+    10  Mothership                                Armored, Mechanical, Psionic, Massive, Heroic
+    11  PointDefenseDrone                         Light, Mechanical, Structure [STRUCTURE]
+    12  Changeling                                Light, Biological
+    13  ChangelingZealot                          Light, Biological
+    14  ChangelingMarineShield                    Light, Biological
+    15  ChangelingMarine                          Light, Biological
+    16  ChangelingZerglingWings                   Light, Biological
+    17  ChangelingZergling                        Light, Biological
+    18  CommandCenter                             Armored, Mechanical, Structure [STRUCTURE]
+    19  SupplyDepot                               Armored, Mechanical, Structure [STRUCTURE]
+    20  Refinery                                  Armored, Mechanical, Structure [STRUCTURE]
+    21  Barracks                                  Armored, Mechanical, Structure [STRUCTURE]
+    22  EngineeringBay                            Armored, Mechanical, Structure [STRUCTURE]
+    23  MissileTurret                             Armored, Mechanical, Structure [STRUCTURE]
+    24  Bunker                                    Armored, Mechanical, Structure [STRUCTURE]
+    25  SensorTower                               Armored, Mechanical, Structure [STRUCTURE]
+    26  GhostAcademy                              Armored, Mechanical, Structure [STRUCTURE]
+    27  Factory                                   Armored, Mechanical, Structure [STRUCTURE]
+    28  Starport                                  Armored, Mechanical, Structure [STRUCTURE]
+    29  Armory                                    Armored, Mechanical, Structure [STRUCTURE]
+    30  FusionCore                                Armored, Mechanical, Structure [STRUCTURE]
+    31  AutoTurret                                Armored, Mechanical, Structure [STRUCTURE]
+    32  SiegeTankSieged                           Armored, Mechanical
+    33  SiegeTank                                 Armored, Mechanical
+    34  VikingAssault                             Armored, Mechanical
+    35  VikingFighter                             Armored, Mechanical
+    36  CommandCenterFlying                       Armored, Mechanical, Structure [STRUCTURE]
+    37  BarracksTechLab                           Armored, Mechanical, Structure [STRUCTURE]
+    38  BarracksReactor                           Armored, Mechanical, Structure [STRUCTURE]
+    39  FactoryTechLab                            Armored, Mechanical, Structure [STRUCTURE]
+    40  FactoryReactor                            Armored, Mechanical, Structure [STRUCTURE]
+    41  StarportTechLab                           Armored, Mechanical, Structure [STRUCTURE]
+    42  StarportReactor                           Armored, Mechanical, Structure [STRUCTURE]
+    43  FactoryFlying                             Armored, Mechanical, Structure [STRUCTURE]
+    44  StarportFlying                            Armored, Mechanical, Structure [STRUCTURE]
+    45  SCV                                       Light, Biological, Mechanical
+    46  BarracksFlying                            Armored, Mechanical, Structure [STRUCTURE]
+    47  SupplyDepotLowered                        Armored, Mechanical, Structure [STRUCTURE]
+    48  Marine                                    Light, Biological
+    49  Reaper                                    Light, Biological
+    50  Ghost                                     Biological, Psionic
+    51  Marauder                                  Armored, Biological
+    52  Thor                                      Armored, Mechanical, Massive
+    53  Hellion                                   Light, Mechanical
+    54  Medivac                                   Armored, Mechanical
+    55  Banshee                                   Light, Mechanical
+    56  Raven                                     Light, Mechanical
+    57  Battlecruiser                             Armored, Mechanical, Massive
+    59  Nexus                                     Armored, Structure [STRUCTURE]
+    60  Pylon                                     Armored, Structure [STRUCTURE]
+    61  Assimilator                               Armored, Structure [STRUCTURE]
+    62  Gateway                                   Armored, Structure [STRUCTURE]
+    63  Forge                                     Armored, Structure [STRUCTURE]
+    64  FleetBeacon                               Armored, Structure [STRUCTURE]
+    65  TwilightCouncil                           Armored, Structure [STRUCTURE]
+    66  PhotonCannon                              Armored, Structure [STRUCTURE]
+    67  Stargate                                  Armored, Structure [STRUCTURE]
+    68  TemplarArchive                            Armored, Structure [STRUCTURE]
+    69  DarkShrine                                Armored, Structure [STRUCTURE]
+    70  RoboticsBay                               Armored, Structure [STRUCTURE]
+    71  RoboticsFacility                          Armored, Structure [STRUCTURE]
+    72  CyberneticsCore                           Armored, Structure [STRUCTURE]
+    73  Zealot                                    Light, Biological
+    74  Stalker                                   Armored, Mechanical
+    75  HighTemplar                               Light, Biological, Psionic
+    76  DarkTemplar                               Light, Biological, Psionic
+    77  Sentry                                    Mechanical, Psionic
+    78  Phoenix                                   Light, Mechanical
+    79  Carrier                                   Armored, Mechanical, Massive
+    80  VoidRay                                   Armored, Mechanical
+    81  WarpPrism                                 Armored, Mechanical, Psionic
+    82  Observer                                  Light, Mechanical
+    83  Immortal                                  Armored, Mechanical
+    84  Probe                                     Light, Mechanical
+    85  Interceptor                               Light, Mechanical
+    86  Hatchery                                  Armored, Biological, Structure [STRUCTURE]
+    87  CreepTumor                                Light, Biological, Structure [STRUCTURE]
+    88  Extractor                                 Armored, Biological, Structure [STRUCTURE]
+    89  SpawningPool                              Armored, Biological, Structure [STRUCTURE]
+    90  EvolutionChamber                          Armored, Biological, Structure [STRUCTURE]
+    91  HydraliskDen                              Armored, Biological, Structure [STRUCTURE]
+    92  Spire                                     Armored, Biological, Structure [STRUCTURE]
+    93  UltraliskCavern                           Armored, Biological, Structure [STRUCTURE]
+    94  InfestationPit                            Armored, Biological, Structure [STRUCTURE]
+    95  NydusNetwork                              Armored, Biological, Structure [STRUCTURE]
+    96  BanelingNest                              Armored, Biological, Structure [STRUCTURE]
+    97  RoachWarren                               Armored, Biological, Structure [STRUCTURE]
+    98  SpineCrawler                              Armored, Biological, Structure [STRUCTURE]
+    99  SporeCrawler                              Armored, Biological, Structure [STRUCTURE]
+   100  Lair                                      Armored, Biological, Structure [STRUCTURE]
+   101  Hive                                      Armored, Biological, Structure [STRUCTURE]
+   102  GreaterSpire                              Armored, Biological, Structure [STRUCTURE]
+   103  Egg                                       Biological
+   104  Drone                                     Light, Biological
+   105  Zergling                                  Light, Biological
+   106  Overlord                                  Armored, Biological
+   107  Hydralisk                                 Light, Biological
+   108  Mutalisk                                  Light, Biological
+   109  Ultralisk                                 Armored, Biological, Massive
+   110  Roach                                     Armored, Biological
+   111  Infestor                                  Armored, Biological, Psionic
+   112  Corruptor                                 Armored, Biological
+   113  BroodLordCocoon                           Biological, Massive
+   114  BroodLord                                 Armored, Biological, Massive
+   115  BanelingBurrowed                          Biological
+   116  DroneBurrowed                             Light, Biological
+   117  HydraliskBurrowed                         Light, Biological
+   118  RoachBurrowed                             Armored, Biological
+   119  ZerglingBurrowed                          Light, Biological
+   120  InfestorTerranBurrowed                    Light, Biological
+   121  RedstoneLavaCritterBurrowed               Biological
+   122  RedstoneLavaCritterInjuredBurrowed        Biological
+   123  RedstoneLavaCritter                       Biological
+   124  RedstoneLavaCritterInjured                Biological
+   125  QueenBurrowed                             Biological, Psionic
+   126  Queen                                     Biological, Psionic
+   127  InfestorBurrowed                          Armored, Biological, Psionic
+   128  OverlordCocoon                            Biological
+   129  Overseer                                  Armored, Biological
+   130  PlanetaryFortress                         Armored, Mechanical, Structure [STRUCTURE]
+   131  UltraliskBurrowed                         Armored, Biological, Massive
+   132  OrbitalCommand                            Armored, Mechanical, Structure [STRUCTURE]
+   133  WarpGate                                  Armored, Structure [STRUCTURE]
+   134  OrbitalCommandFlying                      Armored, Mechanical, Structure [STRUCTURE]
+   136  WarpPrismPhasing                          Armored, Mechanical, Psionic
+   137  CreepTumorBurrowed                        Light, Biological, Structure [STRUCTURE]
+   138  CreepTumorQueen                           Light, Biological, Structure [STRUCTURE]
+   139  SpineCrawlerUprooted                      Armored, Biological, Structure [STRUCTURE]
+   140  SporeCrawlerUprooted                      Armored, Biological, Structure [STRUCTURE]
+   141  Archon                                    Psionic, Massive
+   142  NydusCanal                                Armored, Biological, Structure [STRUCTURE]
+   143  BroodlingEscort                           Light, Biological
+   144  GhostAlternate                            Biological, Psionic
+   145  GhostNova                                 Biological, Psionic
+   146  RichMineralField                          Structure [STRUCTURE]
+   147  RichMineralField750                       Structure [STRUCTURE]
+   148  Ursadon                                   Biological
+   149  XelNagaTower                              Structure [STRUCTURE]
+   150  InfestedTerransEgg                        Biological
+   151  Larva                                     Light, Biological
+   152  ReaperPlaceholder                         Biological
+   268  MULE                                      Light, Mechanical
+   289  Broodling                                 Light, Biological
+   311  Adept                                     Light, Biological
+   312  Rocks2x2NonConjoined                      Armored, Structure [STRUCTURE]
+   321  Lyote                                     Biological
+   322  CarrionBird                               Biological
+   323  KarakMale                                 Biological
+   324  KarakFemale                               Biological
+   325  UrsadakFemaleExotic                       Biological
+   326  UrsadakMale                               Biological
+   327  UrsadakFemale                             Biological
+   328  UrsadakCalf                               Biological
+   329  UrsadakMaleExotic                         Biological
+   330  UtilityBot                                Mechanical
+   331  CommentatorBot1                           Mechanical
+   332  CommentatorBot2                           Mechanical
+   333  CommentatorBot3                           Mechanical
+   334  CommentatorBot4                           Mechanical
+   335  Scantipede                                Biological
+   336  Dog                                       Biological
+   337  Sheep                                     Biological
+   338  Cow                                       Biological
+   341  MineralField                              Structure [STRUCTURE]
+   342  VespeneGeyser                             Structure [STRUCTURE]
+   343  SpacePlatformGeyser                       Structure [STRUCTURE]
+   344  RichVespeneGeyser                         Structure [STRUCTURE]
+   345  DestructibleSearchlight                   Armored
+   346  DestructibleBullhornLights                Armored
+   347  DestructibleStreetlight                   Armored
+   348  DestructibleSpacePlatformSign             Armored
+   349  DestructibleStoreFrontCityProps           Armored
+   350  DestructibleBillboardTall                 Armored
+   351  DestructibleBillboardScrollingText        Armored
+   352  DestructibleSpacePlatformBarrier          Armored
+   353  DestructibleSignsDirectional              Armored
+   354  DestructibleSignsConstruction             Armored
+   355  DestructibleSignsFunny                    Armored
+   356  DestructibleSignsIcons                    Armored
+   357  DestructibleSignsWarning                  Armored
+   358  DestructibleGarage                        Armored, Structure [STRUCTURE]
+   359  DestructibleGarageLarge                   Armored, Structure [STRUCTURE]
+   360  DestructibleTrafficSignal                 Armored
+   361  TrafficSignal                             Armored
+   362  BraxisAlphaDestructible1x1                Armored, Structure [STRUCTURE]
+   363  BraxisAlphaDestructible2x2                Armored, Structure [STRUCTURE]
+   364  DestructibleDebris4x4                     Armored, Structure [STRUCTURE]
+   365  DestructibleDebris6x6                     Armored, Structure [STRUCTURE]
+   366  DestructibleRock2x4Vertical               Armored, Structure [STRUCTURE]
+   367  DestructibleRock2x4Horizontal             Armored, Structure [STRUCTURE]
+   368  DestructibleRock2x6Vertical               Armored, Structure [STRUCTURE]
+   369  DestructibleRock2x6Horizontal             Armored, Structure [STRUCTURE]
+   370  DestructibleRock4x4                       Armored, Structure [STRUCTURE]
+   371  DestructibleRock6x6                       Armored, Structure [STRUCTURE]
+   372  DestructibleRampDiagonalHugeULBR          Armored, Structure [STRUCTURE]
+   373  DestructibleRampDiagonalHugeBLUR          Armored, Structure [STRUCTURE]
+   374  DestructibleRampVerticalHuge              Armored, Structure [STRUCTURE]
+   375  DestructibleRampHorizontalHuge            Armored, Structure [STRUCTURE]
+   376  DestructibleDebrisRampDiagonalHugeULBR    Armored, Structure [STRUCTURE]
+   377  DestructibleDebrisRampDiagonalHugeBLUR    Armored, Structure [STRUCTURE]
+   379  MengskStatueAlone                         Armored, Structure [STRUCTURE]
+   380  MengskStatue                              Armored, Structure [STRUCTURE]
+   381  WolfStatue                                Armored, Structure [STRUCTURE]
+   382  GlobeStatue                               Armored, Structure [STRUCTURE]
+   391  AutoTestAttackTargetGround                Light, Robotic
+   392  AutoTestAttackTargetAir                   Robotic
+   393  AutoTestAttacker                          Light, Biological
+   472  UnbuildableRocksDestructible              Armored, Structure [STRUCTURE]
+   473  UnbuildableBricksDestructible             Armored, Structure [STRUCTURE]
+   474  UnbuildablePlatesDestructible             Armored, Structure [STRUCTURE]
+   475  Debris2x2NonConjoined                     Armored, Structure [STRUCTURE]
+   481  ScopeTest                                 Light, Biological
+   483  MineralField750                           Structure [STRUCTURE]
+   484  HellionTank                               Light, Biological, Mechanical
+   485  CollapsibleTerranTowerDebris              Armored, Structure [STRUCTURE]
+   486  DebrisRampLeft                            Armored, Structure [STRUCTURE]
+   487  DebrisRampRight                           Armored, Structure [STRUCTURE]
+   488  MothershipCore                            Armored, Mechanical, Psionic
+   489  LocustMP                                  Light, Biological
+   490  CollapsibleRockTowerDebris                Armored, Structure [STRUCTURE]
+   491  NydusCanalAttacker                        Armored, Biological, Structure [STRUCTURE]
+   492  NydusCanalCreeper                         Armored, Biological, Structure [STRUCTURE]
+   493  SwarmHostBurrowedMP                       Armored, Biological
+   494  SwarmHostMP                               Armored, Biological
+   495  Oracle                                    Armored, Mechanical, Psionic
+   496  Tempest                                   Armored, Mechanical, Massive
+   497  WarHound                                  Armored, Mechanical
+   498  WidowMine                                 Light, Mechanical
+   499  Viper                                     Armored, Biological, Psionic
+   500  WidowMineBurrowed                         Light, Mechanical
+   501  LurkerMPEgg                               Biological
+   502  LurkerMP                                  Armored, Biological
+   503  LurkerMPBurrowed                          Armored, Biological
+   504  LurkerDenMP                               Armored, Biological, Structure [STRUCTURE]
+   505  ExtendingBridgeNEWide8Out                 Structure [STRUCTURE]
+   506  ExtendingBridgeNEWide8                    Structure [STRUCTURE]
+   507  ExtendingBridgeNWWide8Out                 Structure [STRUCTURE]
+   508  ExtendingBridgeNWWide8                    Structure [STRUCTURE]
+   509  ExtendingBridgeNEWide10Out                Structure [STRUCTURE]
+   510  ExtendingBridgeNEWide10                   Structure [STRUCTURE]
+   511  ExtendingBridgeNWWide10Out                Structure [STRUCTURE]
+   512  ExtendingBridgeNWWide10                   Structure [STRUCTURE]
+   513  ExtendingBridgeNEWide12Out                Structure [STRUCTURE]
+   514  ExtendingBridgeNEWide12                   Structure [STRUCTURE]
+   515  ExtendingBridgeNWWide12Out                Structure [STRUCTURE]
+   516  ExtendingBridgeNWWide12                   Structure [STRUCTURE]
+   517  CollapsibleRockTowerDebrisRampRight       Armored, Structure [STRUCTURE]
+   518  CollapsibleRockTowerDebrisRampLeft        Armored, Structure [STRUCTURE]
+   535  XelNaga_Caverns_Floating_BridgeNE8Out     Structure [STRUCTURE]
+   536  XelNaga_Caverns_Floating_BridgeNE8        Structure [STRUCTURE]
+   537  XelNaga_Caverns_Floating_BridgeNW8Out     Structure [STRUCTURE]
+   538  XelNaga_Caverns_Floating_BridgeNW8        Structure [STRUCTURE]
+   539  XelNaga_Caverns_Floating_BridgeNE10Out    Structure [STRUCTURE]
+   540  XelNaga_Caverns_Floating_BridgeNE10       Structure [STRUCTURE]
+   541  XelNaga_Caverns_Floating_BridgeNW10Out    Structure [STRUCTURE]
+   542  XelNaga_Caverns_Floating_BridgeNW10       Structure [STRUCTURE]
+   543  XelNaga_Caverns_Floating_BridgeNE12Out    Structure [STRUCTURE]
+   544  XelNaga_Caverns_Floating_BridgeNE12       Structure [STRUCTURE]
+   545  XelNaga_Caverns_Floating_BridgeNW12Out    Structure [STRUCTURE]
+   546  XelNaga_Caverns_Floating_BridgeNW12       Structure [STRUCTURE]
+   547  XelNaga_Caverns_Floating_BridgeH8Out      Structure [STRUCTURE]
+   548  XelNaga_Caverns_Floating_BridgeH8         Structure [STRUCTURE]
+   549  XelNaga_Caverns_Floating_BridgeV8Out      Structure [STRUCTURE]
+   550  XelNaga_Caverns_Floating_BridgeV8         Structure [STRUCTURE]
+   551  XelNaga_Caverns_Floating_BridgeH10Out     Structure [STRUCTURE]
+   552  XelNaga_Caverns_Floating_BridgeH10        Structure [STRUCTURE]
+   553  XelNaga_Caverns_Floating_BridgeV10Out     Structure [STRUCTURE]
+   554  XelNaga_Caverns_Floating_BridgeV10        Structure [STRUCTURE]
+   555  XelNaga_Caverns_Floating_BridgeH12Out     Structure [STRUCTURE]
+   556  XelNaga_Caverns_Floating_BridgeH12        Structure [STRUCTURE]
+   557  XelNaga_Caverns_Floating_BridgeV12Out     Structure [STRUCTURE]
+   558  XelNaga_Caverns_Floating_BridgeV12        Structure [STRUCTURE]
+   559  CollapsibleTerranTowerPushUnitRampLeft    Armored, Structure [STRUCTURE]
+   560  CollapsibleTerranTowerPushUnitRampRight   Armored, Structure [STRUCTURE]
+   561  CollapsibleRockTowerPushUnit              Armored, Structure [STRUCTURE]
+   562  CollapsibleTerranTowerPushUnit            Armored, Structure [STRUCTURE]
+   563  CollapsibleRockTowerPushUnitRampRight     Armored, Structure [STRUCTURE]
+   564  CollapsibleRockTowerPushUnitRampLeft      Armored, Structure [STRUCTURE]
+   565  DigesterCreepSprayTargetUnit              Armored, Biological, Mechanical, Massive, Structure, Heroic [STRUCTURE]
+   569  ResourceBlocker                           Structure [STRUCTURE]
+   588  CollapsibleRockTowerDiagonal              Armored, Structure [STRUCTURE]
+   589  CollapsibleTerranTowerDiagonal            Armored, Structure [STRUCTURE]
+   590  CollapsibleTerranTowerRampLeft            Armored, Structure [STRUCTURE]
+   591  CollapsibleTerranTowerRampRight           Armored, Structure [STRUCTURE]
+   592  Ice2x2NonConjoined                        Armored, Structure [STRUCTURE]
+   608  ProtossVespeneGeyser                      Structure [STRUCTURE]
+   609  CollapsibleRockTower                      Armored, Structure [STRUCTURE]
+   610  CollapsibleTerranTower                    Armored, Structure [STRUCTURE]
+   611  ThornLizard                               Biological
+   612  CleaningBot                               Mechanical
+   613  DestructibleRock6x6Weak                   Armored, Structure [STRUCTURE]
+   614  ProtossSnakeSegmentDemo                   Armored, Biological
+   624  DestructibleCityDebris2x4Vertical         Armored, Structure [STRUCTURE]
+   625  DestructibleCityDebris2x4Horizontal       Armored, Structure [STRUCTURE]
+   626  DestructibleCityDebris2x6Vertical         Armored, Structure [STRUCTURE]
+   627  DestructibleCityDebris2x6Horizontal       Armored, Structure [STRUCTURE]
+   628  DestructibleCityDebris4x4                 Armored, Structure [STRUCTURE]
+   629  DestructibleCityDebris6x6                 Armored, Structure [STRUCTURE]
+   630  DestructibleCityDebrisHugeDiagonalBLUR    Armored, Structure [STRUCTURE]
+   631  DestructibleCityDebrisHugeDiagonalULBR    Armored, Structure [STRUCTURE]
+   632  TestZerg                                  Light, Biological
+   634  DestructibleRockEx12x4Vertical            Armored, Structure [STRUCTURE]
+   635  DestructibleRockEx12x4Horizontal          Armored, Structure [STRUCTURE]
+   636  DestructibleRockEx12x6Vertical            Armored, Structure [STRUCTURE]
+   637  DestructibleRockEx12x6Horizontal          Armored, Structure [STRUCTURE]
+   638  DestructibleRockEx14x4                    Armored, Structure [STRUCTURE]
+   639  DestructibleRockEx16x6                    Armored, Structure [STRUCTURE]
+   640  DestructibleRockEx1DiagonalHugeULBR       Armored, Structure [STRUCTURE]
+   641  DestructibleRockEx1DiagonalHugeBLUR       Armored, Structure [STRUCTURE]
+   642  DestructibleRockEx1VerticalHuge           Armored, Structure [STRUCTURE]
+   643  DestructibleRockEx1HorizontalHuge         Armored, Structure [STRUCTURE]
+   644  DestructibleIce2x4Vertical                Armored, Structure [STRUCTURE]
+   645  DestructibleIce2x4Horizontal              Armored, Structure [STRUCTURE]
+   646  DestructibleIce2x6Vertical                Armored, Structure [STRUCTURE]
+   647  DestructibleIce2x6Horizontal              Armored, Structure [STRUCTURE]
+   648  DestructibleIce4x4                        Armored, Structure [STRUCTURE]
+   649  DestructibleIce6x6                        Armored, Structure [STRUCTURE]
+   650  DestructibleIceDiagonalHugeULBR           Armored, Structure [STRUCTURE]
+   651  DestructibleIceDiagonalHugeBLUR           Armored, Structure [STRUCTURE]
+   652  DestructibleIceVerticalHuge               Armored, Structure [STRUCTURE]
+   653  DestructibleIceHorizontalHuge             Armored, Structure [STRUCTURE]
+   654  DesertPlanetSearchlight                   Armored
+   655  DesertPlanetStreetlight                   Armored
+   658  ZerusDestructibleArch                     Armored, Structure [STRUCTURE]
+   659  Artosilope                                Biological
+   660  Anteplott                                 Biological
+   661  LabBot                                    Mechanical, Hover
+   662  Crabeetle                                 Biological
+   663  CollapsibleRockTowerRampRight             Armored, Structure [STRUCTURE]
+   664  CollapsibleRockTowerRampLeft              Armored, Structure [STRUCTURE]
+   665  LabMineralField                           Structure [STRUCTURE]
+   666  LabMineralField750                        Structure [STRUCTURE]
+   667  SnowRefinery_Terran_ExtendingBridgeNEShort8Out  Structure [STRUCTURE]
+   668  SnowRefinery_Terran_ExtendingBridgeNEShort8  Structure [STRUCTURE]
+   669  SnowRefinery_Terran_ExtendingBridgeNWShort8Out  Structure [STRUCTURE]
+   670  SnowRefinery_Terran_ExtendingBridgeNWShort8  Structure [STRUCTURE]
+   687  RavagerCocoon                             Biological
+   688  Ravager                                   Biological
+   689  Liberator                                 Armored, Mechanical
+   690  RavagerBurrowed                           Biological
+   691  ThorAP                                    Armored, Mechanical, Massive
+   692  Cyclone                                   Armored, Mechanical
+   693  LocustMPFlying                            Light, Biological
+   694  Disruptor                                 Armored, Mechanical
+   695  AiurLightBridgeNE8Out                     Structure [STRUCTURE]
+   696  AiurLightBridgeNE8                        Structure [STRUCTURE]
+   697  AiurLightBridgeNE10Out                    Structure [STRUCTURE]
+   698  AiurLightBridgeNE10                       Structure [STRUCTURE]
+   699  AiurLightBridgeNE12Out                    Structure [STRUCTURE]
+   700  AiurLightBridgeNE12                       Structure [STRUCTURE]
+   701  AiurLightBridgeNW8Out                     Structure [STRUCTURE]
+   702  AiurLightBridgeNW8                        Structure [STRUCTURE]
+   703  AiurLightBridgeNW10Out                    Structure [STRUCTURE]
+   704  AiurLightBridgeNW10                       Structure [STRUCTURE]
+   705  AiurLightBridgeNW12Out                    Structure [STRUCTURE]
+   706  AiurLightBridgeNW12                       Structure [STRUCTURE]
+   707  AiurTempleBridgeNE8Out                    Structure [STRUCTURE]
+   708  AiurTempleBridgeNE10Out                   Structure [STRUCTURE]
+   709  AiurTempleBridgeNE12Out                   Structure [STRUCTURE]
+   710  AiurTempleBridgeNW8Out                    Structure [STRUCTURE]
+   711  AiurTempleBridgeNW10Out                   Structure [STRUCTURE]
+   712  AiurTempleBridgeNW12Out                   Structure [STRUCTURE]
+   713  ShakurasLightBridgeNE8Out                 Structure [STRUCTURE]
+   714  ShakurasLightBridgeNE8                    Structure [STRUCTURE]
+   715  ShakurasLightBridgeNE10Out                Structure [STRUCTURE]
+   716  ShakurasLightBridgeNE10                   Structure [STRUCTURE]
+   717  ShakurasLightBridgeNE12Out                Structure [STRUCTURE]
+   718  ShakurasLightBridgeNE12                   Structure [STRUCTURE]
+   719  ShakurasLightBridgeNW8Out                 Structure [STRUCTURE]
+   720  ShakurasLightBridgeNW8                    Structure [STRUCTURE]
+   721  ShakurasLightBridgeNW10Out                Structure [STRUCTURE]
+   722  ShakurasLightBridgeNW10                   Structure [STRUCTURE]
+   723  ShakurasLightBridgeNW12Out                Structure [STRUCTURE]
+   724  ShakurasLightBridgeNW12                   Structure [STRUCTURE]
+   725  VoidMPImmortalReviveCorpse                Armored, Mechanical
+   726  GuardianCocoonMP                          Biological, Massive
+   727  GuardianMP                                Armored, Biological, Massive
+   728  DevourerCocoonMP                          Biological, Massive
+   729  DevourerMP                                Armored, Biological, Massive
+   730  DefilerMPBurrowed                         Biological, Psionic
+   731  DefilerMP                                 Biological, Psionic
+   732  OracleStasisTrap                          Light, Structure [STRUCTURE]
+   733  DisruptorPhased                           Armored, Mechanical
+   734  LiberatorAG                               Armored, Mechanical
+   735  AiurLightBridgeAbandonedNE8Out            Structure [STRUCTURE]
+   736  AiurLightBridgeAbandonedNE8               Structure [STRUCTURE]
+   737  AiurLightBridgeAbandonedNE10Out           Structure [STRUCTURE]
+   738  AiurLightBridgeAbandonedNE10              Structure [STRUCTURE]
+   739  AiurLightBridgeAbandonedNE12Out           Structure [STRUCTURE]
+   740  AiurLightBridgeAbandonedNE12              Structure [STRUCTURE]
+   741  AiurLightBridgeAbandonedNW8Out            Structure [STRUCTURE]
+   742  AiurLightBridgeAbandonedNW8               Structure [STRUCTURE]
+   743  AiurLightBridgeAbandonedNW10Out           Structure [STRUCTURE]
+   744  AiurLightBridgeAbandonedNW10              Structure [STRUCTURE]
+   745  AiurLightBridgeAbandonedNW12Out           Structure [STRUCTURE]
+   746  AiurLightBridgeAbandonedNW12              Structure [STRUCTURE]
+   747  CollapsiblePurifierTowerDebris            Armored, Structure [STRUCTURE]
+   748  PortCity_Bridge_UnitNE8Out                Structure [STRUCTURE]
+   749  PortCity_Bridge_UnitNE8                   Structure [STRUCTURE]
+   750  PortCity_Bridge_UnitSE8Out                Structure [STRUCTURE]
+   751  PortCity_Bridge_UnitSE8                   Structure [STRUCTURE]
+   752  PortCity_Bridge_UnitNW8Out                Structure [STRUCTURE]
+   753  PortCity_Bridge_UnitNW8                   Structure [STRUCTURE]
+   754  PortCity_Bridge_UnitSW8Out                Structure [STRUCTURE]
+   755  PortCity_Bridge_UnitSW8                   Structure [STRUCTURE]
+   756  PortCity_Bridge_UnitNE10Out               Structure [STRUCTURE]
+   757  PortCity_Bridge_UnitNE10                  Structure [STRUCTURE]
+   758  PortCity_Bridge_UnitSE10Out               Structure [STRUCTURE]
+   759  PortCity_Bridge_UnitSE10                  Structure [STRUCTURE]
+   760  PortCity_Bridge_UnitNW10Out               Structure [STRUCTURE]
+   761  PortCity_Bridge_UnitNW10                  Structure [STRUCTURE]
+   762  PortCity_Bridge_UnitSW10Out               Structure [STRUCTURE]
+   763  PortCity_Bridge_UnitSW10                  Structure [STRUCTURE]
+   764  PortCity_Bridge_UnitNE12Out               Structure [STRUCTURE]
+   765  PortCity_Bridge_UnitNE12                  Structure [STRUCTURE]
+   766  PortCity_Bridge_UnitSE12Out               Structure [STRUCTURE]
+   767  PortCity_Bridge_UnitSE12                  Structure [STRUCTURE]
+   768  PortCity_Bridge_UnitNW12Out               Structure [STRUCTURE]
+   769  PortCity_Bridge_UnitNW12                  Structure [STRUCTURE]
+   770  PortCity_Bridge_UnitSW12Out               Structure [STRUCTURE]
+   771  PortCity_Bridge_UnitSW12                  Structure [STRUCTURE]
+   772  PortCity_Bridge_UnitN8Out                 Structure [STRUCTURE]
+   773  PortCity_Bridge_UnitN8                    Structure [STRUCTURE]
+   774  PortCity_Bridge_UnitS8Out                 Structure [STRUCTURE]
+   775  PortCity_Bridge_UnitS8                    Structure [STRUCTURE]
+   776  PortCity_Bridge_UnitE8Out                 Structure [STRUCTURE]
+   777  PortCity_Bridge_UnitE8                    Structure [STRUCTURE]
+   778  PortCity_Bridge_UnitW8Out                 Structure [STRUCTURE]
+   779  PortCity_Bridge_UnitW8                    Structure [STRUCTURE]
+   780  PortCity_Bridge_UnitN10Out                Structure [STRUCTURE]
+   781  PortCity_Bridge_UnitN10                   Structure [STRUCTURE]
+   782  PortCity_Bridge_UnitS10Out                Structure [STRUCTURE]
+   783  PortCity_Bridge_UnitS10                   Structure [STRUCTURE]
+   784  PortCity_Bridge_UnitE10Out                Structure [STRUCTURE]
+   785  PortCity_Bridge_UnitE10                   Structure [STRUCTURE]
+   786  PortCity_Bridge_UnitW10Out                Structure [STRUCTURE]
+   787  PortCity_Bridge_UnitW10                   Structure [STRUCTURE]
+   788  PortCity_Bridge_UnitN12Out                Structure [STRUCTURE]
+   789  PortCity_Bridge_UnitN12                   Structure [STRUCTURE]
+   790  PortCity_Bridge_UnitS12Out                Structure [STRUCTURE]
+   791  PortCity_Bridge_UnitS12                   Structure [STRUCTURE]
+   792  PortCity_Bridge_UnitE12Out                Structure [STRUCTURE]
+   793  PortCity_Bridge_UnitE12                   Structure [STRUCTURE]
+   794  PortCity_Bridge_UnitW12Out                Structure [STRUCTURE]
+   795  PortCity_Bridge_UnitW12                   Structure [STRUCTURE]
+   796  PurifierRichMineralField                  Structure [STRUCTURE]
+   797  PurifierRichMineralField750               Structure [STRUCTURE]
+   798  CollapsiblePurifierTowerPushUnit          Armored, Structure [STRUCTURE]
+   801  AdeptPhaseShift                           Light, Biological
+   820  HERCPlacement                             Armored, Biological
+   830  KD8Charge                                 Structure [STRUCTURE]
+   833  SlaynElementalGrabAirUnit                 Biological
+   834  SlaynElementalGrabGroundUnit              Biological
+   836  DestructibleExpeditionGate6x6             Armored, Structure [STRUCTURE]
+   837  DestructibleZergInfestation3x3            Armored, Structure [STRUCTURE]
+   838  HERC                                      Armored, Biological
+   839  Moopy                                     Light, Biological
+   840  Replicant                                 Light, Biological
+   842  AiurTempleBridgeDestructibleNE8Out        Structure [STRUCTURE]
+   843  AiurTempleBridgeDestructibleNE10Out       Structure [STRUCTURE]
+   844  AiurTempleBridgeDestructibleNE12Out       Structure [STRUCTURE]
+   845  AiurTempleBridgeDestructibleNW8Out        Structure [STRUCTURE]
+   846  AiurTempleBridgeDestructibleNW10Out       Structure [STRUCTURE]
+   847  AiurTempleBridgeDestructibleNW12Out       Structure [STRUCTURE]
+   848  AiurTempleBridgeDestructibleSW8Out        Structure [STRUCTURE]
+   849  AiurTempleBridgeDestructibleSW10Out       Structure [STRUCTURE]
+   850  AiurTempleBridgeDestructibleSW12Out       Structure [STRUCTURE]
+   851  AiurTempleBridgeDestructibleSE8Out        Structure [STRUCTURE]
+   852  AiurTempleBridgeDestructibleSE10Out       Structure [STRUCTURE]
+   853  AiurTempleBridgeDestructibleSE12Out       Structure [STRUCTURE]
+   855  CorsairMP                                 Light, Mechanical
+   856  ScoutMP                                   Armored, Mechanical
+   857  ArbiterMP                                 Armored, Mechanical
+   858  ScourgeMP                                 Light, Biological
+   860  QueenMP                                   Biological
+   861  XelNagaDestructibleRampBlocker6S          Armored, Structure [STRUCTURE]
+   862  XelNagaDestructibleRampBlocker6SE         Armored, Structure [STRUCTURE]
+   863  XelNagaDestructibleRampBlocker6E          Armored, Structure [STRUCTURE]
+   864  XelNagaDestructibleRampBlocker6NE         Armored, Structure [STRUCTURE]
+   865  XelNagaDestructibleRampBlocker6N          Armored, Structure [STRUCTURE]
+   866  XelNagaDestructibleRampBlocker6NW         Armored, Structure [STRUCTURE]
+   867  XelNagaDestructibleRampBlocker6W          Armored, Structure [STRUCTURE]
+   868  XelNagaDestructibleRampBlocker6SW         Armored, Structure [STRUCTURE]
+   869  XelNagaDestructibleRampBlocker8S          Armored, Structure [STRUCTURE]
+   870  XelNagaDestructibleRampBlocker8SE         Armored, Structure [STRUCTURE]
+   871  XelNagaDestructibleRampBlocker8E          Armored, Structure [STRUCTURE]
+   872  XelNagaDestructibleRampBlocker8NE         Armored, Structure [STRUCTURE]
+   873  XelNagaDestructibleRampBlocker8N          Armored, Structure [STRUCTURE]
+   874  XelNagaDestructibleRampBlocker8NW         Armored, Structure [STRUCTURE]
+   875  XelNagaDestructibleRampBlocker8W          Armored, Structure [STRUCTURE]
+   876  XelNagaDestructibleRampBlocker8SW         Armored, Structure [STRUCTURE]
+   877  ReptileCrate                              Biological
+   878  SlaynSwarmHostSpawnFlyer                  Biological
+   879  SlaynElemental                            Armored, Biological, Massive, Heroic
+   880  PurifierVespeneGeyser                     Structure [STRUCTURE]
+   881  ShakurasVespeneGeyser                     Structure [STRUCTURE]
+   882  CollapsiblePurifierTowerDiagonal          Armored, Structure [STRUCTURE]
+   884  PurifierMineralField                      Structure [STRUCTURE]
+   885  PurifierMineralField750                   Structure [STRUCTURE]
+   886  BattleStationMineralField                 Structure [STRUCTURE]
+   887  BattleStationMineralField750              Structure [STRUCTURE]
+   890  Ursula                                    Biological
+   891  Elsecaro_Colonist_Hut                     Armored, Mechanical, Structure [STRUCTURE]
+   892  TransportOverlordCocoon                   Biological
+   893  OverlordTransport                         Armored, Biological
+   894  PylonOvercharged                          Armored, Structure [STRUCTURE]
+   895  BypassArmorDrone                          Light, Mechanical, Structure [STRUCTURE]
+  1893  XelNagaDestructibleBlocker6S              Armored, Structure [STRUCTURE]
+  1894  XelNagaDestructibleBlocker6SE             Armored, Structure [STRUCTURE]
+  1895  XelNagaDestructibleBlocker6E              Armored, Structure [STRUCTURE]
+  1896  XelNagaDestructibleBlocker6NE             Armored, Structure [STRUCTURE]
+  1897  XelNagaDestructibleBlocker6N              Armored, Structure [STRUCTURE]
+  1898  XelNagaDestructibleBlocker6NW             Armored, Structure [STRUCTURE]
+  1899  XelNagaDestructibleBlocker6W              Armored, Structure [STRUCTURE]
+  1900  XelNagaDestructibleBlocker6SW             Armored, Structure [STRUCTURE]
+  1901  XelNagaDestructibleBlocker8S              Armored, Structure [STRUCTURE]
+  1902  XelNagaDestructibleBlocker8SE             Armored, Structure [STRUCTURE]
+  1903  XelNagaDestructibleBlocker8E              Armored, Structure [STRUCTURE]
+  1904  XelNagaDestructibleBlocker8NE             Armored, Structure [STRUCTURE]
+  1905  XelNagaDestructibleBlocker8N              Armored, Structure [STRUCTURE]
+  1906  XelNagaDestructibleBlocker8NW             Armored, Structure [STRUCTURE]
+  1907  XelNagaDestructibleBlocker8W              Armored, Structure [STRUCTURE]
+  1908  XelNagaDestructibleBlocker8SW             Armored, Structure [STRUCTURE]
+  1910  ShieldBattery                             Armored, Structure [STRUCTURE]
+  1911  ObserverSiegeMode                         Light, Mechanical
+  1912  OverseerSiegeMode                         Armored, Biological
+  1913  RavenRepairDrone                          Light, Mechanical, Structure, Summoned [STRUCTURE]
+  1941  RenegadeMissileTurret                     Armored, Mechanical, Structure [STRUCTURE]
+  1943  RefineryRich                              Armored, Mechanical, Structure [STRUCTURE]
+  1982  InhibitorZoneSmall                        Structure [STRUCTURE]
+  1983  InhibitorZoneMedium                       Structure [STRUCTURE]
+  1984  InhibitorZoneLarge                        Structure [STRUCTURE]
+  1994  AssimilatorRich                           Armored, Structure [STRUCTURE]
+  1995  ExtractorRich                             Armored, Biological, Structure [STRUCTURE]
+  1996  MineralField450                           Structure [STRUCTURE]
+  1997  MineralFieldOpaque                        Structure [STRUCTURE]
+  1998  MineralFieldOpaque900                     Structure [STRUCTURE]
+  1999  CollapsibleRockTowerDebrisRampLeftGreen   Armored, Structure [STRUCTURE]
+  2000  CollapsibleRockTowerDebrisRampRightGreen  Armored, Structure [STRUCTURE]
+  2001  CollapsibleRockTowerPushUnitRampLeftGreen  Armored, Structure [STRUCTURE]
+  2002  CollapsibleRockTowerPushUnitRampRightGreen  Armored, Structure [STRUCTURE]
+  2003  CollapsibleRockTowerRampLeftGreen         Armored, Structure [STRUCTURE]
+  2004  CollapsibleRockTowerRampRightGreen        Armored, Structure [STRUCTURE]
+
+================================================================================
+ATTRIBUTE ENUM VALUES FOUND
+================================================================================
+    1 = Light
+    2 = Armored
+    3 = Biological
+    4 = Mechanical
+    5 = Robotic
+    6 = Psionic
+    7 = Massive
+    8 = Structure
+    9 = Hover
+   10 = Heroic
+   11 = Summoned
+
+Total unique attribute values: 11
+
+================================================================================
+STRUCTURE-ATTRIBUTED TYPES (from data_raw)
+================================================================================
+     738  AiurLightBridgeAbandonedNE10
+     737  AiurLightBridgeAbandonedNE10Out
+     740  AiurLightBridgeAbandonedNE12
+     739  AiurLightBridgeAbandonedNE12Out
+     736  AiurLightBridgeAbandonedNE8
+     735  AiurLightBridgeAbandonedNE8Out
+     744  AiurLightBridgeAbandonedNW10
+     743  AiurLightBridgeAbandonedNW10Out
+     746  AiurLightBridgeAbandonedNW12
+     745  AiurLightBridgeAbandonedNW12Out
+     742  AiurLightBridgeAbandonedNW8
+     741  AiurLightBridgeAbandonedNW8Out
+     698  AiurLightBridgeNE10
+     697  AiurLightBridgeNE10Out
+     700  AiurLightBridgeNE12
+     699  AiurLightBridgeNE12Out
+     696  AiurLightBridgeNE8
+     695  AiurLightBridgeNE8Out
+     704  AiurLightBridgeNW10
+     703  AiurLightBridgeNW10Out
+     706  AiurLightBridgeNW12
+     705  AiurLightBridgeNW12Out
+     702  AiurLightBridgeNW8
+     701  AiurLightBridgeNW8Out
+     843  AiurTempleBridgeDestructibleNE10Out
+     844  AiurTempleBridgeDestructibleNE12Out
+     842  AiurTempleBridgeDestructibleNE8Out
+     846  AiurTempleBridgeDestructibleNW10Out
+     847  AiurTempleBridgeDestructibleNW12Out
+     845  AiurTempleBridgeDestructibleNW8Out
+     852  AiurTempleBridgeDestructibleSE10Out
+     853  AiurTempleBridgeDestructibleSE12Out
+     851  AiurTempleBridgeDestructibleSE8Out
+     849  AiurTempleBridgeDestructibleSW10Out
+     850  AiurTempleBridgeDestructibleSW12Out
+     848  AiurTempleBridgeDestructibleSW8Out
+     708  AiurTempleBridgeNE10Out
+     709  AiurTempleBridgeNE12Out
+     707  AiurTempleBridgeNE8Out
+     711  AiurTempleBridgeNW10Out
+     712  AiurTempleBridgeNW12Out
+     710  AiurTempleBridgeNW8Out
+      29  Armory
+      61  Assimilator
+    1994  AssimilatorRich
+      31  AutoTurret
+      96  BanelingNest
+      21  Barracks
+      46  BarracksFlying
+      38  BarracksReactor
+      37  BarracksTechLab
+     886  BattleStationMineralField
+     887  BattleStationMineralField750
+     362  BraxisAlphaDestructible1x1
+     363  BraxisAlphaDestructible2x2
+      24  Bunker
+     895  BypassArmorDrone
+     747  CollapsiblePurifierTowerDebris
+     882  CollapsiblePurifierTowerDiagonal
+     798  CollapsiblePurifierTowerPushUnit
+     609  CollapsibleRockTower
+     490  CollapsibleRockTowerDebris
+     518  CollapsibleRockTowerDebrisRampLeft
+    1999  CollapsibleRockTowerDebrisRampLeftGreen
+     517  CollapsibleRockTowerDebrisRampRight
+    2000  CollapsibleRockTowerDebrisRampRightGreen
+     588  CollapsibleRockTowerDiagonal
+     561  CollapsibleRockTowerPushUnit
+     564  CollapsibleRockTowerPushUnitRampLeft
+    2001  CollapsibleRockTowerPushUnitRampLeftGreen
+     563  CollapsibleRockTowerPushUnitRampRight
+    2002  CollapsibleRockTowerPushUnitRampRightGreen
+     664  CollapsibleRockTowerRampLeft
+    2003  CollapsibleRockTowerRampLeftGreen
+     663  CollapsibleRockTowerRampRight
+    2004  CollapsibleRockTowerRampRightGreen
+     610  CollapsibleTerranTower
+     485  CollapsibleTerranTowerDebris
+     589  CollapsibleTerranTowerDiagonal
+     562  CollapsibleTerranTowerPushUnit
+     559  CollapsibleTerranTowerPushUnitRampLeft
+     560  CollapsibleTerranTowerPushUnitRampRight
+     590  CollapsibleTerranTowerRampLeft
+     591  CollapsibleTerranTowerRampRight
+      18  CommandCenter
+      36  CommandCenterFlying
+      87  CreepTumor
+     137  CreepTumorBurrowed
+     138  CreepTumorQueen
+      72  CyberneticsCore
+      69  DarkShrine
+     475  Debris2x2NonConjoined
+     486  DebrisRampLeft
+     487  DebrisRampRight
+     625  DestructibleCityDebris2x4Horizontal
+     624  DestructibleCityDebris2x4Vertical
+     627  DestructibleCityDebris2x6Horizontal
+     626  DestructibleCityDebris2x6Vertical
+     628  DestructibleCityDebris4x4
+     629  DestructibleCityDebris6x6
+     630  DestructibleCityDebrisHugeDiagonalBLUR
+     631  DestructibleCityDebrisHugeDiagonalULBR
+     364  DestructibleDebris4x4
+     365  DestructibleDebris6x6
+     377  DestructibleDebrisRampDiagonalHugeBLUR
+     376  DestructibleDebrisRampDiagonalHugeULBR
+     836  DestructibleExpeditionGate6x6
+     358  DestructibleGarage
+     359  DestructibleGarageLarge
+     645  DestructibleIce2x4Horizontal
+     644  DestructibleIce2x4Vertical
+     647  DestructibleIce2x6Horizontal
+     646  DestructibleIce2x6Vertical
+     648  DestructibleIce4x4
+     649  DestructibleIce6x6
+     651  DestructibleIceDiagonalHugeBLUR
+     650  DestructibleIceDiagonalHugeULBR
+     653  DestructibleIceHorizontalHuge
+     652  DestructibleIceVerticalHuge
+     373  DestructibleRampDiagonalHugeBLUR
+     372  DestructibleRampDiagonalHugeULBR
+     375  DestructibleRampHorizontalHuge
+     374  DestructibleRampVerticalHuge
+     367  DestructibleRock2x4Horizontal
+     366  DestructibleRock2x4Vertical
+     369  DestructibleRock2x6Horizontal
+     368  DestructibleRock2x6Vertical
+     370  DestructibleRock4x4
+     371  DestructibleRock6x6
+     613  DestructibleRock6x6Weak
+     635  DestructibleRockEx12x4Horizontal
+     634  DestructibleRockEx12x4Vertical
+     637  DestructibleRockEx12x6Horizontal
+     636  DestructibleRockEx12x6Vertical
+     638  DestructibleRockEx14x4
+     639  DestructibleRockEx16x6
+     641  DestructibleRockEx1DiagonalHugeBLUR
+     640  DestructibleRockEx1DiagonalHugeULBR
+     643  DestructibleRockEx1HorizontalHuge
+     642  DestructibleRockEx1VerticalHuge
+     837  DestructibleZergInfestation3x3
+     565  DigesterCreepSprayTargetUnit
+     891  Elsecaro_Colonist_Hut
+      22  EngineeringBay
+      90  EvolutionChamber
+     510  ExtendingBridgeNEWide10
+     509  ExtendingBridgeNEWide10Out
+     514  ExtendingBridgeNEWide12
+     513  ExtendingBridgeNEWide12Out
+     506  ExtendingBridgeNEWide8
+     505  ExtendingBridgeNEWide8Out
+     512  ExtendingBridgeNWWide10
+     511  ExtendingBridgeNWWide10Out
+     516  ExtendingBridgeNWWide12
+     515  ExtendingBridgeNWWide12Out
+     508  ExtendingBridgeNWWide8
+     507  ExtendingBridgeNWWide8Out
+      88  Extractor
+    1995  ExtractorRich
+      27  Factory
+      43  FactoryFlying
+      40  FactoryReactor
+      39  FactoryTechLab
+      64  FleetBeacon
+      63  Forge
+      30  FusionCore
+      62  Gateway
+      26  GhostAcademy
+     382  GlobeStatue
+     102  GreaterSpire
+      86  Hatchery
+     101  Hive
+      91  HydraliskDen
+     592  Ice2x2NonConjoined
+      94  InfestationPit
+    1984  InhibitorZoneLarge
+    1983  InhibitorZoneMedium
+    1982  InhibitorZoneSmall
+     830  KD8Charge
+     665  LabMineralField
+     666  LabMineralField750
+     100  Lair
+     504  LurkerDenMP
+     380  MengskStatue
+     379  MengskStatueAlone
+     341  MineralField
+    1996  MineralField450
+     483  MineralField750
+    1997  MineralFieldOpaque
+    1998  MineralFieldOpaque900
+      23  MissileTurret
+      59  Nexus
+     142  NydusCanal
+     491  NydusCanalAttacker
+     492  NydusCanalCreeper
+      95  NydusNetwork
+     732  OracleStasisTrap
+     132  OrbitalCommand
+     134  OrbitalCommandFlying
+      66  PhotonCannon
+     130  PlanetaryFortress
+      11  PointDefenseDrone
+     785  PortCity_Bridge_UnitE10
+     784  PortCity_Bridge_UnitE10Out
+     793  PortCity_Bridge_UnitE12
+     792  PortCity_Bridge_UnitE12Out
+     777  PortCity_Bridge_UnitE8
+     776  PortCity_Bridge_UnitE8Out
+     781  PortCity_Bridge_UnitN10
+     780  PortCity_Bridge_UnitN10Out
+     789  PortCity_Bridge_UnitN12
+     788  PortCity_Bridge_UnitN12Out
+     773  PortCity_Bridge_UnitN8
+     772  PortCity_Bridge_UnitN8Out
+     757  PortCity_Bridge_UnitNE10
+     756  PortCity_Bridge_UnitNE10Out
+     765  PortCity_Bridge_UnitNE12
+     764  PortCity_Bridge_UnitNE12Out
+     749  PortCity_Bridge_UnitNE8
+     748  PortCity_Bridge_UnitNE8Out
+     761  PortCity_Bridge_UnitNW10
+     760  PortCity_Bridge_UnitNW10Out
+     769  PortCity_Bridge_UnitNW12
+     768  PortCity_Bridge_UnitNW12Out
+     753  PortCity_Bridge_UnitNW8
+     752  PortCity_Bridge_UnitNW8Out
+     783  PortCity_Bridge_UnitS10
+     782  PortCity_Bridge_UnitS10Out
+     791  PortCity_Bridge_UnitS12
+     790  PortCity_Bridge_UnitS12Out
+     775  PortCity_Bridge_UnitS8
+     774  PortCity_Bridge_UnitS8Out
+     759  PortCity_Bridge_UnitSE10
+     758  PortCity_Bridge_UnitSE10Out
+     767  PortCity_Bridge_UnitSE12
+     766  PortCity_Bridge_UnitSE12Out
+     751  PortCity_Bridge_UnitSE8
+     750  PortCity_Bridge_UnitSE8Out
+     763  PortCity_Bridge_UnitSW10
+     762  PortCity_Bridge_UnitSW10Out
+     771  PortCity_Bridge_UnitSW12
+     770  PortCity_Bridge_UnitSW12Out
+     755  PortCity_Bridge_UnitSW8
+     754  PortCity_Bridge_UnitSW8Out
+     787  PortCity_Bridge_UnitW10
+     786  PortCity_Bridge_UnitW10Out
+     795  PortCity_Bridge_UnitW12
+     794  PortCity_Bridge_UnitW12Out
+     779  PortCity_Bridge_UnitW8
+     778  PortCity_Bridge_UnitW8Out
+     608  ProtossVespeneGeyser
+     884  PurifierMineralField
+     885  PurifierMineralField750
+     796  PurifierRichMineralField
+     797  PurifierRichMineralField750
+     880  PurifierVespeneGeyser
+      60  Pylon
+     894  PylonOvercharged
+    1913  RavenRepairDrone
+       6  Reactor
+      20  Refinery
+    1943  RefineryRich
+    1941  RenegadeMissileTurret
+     569  ResourceBlocker
+     146  RichMineralField
+     147  RichMineralField750
+     344  RichVespeneGeyser
+      97  RoachWarren
+      70  RoboticsBay
+      71  RoboticsFacility
+     312  Rocks2x2NonConjoined
+      25  SensorTower
+     716  ShakurasLightBridgeNE10
+     715  ShakurasLightBridgeNE10Out
+     718  ShakurasLightBridgeNE12
+     717  ShakurasLightBridgeNE12Out
+     714  ShakurasLightBridgeNE8
+     713  ShakurasLightBridgeNE8Out
+     722  ShakurasLightBridgeNW10
+     721  ShakurasLightBridgeNW10Out
+     724  ShakurasLightBridgeNW12
+     723  ShakurasLightBridgeNW12Out
+     720  ShakurasLightBridgeNW8
+     719  ShakurasLightBridgeNW8Out
+     881  ShakurasVespeneGeyser
+    1910  ShieldBattery
+     668  SnowRefinery_Terran_ExtendingBridgeNEShort8
+     667  SnowRefinery_Terran_ExtendingBridgeNEShort8Out
+     670  SnowRefinery_Terran_ExtendingBridgeNWShort8
+     669  SnowRefinery_Terran_ExtendingBridgeNWShort8Out
+     343  SpacePlatformGeyser
+      89  SpawningPool
+      98  SpineCrawler
+     139  SpineCrawlerUprooted
+      92  Spire
+      99  SporeCrawler
+     140  SporeCrawlerUprooted
+      67  Stargate
+      28  Starport
+      44  StarportFlying
+      42  StarportReactor
+      41  StarportTechLab
+      19  SupplyDepot
+      47  SupplyDepotLowered
+       5  TechLab
+      68  TemplarArchive
+      65  TwilightCouncil
+      93  UltraliskCavern
+     473  UnbuildableBricksDestructible
+     474  UnbuildablePlatesDestructible
+     472  UnbuildableRocksDestructible
+     342  VespeneGeyser
+     133  WarpGate
+     381  WolfStatue
+    1895  XelNagaDestructibleBlocker6E
+    1897  XelNagaDestructibleBlocker6N
+    1896  XelNagaDestructibleBlocker6NE
+    1898  XelNagaDestructibleBlocker6NW
+    1893  XelNagaDestructibleBlocker6S
+    1894  XelNagaDestructibleBlocker6SE
+    1900  XelNagaDestructibleBlocker6SW
+    1899  XelNagaDestructibleBlocker6W
+    1903  XelNagaDestructibleBlocker8E
+    1905  XelNagaDestructibleBlocker8N
+    1904  XelNagaDestructibleBlocker8NE
+    1906  XelNagaDestructibleBlocker8NW
+    1901  XelNagaDestructibleBlocker8S
+    1902  XelNagaDestructibleBlocker8SE
+    1908  XelNagaDestructibleBlocker8SW
+    1907  XelNagaDestructibleBlocker8W
+     863  XelNagaDestructibleRampBlocker6E
+     865  XelNagaDestructibleRampBlocker6N
+     864  XelNagaDestructibleRampBlocker6NE
+     866  XelNagaDestructibleRampBlocker6NW
+     861  XelNagaDestructibleRampBlocker6S
+     862  XelNagaDestructibleRampBlocker6SE
+     868  XelNagaDestructibleRampBlocker6SW
+     867  XelNagaDestructibleRampBlocker6W
+     871  XelNagaDestructibleRampBlocker8E
+     873  XelNagaDestructibleRampBlocker8N
+     872  XelNagaDestructibleRampBlocker8NE
+     874  XelNagaDestructibleRampBlocker8NW
+     869  XelNagaDestructibleRampBlocker8S
+     870  XelNagaDestructibleRampBlocker8SE
+     876  XelNagaDestructibleRampBlocker8SW
+     875  XelNagaDestructibleRampBlocker8W
+     149  XelNagaTower
+     552  XelNaga_Caverns_Floating_BridgeH10
+     551  XelNaga_Caverns_Floating_BridgeH10Out
+     556  XelNaga_Caverns_Floating_BridgeH12
+     555  XelNaga_Caverns_Floating_BridgeH12Out
+     548  XelNaga_Caverns_Floating_BridgeH8
+     547  XelNaga_Caverns_Floating_BridgeH8Out
+     540  XelNaga_Caverns_Floating_BridgeNE10
+     539  XelNaga_Caverns_Floating_BridgeNE10Out
+     544  XelNaga_Caverns_Floating_BridgeNE12
+     543  XelNaga_Caverns_Floating_BridgeNE12Out
+     536  XelNaga_Caverns_Floating_BridgeNE8
+     535  XelNaga_Caverns_Floating_BridgeNE8Out
+     542  XelNaga_Caverns_Floating_BridgeNW10
+     541  XelNaga_Caverns_Floating_BridgeNW10Out
+     546  XelNaga_Caverns_Floating_BridgeNW12
+     545  XelNaga_Caverns_Floating_BridgeNW12Out
+     538  XelNaga_Caverns_Floating_BridgeNW8
+     537  XelNaga_Caverns_Floating_BridgeNW8Out
+     554  XelNaga_Caverns_Floating_BridgeV10
+     553  XelNaga_Caverns_Floating_BridgeV10Out
+     558  XelNaga_Caverns_Floating_BridgeV12
+     557  XelNaga_Caverns_Floating_BridgeV12Out
+     550  XelNaga_Caverns_Floating_BridgeV8
+     549  XelNaga_Caverns_Floating_BridgeV8Out
+     658  ZerusDestructibleArch
+
+Total Structure types from API: 372
+
+================================================================================
+COMPARISON: API Structure types vs. hardcoded BUILDING_TYPES
+================================================================================
+Hardcoded BUILDING_TYPES count: 71
+API Structure types count:      372
+
+In API (Structure) but NOT in hardcoded BUILDING_TYPES (302):
+  - aiurlightbridgeabandonedne10 (ID 738)
+  - aiurlightbridgeabandonedne10out (ID 737)
+  - aiurlightbridgeabandonedne12 (ID 740)
+  - aiurlightbridgeabandonedne12out (ID 739)
+  - aiurlightbridgeabandonedne8 (ID 736)
+  - aiurlightbridgeabandonedne8out (ID 735)
+  - aiurlightbridgeabandonednw10 (ID 744)
+  - aiurlightbridgeabandonednw10out (ID 743)
+  - aiurlightbridgeabandonednw12 (ID 746)
+  - aiurlightbridgeabandonednw12out (ID 745)
+  - aiurlightbridgeabandonednw8 (ID 742)
+  - aiurlightbridgeabandonednw8out (ID 741)
+  - aiurlightbridgene10 (ID 698)
+  - aiurlightbridgene10out (ID 697)
+  - aiurlightbridgene12 (ID 700)
+  - aiurlightbridgene12out (ID 699)
+  - aiurlightbridgene8 (ID 696)
+  - aiurlightbridgene8out (ID 695)
+  - aiurlightbridgenw10 (ID 704)
+  - aiurlightbridgenw10out (ID 703)
+  - aiurlightbridgenw12 (ID 706)
+  - aiurlightbridgenw12out (ID 705)
+  - aiurlightbridgenw8 (ID 702)
+  - aiurlightbridgenw8out (ID 701)
+  - aiurtemplebridgedestructiblene10out (ID 843)
+  - aiurtemplebridgedestructiblene12out (ID 844)
+  - aiurtemplebridgedestructiblene8out (ID 842)
+  - aiurtemplebridgedestructiblenw10out (ID 846)
+  - aiurtemplebridgedestructiblenw12out (ID 847)
+  - aiurtemplebridgedestructiblenw8out (ID 845)
+  - aiurtemplebridgedestructiblese10out (ID 852)
+  - aiurtemplebridgedestructiblese12out (ID 853)
+  - aiurtemplebridgedestructiblese8out (ID 851)
+  - aiurtemplebridgedestructiblesw10out (ID 849)
+  - aiurtemplebridgedestructiblesw12out (ID 850)
+  - aiurtemplebridgedestructiblesw8out (ID 848)
+  - aiurtemplebridgene10out (ID 708)
+  - aiurtemplebridgene12out (ID 709)
+  - aiurtemplebridgene8out (ID 707)
+  - aiurtemplebridgenw10out (ID 711)
+  - aiurtemplebridgenw12out (ID 712)
+  - aiurtemplebridgenw8out (ID 710)
+  - autoturret (ID 31)
+  - battlestationmineralfield (ID 886)
+  - battlestationmineralfield750 (ID 887)
+  - braxisalphadestructible1x1 (ID 362)
+  - braxisalphadestructible2x2 (ID 363)
+  - bypassarmordrone (ID 895)
+  - collapsiblepurifiertowerdebris (ID 747)
+  - collapsiblepurifiertowerdiagonal (ID 882)
+  - collapsiblepurifiertowerpushunit (ID 798)
+  - collapsiblerocktower (ID 609)
+  - collapsiblerocktowerdebris (ID 490)
+  - collapsiblerocktowerdebrisrampleft (ID 518)
+  - collapsiblerocktowerdebrisrampleftgreen (ID 1999)
+  - collapsiblerocktowerdebrisrampright (ID 517)
+  - collapsiblerocktowerdebrisramprightgreen (ID 2000)
+  - collapsiblerocktowerdiagonal (ID 588)
+  - collapsiblerocktowerpushunit (ID 561)
+  - collapsiblerocktowerpushunitrampleft (ID 564)
+  - collapsiblerocktowerpushunitrampleftgreen (ID 2001)
+  - collapsiblerocktowerpushunitrampright (ID 563)
+  - collapsiblerocktowerpushunitramprightgreen (ID 2002)
+  - collapsiblerocktowerrampleft (ID 664)
+  - collapsiblerocktowerrampleftgreen (ID 2003)
+  - collapsiblerocktowerrampright (ID 663)
+  - collapsiblerocktowerramprightgreen (ID 2004)
+  - collapsibleterrantower (ID 610)
+  - collapsibleterrantowerdebris (ID 485)
+  - collapsibleterrantowerdiagonal (ID 589)
+  - collapsibleterrantowerpushunit (ID 562)
+  - collapsibleterrantowerpushunitrampleft (ID 559)
+  - collapsibleterrantowerpushunitrampright (ID 560)
+  - collapsibleterrantowerrampleft (ID 590)
+  - collapsibleterrantowerrampright (ID 591)
+  - debris2x2nonconjoined (ID 475)
+  - debrisrampleft (ID 486)
+  - debrisrampright (ID 487)
+  - destructiblecitydebris2x4horizontal (ID 625)
+  - destructiblecitydebris2x4vertical (ID 624)
+  - destructiblecitydebris2x6horizontal (ID 627)
+  - destructiblecitydebris2x6vertical (ID 626)
+  - destructiblecitydebris4x4 (ID 628)
+  - destructiblecitydebris6x6 (ID 629)
+  - destructiblecitydebrishugediagonalblur (ID 630)
+  - destructiblecitydebrishugediagonalulbr (ID 631)
+  - destructibledebris4x4 (ID 364)
+  - destructibledebris6x6 (ID 365)
+  - destructibledebrisrampdiagonalhugeblur (ID 377)
+  - destructibledebrisrampdiagonalhugeulbr (ID 376)
+  - destructibleexpeditiongate6x6 (ID 836)
+  - destructiblegarage (ID 358)
+  - destructiblegaragelarge (ID 359)
+  - destructibleice2x4horizontal (ID 645)
+  - destructibleice2x4vertical (ID 644)
+  - destructibleice2x6horizontal (ID 647)
+  - destructibleice2x6vertical (ID 646)
+  - destructibleice4x4 (ID 648)
+  - destructibleice6x6 (ID 649)
+  - destructibleicediagonalhugeblur (ID 651)
+  - destructibleicediagonalhugeulbr (ID 650)
+  - destructibleicehorizontalhuge (ID 653)
+  - destructibleiceverticalhuge (ID 652)
+  - destructiblerampdiagonalhugeblur (ID 373)
+  - destructiblerampdiagonalhugeulbr (ID 372)
+  - destructibleramphorizontalhuge (ID 375)
+  - destructiblerampverticalhuge (ID 374)
+  - destructiblerock2x4horizontal (ID 367)
+  - destructiblerock2x4vertical (ID 366)
+  - destructiblerock2x6horizontal (ID 369)
+  - destructiblerock2x6vertical (ID 368)
+  - destructiblerock4x4 (ID 370)
+  - destructiblerock6x6 (ID 371)
+  - destructiblerock6x6weak (ID 613)
+  - destructiblerockex12x4horizontal (ID 635)
+  - destructiblerockex12x4vertical (ID 634)
+  - destructiblerockex12x6horizontal (ID 637)
+  - destructiblerockex12x6vertical (ID 636)
+  - destructiblerockex14x4 (ID 638)
+  - destructiblerockex16x6 (ID 639)
+  - destructiblerockex1diagonalhugeblur (ID 641)
+  - destructiblerockex1diagonalhugeulbr (ID 640)
+  - destructiblerockex1horizontalhuge (ID 643)
+  - destructiblerockex1verticalhuge (ID 642)
+  - destructiblezerginfestation3x3 (ID 837)
+  - digestercreepspraytargetunit (ID 565)
+  - elsecaro_colonist_hut (ID 891)
+  - extendingbridgenewide10 (ID 510)
+  - extendingbridgenewide10out (ID 509)
+  - extendingbridgenewide12 (ID 514)
+  - extendingbridgenewide12out (ID 513)
+  - extendingbridgenewide8 (ID 506)
+  - extendingbridgenewide8out (ID 505)
+  - extendingbridgenwwide10 (ID 512)
+  - extendingbridgenwwide10out (ID 511)
+  - extendingbridgenwwide12 (ID 516)
+  - extendingbridgenwwide12out (ID 515)
+  - extendingbridgenwwide8 (ID 508)
+  - extendingbridgenwwide8out (ID 507)
+  - globestatue (ID 382)
+  - ice2x2nonconjoined (ID 592)
+  - inhibitorzonelarge (ID 1984)
+  - inhibitorzonemedium (ID 1983)
+  - inhibitorzonesmall (ID 1982)
+  - kd8charge (ID 830)
+  - labmineralfield (ID 665)
+  - labmineralfield750 (ID 666)
+  - lurkerdenmp (ID 504)
+  - mengskstatue (ID 380)
+  - mengskstatuealone (ID 379)
+  - mineralfield (ID 341)
+  - mineralfield450 (ID 1996)
+  - mineralfield750 (ID 483)
+  - mineralfieldopaque (ID 1997)
+  - mineralfieldopaque900 (ID 1998)
+  - nyduscanalattacker (ID 491)
+  - nyduscanalcreeper (ID 492)
+  - oraclestasistrap (ID 732)
+  - pointdefensedrone (ID 11)
+  - portcity_bridge_unite10 (ID 785)
+  - portcity_bridge_unite10out (ID 784)
+  - portcity_bridge_unite12 (ID 793)
+  - portcity_bridge_unite12out (ID 792)
+  - portcity_bridge_unite8 (ID 777)
+  - portcity_bridge_unite8out (ID 776)
+  - portcity_bridge_unitn10 (ID 781)
+  - portcity_bridge_unitn10out (ID 780)
+  - portcity_bridge_unitn12 (ID 789)
+  - portcity_bridge_unitn12out (ID 788)
+  - portcity_bridge_unitn8 (ID 773)
+  - portcity_bridge_unitn8out (ID 772)
+  - portcity_bridge_unitne10 (ID 757)
+  - portcity_bridge_unitne10out (ID 756)
+  - portcity_bridge_unitne12 (ID 765)
+  - portcity_bridge_unitne12out (ID 764)
+  - portcity_bridge_unitne8 (ID 749)
+  - portcity_bridge_unitne8out (ID 748)
+  - portcity_bridge_unitnw10 (ID 761)
+  - portcity_bridge_unitnw10out (ID 760)
+  - portcity_bridge_unitnw12 (ID 769)
+  - portcity_bridge_unitnw12out (ID 768)
+  - portcity_bridge_unitnw8 (ID 753)
+  - portcity_bridge_unitnw8out (ID 752)
+  - portcity_bridge_units10 (ID 783)
+  - portcity_bridge_units10out (ID 782)
+  - portcity_bridge_units12 (ID 791)
+  - portcity_bridge_units12out (ID 790)
+  - portcity_bridge_units8 (ID 775)
+  - portcity_bridge_units8out (ID 774)
+  - portcity_bridge_unitse10 (ID 759)
+  - portcity_bridge_unitse10out (ID 758)
+  - portcity_bridge_unitse12 (ID 767)
+  - portcity_bridge_unitse12out (ID 766)
+  - portcity_bridge_unitse8 (ID 751)
+  - portcity_bridge_unitse8out (ID 750)
+  - portcity_bridge_unitsw10 (ID 763)
+  - portcity_bridge_unitsw10out (ID 762)
+  - portcity_bridge_unitsw12 (ID 771)
+  - portcity_bridge_unitsw12out (ID 770)
+  - portcity_bridge_unitsw8 (ID 755)
+  - portcity_bridge_unitsw8out (ID 754)
+  - portcity_bridge_unitw10 (ID 787)
+  - portcity_bridge_unitw10out (ID 786)
+  - portcity_bridge_unitw12 (ID 795)
+  - portcity_bridge_unitw12out (ID 794)
+  - portcity_bridge_unitw8 (ID 779)
+  - portcity_bridge_unitw8out (ID 778)
+  - protossvespenegeyser (ID 608)
+  - purifiermineralfield (ID 884)
+  - purifiermineralfield750 (ID 885)
+  - purifierrichmineralfield (ID 796)
+  - purifierrichmineralfield750 (ID 797)
+  - purifiervespenegeyser (ID 880)
+  - pylonovercharged (ID 894)
+  - ravenrepairdrone (ID 1913)
+  - renegademissileturret (ID 1941)
+  - resourceblocker (ID 569)
+  - richmineralfield (ID 146)
+  - richmineralfield750 (ID 147)
+  - richvespenegeyser (ID 344)
+  - rocks2x2nonconjoined (ID 312)
+  - shakuraslightbridgene10 (ID 716)
+  - shakuraslightbridgene10out (ID 715)
+  - shakuraslightbridgene12 (ID 718)
+  - shakuraslightbridgene12out (ID 717)
+  - shakuraslightbridgene8 (ID 714)
+  - shakuraslightbridgene8out (ID 713)
+  - shakuraslightbridgenw10 (ID 722)
+  - shakuraslightbridgenw10out (ID 721)
+  - shakuraslightbridgenw12 (ID 724)
+  - shakuraslightbridgenw12out (ID 723)
+  - shakuraslightbridgenw8 (ID 720)
+  - shakuraslightbridgenw8out (ID 719)
+  - shakurasvespenegeyser (ID 881)
+  - snowrefinery_terran_extendingbridgeneshort8 (ID 668)
+  - snowrefinery_terran_extendingbridgeneshort8out (ID 667)
+  - snowrefinery_terran_extendingbridgenwshort8 (ID 670)
+  - snowrefinery_terran_extendingbridgenwshort8out (ID 669)
+  - spaceplatformgeyser (ID 343)
+  - unbuildablebricksdestructible (ID 473)
+  - unbuildableplatesdestructible (ID 474)
+  - unbuildablerocksdestructible (ID 472)
+  - vespenegeyser (ID 342)
+  - wolfstatue (ID 381)
+  - xelnaga_caverns_floating_bridgeh10 (ID 552)
+  - xelnaga_caverns_floating_bridgeh10out (ID 551)
+  - xelnaga_caverns_floating_bridgeh12 (ID 556)
+  - xelnaga_caverns_floating_bridgeh12out (ID 555)
+  - xelnaga_caverns_floating_bridgeh8 (ID 548)
+  - xelnaga_caverns_floating_bridgeh8out (ID 547)
+  - xelnaga_caverns_floating_bridgene10 (ID 540)
+  - xelnaga_caverns_floating_bridgene10out (ID 539)
+  - xelnaga_caverns_floating_bridgene12 (ID 544)
+  - xelnaga_caverns_floating_bridgene12out (ID 543)
+  - xelnaga_caverns_floating_bridgene8 (ID 536)
+  - xelnaga_caverns_floating_bridgene8out (ID 535)
+  - xelnaga_caverns_floating_bridgenw10 (ID 542)
+  - xelnaga_caverns_floating_bridgenw10out (ID 541)
+  - xelnaga_caverns_floating_bridgenw12 (ID 546)
+  - xelnaga_caverns_floating_bridgenw12out (ID 545)
+  - xelnaga_caverns_floating_bridgenw8 (ID 538)
+  - xelnaga_caverns_floating_bridgenw8out (ID 537)
+  - xelnaga_caverns_floating_bridgev10 (ID 554)
+  - xelnaga_caverns_floating_bridgev10out (ID 553)
+  - xelnaga_caverns_floating_bridgev12 (ID 558)
+  - xelnaga_caverns_floating_bridgev12out (ID 557)
+  - xelnaga_caverns_floating_bridgev8 (ID 550)
+  - xelnaga_caverns_floating_bridgev8out (ID 549)
+  - xelnagadestructibleblocker6e (ID 1895)
+  - xelnagadestructibleblocker6n (ID 1897)
+  - xelnagadestructibleblocker6ne (ID 1896)
+  - xelnagadestructibleblocker6nw (ID 1898)
+  - xelnagadestructibleblocker6s (ID 1893)
+  - xelnagadestructibleblocker6se (ID 1894)
+  - xelnagadestructibleblocker6sw (ID 1900)
+  - xelnagadestructibleblocker6w (ID 1899)
+  - xelnagadestructibleblocker8e (ID 1903)
+  - xelnagadestructibleblocker8n (ID 1905)
+  - xelnagadestructibleblocker8ne (ID 1904)
+  - xelnagadestructibleblocker8nw (ID 1906)
+  - xelnagadestructibleblocker8s (ID 1901)
+  - xelnagadestructibleblocker8se (ID 1902)
+  - xelnagadestructibleblocker8sw (ID 1908)
+  - xelnagadestructibleblocker8w (ID 1907)
+  - xelnagadestructiblerampblocker6e (ID 863)
+  - xelnagadestructiblerampblocker6n (ID 865)
+  - xelnagadestructiblerampblocker6ne (ID 864)
+  - xelnagadestructiblerampblocker6nw (ID 866)
+  - xelnagadestructiblerampblocker6s (ID 861)
+  - xelnagadestructiblerampblocker6se (ID 862)
+  - xelnagadestructiblerampblocker6sw (ID 868)
+  - xelnagadestructiblerampblocker6w (ID 867)
+  - xelnagadestructiblerampblocker8e (ID 871)
+  - xelnagadestructiblerampblocker8n (ID 873)
+  - xelnagadestructiblerampblocker8ne (ID 872)
+  - xelnagadestructiblerampblocker8nw (ID 874)
+  - xelnagadestructiblerampblocker8s (ID 869)
+  - xelnagadestructiblerampblocker8se (ID 870)
+  - xelnagadestructiblerampblocker8sw (ID 876)
+  - xelnagadestructiblerampblocker8w (ID 875)
+  - xelnagatower (ID 149)
+  - zerusdestructiblearch (ID 658)
+
+In hardcoded BUILDING_TYPES but NOT in API Structure (1):
+  - lurkerden
+
+VERDICT: Sets DO NOT match exactly. Review discrepancies above.
+
+================================================================================
+FULL UNIT TYPE DUMP (all entries, including those with no attributes)
+================================================================================
+Entries with attributes:    550
+Entries without attributes: 1455
+Total entries:             2005
+
+Script completed successfully.

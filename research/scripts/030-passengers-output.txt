@@ -1,0 +1,56 @@
+Using replay: C:\Users\matae\OneDrive\Desktop\Coding-Projects\local-play-bootstrap-main\replays\match_4184936.SC2Replay
+
+Map: Persephone AIE
+Duration: 8886 loops
+
+Stepping through replay, checking passengers field...
+================================================================================
+  Loop     100: buff_ids populated on Probe: [271]
+  Loop     100: is_active=True on Probe
+  Loop     100: rally_targets populated on Nexus: point=(32.0, 150.5), tag=4320133121
+  Loop     100: harvesters on Nexus: assigned=9, ideal=16
+  Loop     100: detect_range on Unknown(606): 3.5
+  Loop     100: Found cargo-capable: CommandCenter (ID=18, owner=1, tag=4346085377, cargo_max=5, cargo_taken=0)
+  Loop    1800: is_powered=True on Gateway
+  Loop    1900: Found cargo-capable: Bunker (ID=24, owner=1, tag=4357619713, cargo_max=4, cargo_taken=0)
+  Loop    2800: buff_duration on MULE: remain=1433, max=1440
+  Loop    3200: engaged_target_tag on Marine: 4353163265
+  Loop    4700: add_on_tag on Factory: 4358406146
+  --- Progress: loop 5000/8886 (56.3%) ---
+  Loop    8200: Found cargo-capable: Medivac (ID=54, owner=1, tag=4352114694, cargo_max=8, cargo_taken=0)
+
+Replay ended at loop 8800
+
+================================================================================
+FINAL REPORT
+================================================================================
+
+Cargo-capable unit types seen: 3
+  - Bunker(owner=1)
+  - CommandCenter(owner=1)
+  - Medivac(owner=1)
+
+Total passenger sightings logged: 0
+
+*** PASSENGERS FIELD EMPTY IN OBSERVER MODE ***
+The `passengers` repeated field was NOT populated in any
+cargo-capable building/transport across the entire replay.
+
+Enhancement field availability summary:
+  add_on_tag                      POPULATED
+  assigned_harvesters             POPULATED
+  buff_duration_max               POPULATED
+  buff_duration_remain            POPULATED
+  buff_ids                        POPULATED
+  cargo_space_max                 NOT SEEN
+  cargo_space_taken               NOT SEEN
+  detect_range                    POPULATED
+  engaged_target_tag              POPULATED
+  ideal_harvesters                POPULATED
+  is_active                       POPULATED
+  is_powered                      POPULATED
+  passengers                      NOT SEEN
+  radar_range                     NOT SEEN
+  rally_targets                   POPULATED
+
+Script completed successfully.
