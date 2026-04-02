@@ -28,4 +28,5 @@ Dimension reduction on the fly
 hidden markov models
     make observations, make inferences about behind the scenes
 
-
+Think about a way to represent the data in an abstraction that makes it - at least appear - uniform. 
+    How you represent the data to make the problem more tractable is a contribution in and of itself sometimes ya know. 
