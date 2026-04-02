@@ -34,4 +34,5 @@
 | 2026-03-20 | 06:00 | 07:00 |  1.0h    |  Checking data. Found some discrepencies. Working with claude to diagnose and fix.   |
 | 2026-03-26 | 06:00 | 07:30 |  1.5h    |  Checking data. Cleaning up data visualizations.   |
 | 2026-03-30 | 05:00 | 06:30 |  1.5h    |  Working on fixing data extraction pipeline and verifying the extracted data  |
+| 2026-04-02 | 06:00 | 07:30 |  1.5h    |  Verifying extracted data. Automating pushing EDA notebooks to Kaggle.  |
 |            |       |       |          |            |
