@@ -5,8 +5,8 @@
 - Look more into the different strategies for turning huge matrices into tensor's/vectors attenable to ML
     - Essentially just research what we want to do for data pre-processing and handling to handle the huge state space and get the data into an ML friendly format
 - Look into using UV and FastAPI to create the project in a way it can have the back end managed and then have a front-end webpage host that can interact with the code using FastAPI for quicker and clearer iterating on the EDA notebooks.
-- Check for the API returning some kind of 'dead' or 'killed' tag for units to make the mapping of units and buildings no longer existing mapping more cleanly to being destroyed than just their presence or lack thereof. 
-
+- Check for the API returning some kind of 'dead' or 'killed' tag for units to make the mapping of units and buildings no longer existing mapping more cleanly to being destroyed than just their presence or lack thereof.
+- Dynamic Time Warping
 
 
 
