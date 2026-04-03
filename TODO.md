@@ -1,4 +1,5 @@
 - Look into Pushing the updated EDA notebooks to kaggle as well to update the kaggle dataset notebooks when the EDA notebooks get updated
+- Look into research 32 about the weird unit edge cases and how to handle weird state transitions for units like zerg eggs and the archon cocoon
 - Add parameters for choosing which columns to write to parquet files after the information has been extracted from a replay.
 - Ensure .json writer contains helpful information in the json files -> Manual verification check needed here -> Some info missing, wrote claude prompt to address it.
 - Look more into feature selection algorithms to determine what features to pass a model for strategy prediction
@@ -7,6 +8,21 @@
 - Look into using UV and FastAPI to create the project in a way it can have the back end managed and then have a front-end webpage host that can interact with the code using FastAPI for quicker and clearer iterating on the EDA notebooks.
 - Check for the API returning some kind of 'dead' or 'killed' tag for units to make the mapping of units and buildings no longer existing mapping more cleanly to being destroyed than just their presence or lack thereof.
 - Dynamic Time Warping
+- Graphical Network...
+    - Nodes = timestep and entity
+        - Allows community detection analysis
+        - degree node
+            - distribution of degrees
+        - sub-graphs/motifs
+            - isomorphic sub-graph (similar graphs in other places)
+            - Clique's = all nodes in a subgraph are connected to all other nodes in the clique community
+                - sorta like the idea of a motif
+        - Basically allows a different representation of the data 
+    - Think in time ranges, something like relative time space rather than absolute
+        - somethign that represents a strategy over 3 min interval doesnt have to be minutes 1-4 but can be any 3 minute interval
+    - XL-node? = excel
+    - Gephi - opensource and free sorta version 
+    - algorithms for re-graphing graphs based on different ideas. Fascinating area
 
 
 

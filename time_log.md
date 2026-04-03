@@ -35,4 +35,6 @@
 | 2026-03-26 | 06:00 | 07:30 |  1.5h    |  Checking data. Cleaning up data visualizations.   |
 | 2026-03-30 | 05:00 | 06:30 |  1.5h    |  Working on fixing data extraction pipeline and verifying the extracted data  |
 | 2026-04-02 | 06:00 | 08:30 |  2.5h    |  Verifying extracted data. Automating pushing EDA notebooks to Kaggle.  |
+| 2026-04-03 | 06:30 | 08:30 |  2.0h    |  Verifying extracted data. Tightening unit tracking logic.  |
+| 2026-04-03 | 09:00 | 10:30 |  2.0h    |  Meeting with PI to discuss ML applications. Exploring topics discussed in meeting.  |
 |            |       |       |          |            |
