@@ -47,3 +47,22 @@ hidden markov models
 
 Think about a way to represent the data in an abstraction that makes it - at least appear - uniform. 
     How you represent the data to make the problem more tractable is a contribution in and of itself sometimes ya know. 
+
+- View the problem in an NLP framing. Make the time series more like a series of tokens.
+    - Take pieces from other domains as well, like vision transformers. Rather than taking the NLP token sequence approach where each position
+    can only consist of a single token, allow multiple tokens to be assigned the same position. Essentially a token becomes an (entity, time step) pair
+    keeping the positional encoding but just giving it different rules than NLP uses.
+    - Make entities the tokens (like deepminds alphastar basically) but explicitly. Then they can be embedded with information like position coordinates, 
+    health, energy, shields, etc.
+        - For the naive bayes, can't give the tokens embeddings, but can do alphastar style 3 pair tokens (entity, time step, coordinate) sort of style
+    - For Naive Bayes, make it an easy 2 class problem, like classifying emails as Ham or Spam. SC2 can have cheese and not cheese
+- The big thing, will be in how you decide to do tokenization. In NLP one can see the progression from naive rule based tokenization,
+to intentional feature engineering style tokenization (things like lemmatization and stemming -- ways to make similar things actually appear as similar),
+all the way to BPE/BERT and learned tokenization where the data decides how to tokenize.
+    - So far, lots of research has in some way done something similar to tokenization. With most research not explicitly framing it in that sense. The contribution
+    is explicitly framing it as tokenization and then contributing a meaningful way to tokenize the data.
+        - Must decide what 'letting the data decide' how to tokenize looks like. What is the SC2 equivalent of greedy subword tokenization. Modern LLM
+        tokenizers are not 'learned' with the model in training, they are frozen, but the tokenizer itself was at some point trained on a huge dataset itself.
+        - Creating token embeddings is the next step in the comparison. This is a learned process done during model training. 
+            - Modern LLMs don't just stop at creating token embeddings. Those embeddings are then altered through attention to become more meaningful.
+            - Must decide and do research into what the SC2 equivalent of learned embeddings and then attention across tokens looks like (graphs)
