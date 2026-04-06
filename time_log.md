@@ -37,4 +37,5 @@
 | 2026-04-02 | 06:00 | 08:30 |  2.5h    |  Verifying extracted data. Automating pushing EDA notebooks to Kaggle.  |
 | 2026-04-03 | 06:30 | 08:30 |  2.0h    |  Verifying extracted data. Tightening unit tracking logic.  |
 | 2026-04-03 | 09:00 | 10:30 |  2.0h    |  Meeting with PI to discuss ML applications. Exploring topics discussed in meeting.  |
+| 2026-04-06 | 04:00 | 05:00 |  1.0h    |  Ensuring pipeline is set up to do a large data extraction 1 to begin exploratory ML for PoC.  |
 |            |       |       |          |            |
