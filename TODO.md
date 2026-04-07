@@ -4,6 +4,7 @@
     - I.E. current pipeline pulls every 1 gamestep, but may be prudent to pull every 25 or so instead (1.1 seconds)
 - Look more into feature selection algorithms to determine what features to pass a model for strategy prediction
 - Look into using UV and FastAPI to create the project in a way it can have the back end managed and then have a front-end webpage host that can interact with the code using FastAPI for quicker and clearer iterating on the EDA notebooks.
+    - Some sort of GUI or an equivalent of some sort to make the pipeline easier to use and more user-friendly than purely relying on CLI commands and usage and documentation.
 
 - Dynamic Time Warping
 - Graphical Network...
