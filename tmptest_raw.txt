@@ -1,0 +1,994 @@
+Writing diagnostic output to: C:\Users\matae\OneDrive\Desktop\Coding-Projects\local-play-bootstrap-main\tmptest_raw.txt
+
+Scanning replay files in C:\Users\matae\OneDrive\Desktop\Coding-Projects\local-play-bootstrap-main\replays for a replay where both players completed upgrades...
+Selected replay : match_4298354.SC2Replay
+Match ID        : 4298354
+P1 upgrades     : 4
+P2 upgrades     : 2
+First P1 upgrade : (5510, 'TerranInfantryWeaponsLevel1')
+First P2 upgrade : (6365, 'DrillClaws')
+
+Loading replay: C:\Users\matae\OneDrive\Desktop\Coding-Projects\local-play-bootstrap-main\replays\match_4298354.SC2Replay
+Replay version: 4.10.0 (build 75689)
+Launching SC2 binary...
+SC2 listening at 127.0.0.1:63582
+Connecting raw websocket to ws://127.0.0.1:63582/sc2api
+Raw websocket connected!
+Ping OK — game_version: 4.10.0.75689, base_build: 75689
+Map: Ultralove AIE
+Duration: 21630 loops
+  Player 1: Terran, MMR: 0
+  Player 2: Terran, MMR: 0
+Meaningful tracker upgrades:
+  P1: [(5510, 'TerranInfantryWeaponsLevel1'), (5777, 'ShieldWall'), (7253, 'PunisherGrenades'), (8139, 'TerranInfantryArmorsLevel1')]
+  P2: [(6365, 'DrillClaws'), (10125, 'HiSecAutoTracking')]
+Sampling steps : [5410, 5610, 6265, 6465]
+Sampling rule  : +/- 100 loops around each player's first meaningful completed upgrade
+
+
+============================================================
+TEST A: OBSERVER MODE (raw protobuf, observed_player_id=0)
+============================================================
+  RequestStartReplay wire bytes: 350598 bytes
+  Contains field-2 varint-0 on wire: True
+  start_replay response status: in_replay
+  start_replay error code: 1
+  error_details: 
+
+--- TARGET STEP 5410 (exact-frame perspective comparison) ---
+  observer restart status: in_replay
+
+  [Observer raw (no switch)] summary:
+    game_loop            : 5410
+    player_common.id     : 0
+    upgrade_ids          : []
+    total raw units      : 260
+    player-owned units   : 102
+    owner counts         : {1: 56, 2: 46, 16: 158}
+    total orders by owner: P1=27  P2=35
+
+  [Observer raw (no switch)] player_common:
+    player_id        : 0
+    minerals         : 0
+    vespene          : 0
+    food_used        : 0
+    food_cap         : 0
+    food_army        : 0
+    food_workers     : 0
+    idle_worker_count: 0
+    army_count       : 0
+  [Observer raw (no switch)] score:
+    score_type : 2
+    score      : 0
+    collected_minerals       : 0.0
+    collected_vespene        : 0.0
+    collection_rate_minerals : 0.0
+    collection_rate_vespene  : 0.0
+    spent_minerals           : 0.0
+    spent_vespene            : 0.0
+  [raw units] unique owners: [1, 2, 16]
+
+--- Switching to Player 1 perspective (same frame, no step) ---
+  observer_action response status: in_replay
+  response type: obs_action
+
+  [After raw switch to P1] summary:
+    game_loop            : 5410
+    player_common.id     : 0
+    upgrade_ids          : []
+    total raw units      : 260
+    player-owned units   : 102
+    owner counts         : {1: 56, 2: 46, 16: 158}
+    total orders by owner: P1=27  P2=35
+
+  [After raw switch to P1] player_common:
+    player_id        : 0
+    minerals         : 0
+    vespene          : 0
+    food_used        : 0
+    food_cap         : 0
+    food_army        : 0
+    food_workers     : 0
+    idle_worker_count: 0
+    army_count       : 0
+  [After raw switch to P1] score:
+    score_type : 2
+    score      : 0
+    collected_minerals       : 0.0
+    collected_vespene        : 0.0
+    collection_rate_minerals : 0.0
+    collection_rate_vespene  : 0.0
+    spent_minerals           : 0.0
+    spent_vespene            : 0.0
+
+  [COMPARE] Observer raw (no switch)  vs  Observer switched P1
+    game_loop match      : True (5410 vs 5410)
+    player_common.id     : 0 vs 0
+    upgrade_ids          : [] vs []
+    player-owned unit tags: 102 vs 102
+    tags only in A        : 0
+    tags only in B        : 0
+    core-field diffs      : 0
+    order-field diffs     : 0 (P1=0, P2=0)
+
+--- Switching to Player 2 perspective (same frame, no step) ---
+  observer_action response status: in_replay
+  response type: obs_action
+
+  [After raw switch to P2] summary:
+    game_loop            : 5410
+    player_common.id     : 0
+    upgrade_ids          : []
+    total raw units      : 260
+    player-owned units   : 102
+    owner counts         : {1: 56, 2: 46, 16: 158}
+    total orders by owner: P1=27  P2=35
+
+  [After raw switch to P2] player_common:
+    player_id        : 0
+    minerals         : 0
+    vespene          : 0
+    food_used        : 0
+    food_cap         : 0
+    food_army        : 0
+    food_workers     : 0
+    idle_worker_count: 0
+    army_count       : 0
+  [After raw switch to P2] score:
+    score_type : 2
+    score      : 0
+    collected_minerals       : 0.0
+    collected_vespene        : 0.0
+    collection_rate_minerals : 0.0
+    collection_rate_vespene  : 0.0
+    spent_minerals           : 0.0
+    spent_vespene            : 0.0
+
+  [COMPARE] Observer raw (no switch)  vs  Observer switched P2
+    game_loop match      : True (5410 vs 5410)
+    player_common.id     : 0 vs 0
+    upgrade_ids          : [] vs []
+    player-owned unit tags: 102 vs 102
+    tags only in A        : 0
+    tags only in B        : 0
+    core-field diffs      : 0
+    order-field diffs     : 0 (P1=0, P2=0)
+
+  [COMPARE] Observer switched P1  vs  Observer switched P2
+    game_loop match      : True (5410 vs 5410)
+    player_common.id     : 0 vs 0
+    upgrade_ids          : [] vs []
+    player-owned unit tags: 102 vs 102
+    tags only in A        : 0
+    tags only in B        : 0
+    core-field diffs      : 0
+    order-field diffs     : 0 (P1=0, P2=0)
+
+--- Direct replay load: Player 1 perspective at step 5410 ---
+  direct P1 start status: in_replay
+
+  [Direct Player 1] summary:
+    game_loop            : 5410
+    player_common.id     : 1
+    upgrade_ids          : []
+    total raw units      : 260
+    player-owned units   : 102
+    owner counts         : {1: 56, 2: 46, 16: 158}
+    total orders by owner: P1=27  P2=0
+
+  [Direct Player 1] player_common:
+    player_id        : 1
+    minerals         : 220
+    vespene          : 82
+    food_used        : 49
+    food_cap         : 55
+    food_army        : 29
+    food_workers     : 20
+    idle_worker_count: 0
+    army_count       : 21
+  [Direct Player 1] score:
+    score_type : 2
+    score      : 5402
+    collected_minerals       : 3870.0
+    collected_vespene        : 432.0
+    collection_rate_minerals : 1203.0
+    collection_rate_vespene  : 156.0
+    spent_minerals           : 3700.0
+    spent_vespene            : 350.0
+
+  [COMPARE] Observer switched P1  vs  Direct Player 1
+    game_loop match      : True (5410 vs 5410)
+    player_common.id     : 0 vs 1
+    upgrade_ids          : [] vs []
+    player-owned unit tags: 102 vs 102
+    tags only in A        : 0
+    tags only in B        : 0
+    core-field diffs      : 49
+    order-field diffs     : 29 (P1=0, P2=29)
+    sample core diffs     : [(4347396097, 1, 45), (4347658241, 2, 132), (4348182529, 2, 45), (4348444673, 2, 45), (4348706817, 2, 45)]
+    sample order diffs    :
+      tag=4348182529 owner=2 unit_type=45
+        A: ((295, 0.0, ('tag', 4353163265)),)
+        B: ()
+      tag=4348444673 owner=2 unit_type=45
+        A: ((296, 0.0, ('tag', 4347658241)),)
+        B: ()
+      tag=4348706817 owner=2 unit_type=45
+        A: ((296, 0.0, ('tag', 4347658241)),)
+        B: ()
+
+--- Direct replay load: Player 2 perspective at step 5410 ---
+  direct P2 start status: in_replay
+
+  [Direct Player 2] summary:
+    game_loop            : 5410
+    player_common.id     : 2
+    upgrade_ids          : []
+    total raw units      : 260
+    player-owned units   : 102
+    owner counts         : {1: 56, 2: 46, 16: 158}
+    total orders by owner: P1=0  P2=35
+
+  [Direct Player 2] player_common:
+    player_id        : 2
+    minerals         : 130
+    vespene          : 81
+    food_used        : 44
+    food_cap         : 55
+    food_army        : 20
+    food_workers     : 24
+    idle_worker_count: 0
+    army_count       : 7
+  [Direct Player 2] score:
+    score_type : 2
+    score      : 5286
+    collected_minerals       : 3330.0
+    collected_vespene        : 956.0
+    collection_rate_minerals : 1147.0
+    collection_rate_vespene  : 313.0
+    spent_minerals           : 3250.0
+    spent_vespene            : 875.0
+
+  [COMPARE] Observer switched P2  vs  Direct Player 2
+    game_loop match      : True (5410 vs 5410)
+    player_common.id     : 0 vs 2
+    upgrade_ids          : [] vs []
+    player-owned unit tags: 102 vs 102
+    tags only in A        : 0
+    tags only in B        : 0
+    core-field diffs      : 57
+    order-field diffs     : 26 (P1=26, P2=0)
+    sample core diffs     : [(4344250369, 1, 132), (4344512513, 1, 45), (4344774657, 1, 45), (4345036801, 1, 45), (4345298945, 1, 45)]
+    sample order diffs    :
+      tag=4344512513 owner=1 unit_type=45
+        A: ((295, 0.0, ('tag', 4323540993)),)
+        B: ()
+      tag=4344774657 owner=1 unit_type=45
+        A: ((295, 0.0, ('tag', 4329570305)),)
+        B: ()
+      tag=4345036801 owner=1 unit_type=45
+        A: ((295, 0.0, ('tag', 4313317377)),)
+        B: ()
+
+--- TARGET STEP 5610 (exact-frame perspective comparison) ---
+  observer restart status: in_replay
+
+  [Observer raw (no switch)] summary:
+    game_loop            : 5610
+    player_common.id     : 0
+    upgrade_ids          : []
+    total raw units      : 264
+    player-owned units   : 106
+    owner counts         : {1: 59, 2: 47, 16: 158}
+    total orders by owner: P1=51  P2=33
+
+  [Observer raw (no switch)] player_common:
+    player_id        : 0
+    minerals         : 0
+    vespene          : 0
+    food_used        : 0
+    food_cap         : 0
+    food_army        : 0
+    food_workers     : 0
+    idle_worker_count: 0
+    army_count       : 0
+  [Observer raw (no switch)] score:
+    score_type : 2
+    score      : 0
+    collected_minerals       : 0.0
+    collected_vespene        : 0.0
+    collection_rate_minerals : 0.0
+    collection_rate_vespene  : 0.0
+    spent_minerals           : 0.0
+    spent_vespene            : 0.0
+  [raw units] unique owners: [1, 2, 16]
+
+--- Switching to Player 1 perspective (same frame, no step) ---
+  observer_action response status: in_replay
+  response type: obs_action
+
+  [After raw switch to P1] summary:
+    game_loop            : 5610
+    player_common.id     : 0
+    upgrade_ids          : []
+    total raw units      : 264
+    player-owned units   : 106
+    owner counts         : {1: 59, 2: 47, 16: 158}
+    total orders by owner: P1=51  P2=33
+
+  [After raw switch to P1] player_common:
+    player_id        : 0
+    minerals         : 0
+    vespene          : 0
+    food_used        : 0
+    food_cap         : 0
+    food_army        : 0
+    food_workers     : 0
+    idle_worker_count: 0
+    army_count       : 0
+  [After raw switch to P1] score:
+    score_type : 2
+    score      : 0
+    collected_minerals       : 0.0
+    collected_vespene        : 0.0
+    collection_rate_minerals : 0.0
+    collection_rate_vespene  : 0.0
+    spent_minerals           : 0.0
+    spent_vespene            : 0.0
+
+  [COMPARE] Observer raw (no switch)  vs  Observer switched P1
+    game_loop match      : True (5610 vs 5610)
+    player_common.id     : 0 vs 0
+    upgrade_ids          : [] vs []
+    player-owned unit tags: 106 vs 106
+    tags only in A        : 0
+    tags only in B        : 0
+    core-field diffs      : 0
+    order-field diffs     : 0 (P1=0, P2=0)
+
+--- Switching to Player 2 perspective (same frame, no step) ---
+  observer_action response status: in_replay
+  response type: obs_action
+
+  [After raw switch to P2] summary:
+    game_loop            : 5610
+    player_common.id     : 0
+    upgrade_ids          : []
+    total raw units      : 264
+    player-owned units   : 106
+    owner counts         : {1: 59, 2: 47, 16: 158}
+    total orders by owner: P1=51  P2=33
+
+  [After raw switch to P2] player_common:
+    player_id        : 0
+    minerals         : 0
+    vespene          : 0
+    food_used        : 0
+    food_cap         : 0
+    food_army        : 0
+    food_workers     : 0
+    idle_worker_count: 0
+    army_count       : 0
+  [After raw switch to P2] score:
+    score_type : 2
+    score      : 0
+    collected_minerals       : 0.0
+    collected_vespene        : 0.0
+    collection_rate_minerals : 0.0
+    collection_rate_vespene  : 0.0
+    spent_minerals           : 0.0
+    spent_vespene            : 0.0
+
+  [COMPARE] Observer raw (no switch)  vs  Observer switched P2
+    game_loop match      : True (5610 vs 5610)
+    player_common.id     : 0 vs 0
+    upgrade_ids          : [] vs []
+    player-owned unit tags: 106 vs 106
+    tags only in A        : 0
+    tags only in B        : 0
+    core-field diffs      : 0
+    order-field diffs     : 0 (P1=0, P2=0)
+
+  [COMPARE] Observer switched P1  vs  Observer switched P2
+    game_loop match      : True (5610 vs 5610)
+    player_common.id     : 0 vs 0
+    upgrade_ids          : [] vs []
+    player-owned unit tags: 106 vs 106
+    tags only in A        : 0
+    tags only in B        : 0
+    core-field diffs      : 0
+    order-field diffs     : 0 (P1=0, P2=0)
+
+--- Direct replay load: Player 1 perspective at step 5610 ---
+  direct P1 start status: in_replay
+
+  [Direct Player 1] summary:
+    game_loop            : 5610
+    player_common.id     : 1
+    upgrade_ids          : [7]
+    total raw units      : 264
+    player-owned units   : 106
+    owner counts         : {1: 59, 2: 47, 16: 158}
+    total orders by owner: P1=51  P2=0
+
+  [Direct Player 1] player_common:
+    player_id        : 1
+    minerals         : 35
+    vespene          : 2
+    food_used        : 51
+    food_cap         : 63
+    food_army        : 31
+    food_workers     : 20
+    idle_worker_count: 0
+    army_count       : 24
+  [Direct Player 1] score:
+    score_type : 2
+    score      : 5537
+    collected_minerals       : 4035.0
+    collected_vespene        : 452.0
+    collection_rate_minerals : 1119.0
+    collection_rate_vespene  : 134.0
+    spent_minerals           : 4050.0
+    spent_vespene            : 450.0
+
+  [COMPARE] Observer switched P1  vs  Direct Player 1
+    game_loop match      : True (5610 vs 5610)
+    player_common.id     : 0 vs 1
+    upgrade_ids          : [] vs [7]
+    player-owned unit tags: 106 vs 106
+    tags only in A        : 0
+    tags only in B        : 0
+    core-field diffs      : 48
+    order-field diffs     : 29 (P1=0, P2=29)
+    sample core diffs     : [(4345298945, 1, 45), (4347658241, 2, 132), (4348182529, 2, 45), (4348444673, 2, 45), (4348706817, 2, 45)]
+    sample order diffs    :
+      tag=4348182529 owner=2 unit_type=45
+        A: ((295, 0.0, ('tag', 4353163265)),)
+        B: ()
+      tag=4348444673 owner=2 unit_type=45
+        A: ((295, 0.0, ('tag', 4326948865)),)
+        B: ()
+      tag=4348706817 owner=2 unit_type=45
+        A: ((296, 0.0, ('tag', 4347658241)),)
+        B: ()
+
+--- Direct replay load: Player 2 perspective at step 5610 ---
+  direct P2 start status: in_replay
+
+  [Direct Player 2] summary:
+    game_loop            : 5610
+    player_common.id     : 2
+    upgrade_ids          : []
+    total raw units      : 264
+    player-owned units   : 106
+    owner counts         : {1: 59, 2: 47, 16: 158}
+    total orders by owner: P1=0  P2=33
+
+  [Direct Player 2] player_common:
+    player_id        : 2
+    minerals         : 160
+    vespene          : 4
+    food_used        : 48
+    food_cap         : 63
+    food_army        : 24
+    food_workers     : 24
+    idle_worker_count: 0
+    army_count       : 8
+  [Direct Player 2] score:
+    score_type : 2
+    score      : 5539
+    collected_minerals       : 3535.0
+    collected_vespene        : 1004.0
+    collection_rate_minerals : 1287.0
+    collection_rate_vespene  : 313.0
+    spent_minerals           : 3425.0
+    spent_vespene            : 1000.0
+
+  [COMPARE] Observer switched P2  vs  Direct Player 2
+    game_loop match      : True (5610 vs 5610)
+    player_common.id     : 0 vs 2
+    upgrade_ids          : [] vs []
+    player-owned unit tags: 106 vs 106
+    tags only in A        : 0
+    tags only in B        : 0
+    core-field diffs      : 61
+    order-field diffs     : 48 (P1=48, P2=0)
+    sample core diffs     : [(4344250369, 1, 132), (4344512513, 1, 45), (4344774657, 1, 45), (4345036801, 1, 45), (4345298945, 1, 45)]
+    sample order diffs    :
+      tag=4344512513 owner=1 unit_type=45
+        A: ((296, 0.0, ('tag', 4344250369)),)
+        B: ()
+      tag=4344774657 owner=1 unit_type=45
+        A: ((295, 0.0, ('tag', 4329570305)),)
+        B: ()
+      tag=4345036801 owner=1 unit_type=45
+        A: ((295, 0.0, ('tag', 4313317377)),)
+        B: ()
+
+--- TARGET STEP 6265 (exact-frame perspective comparison) ---
+  observer restart status: in_replay
+
+  [Observer raw (no switch)] summary:
+    game_loop            : 6265
+    player_common.id     : 0
+    upgrade_ids          : []
+    total raw units      : 272
+    player-owned units   : 114
+    owner counts         : {1: 65, 2: 49, 16: 158}
+    total orders by owner: P1=49  P2=34
+
+  [Observer raw (no switch)] player_common:
+    player_id        : 0
+    minerals         : 0
+    vespene          : 0
+    food_used        : 0
+    food_cap         : 0
+    food_army        : 0
+    food_workers     : 0
+    idle_worker_count: 0
+    army_count       : 0
+  [Observer raw (no switch)] score:
+    score_type : 2
+    score      : 0
+    collected_minerals       : 0.0
+    collected_vespene        : 0.0
+    collection_rate_minerals : 0.0
+    collection_rate_vespene  : 0.0
+    spent_minerals           : 0.0
+    spent_vespene            : 0.0
+  [raw units] unique owners: [1, 2, 16]
+
+--- Switching to Player 1 perspective (same frame, no step) ---
+  observer_action response status: in_replay
+  response type: obs_action
+
+  [After raw switch to P1] summary:
+    game_loop            : 6265
+    player_common.id     : 0
+    upgrade_ids          : []
+    total raw units      : 272
+    player-owned units   : 114
+    owner counts         : {1: 65, 2: 49, 16: 158}
+    total orders by owner: P1=49  P2=34
+
+  [After raw switch to P1] player_common:
+    player_id        : 0
+    minerals         : 0
+    vespene          : 0
+    food_used        : 0
+    food_cap         : 0
+    food_army        : 0
+    food_workers     : 0
+    idle_worker_count: 0
+    army_count       : 0
+  [After raw switch to P1] score:
+    score_type : 2
+    score      : 0
+    collected_minerals       : 0.0
+    collected_vespene        : 0.0
+    collection_rate_minerals : 0.0
+    collection_rate_vespene  : 0.0
+    spent_minerals           : 0.0
+    spent_vespene            : 0.0
+
+  [COMPARE] Observer raw (no switch)  vs  Observer switched P1
+    game_loop match      : True (6265 vs 6265)
+    player_common.id     : 0 vs 0
+    upgrade_ids          : [] vs []
+    player-owned unit tags: 114 vs 114
+    tags only in A        : 0
+    tags only in B        : 0
+    core-field diffs      : 0
+    order-field diffs     : 0 (P1=0, P2=0)
+
+--- Switching to Player 2 perspective (same frame, no step) ---
+  observer_action response status: in_replay
+  response type: obs_action
+
+  [After raw switch to P2] summary:
+    game_loop            : 6265
+    player_common.id     : 0
+    upgrade_ids          : []
+    total raw units      : 272
+    player-owned units   : 114
+    owner counts         : {1: 65, 2: 49, 16: 158}
+    total orders by owner: P1=49  P2=34
+
+  [After raw switch to P2] player_common:
+    player_id        : 0
+    minerals         : 0
+    vespene          : 0
+    food_used        : 0
+    food_cap         : 0
+    food_army        : 0
+    food_workers     : 0
+    idle_worker_count: 0
+    army_count       : 0
+  [After raw switch to P2] score:
+    score_type : 2
+    score      : 0
+    collected_minerals       : 0.0
+    collected_vespene        : 0.0
+    collection_rate_minerals : 0.0
+    collection_rate_vespene  : 0.0
+    spent_minerals           : 0.0
+    spent_vespene            : 0.0
+
+  [COMPARE] Observer raw (no switch)  vs  Observer switched P2
+    game_loop match      : True (6265 vs 6265)
+    player_common.id     : 0 vs 0
+    upgrade_ids          : [] vs []
+    player-owned unit tags: 114 vs 114
+    tags only in A        : 0
+    tags only in B        : 0
+    core-field diffs      : 0
+    order-field diffs     : 0 (P1=0, P2=0)
+
+  [COMPARE] Observer switched P1  vs  Observer switched P2
+    game_loop match      : True (6265 vs 6265)
+    player_common.id     : 0 vs 0
+    upgrade_ids          : [] vs []
+    player-owned unit tags: 114 vs 114
+    tags only in A        : 0
+    tags only in B        : 0
+    core-field diffs      : 0
+    order-field diffs     : 0 (P1=0, P2=0)
+
+--- Direct replay load: Player 1 perspective at step 6265 ---
+  direct P1 start status: in_replay
+
+  [Direct Player 1] summary:
+    game_loop            : 6265
+    player_common.id     : 1
+    upgrade_ids          : [16, 7]
+    total raw units      : 272
+    player-owned units   : 114
+    owner counts         : {1: 65, 2: 49, 16: 158}
+    total orders by owner: P1=49  P2=0
+
+  [Direct Player 1] player_common:
+    player_id        : 1
+    minerals         : 95
+    vespene          : 49
+    food_used        : 57
+    food_cap         : 71
+    food_army        : 37
+    food_workers     : 20
+    idle_worker_count: 0
+    army_count       : 29
+  [Direct Player 1] score:
+    score_type : 2
+    score      : 6069
+    collected_minerals       : 4495.0
+    collected_vespene        : 524.0
+    collection_rate_minerals : 951.0
+    collection_rate_vespene  : 179.0
+    spent_minerals           : 4450.0
+    spent_vespene            : 475.0
+
+  [COMPARE] Observer switched P1  vs  Direct Player 1
+    game_loop match      : True (6265 vs 6265)
+    player_common.id     : 0 vs 1
+    upgrade_ids          : [] vs [16, 7]
+    player-owned unit tags: 114 vs 114
+    tags only in A        : 0
+    tags only in B        : 0
+    core-field diffs      : 50
+    order-field diffs     : 29 (P1=0, P2=29)
+    sample core diffs     : [(4347658241, 2, 132), (4347920385, 2, 45), (4348182529, 2, 45), (4348444673, 2, 45), (4348968961, 2, 45)]
+    sample order diffs    :
+      tag=4347658241 owner=2 unit_type=132
+        A: ((524, 0.3676, None),)
+        B: ()
+      tag=4347920385 owner=2 unit_type=45
+        A: ((295, 0.0, ('tag', 4353949697)),)
+        B: ()
+      tag=4348182529 owner=2 unit_type=45
+        A: ((296, 0.0, ('tag', 4347658241)),)
+        B: ()
+
+--- Direct replay load: Player 2 perspective at step 6265 ---
+  direct P2 start status: in_replay
+
+  [Direct Player 2] summary:
+    game_loop            : 6265
+    player_common.id     : 2
+    upgrade_ids          : []
+    total raw units      : 272
+    player-owned units   : 114
+    owner counts         : {1: 65, 2: 49, 16: 158}
+    total orders by owner: P1=0  P2=34
+
+  [Direct Player 2] player_common:
+    player_id        : 2
+    minerals         : 80
+    vespene          : 89
+    food_used        : 55
+    food_cap         : 63
+    food_army        : 30
+    food_workers     : 24
+    idle_worker_count: 2
+    army_count       : 9
+  [Direct Player 2] score:
+    score_type : 2
+    score      : 6294
+    collected_minerals       : 4130.0
+    collected_vespene        : 1164.0
+    collection_rate_minerals : 1063.0
+    collection_rate_vespene  : 313.0
+    spent_minerals           : 4100.0
+    spent_vespene            : 1075.0
+
+  [COMPARE] Observer switched P2  vs  Direct Player 2
+    game_loop match      : True (6265 vs 6265)
+    player_common.id     : 0 vs 2
+    upgrade_ids          : [] vs []
+    player-owned unit tags: 114 vs 114
+    tags only in A        : 0
+    tags only in B        : 0
+    core-field diffs      : 66
+    order-field diffs     : 46 (P1=46, P2=0)
+    sample core diffs     : [(4344250369, 1, 132), (4344512513, 1, 45), (4344774657, 1, 45), (4345036801, 1, 45), (4345298945, 1, 45)]
+    sample order diffs    :
+      tag=4344512513 owner=1 unit_type=45
+        A: ((296, 0.0, None),)
+        B: ()
+      tag=4344774657 owner=1 unit_type=45
+        A: ((16, 0.0, ('pos', 146.925, 139.169, 0.0)), (295, 0.0, ('tag', 4329570305)))
+        B: ()
+      tag=4345036801 owner=1 unit_type=45
+        A: ((295, 0.0, ('tag', 4313317377)),)
+        B: ()
+
+--- TARGET STEP 6465 (exact-frame perspective comparison) ---
+  observer restart status: in_replay
+
+  [Observer raw (no switch)] summary:
+    game_loop            : 6465
+    player_common.id     : 0
+    upgrade_ids          : []
+    total raw units      : 277
+    player-owned units   : 119
+    owner counts         : {1: 66, 2: 53, 16: 158}
+    total orders by owner: P1=41  P2=37
+
+  [Observer raw (no switch)] player_common:
+    player_id        : 0
+    minerals         : 0
+    vespene          : 0
+    food_used        : 0
+    food_cap         : 0
+    food_army        : 0
+    food_workers     : 0
+    idle_worker_count: 0
+    army_count       : 0
+  [Observer raw (no switch)] score:
+    score_type : 2
+    score      : 0
+    collected_minerals       : 0.0
+    collected_vespene        : 0.0
+    collection_rate_minerals : 0.0
+    collection_rate_vespene  : 0.0
+    spent_minerals           : 0.0
+    spent_vespene            : 0.0
+  [raw units] unique owners: [1, 2, 16]
+
+--- Switching to Player 1 perspective (same frame, no step) ---
+  observer_action response status: in_replay
+  response type: obs_action
+
+  [After raw switch to P1] summary:
+    game_loop            : 6465
+    player_common.id     : 0
+    upgrade_ids          : []
+    total raw units      : 277
+    player-owned units   : 119
+    owner counts         : {1: 66, 2: 53, 16: 158}
+    total orders by owner: P1=41  P2=37
+
+  [After raw switch to P1] player_common:
+    player_id        : 0
+    minerals         : 0
+    vespene          : 0
+    food_used        : 0
+    food_cap         : 0
+    food_army        : 0
+    food_workers     : 0
+    idle_worker_count: 0
+    army_count       : 0
+  [After raw switch to P1] score:
+    score_type : 2
+    score      : 0
+    collected_minerals       : 0.0
+    collected_vespene        : 0.0
+    collection_rate_minerals : 0.0
+    collection_rate_vespene  : 0.0
+    spent_minerals           : 0.0
+    spent_vespene            : 0.0
+
+  [COMPARE] Observer raw (no switch)  vs  Observer switched P1
+    game_loop match      : True (6465 vs 6465)
+    player_common.id     : 0 vs 0
+    upgrade_ids          : [] vs []
+    player-owned unit tags: 119 vs 119
+    tags only in A        : 0
+    tags only in B        : 0
+    core-field diffs      : 0
+    order-field diffs     : 0 (P1=0, P2=0)
+
+--- Switching to Player 2 perspective (same frame, no step) ---
+  observer_action response status: in_replay
+  response type: obs_action
+
+  [After raw switch to P2] summary:
+    game_loop            : 6465
+    player_common.id     : 0
+    upgrade_ids          : []
+    total raw units      : 277
+    player-owned units   : 119
+    owner counts         : {1: 66, 2: 53, 16: 158}
+    total orders by owner: P1=41  P2=37
+
+  [After raw switch to P2] player_common:
+    player_id        : 0
+    minerals         : 0
+    vespene          : 0
+    food_used        : 0
+    food_cap         : 0
+    food_army        : 0
+    food_workers     : 0
+    idle_worker_count: 0
+    army_count       : 0
+  [After raw switch to P2] score:
+    score_type : 2
+    score      : 0
+    collected_minerals       : 0.0
+    collected_vespene        : 0.0
+    collection_rate_minerals : 0.0
+    collection_rate_vespene  : 0.0
+    spent_minerals           : 0.0
+    spent_vespene            : 0.0
+
+  [COMPARE] Observer raw (no switch)  vs  Observer switched P2
+    game_loop match      : True (6465 vs 6465)
+    player_common.id     : 0 vs 0
+    upgrade_ids          : [] vs []
+    player-owned unit tags: 119 vs 119
+    tags only in A        : 0
+    tags only in B        : 0
+    core-field diffs      : 0
+    order-field diffs     : 0 (P1=0, P2=0)
+
+  [COMPARE] Observer switched P1  vs  Observer switched P2
+    game_loop match      : True (6465 vs 6465)
+    player_common.id     : 0 vs 0
+    upgrade_ids          : [] vs []
+    player-owned unit tags: 119 vs 119
+    tags only in A        : 0
+    tags only in B        : 0
+    core-field diffs      : 0
+    order-field diffs     : 0 (P1=0, P2=0)
+
+--- Direct replay load: Player 1 perspective at step 6465 ---
+  direct P1 start status: in_replay
+
+  [Direct Player 1] summary:
+    game_loop            : 6465
+    player_common.id     : 1
+    upgrade_ids          : [16, 7]
+    total raw units      : 277
+    player-owned units   : 116
+    owner counts         : {0: 3, 1: 66, 2: 50, 16: 158}
+    total orders by owner: P1=41  P2=0
+
+  [Direct Player 1] player_common:
+    player_id        : 1
+    minerals         : 50
+    vespene          : 27
+    food_used        : 59
+    food_cap         : 71
+    food_army        : 39
+    food_workers     : 20
+    idle_worker_count: 0
+    army_count       : 30
+  [Direct Player 1] score:
+    score_type : 2
+    score      : 6202
+    collected_minerals       : 4650.0
+    collected_vespene        : 552.0
+    collection_rate_minerals : 1035.0
+    collection_rate_vespene  : 201.0
+    spent_minerals           : 4650.0
+    spent_vespene            : 525.0
+
+  [COMPARE] Observer switched P1  vs  Direct Player 1
+    game_loop match      : True (6465 vs 6465)
+    player_common.id     : 0 vs 1
+    upgrade_ids          : [] vs [16, 7]
+    player-owned unit tags: 119 vs 116
+    tags only in A        : 3
+    tags only in B        : 0
+    core-field diffs      : 51
+    order-field diffs     : 29 (P1=0, P2=29)
+    sample only-in-A tags : [4374134785, 4374921217, 4375707649]
+    sample core diffs     : [(4347658241, 2, 132), (4347920385, 2, 45), (4348182529, 2, 45), (4348444673, 2, 45), (4348968961, 2, 45)]
+    sample order diffs    :
+      tag=4347920385 owner=2 unit_type=45
+        A: ((295, 0.0, ('tag', 4353949697)),)
+        B: ()
+      tag=4348182529 owner=2 unit_type=45
+        A: ((296, 0.0, ('tag', 4347658241)),)
+        B: ()
+      tag=4348444673 owner=2 unit_type=45
+        A: ((295, 0.0, ('tag', 4326948865)),)
+        B: ()
+
+--- Direct replay load: Player 2 perspective at step 6465 ---
+  direct P2 start status: in_replay
+
+  [Direct Player 2] summary:
+    game_loop            : 6465
+    player_common.id     : 2
+    upgrade_ids          : [122]
+    total raw units      : 277
+    player-owned units   : 119
+    owner counts         : {1: 66, 2: 53, 16: 158}
+    total orders by owner: P1=0  P2=37
+
+  [Direct Player 2] player_common:
+    player_id        : 2
+    minerals         : 65
+    vespene          : 12
+    food_used        : 59
+    food_cap         : 63
+    food_army        : 34
+    food_workers     : 25
+    idle_worker_count: 0
+    army_count       : 10
+  [Direct Player 2] score:
+    score_type : 2
+    score      : 6427
+    collected_minerals       : 4315.0
+    collected_vespene        : 1212.0
+    collection_rate_minerals : 1147.0
+    collection_rate_vespene  : 313.0
+    spent_minerals           : 4300.0
+    spent_vespene            : 1200.0
+
+  [COMPARE] Observer switched P2  vs  Direct Player 2
+    game_loop match      : True (6465 vs 6465)
+    player_common.id     : 0 vs 2
+    upgrade_ids          : [] vs [122]
+    player-owned unit tags: 119 vs 119
+    tags only in A        : 0
+    tags only in B        : 0
+    core-field diffs      : 38
+    order-field diffs     : 37 (P1=37, P2=0)
+    sample core diffs     : [(4344250369, 1, 132), (4344512513, 1, 45), (4344774657, 1, 45), (4345036801, 1, 45), (4345298945, 1, 45)]
+    sample order diffs    :
+      tag=4344512513 owner=1 unit_type=45
+        A: ((295, 0.0, ('tag', 4323540993)),)
+        B: ()
+      tag=4344774657 owner=1 unit_type=45
+        A: ((295, 0.0, ('tag', 4329570305)),)
+        B: ()
+      tag=4345036801 owner=1 unit_type=45
+        A: ((295, 0.0, ('tag', 4313317377)),)
+        B: ()
+
+============================================================
+HOW TO INTERPRET THE DIAGNOSTIC
+============================================================
+  If 'core-field diffs' is 0 and 'tags only in A/B' is 0, then the
+  raw unit list is effectively perspective-invariant for those fields.
+  If 'order-field diffs' is non-zero, then unit.orders is perspective-
+  sensitive even when the rest of raw_data.units is stable.
+  If observer-switched P1 matches direct P1 (and same for P2), then
+  RequestObserverAction is reproducing direct player perspective.
+
+============================================================
+DIAGNOSTIC COMPLETE
+============================================================
+
+This run should tell you exactly whether perspective switching
+is needed for the fields your pipeline actually extracts.
