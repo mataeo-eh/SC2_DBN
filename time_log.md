@@ -38,4 +38,5 @@
 | 2026-04-03 | 06:30 | 08:30 |  2.0h    |  Verifying extracted data. Tightening unit tracking logic.  |
 | 2026-04-03 | 09:00 | 10:30 |  2.0h    |  Meeting with PI to discuss ML applications. Exploring topics discussed in meeting.  |
 | 2026-04-06 | 04:00 | 06:00 |  2.0h    |  Ensuring pipeline is set up to do a large data extraction 1 to begin exploratory ML for PoC.  |
+| 2026-04-06 | 16:30 | 17:30 |  1.0h    |  Adding batch streaming for parquet writing to fix catastrophic out of memory issue with data extraction pipeline on long replay files with 10k+ columns.  |
 |            |       |       |          |            |
