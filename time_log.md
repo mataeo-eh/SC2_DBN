@@ -41,4 +41,5 @@
 | 2026-04-06 | 16:30 | 17:30 |  1.0h    |  Adding batch streaming for parquet writing to fix catastrophic out of memory issue with data extraction pipeline on long replay files with 10k+ columns.  |
 | 2026-04-07 | 07:30 | 09:30 |  2.0h    |  Optimizing and tweaking data extraction tool to be more tenable for a large data extraction run.  |
 | 2026-04-07 | 15:30 | 17:30 |  2.0h    |  Optimizing and tweaking data extraction tool to be more tenable for a large data extraction run.  |
+| 2026-04-07 | 06:30 | 07:15 |  .75h    |  Checking everything after data extraction finished running. pushing to kaggle. creating strategies json to create labels.|
 |            |       |       |          |            |
