@@ -42,4 +42,6 @@
 | 2026-04-07 | 07:30 | 09:30 |  2.0h    |  Optimizing and tweaking data extraction tool to be more tenable for a large data extraction run.  |
 | 2026-04-07 | 15:30 | 17:30 |  2.0h    |  Optimizing and tweaking data extraction tool to be more tenable for a large data extraction run.  |
 | 2026-04-07 | 06:30 | 07:15 |  .75h    |  Checking everything after data extraction finished running. pushing to kaggle. creating strategies json to create labels.|
+| 2026-04-09 | 07:00 | 08:00 |  1.0h    |  Working on tokenization schema |
+| 2026-04-10 | 15:00 | 17:30 |  2.5h    |  Researching tokenization and token embeddings in other domains. Researching VQ-VAE and other audio signal processing token analogs. |
 |            |       |       |          |            |
