@@ -37,11 +37,10 @@ logs/
 
 # Data directories
 data-not-usable/
-data/processed/
-data/raw/
-data/quickstart/
-data/test/
-data/discretized/
+data/*
+!data/quickstart/
+data/quickstart/*
+!data/quickstart/strategies/
 
 # SC2 and pysc2
 pysc2/

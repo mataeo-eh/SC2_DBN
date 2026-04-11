@@ -4,7 +4,7 @@ Tokenization.py: Master entity list builder for the SC2 ML tokenization schema.
 PURPOSE
 -------
 Derives the canonical set of SC2 entity names (units + buildings) from two
-complementary sources, then writes them to Entity_List.json:
+complementary sources, then writes them to two output files:
 
   1. Dataset scan  -- reads every parquet file in the project data directory,
                       parses column names with ENTITY_COL_RE, and collects every
@@ -14,9 +14,9 @@ complementary sources, then writes them to Entity_List.json:
                       entities that exist in the game but haven't appeared in the
                       current dataset yet (e.g. rare units, late-game tech).
 
-Entities found in EITHER source are included in Entity_List.json.  Entities
-already in the JSON that disappear from both sources are NOT removed -- the JSON
-is append-only so token IDs remain stable across dataset updates.
+Entities found in EITHER source are included in both output files.  Entities
+already in the JSONs that disappear from both sources are NOT removed -- both
+files are append-only so token IDs remain stable across dataset updates.
 
 UPDATING THE LIST
 -----------------
@@ -26,11 +26,14 @@ Re-run this file directly whenever:
 
   python ML_PoC/Tokenization.py [--data-dir path/to/data]
 
-The script merges new findings into Entity_List.json without disturbing existing
-entries, then prints a summary of what was added.
+The script merges new findings without disturbing existing entries, then prints
+a summary of what was added.
 
 OUTPUT SCHEMA (Entity_List.json)
 ---------------------------------
+Human-readable entity list organised by category and race.  Useful as a
+reference and for downstream code that needs race-aware lookups.
+
 {
   "metadata": {
     "generated_at":        "<ISO timestamp of last update>",
@@ -51,8 +54,32 @@ OUTPUT SCHEMA (Entity_List.json)
   }
 }
 
-All names are lowercase strings matching the sanitized key format used throughout
-the extraction pipeline (e.g. "marine", "stalker", "zergling").
+OUTPUT SCHEMA (Token_Dictionary.json)
+--------------------------------------
+Flat vocabulary mapping game-engine unit-type IDs (integers, used directly as
+token IDs by the ML model) to their canonical string names.
+
+The game engine already defines this mapping -- pysc2 enum members carry the
+game engine ID as their .value.  This file is simply the reverse: ID -> name.
+
+For unit-type IDs that pysc2 does not recognise (observed in replay data but
+absent from all enums), the string name is "unknown_<ID>" so the token is still
+uniquely identifiable without requiring human-readable context.
+
+{
+  "metadata": {
+    "generated_at":        "<ISO timestamp of last update>",
+    "total_tokens":          <int>
+  },
+  "tokens": {
+    "<game_engine_id>": "<string_name>",   // e.g. "48": "marine"
+    ...
+    "1943": "unknown_1943",                // IDs not in pysc2 enums
+    "1995": "unknown_1995"
+  }
+}
+
+All string names are lowercase.
 
 Dependencies:
   - pyarrow       (reads parquet column schemas without loading row data)
@@ -80,8 +107,14 @@ _PROJECT_ROOT = Path(__file__).resolve().parent.parent
 # Default directory to search for parquet files (all subdirs under data/)
 _DEFAULT_DATA_DIR = _PROJECT_ROOT / "data"
 
-# Output JSON lives alongside this file
-ENTITY_LIST_PATH = Path(__file__).resolve().parent / "Entity_List.json"
+# Output JSONs live alongside this file
+ENTITY_LIST_PATH   = Path(__file__).resolve().parent / "Entity_List.json"
+TOKEN_DICT_PATH    = Path(__file__).resolve().parent / "Token_Dictionary.json"
+
+# Pattern that matches unknown entity names produced by the extractor when it
+# encounters a game-engine unit-type ID not present in the pysc2 enums.
+# Example: "unknown(1943)" -> captured group = "1943"
+_UNKNOWN_NAME_RE = re.compile(r"^unknown\((\d+)\)$")
 
 # Column name regex -- matches {player}_{botname}_{entitytype}_{seq_id}_{attr}
 # Group 2 is the combined botname+entitytype "middle"; entity type is the last
@@ -356,6 +389,151 @@ def _save_entity_list(data: dict) -> None:
 
 
 # ---------------------------------------------------------------------------
+# Token dictionary helpers
+# ---------------------------------------------------------------------------
+
+def _build_pysc2_id_to_name() -> dict[int, str]:
+    """
+    Build a game-engine-ID -> lowercase-string-name mapping from pysc2 enums.
+
+    Each pysc2 enum member stores:
+      member.name  -- the human-readable string the engine uses (e.g. "Marine")
+      member.value -- the integer unit-type ID the game engine uses internally
+
+    Reversing that gives us the token vocabulary: ID -> name.
+
+    If two enum members share the same value (aliases exist in pysc2 for a few
+    units), the last one wins -- this is acceptable because the string names
+    for aliases are equivalent for tokenisation purposes.
+
+    Returns:
+        dict[int, str]: {game_engine_id: lowercase_name}
+
+    Called by: build_token_dictionary()
+    """
+    id_to_name: dict[int, str] = {}
+    for enum in (sc2_units.Terran, sc2_units.Protoss, sc2_units.Zerg):
+        for member in enum:
+            id_to_name[member.value] = member.name.lower()
+    return id_to_name
+
+
+def load_token_dictionary() -> dict:
+    """
+    Load Token_Dictionary.json from disk.
+
+    Returns:
+        dict: Parsed JSON structure.  Returns a fresh empty structure if the
+        file does not yet exist.
+
+    Called by: build_token_dictionary(), and by external consumers that need
+    the flat token vocabulary.
+    """
+    if TOKEN_DICT_PATH.exists():
+        with open(TOKEN_DICT_PATH, "r", encoding="utf-8") as fh:
+            return json.load(fh)
+    return {"metadata": {"generated_at": "", "total_tokens": 0}, "tokens": {}}
+
+
+def _save_token_dictionary(data: dict) -> None:
+    """
+    Write token dictionary dict to Token_Dictionary.json (pretty-printed).
+
+    Tokens are sorted numerically by game-engine ID so the file is stable and
+    easy to inspect.
+
+    Args:
+        data: The token dictionary dict to serialise.
+
+    Called by: build_token_dictionary()
+    """
+    # Sort tokens numerically by game-engine ID before writing
+    data["tokens"] = {
+        str(k): data["tokens"][str(k)]
+        for k in sorted(int(k) for k in data["tokens"])
+    }
+    with open(TOKEN_DICT_PATH, "w", encoding="utf-8") as fh:
+        json.dump(data, fh, indent=2, sort_keys=False, ensure_ascii=False)
+
+
+def build_token_dictionary(dataset_entity_names: set[str]) -> dict:
+    """
+    Build or update Token_Dictionary.json from pysc2 enums plus any unknowns
+    observed in the dataset.
+
+    The game engine defines unit-type IDs internally; pysc2 enums expose these
+    as member.value.  This function reverses that mapping (ID -> name) and
+    extends it with any unknown IDs seen in replay data that pysc2 does not
+    cover.
+
+    Steps:
+      1. Reverse pysc2 enums -> {game_engine_id: lowercase_name}.
+      2. Scan dataset_entity_names for "unknown(XXXX)" entries and add
+         {XXXX: "unknown_XXXX"} for each one.
+      3. Merge with existing Token_Dictionary.json (append-only: existing
+         entries are never removed so token IDs stay stable).
+      4. Write updated JSON to disk.
+
+    Args:
+        dataset_entity_names: Set of entity name strings found in the dataset
+            (output of scan_parquet_entities).  Expected to contain any
+            "unknown(XXXX)" strings produced by the extractor for unrecognised
+            unit-type IDs.
+
+    Returns:
+        dict: The updated token dictionary structure (also written to disk).
+
+    Called by: build_entity_list() (so both files are always updated together),
+    and can be called standalone if only the token dictionary needs refreshing.
+    """
+    # Step 1: reverse pysc2 enums
+    pysc2_map = _build_pysc2_id_to_name()
+
+    # Step 2: parse unknowns from the dataset scan
+    unknown_map: dict[int, str] = {}
+    for name in dataset_entity_names:
+        m = _UNKNOWN_NAME_RE.match(name)
+        if m:
+            uid = int(m.group(1))
+            unknown_map[uid] = f"unknown_{uid}"
+
+    # Step 3: merge into existing dictionary (append-only)
+    existing = load_token_dictionary()
+    tokens: dict[str, str] = existing["tokens"]
+
+    added: list[tuple[int, str]] = []
+
+    for uid, name in pysc2_map.items():
+        key = str(uid)
+        if key not in tokens:
+            tokens[key] = name
+            added.append((uid, name))
+
+    for uid, name in unknown_map.items():
+        key = str(uid)
+        if key not in tokens:
+            tokens[key] = name
+            added.append((uid, name))
+
+    # Step 4: update metadata and write
+    existing["metadata"]["generated_at"] = datetime.now(timezone.utc).isoformat()
+    existing["metadata"]["total_tokens"]  = len(tokens)
+    existing["tokens"] = tokens
+
+    _save_token_dictionary(existing)
+
+    if added:
+        print(f"\n  Added {len(added)} new tokens to Token_Dictionary.json:")
+        for uid, name in sorted(added):
+            print(f"    + {uid}: \"{name}\"")
+    else:
+        print("\n  No new tokens found -- Token_Dictionary.json is already up to date.")
+
+    print(f"\nToken_Dictionary.json written to: {TOKEN_DICT_PATH}")
+    return existing
+
+
+# ---------------------------------------------------------------------------
 # Core build / update logic
 # ---------------------------------------------------------------------------
 
@@ -440,6 +618,12 @@ def build_entity_list(data_dir: Path = _DEFAULT_DATA_DIR) -> dict:
         print("\n  No new entities found -- Entity_List.json is already up to date.")
 
     print(f"\nEntity_List.json written to: {ENTITY_LIST_PATH}")
+
+    # Also keep Token_Dictionary.json in sync -- pass the raw dataset names so
+    # that any unknown(XXXX) entries can be harvested for the token vocab.
+    print("\n--- Token Dictionary ---")
+    build_token_dictionary(dataset_names)
+
     return existing
 
 
@@ -496,6 +680,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     result = build_entity_list(data_dir=args.data_dir)
+    token_dict = load_token_dictionary()
 
     print("\n--- Summary ---")
     print(f"  Buildings  terran       : {len(result['buildings']['terran'])}")
@@ -507,3 +692,4 @@ if __name__ == "__main__":
     print(f"  Units      zerg         : {len(result['units']['zerg'])}")
     print(f"  Units      unclassified : {len(result['units']['unclassified'])}")
     print(f"  Total entities          : {result['metadata']['total_entities']}")
+    print(f"  Token vocab size        : {token_dict['metadata']['total_tokens']}")
