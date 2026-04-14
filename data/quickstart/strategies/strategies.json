@@ -13,7 +13,7 @@
     "Confidence_5%.": 999,
     "GG": 999,
     "Marine_cyclone_viking": 0,
-    "Proxy_rax_all_in": 0
+    "Proxy_rax_all_in": 1
   },
   "Aeolus": {
     "MACRO_STALKERS": 0
@@ -168,8 +168,8 @@
     "follow_enemy_worker_proxying 01:05": 999
   },
   "SharpenedEdge": {
-    "build_rush_tempest": 1,
-    "rush_Macro": 1
+    "build_rush_tempest": 0,
+    "rush_Macro": 0
   },
   "Suimon": {
     "enemy: PROBE": 999,
@@ -185,7 +185,7 @@
     "Strategy_Brute_Force": 0
   },
   "WickedBot": {
-    "TvP": 0
+    "TvP": 999
   },
   "Xena": {
     "66159537d6dc492c9c89480bf73809a4": 999,
@@ -195,10 +195,10 @@
     "Terran": 999,
     "TorchesAIE": 999,
     "b7215fe53c844735b1f0da297154b5a8": 999,
-    "enemy_ProxyZealot_02_31": 0,
+    "enemy_ProxyZealot_02_31": 999,
     "protossbuild_2basestalker": 0,
-    "proxydefence_02_31": 0,
-    "safeProxyMarauder_True": 1,
+    "proxydefence_02_31": 999,
+    "safeProxyMarauder_True": 999,
     "terranbuild_macro": 0,
     "terranbuild_proxymarauder": 1,
     "unknown_opponent": 999,
@@ -246,7 +246,7 @@
     "MightBeAWorkerRush": 1,
     "ProxyNexus": 1,
     "ProxyZealot": 1,
-    "ProxyZealotWithProbes":1
+    "ProxyZealotWithProbes": 1
   },
   "what": {
     "06:18_switched_to_prevent_tie": 999,
@@ -270,6 +270,10 @@
     "12:48_switched_to_prevent_tie": 999,
     "OneBaseMuta": 1,
     "ProxyHatch": 1
+  },
+  "who": {
+    "MassMine": 1,
+    "Terran": 999
   },
   "why": {
     "05:58_switched_to_bcs": 999,
