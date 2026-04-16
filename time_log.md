@@ -46,4 +46,5 @@
 | 2026-04-10 | 15:00 | 17:30 |  2.5h    |  Researching tokenization and token embeddings in other domains. Researching VQ-VAE and other audio signal processing token analogs. |
 | 2026-04-10 | 05:30 | 07:00 |  1.5h    |  Working on tokenization schema. |
 | 2026-04-13 | 17:30 | 19:30 |  2.0h    |  Ran initial PoC Naive Bayes. Gathering more data to balance the classes. Tightening API replay download logic. |
+| 2026-04-14 | 20:30 | 21:30 |  1.0h    |  Fixing data pipeline. Applying tweaks to coarse label logic. |
 |            |       |       |          |            |
