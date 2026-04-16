@@ -23,7 +23,9 @@
     - Gephi - opensource and free sorta version 
     - algorithms for re-graphing graphs based on different ideas. Fascinating area
 
-
+- Token Embeddings versus Order
+    - When you have a sequence, C A B, and B A C, each token has embedding, if you multiply/add those embeddings, they become sequence invariant essentially
+    - Idea is mathematical operations that are 'order independent' 
 
 Look into hidden markov chains 
 
