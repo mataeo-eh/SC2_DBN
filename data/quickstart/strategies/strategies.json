@@ -2,6 +2,17 @@
   "12PoolBot": {
     "macro_ROACH": 0
   },
+  "27turtles": {
+    "Pylon AIE": 999,
+    "TanksALot 50% confidence rating": 999
+  },
+  "72Tortoises": {
+    "9 Roach": 999,
+    "Ley Lines AIE": 999,
+    "Persephone AIE": 999,
+    "Pylon AIE": 999,
+    "Ultralove AIE": 999
+  },
   "ANI_dev": {
     "Confidence 10%": 999,
     "Confidence 5%": 999,
@@ -16,7 +27,29 @@
     "Proxy_rax_all_in": 1
   },
   "Aeolus": {
-    "MACRO_STALKERS": 0
+    "MACRO_STALKERS": 0,
+    "BLINK_STALKERS": 999,
+    "FORGE_EXPAND": 0
+  },
+  "ArgoBot": {
+    "b_proberush_02_48": 999,
+    "bv_eo_0": 999,
+    "bv_eo_1_lg": 999,
+    "bv_hb_0": 999,
+    "bv_hb_1": 999,
+    "bv_nciml_3": 999,
+    "bv_tmc_0": 999,
+    "bv_tmc_1": 999
+  },
+  "AvocaDOS": {
+    "01:51_ErrInvalidMinerTag-4365746177": 999,
+    "03:42_WarnUnexpectedConstructionStarted_SUPPLYDEPOT_(128.0, 167.0)": 999,
+    "12:02_WarnUnexpectedConstructionStarted_BARRACKS_(112.5, 154.5)": 999,
+    "13:53_WarnUnexpectedConstructionStarted_SUPPLYDEPOT_(113.0, 152.0)": 999,
+    "Build_cc_first": 0,
+    "Build_proxy_three_rax": 1,
+    "Map_Persephone AIE": 999,
+    "Version_0-8-1": 999
   },
   "BenBotBC": {
     "BOPBMD": 999,
@@ -33,7 +66,51 @@
     "scv_cc_killed_no_built": 999,
     "scv_repair_killed": 999,
     "separate_mineral_patch": 999,
-    "zealot": 999
+    "zealot": 999,
+    "BOPBA": 999,
+    "BOPBT": 999,
+    "BOTBE": 999,
+    "BOZBM": 999,
+    "BOZBMA": 999,
+    "all_in": 999,
+    "attack_with_mines": 999,
+    "attack_with_tanks": 999,
+    "barrack_34": 999,
+    "build_order_issue": 999,
+    "build_supply_fail": 999,
+    "bunker_rush_cancel_zerglings": 999,
+    "bunker_rush_resume": 1,
+    "cc_skip_base": 999,
+    "early_adept": 999,
+    "early_tempest": 999,
+    "enemy_contain_end": 999,
+    "enemy_contain_start": 999,
+    "flying_cc_killed": 999,
+    "jump_cc": 999,
+    "jump_enemy_base": 999,
+    "mule_repair_base": 999,
+    "mutas": 999,
+    "ravager": 999,
+    "rush_cancel_barrack": 999,
+    "self_auto_turret": 999,
+    "self_auto_turret_cyclone": 999,
+    "self_auto_turret_cyclone_fail": 999,
+    "stalker": 999,
+    "stuck_scv": 999,
+    "tank_190": 999,
+    "tank_201": 999,
+    "tank_204": 999,
+    "tank_205": 999,
+    "tank_220": 999,
+    "tank_229": 999,
+    "tank_503": 999,
+    "tempest": 999,
+    "thor_mode": 999,
+    "worker_rush": 999,
+    "zergling": 999
+  },
+  "BigDaddy": {
+    "enemy_worker_harass1": 999
   },
   "Caninana": {
     "e_exp:238": 999,
@@ -77,15 +154,54 @@
     "Build_Completed": 999,
     "Cheese Spine Crawler": 1,
     "Ling_Rush": 1,
-    "Mutalisk": 1,
+    "Mutalisk": 999,
     "Protoss_Agressive": 999,
     "Version_250909": 999,
     "Version_251230": 999,
-    "Worker_Rush": 1
+    "Worker_Rush": 1,
+    "2_Base_Protoss": 999,
+    "Late_Game": 999,
+    "Version_260410": 999,
+    "Version_260414": 999
+  },
+  "Deimos": {
+    "AdeptOracle": 999,
+    "AdeptVoidray": 999,
+    "BasicOpener": 999,
+    "DoubleStargatePhoenix": 999,
+    "PhoenixColossus": 999,
+    "Protoss": 999
   },
   "Dodo": {
     "12_pool 00:41": 1,
     "mileral line status 11     00:42": 999
+  },
+  "DominionDog": {
+    "00:00_GenericBeginScout": "<ADD_LABEL_HERE>",
+    "01:18_PROTOSS": "<ADD_LABEL_HERE>",
+    "01:18_ProtossBeginScout": "<ADD_LABEL_HERE>",
+    "01:20_PROTOSS": "<ADD_LABEL_HERE>",
+    "01:20_ProtossBeginScout": "<ADD_LABEL_HERE>",
+    "01:30_PROTOSS": "<ADD_LABEL_HERE>",
+    "01:30_ProtossBeginScout": "<ADD_LABEL_HERE>",
+    "01:31_PROTOSS": "<ADD_LABEL_HERE>",
+    "01:31_ProtossBeginScout": "<ADD_LABEL_HERE>",
+    "01:57_ProtossEarlyAir": "<ADD_LABEL_HERE>",
+    "01:57_ScoutingNormal": "<ADD_LABEL_HERE>",
+    "02:00_ProtossEarlyAir": "<ADD_LABEL_HERE>",
+    "02:00_ScoutingNormal": "<ADD_LABEL_HERE>",
+    "02:01_ProtossEarlyAir": "<ADD_LABEL_HERE>",
+    "02:01_ScoutingNormal": "<ADD_LABEL_HERE>",
+    "02:02_ProtossEarlyAir": "<ADD_LABEL_HERE>",
+    "02:02_ScoutingNormal": "<ADD_LABEL_HERE>",
+    "06:32_ProtossLateAir": "<ADD_LABEL_HERE>",
+    "07:18_ProtossLateAir": "<ADD_LABEL_HERE>"
+  },
+  "Dysnomia": {
+    "FifteenFourteenLingFlood": 1,
+    "NydusLingFlood": 1,
+    "SwarmHostNydusRush": 1,
+    "Zerg": 999
   },
   "Eris": {
     "HatchGasPoolExtractorTrick": 999,
@@ -94,10 +210,51 @@
     "vs_worker_rush_02:26": 999,
     "vs_zealot_rush_01:03": 999,
     "vs_zealot_rush_02:25": 999,
-    "vs_zealot_rush_02:26": 999
+    "vs_zealot_rush_02:26": 999,
+    "add_map_control_lings_04:33": 999,
+    "add_map_control_lings_04:38": 999,
+    "add_map_control_lings_06:47": 999,
+    "add_mutas_09:06": 999,
+    "creep_dropperlord_08:36": 999,
+    "creep_dropperlord_09:17": 999,
+    "creep_dropperlord_10:09": 999,
+    "enemy_expand_outside_nat_08:37": 999,
+    "enemy_expand_outside_nat_12:02": 999,
+    "ling_harass_05:57": 999,
+    "ling_harass_07:58": 999,
+    "lurkers_11:27": 999,
+    "lurkers_17:51": 999,
+    "overseer_sweep_10:00": 999,
+    "overseer_sweep_12:37": 999,
+    "spore_forest_15:26": 0,
+    "viper_food_12:26": 999,
+    "viper_food_14:52": 999,
+    "vs_floating_structures_10:00": 999,
+    "vs_proxy_hatch_02:15": 999,
+    "vs_proxy_hatch_12:02": 999
+  },
+  "ErisTest": {
+    "Zerg": 999,
+    "add_map_control_lings_04:23": 999,
+    "add_map_control_lings_04:26": 999,
+    "creep_dropperlord_09:41": 999,
+    "enemy_expand_outside_nat_05:00": 999,
+    "ling_harass_05:01": 999,
+    "lurkers_09:09": 999,
+    "overseer_sweep_10:00": 999,
+    "spore_forest_10:43": 999,
+    "spore_forest_11:00": 999,
+    "viper_food_11:13": 999,
+    "vs_bio_tank_04:04": 999,
+    "vs_bio_tank_04:05": 999,
+    "vs_floating_structures_10:39": 999,
+    "vs_floating_structures_10:57": 999,
+    "vs_marine_05:06": 999,
+    "vs_marine_05:19": 999
   },
   "GPT": {
-    "two-base-push": 0
+    "two-base-push": 0,
+    "one-base-push": 0
   },
   "Laser-Circus": {
     "CircusFriendReport:1m36s_we:rush_turtle:0_t": 0,
@@ -114,16 +271,60 @@
     "opp_what_Random(Zerg)": 999,
     "own_laser-circus_Protoss": 999
   },
+  "MechaShark": {
+    "b_tvzmech": 999
+  },
   "Mulebot": {
     "M20250913": 999,
     "M20260110": 999,
     "M20260112": 999,
     "normal": 0,
     "normal_marauder": 0,
-    "porcupine": 0
+    "porcupine": 0,
+    "M20260215": 999,
+    "M20260401": 999,
+    "gamble_defend": 999,
+    "twoonebunkers": 999
   },
   "Nothing": {
-    "PvzOnegateExpandOraclePhoenix": 0
+    "PvzOnegateExpandOraclePhoenix": 0,
+    "btran_anti_cheese_opening": 999,
+    "btran_dyn_later": 999,
+    "btran_one_base_tempest": 1,
+    "cheese_12pool": 1,
+    "cheese_cannon": 1,
+    "cheese_multi_rax": 1,
+    "cloak_seen": 999,
+    "nydus_off": 999,
+    "nydus_on": 999,
+    "open_protoss_dynamic_core": 999,
+    "open_protoss_dynamic_core_pv_p": 999,
+    "open_protoss_dynamic_core_pv_t": 999,
+    "open_protoss_dynamic_core_pv_z": 999,
+    "open_robo_expand": 1,
+    "open_stalker_rush": 1,
+    "strat_air": 999,
+    "strat_harass": 999,
+    "strat_macro": 999,
+    "strat_timing": 999,
+    "tech_fbeacon": 999,
+    "tech_fcore": 999,
+    "tech_ipit": 999,
+    "tech_nnet": 999,
+    "tech_sgate": 999,
+    "thrt_caution": 999,
+    "thrt_danger": 999,
+    "thrt_safe": 999,
+    "work_under_u19_avg20_2min": 999,
+    "work_under_u20_avg21_2min": 999,
+    "work_under_u22_avg23_4min": 999,
+    "work_under_u22_avg30_4min": 999,
+    "work_under_u28_avg29_4min": 999,
+    "work_under_u29_avg31_4min": 999,
+    "work_under_u29_avg32_4min": 999,
+    "work_under_u29_avg33_4min": 999,
+    "work_under_u29_avg35_4min": 999,
+    "work_under_u36_avg37_4min": 999
   },
   "PiG_Bot": {
     "Rush_speedling": 1
@@ -143,7 +344,23 @@
     "mew_match_what_0_core_t": 999,
     "mew_match_what_2_stable_t": 999,
     "opp_what_Random(Zerg)": 999,
-    "own_princess-mika_Zerg": 999
+    "own_princess-mika_Zerg": 999,
+    "MewBuilt:3m20s_ROACHWARREN_t": 999,
+    "MewBuilt:5m57s_LAIR_t": 999,
+    "MewBuilt:6m29s_HYDRALISKDEN_t": 999,
+    "MewBuilt:6m35s_INFESTATIONPIT_t": 999,
+    "MewBuilt:6m36s_EVOLUTIONCHAMBER_t": 999,
+    "MewBuilt:7m58s_HIVE_t": 999,
+    "MewBuilt:8m8s_SPIRE_t": 999,
+    "MewModeD-8rao3_t": 999,
+    "MewOpening_fast_mutas_z:wt_2_boss:11.1_t": 999,
+    "MewVictory:10m44s_a_71_w_45_t": 999,
+    "MikaFriendReport:2m30s_we:rush_turtle:0_t": 999,
+    "mewPrincessMikaBot_v04122026_205759_t": 999,
+    "mew_comp_roa_rav_hyd_lur_ult_bro_mut_t": 999,
+    "mew_match_Nothing_3_crazy_t": 999,
+    "mika_burrow_expo_block:6m38s_zb6": 999,
+    "opp_Nothing_Random(Protoss)": 999
   },
   "Princess-Mika-Test": {
     "MewBuilt:1m6s_SPAWNINGPOOL_t": 999,
@@ -165,27 +382,48 @@
     "p2 what_Zerg": 999
   },
   "Roro": {
-    "follow_enemy_worker_proxying 01:05": 999
+    "follow_enemy_worker_proxying 01:05": 999,
+    "follow_enemy_worker_proxying 00:59": 999,
+    "follow_enemy_worker_proxying 01:00": 999,
+    "mass_repair 04:27": 999  
+  },
+  "Sharkling": {
+    "b_dronerush": 999,
+    "b_mutaliskfollowup": 999
   },
   "SharpenedEdge": {
-    "build_rush_tempest": 0,
-    "rush_Macro": 0
+    "build_rush_tempest": 1,
+    "rush_Macro": 0,
+    "build_air_macro": 0
   },
   "Suimon": {
     "enemy: PROBE": 999,
     "enemy: ZEALOT": 999
   },
   "TheLAW": {
-    "--TheLAW-1.4.3--": 999
+    "--TheLAW-1.4.3--": 999,
+    "boost_marauders": 999,
+    "enemy_worker_harass1": 999,
+    "warp_enemy_base": 999
   },
   "TyrT": {
-    "TvPBio": 0
+    "TvPBio": 0,
+    "ProxyMarineRush": 1,
+    "TvTStandard": 0
+  },
+  "VeTerran-revived": {
+    "Strategy_CC_After_Rax": 0,
+    "Strategy_Proxy_Marines": 1
   },
   "VeTerran_another": {
     "Strategy_Brute_Force": 0
   },
   "WickedBot": {
-    "TvP": 999
+    "TvP": 999,
+    "Build_BARRACKS_incorrect": 999,
+    "Detection": 999,
+    "TvT": 999,
+    "TvZ": 999
   },
   "Xena": {
     "66159537d6dc492c9c89480bf73809a4": 999,
@@ -205,7 +443,25 @@
     "v2_8_19_2": 999,
     "v2_8_19_3": 999,
     "vs_Protoss": 999,
-    "vs_Terran": 999
+    "vs_Terran": 999,
+    "LeyLinesAIE": 999,
+    "MagannathaAIE": 999,
+    "PylonAIE": 999,
+    "UltraloveAIE": 999,
+    "Zerg": 999,
+    "earlyrushdefence_02_28": 999,
+    "enemy_BurrowUpgrade_02_59": 999,
+    "protossbuild_4gate": 999,
+    "protossbuild_oneBaseTempest": 999,
+    "rushover_03_44": 999,
+    "safeProxyGate_False": 999,
+    "vs_Zerg": 999,
+    "workerrushdefence_00_51": 999,
+    "workerrushdefence_00_54": 999,
+    "workerrushover_02_42": 999,
+    "workerrushover_03_30": 999,
+    "zergbuild_lingflood": 999,
+    "zergbuild_roachRush": 999
   },
   "Zozo": {
     "COLOSSUS 10:08": 999,
@@ -219,7 +475,17 @@
     "mileral line status 12 00:42": 999,
     "mileral line status 7     00:42": 999,
     "mileral line status 8     00:43": 999,
-    "mileral line status 9     00:40": 999
+    "mileral line status 9     00:40": 999,
+    "3_gate 01:42": 999,
+    "TEMPEST 06:34": 999,
+    "TEMPEST 07:10": 999,
+    "TEMPEST 07:43": 999,
+    "TEMPEST 07:56": 999,
+    "TEMPEST 08:06": 999,
+    "enemy_rush 00:53": 999,
+    "expand_blocked 08:25": 999,
+    "mileral line status 13     00:42": 999,
+    "mileral line status 13     00:44": 999
   },
   "changeling": {
     "HatchGasPoolExtractorTrick": 0,
@@ -231,22 +497,60 @@
     "vs_zealot_rush_01:13": 999,
     "vs_zealot_rush_02:26": 999
   },
+  "clone": {
+    "M20260411": 999,
+    "M20260413": 999,
+    "in_your_face_half": 999,
+    "marta_two": 999
+  },
+  "muravev": {
+    "Enemy_RushNoMacro": 999,
+    "Enemy_Twilightcouncil": 999
+  },
   "negativeZero": {
     "Cloaked 3_12": 999,
     "MechAllIn 2_21": 0,
     "MineralFail 6_00": 999
   },
   "nida": {
-    "2025-09-11 06:37": 999
+    "2025-09-11 06:37": 999,
+    "2026-03-12 11:36": 999
   },
   "norman": {
     "2025-06-08 15:41": 999
+  },
+  "puck": {
+    "immortal": 999
   },
   "really": {
     "MightBeAWorkerRush": 1,
     "ProxyNexus": 1,
     "ProxyZealot": 1,
-    "ProxyZealotWithProbes": 1
+    "ProxyZealotWithProbes": 1,
+    "OneBaseTempest": 1,
+    "ProbeRush": 1,
+    "ProxyZealotInMain": 1
+  },
+  "sharkbot": {
+    "b_aggressiveexpandstargatetwobase": 999,
+    "b_massstalkerprism": 0,
+    "b_skytosspvpmr": 999,
+    "b_threegaterobo": 0,
+    "b_workerrush": 1
+  },
+  "tito": {
+    "Build Position Error 10_38": 999,
+    "Build Position Error 8_30": 999,
+    "Late 15 seconds": 999,
+    "Late 8 seconds": 999,
+    "SupplyBlocked 5_26": 999
+  },
+  "whalemean": {
+    "b_broodlordbuild": 0,
+    "b_dronerush": 1,
+    "b_threegaterobofollowup": 999,
+    "b_tvpbattlemech": 0,
+    "b_tvzmech": 999
   },
   "what": {
     "06:18_switched_to_prevent_tie": 999,
@@ -269,11 +573,32 @@
     "12:27_switched_to_prevent_tie": 999,
     "12:48_switched_to_prevent_tie": 999,
     "OneBaseMuta": 1,
-    "ProxyHatch": 1
+    "ProxyHatch": 1,
+    "03:00_switched_to_prevent_tie": 999,
+    "03:34_switched_to_prevent_tie": 999,
+    "03:42_switched_to_prevent_tie": 999,
+    "04:30_switched_to_prevent_tie": 999,
+    "04:54_switched_to_prevent_tie": 999,
+    "05:07_switched_to_prevent_tie": 999,
+    "05:18_switched_to_prevent_tie": 999,
+    "09:17_dinosaurs": 999,
+    "10:15_dinosaurs": 999,
+    "11:08_dinosaurs": 999,
+    "11:50_switched_to_prevent_tie": 999,
+    "14:35_dinosaurs": 999,
+    "15:26_switched_to_prevent_tie": 999,
+    "15:59_switched_to_prevent_tie": 999,
+    "BroRush": 1,
+    "DroneRush": 1,
+    "LingDroneRush":1,
+    "ProxyHatchVariation": 1,
+    "RavagerRush": 1
   },
   "who": {
     "MassMine": 1,
-    "Terran": 999
+    "Terran": 999,
+    "Protoss": 999,
+    "ProxyZealot": 1
   },
   "why": {
     "05:58_switched_to_bcs": 999,
@@ -287,6 +612,14 @@
     "12:18_switched_to_bcs": 999,
     "14:31_switched_to_bcs": 999,
     "MassMine": 1,
-    "Reapers": 1
+    "Reapers": 1,
+    "06:00_switched_to_prevent_tie": 999,
+    "07:09_switched_to_prevent_tie": 999,
+    "16:10_switched_to_prevent_tie": 999,
+    "MightBeAWorkerRush": 1,
+    "ProxyMarauder": 1,
+    "ProxyMarine": 1,
+    "ProxyReaperWithPf": 1,
+    "WorkerRush": 1
   }
 }
