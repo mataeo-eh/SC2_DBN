@@ -48,4 +48,6 @@
 | 2026-04-13 | 17:30 | 19:30 |  2.0h    |  Ran initial PoC Naive Bayes. Gathering more data to balance the classes. Tightening API replay download logic. |
 | 2026-04-14 | 20:30 | 21:30 |  1.0h    |  Fixing data pipeline. Applying tweaks to coarse label logic. |
 | 2026-04-16 | 07:00 | 08:30 |  1.5h    |  Working on articulating future directions. Researching existing methods to base future directions around. |
+| 2026-04-19 | 07:00 | 09:45 |  2.75h   |  Working on articulating future directions. Researching existing methods for tokenization and embeddings to direct future work. |
+| 2026-04-19 | 13:30 | 15:30 |  2.0h    |  Working on articulating future directions. Adding logic to gather recent bot matches irrespective of bot name. |
 |            |       |       |          |            |
