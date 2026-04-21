@@ -49,5 +49,7 @@
 | 2026-04-14 | 20:30 | 21:30 |  1.0h    |  Fixing data pipeline. Applying tweaks to coarse label logic. |
 | 2026-04-16 | 07:00 | 08:30 |  1.5h    |  Working on articulating future directions. Researching existing methods to base future directions around. |
 | 2026-04-19 | 07:00 | 09:45 |  2.75h   |  Working on articulating future directions. Researching existing methods for tokenization and embeddings to direct future work. |
-| 2026-04-19 | 13:30 | 15:30 |  2.0h    |  Working on articulating future directions. Adding logic to gather recent bot matches irrespective of bot name. |
+| 2026-04-19 | 13:30 | 17:30 |  4.0h    |  Working on articulating future directions. Adding logic to gather recent bot matches irrespective of bot name. |
+| 2026-04-20 | 05:00 | 06:30 |  1.5h    |  Researching ML with data of ordered sequences of variable size unordered sets. |
+| 2026-04-20 | 16:30 | 18:30 |  2.0h    |  Researching ML with data of ordered sequences of variable size unordered sets. Finalizing proposed direction flowchart. |
 |            |       |       |          |            |
