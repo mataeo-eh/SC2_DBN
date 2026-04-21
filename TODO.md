@@ -1,7 +1,9 @@
 - Look into research 32 about the weird unit edge cases and how to handle weird state transitions for units like zerg eggs and the archon cocoon
 - Add parameters for choosing which columns to write to parquet files after the information has been extracted from a replay.
-- Look into adding a CLI hook for choosing how many gamesteps to pull info from.
-    - I.E. current pipeline pulls every 1 gamestep, but may be prudent to pull every 25 or so instead (1.1 seconds)
+- Look into adding the ability to run the pipeline under p1 observance, p2 observance, or observer perfect information observance.
+    - This will allow gathering data of what p1 sees of p2 and having a ground truth for what p2 has
+        - This can augment the secondary training task of intra-timestep set completion prediction.
+            - Gives a high fidelity practice of intra-timestep prediction accuracy for training.      
 - Look more into feature selection algorithms to determine what features to pass a model for strategy prediction
 - Look into using UV and FastAPI to create the project in a way it can have the back end managed and then have a front-end webpage host that can interact with the code using FastAPI for quicker and clearer iterating on the EDA notebooks.
     - Some sort of GUI or an equivalent of some sort to make the pipeline easier to use and more user-friendly than purely relying on CLI commands and usage and documentation.
