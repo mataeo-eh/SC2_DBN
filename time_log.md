@@ -38,7 +38,7 @@
 | 2026-04-03 | 06:30 | 08:30 |  2.0h    |  Verifying extracted data. Tightening unit tracking logic.  |
 | 2026-04-03 | 09:00 | 10:30 |  2.0h    |  Meeting with PI to discuss ML applications. Exploring topics discussed in meeting.  |
 | 2026-04-06 | 04:00 | 06:00 |  2.0h    |  Ensuring pipeline is set up to do a large data extraction 1 to begin exploratory ML for PoC.  |
-| 2026-04-06 | 16:30 | 17:30 |  1.0h    |  Adding batch streaming for parquet writing to fix catastrophic out of memory issue with data extraction pipeline on long replay files with 10k+ columns.  |
+| 2026-04-06 | 16:30 | 17:30 |  1.0h    |  Adding batch streaming for parquet writing to fix catastrophic out of memory issue with data extraction pipeline on long replay files with 10k+ columns/rows.  |
 | 2026-04-07 | 07:30 | 09:30 |  2.0h    |  Optimizing and tweaking data extraction tool to be more tenable for a large data extraction run.  |
 | 2026-04-07 | 15:30 | 17:30 |  2.0h    |  Optimizing and tweaking data extraction tool to be more tenable for a large data extraction run.  |
 | 2026-04-07 | 06:30 | 07:15 |  .75h    |  Checking everything after data extraction finished running. pushing to kaggle. creating strategies json to create labels.|
@@ -52,4 +52,7 @@
 | 2026-04-19 | 13:30 | 17:30 |  4.0h    |  Working on articulating future directions. Adding logic to gather recent bot matches irrespective of bot name. |
 | 2026-04-20 | 05:00 | 06:30 |  1.5h    |  Researching ML with data of ordered sequences of variable size unordered sets. |
 | 2026-04-20 | 16:30 | 18:30 |  2.0h    |  Researching ML with data of ordered sequences of variable size unordered sets. Finalizing proposed direction flowchart. |
+| 2026-04-21 | 16:00 | 16:30 |  0.5h    |  Re-thinking T2 and T3 tokenization to be more logically and practically coherent. |
+| 2026-04-21 | 18:30 | 19:30 |  1.0h    |  Re-thinking T2 and T3 tokenization to be more logically and practically coherent. |
+| 2026-04-21 | 18:00 | 20:00 |  2.0h    |  Re-thinking T2 and T3 tokenization to be more logically and practically coherent. |
 |            |       |       |          |            |
