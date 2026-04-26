@@ -55,4 +55,6 @@
 | 2026-04-21 | 16:00 | 16:30 |  0.5h    |  Re-thinking T2 and T3 tokenization to be more logically and practically coherent. |
 | 2026-04-21 | 18:30 | 19:30 |  1.0h    |  Re-thinking T2 and T3 tokenization to be more logically and practically coherent. |
 | 2026-04-21 | 18:00 | 20:00 |  2.0h    |  Re-thinking T2 and T3 tokenization to be more logically and practically coherent. |
+| 2026-04-25 | 15:00 | 17:00 |  2.0h    |  Working on new replay strategy labelling and adding upgrades to tokenization. |
+| 2026-04-26 | 13:00 | 15:00 |  2.0h    |  Working on new replay strategy labelling and adding upgrades to tokenization. |
 |            |       |       |          |            |
