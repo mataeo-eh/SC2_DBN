@@ -1,3 +1,4 @@
+- ROC to see if better than random guessing - Naive Bayes
 - Look into research 32 about the weird unit edge cases and how to handle weird state transitions for units like zerg eggs and the archon cocoon
 - Add parameters for choosing which columns to write to parquet files after the information has been extracted from a replay.
 - Look into adding the ability to run the pipeline under p1 observance, p2 observance, or observer perfect information observance.
