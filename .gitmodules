@@ -10,3 +10,6 @@
 [submodule "src_new"]
 	path = SC2-gamestate-extractor
 	url = https://github.com/mataeo-eh/SC2-gamestate-extractor.git
+[submodule "Thesis_ML"]
+	path = Thesis_ML
+	url = https://github.com/mataeo-eh/Thesis_ML.git
