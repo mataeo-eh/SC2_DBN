@@ -22,15 +22,11 @@ Common issues and solutions for the SC2 Replay Ground Truth Extraction Pipeline.
 ERROR: This package requires Python 3.9 or higher
 ```
 
-**Solution**:
+**Solution**: This project uses uv, which manages the interpreter for you. The
+required version is pinned in `.python-version` (3.11); uv downloads it
+automatically. Just sync:
 ```bash
-# Check Python version
-python --version
-
-# Install Python 3.9+ from python.org
-# Then create new virtual environment
-python3.11 -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+uv sync
 ```
 
 ### pysc2 Import Fails
@@ -40,19 +36,15 @@ source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 ModuleNotFoundError: No module named 'pysc2'
 ```
 
-**Solution**:
+**Solution**: pysc2 is a declared dependency, so it's installed by `uv sync`. Make
+sure you run code through uv (which uses the project environment) rather than a bare
+`python`:
 ```bash
-# Ensure virtual environment is activated
-# On Windows:
-.venv\Scripts\activate
-# On Mac/Linux:
-source .venv/bin/activate
+# Resync to be sure the environment is complete
+uv sync
 
-# Install pysc2
-pip install pysc2
-
-# Verify installation
-python -c "import pysc2; print(pysc2.__version__)"
+# Run via uv (no activation needed)
+uv run python -c "import pysc2; print(pysc2.__version__)"
 ```
 
 ### SC2 Not Found
@@ -132,23 +124,18 @@ sudo chown -R $USER:$USER .venv
 ERROR: pip's dependency resolver does not currently take into account all the packages
 ```
 
-**Solution**:
+**Solution**: uv resolves all dependencies together against the locked versions in
+`uv.lock`, so classic pip resolver conflicts shouldn't occur. If the environment
+gets into a bad state, rebuild it cleanly:
 ```bash
-# Create fresh virtual environment
-python -m venv .venv-fresh --clear
-source .venv-fresh/bin/activate
+# Recreate the environment from the lockfile
+uv sync --reinstall
 
-# Upgrade pip
-pip install --upgrade pip setuptools wheel
+# If a cached download is corrupted
+uv cache clean && uv sync
 
-# Install dependencies one by one
-pip install pandas
-pip install pyarrow
-pip install numpy
-pip install pysc2
-
-# Or use requirements file
-pip install -r requirements_extraction.txt
+# To re-resolve from scratch (updates uv.lock to latest allowed versions)
+uv lock --upgrade && uv sync
 ```
 
 ---
@@ -284,31 +271,19 @@ ModuleNotFoundError: No module named 'src_new'
 
 **Solutions**:
 
-**1. Run from Project Root**
-```bash
-# Ensure you're in the correct directory
-cd /path/to/local-play-bootstrap-main
+`src_new` is provided by the `SC2-gamestate-extractor` submodule, declared as an
+editable dependency in `pyproject.toml`. `uv sync` links it into the environment, so
+running through uv resolves the import automatically — no `PYTHONPATH` juggling.
 
-# Then run
-python -m src_new.pipeline.QUICKSTART
+**1. Run through uv**
+```bash
+uv run python -m src_new.pipeline.QUICKSTART
 ```
 
-**2. Set PYTHONPATH**
+**2. Make sure the submodule is checked out and synced**
 ```bash
-# Windows (CMD)
-set PYTHONPATH=%PYTHONPATH%;C:\path\to\local-play-bootstrap-main
-
-# Windows (PowerShell)
-$env:PYTHONPATH += ";C:\path\to\local-play-bootstrap-main"
-
-# macOS/Linux
-export PYTHONPATH="${PYTHONPATH}:/path/to/local-play-bootstrap-main"
-```
-
-**3. Install in Development Mode**
-```bash
-# From project root
-pip install -e .
+git submodule update --init --recursive   # populate SC2-gamestate-extractor
+uv sync                                    # re-link the editable dependency
 ```
 
 ---
@@ -746,7 +721,8 @@ pytest -v -s
 | Error Message | Likely Cause | Solution |
 |---------------|--------------|----------|
 | `SC2 not found` | SC2 not installed or SC2PATH not set | Install SC2, set SC2PATH |
-| `ModuleNotFoundError: pysc2` | pysc2 not installed | `pip install pysc2` |
+| `ModuleNotFoundError: pysc2` | environment not synced | `uv sync`, then run via `uv run` |
+| `ModuleNotFoundError: src_new` | submodule missing / not synced | `git submodule update --init --recursive && uv sync` |
 | `MemoryError` | Not enough RAM | Reduce workers, use single-pass mode |
 | `Replay loading failed` | Corrupted replay or wrong version | Try different replay |
 | `Permission denied` | File permissions issue | Check file permissions, run as admin if needed |

@@ -42,40 +42,46 @@ git checkout -b feature/your-feature-name
 
 ## Development Environment Setup
 
-### 1. Create Virtual Environment
+This project uses **[uv](https://docs.astral.sh/uv/)** for environment and
+dependency management (see `docs/installation.md` for the full guide). uv creates
+the virtual environment and installs locked dependencies for you — no manual
+`venv`/`pip` steps and no activation.
+
+### 1. Install uv and clone with submodules
 
 ```bash
-# Create virtual environment
-python -m venv .venv
+# Install uv (see https://docs.astral.sh/uv/getting-started/installation/)
+# macOS/Linux: curl -LsSf https://astral.sh/uv/install.sh | sh
+# Windows:     powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 
-# Activate
-# Windows:
-.venv\Scripts\activate
-# macOS/Linux:
-source .venv/bin/activate
+git clone --recurse-submodules <repo-url>
+cd local-play-bootstrap-main
 ```
 
-### 2. Install Dependencies
+### 2. Create the Environment (with dev tools)
 
 ```bash
-# Install production dependencies
-pip install -r requirements_extraction.txt
+# Installs runtime + dev/test/notebook dependencies into .venv (Python 3.11)
+uv sync --extra dev
+```
 
-# Install development/testing dependencies
-pip install -r requirements_testing.txt
+To add or remove dependencies, use uv (it updates both `pyproject.toml` and
+`uv.lock`) rather than editing a requirements file:
 
-# Install in development mode
-pip install -e .
+```bash
+uv add <package>                  # runtime dependency
+uv add --optional dev <package>   # dev-only dependency
+uv remove <package>
 ```
 
 ### 3. Verify Installation
 
 ```bash
-# Run verification script
-python verify_installation.py
+# Run verification script (note: prefix with `uv run`)
+uv run python verify_installation.py
 
 # Run tests
-python run_tests.py --fast
+uv run python run_tests.py --fast
 ```
 
 ---
@@ -520,8 +526,9 @@ local-play-bootstrap-main/
 │   └── troubleshooting.md
 ├── examples/                # Jupyter notebooks
 ├── run_tests.py             # Test runner script
-├── requirements_extraction.txt    # Production dependencies
-├── requirements_testing.txt       # Testing dependencies
+├── pyproject.toml           # Project metadata + dependencies (uv)
+├── uv.lock                  # Locked, reproducible dependency versions
+├── .python-version          # Pinned interpreter (3.11)
 ├── CONTRIBUTING.md          # This file
 ├── CHANGELOG.md             # Version history
 └── README_SC2_PIPELINE.md   # Main README

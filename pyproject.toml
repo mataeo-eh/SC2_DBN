@@ -1,0 +1,82 @@
+# pyproject.toml — local-play-bootstrap (SC2 monorepo root).
+#
+# Role in the larger system: this is the top-level workspace where StarCraft II
+# replays are generated/run and downstream ML proof-of-concept code lives. It is
+# an APPLICATION, not a distributable library: its code is a collection of
+# top-level scripts (ML_PoC/, research/, runners/, tests/) executed from the
+# repo root, so uv manages the environment and dependencies but does not build
+# this project itself (see [tool.uv] package = false below).
+#
+# Managed with uv: `uv sync` builds .venv + uv.lock. Pinned to Python 3.11
+# because the SC2 stack (pysc2 / s2clientprotocol / protobuf 3.20.x) lacks 3.12
+# wheels.
+#
+# NOTE: the legacy setup.py, requirements.txt, requirements_extraction.txt and
+# requirements_testing.txt are now superseded by this file + uv.lock. They are
+# kept temporarily for reference and can be deleted once the uv workflow is
+# confirmed.
+
+[project]
+name = "local-play-bootstrap"
+version = "1.0.0"
+description = "StarCraft II local-play bootstrap + replay/game-state tooling"
+readme = "README.md"
+requires-python = "==3.11.*"
+license = { text = "GPL-3.0-or-later" }
+authors = [{ name = "Mataeo John Anderson" }]
+
+# Direct (top-level) runtime dependencies — each is imported directly by this
+# repo's first-party code. The SC2 game-state extractor (which provides the
+# `src_new` package imported by tests/ and research/) is pulled in as an
+# editable path dependency, declared in [tool.uv.sources] below.
+dependencies = [
+    "sc2-gamestate-extractor",  # local extractor; provides the `src_new` package
+
+    # SC2 engine / protocol stack (also used directly here, e.g. ML_PoC/Tokenization.py)
+    "pysc2",
+    # Keep protobuf on the 3.x line — s2clientprotocol's generated *_pb2.py
+    # modules break under protobuf >= 4. uv resolves this to 3.20.3.
+    "protobuf>=3.19,<4",
+    "s2clientprotocol>=5.0",
+    "s2protocol",
+    "mpyq>=0.2.5",
+    "websocket-client>=1.8",
+    "absl-py>=1.4",
+
+    # Data / plotting / logging used by ML_PoC and tooling scripts
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "pyarrow>=12.0",
+    "matplotlib>=3.7",
+    "loguru>=0.7",
+]
+
+[project.optional-dependencies]
+# Testing + linting + notebooks. Install with: uv sync --extra dev
+dev = [
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+    "pytest-mock>=3.11",
+    "pytest-xdist>=3.3",
+    "pytest-timeout>=2.1",
+    "ruff>=0.5",
+    "black>=23.0",
+    "isort>=5.12",
+    "jupyterlab>=4.0",
+]
+# sc2reader-based scripts under Reference_Files/. Install with: uv sync --extra reference
+reference = [
+    "sc2reader>=1.8",
+]
+
+[tool.uv]
+# This project is an application/workspace root, not a buildable package.
+package = false
+# pysc2 4.0.0 on PyPI declares `enum34` (a Python-2 backport that fails to build
+# on Python 3.11+). Drop it via an always-false marker without altering pysc2.
+override-dependencies = ["enum34; python_version < '3.0'"]
+
+[tool.uv.sources]
+# The extractor lives in a git submodule at ./SC2-gamestate-extractor. Editable
+# so changes there are picked up live without re-syncing.
+sc2-gamestate-extractor = { path = "SC2-gamestate-extractor", editable = true }

@@ -38,128 +38,102 @@ Complete guide to installing and setting up the SC2 Replay Ground Truth Extracti
 
 ## Python Environment Setup
 
-### Option 1: Using venv (Recommended)
+This project is managed with **[uv](https://docs.astral.sh/uv/)**. uv handles the
+virtual environment, the Python interpreter, *and* all dependencies for you — there
+is no manual `python -m venv` / `pip install` step, and you do not need to activate
+anything. The exact dependency versions are locked in `uv.lock` for reproducibility.
+
+### Step 1: Install uv
 
 ```bash
-# Create virtual environment
-python -m venv .venv
+# Windows (PowerShell)
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 
-# Activate on Windows
-.venv\Scripts\activate
-
-# Activate on macOS/Linux
-source .venv/bin/activate
-
-# Verify Python version
-python --version  # Should be 3.9+
+# macOS / Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-### Option 2: Using conda
+(Already have it? `uv --version` should print 0.9+.)
+
+### Step 2: Clone the Repository (with submodules)
+
+The extractor (`SC2-gamestate-extractor`) and ML repo (`Thesis_ML`) are git
+submodules, so clone recursively:
 
 ```bash
-# Create conda environment
-conda create -n sc2-pipeline python=3.11
-
-# Activate environment
-conda activate sc2-pipeline
-
-# Verify installation
-python --version
-```
-
-### Option 3: Using pyenv
-
-```bash
-# Install specific Python version
-pyenv install 3.11.0
-pyenv local 3.11.0
-
-# Create virtual environment
-python -m venv .venv
-source .venv/bin/activate  # or .venv\Scripts\activate on Windows
-```
-
----
-
-## Installing Dependencies
-
-### Step 1: Clone the Repository
-
-```bash
-# Using git
-git clone https://github.com/yourusername/local-play-bootstrap-main.git
+git clone --recurse-submodules https://github.com/yourusername/local-play-bootstrap-main.git
 cd local-play-bootstrap-main
 
-# Or download and extract the ZIP file
+# Already cloned without --recurse-submodules? Run:
+git submodule update --init --recursive
 ```
 
-### Step 2: Install Core Dependencies
+### Step 3: Create the Environment
 
 ```bash
-# Install extraction pipeline dependencies
-pip install -r requirements_extraction.txt
+# Creates .venv, installs the locked dependencies (incl. pysc2 and the
+# SC2-gamestate-extractor as an editable dependency), pinned to Python 3.11.
+uv sync
 
-# This installs:
-# - pandas (for DataFrames)
-# - pyarrow (for Parquet files)
-# - numpy (for numerical operations)
+# Include the dev/test/notebook tools (pytest, ruff, jupyterlab, ...):
+uv sync --extra dev
 ```
 
-The `requirements_extraction.txt` file contains:
+uv reads the pinned interpreter from `.python-version` (3.11 for this repo) and
+will download it automatically if it isn't already on your machine.
 
-```
-pandas>=2.0.0
-pyarrow>=12.0.0
-numpy>=1.24.0
-```
+### Running things
 
-### Step 3: Install Testing Dependencies (Optional)
-
-If you want to run tests or contribute to development:
+Prefix any command with `uv run` and it executes inside the project environment —
+no activation needed:
 
 ```bash
-pip install -r requirements_testing.txt
-
-# This installs:
-# - pytest (testing framework)
-# - pytest-cov (coverage reporting)
-# - pytest-mock (mocking utilities)
-# - and other testing tools
+uv run python quickstart_read_data.py
+uv run python -m pytest tests/
 ```
 
-### Step 4: Verify Core Installation
+### Verify the Installation
 
 ```bash
-python -c "import pandas, pyarrow, numpy; print('Core dependencies OK')"
+uv run python -c "import pandas, pyarrow, numpy, pysc2; import src_new; print('Environment OK')"
 ```
+
+> **Submodules have their own environments.** Operate on them with `--directory`,
+> e.g. `uv sync --directory Thesis_ML` (Python 3.12) or
+> `uv sync --directory SC2-gamestate-extractor` (Python 3.11). Each repo is an
+> independent uv project with its own `.venv` and `uv.lock`.
+
+### Adding / removing dependencies
+
+Don't edit a requirements file — use uv, which updates both `pyproject.toml` and
+`uv.lock`:
+
+```bash
+uv add <package>           # add a runtime dependency
+uv add --optional dev <package>   # add to the dev extra
+uv remove <package>        # remove a dependency
+```
+
+> **Legacy note:** the old `requirements*.txt` and `setup.py` files are superseded
+> by `pyproject.toml` + `uv.lock`. They may still exist for reference but are no
+> longer the source of truth.
 
 ---
 
-## Installing pysc2
+## About pysc2
 
-pysc2 is the Python interface to StarCraft II and is required for replay processing.
+pysc2 (the Python interface to StarCraft II) is declared as a dependency in
+`pyproject.toml`, so `uv sync` installs it for you — there is no separate
+`pip install pysc2` step. Note that pysc2's PyPI metadata lists the obsolete
+`enum34` package (a Python-2 backport that won't build on modern Python); the
+project's `pyproject.toml` neutralizes it via uv `override-dependencies`, so you
+don't have to do anything.
 
-### Installation
+Verify it imported correctly:
 
 ```bash
-pip install pysc2
+uv run python -c "import pysc2; print(f'pysc2 version: {pysc2.__version__}')"
 ```
-
-### Verify pysc2 Installation
-
-```bash
-python -c "import pysc2; print(f'pysc2 version: {pysc2.__version__}')"
-```
-
-### Common Issues
-
-**Issue**: `ModuleNotFoundError: No module named 'pysc2'`
-**Solution**: Ensure you've activated your virtual environment and run `pip install pysc2`
-
-**Issue**: pysc2 install fails with build errors
-**Solution**:
-- Ensure you have the latest pip: `pip install --upgrade pip`
-- Install build tools for your platform (see below)
 
 ---
 
@@ -423,52 +397,35 @@ python run_tests.py --coverage
 
 ### Python Version Issues
 
-**Problem**: `python --version` shows 2.7 or 3.8
+**Problem**: wrong Python version
+
+**Solution**: You don't need to install a specific Python yourself — uv reads
+`.python-version` (3.11 for this repo) and downloads the matching interpreter
+automatically. If something looks off, force a clean rebuild:
+```bash
+uv sync --reinstall
+```
+
+### Stale Virtual Environment Warning
+
+If uv prints `VIRTUAL_ENV=... does not match the project environment`, you have an
+old venv activated in your shell. uv ignores it and uses its own `.venv`, so it's
+harmless — but to silence it, open a fresh terminal or run `deactivate`.
+
+### `uv sync` Fails
+
+**Problem**: resolution or network errors
 
 **Solution**:
 ```bash
-# Try python3 explicitly
-python3 --version
+# Rebuild from scratch
+uv sync --reinstall
 
-# Or install Python 3.9+ from python.org
-# Then create alias:
-alias python=python3.11
-```
+# Refresh uv's download cache if a package seems corrupted
+uv cache clean
 
-### Virtual Environment Not Activating
-
-**Windows**:
-```bash
-# Enable script execution
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-
-# Then activate
-.venv\Scripts\activate
-```
-
-**macOS/Linux**:
-```bash
-# Ensure venv was created correctly
-python3 -m venv .venv --clear
-
-# Activate
-source .venv/bin/activate
-```
-
-### pip Install Fails
-
-**Problem**: Permission errors or network issues
-
-**Solution**:
-```bash
-# Use user install
-pip install --user -r requirements_extraction.txt
-
-# Or upgrade pip first
-pip install --upgrade pip setuptools wheel
-
-# Use a mirror if network is slow
-pip install -r requirements_extraction.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+# Use a different index if the default is slow/blocked
+uv sync --default-index https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
 ### pysc2 Can't Find SC2
@@ -493,14 +450,12 @@ ls "$SC2PATH"  # Should show SC2 installation
 
 **Solution**:
 ```bash
-# Ensure you're in the project root
-pwd  # Should show .../local-play-bootstrap-main
+# Run through uv so the project environment (and the editable src_new
+# dependency) is on the path — no manual PYTHONPATH needed:
+uv run python your_script.py
 
-# Add to PYTHONPATH
-export PYTHONPATH="${PYTHONPATH}:$(pwd)"
-
-# Or install in development mode
-pip install -e .
+# If imports still fail, resync (this also re-links the editable extractor):
+uv sync
 ```
 
 ### Platform-Specific Build Issues
