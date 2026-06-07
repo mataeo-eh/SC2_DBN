@@ -1,4 +1,4 @@
-# Time Log - [SC2 DBN]
+# Time Log - [SC2 Project]
 
 | Date       | Start | End   | Duration | Task/Notes |
 |------------|-------|-------|----------|------------|
@@ -57,4 +57,8 @@
 | 2026-04-21 | 18:00 | 20:00 |  2.0h    |  Re-thinking T2 and T3 tokenization to be more logically and practically coherent. |
 | 2026-04-25 | 15:00 | 17:00 |  2.0h    |  Working on new replay strategy labelling and adding upgrades to tokenization. |
 | 2026-04-26 | 13:00 | 15:00 |  2.0h    |  Working on new replay strategy labelling and adding upgrades to tokenization. |
+| 2026-05-01 | 09:00 | 12:00 |  3.0h    |  Writing tokenization schema as a formal methods section write up. |
+| 2026-05-01 | 14:00 | 17:00 |  3.0h    |  Writing tokenization schema as a formal methods section write up. |
+| 2026-06-07 | 09:00 | 10:30 |  1.5h    |  Reviewing and re-writing tokenization schema and overall project architecture. |
+| 2026-06-07 | 11:30 | 12:30 |  1.0h    |  Filling out Thesis project README with the distilled version of the project architecture |
 |            |       |       |          |            |

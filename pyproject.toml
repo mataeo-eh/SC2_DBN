@@ -11,10 +11,9 @@
 # because the SC2 stack (pysc2 / s2clientprotocol / protobuf 3.20.x) lacks 3.12
 # wheels.
 #
-# NOTE: the legacy setup.py, requirements.txt, requirements_extraction.txt and
-# requirements_testing.txt are now superseded by this file + uv.lock. They are
-# kept temporarily for reference and can be deleted once the uv workflow is
-# confirmed.
+# NOTE: the legacy setup.py and requirements*.txt files have been removed; this
+# file + uv.lock are the single source of truth for dependencies. pysc2 is
+# installed from PyPI (the old vendored ./pysc2 copy was removed too).
 
 [project]
 name = "local-play-bootstrap"
