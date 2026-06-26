@@ -61,4 +61,6 @@
 | 2026-05-01 | 14:00 | 17:00 |  3.0h    |  Writing tokenization schema as a formal methods section write up. |
 | 2026-06-07 | 09:00 | 10:30 |  1.5h    |  Reviewing and re-writing tokenization schema and overall project architecture. |
 | 2026-06-07 | 11:30 | 12:30 |  1.0h    |  Filling out Thesis project README with the distilled version of the project architecture |
+| 2026-06-25 | 08:00 | 09:00 |  1.0h    |  Working with coding agents to begin implementing diffusionLM based architecture for ML |
+| 2026-06-26 | 06:30 | 08:00 |  1.5h    |  Working with coding agents to begin implementing diffusionLM based architecture for ML. Refining the process along the way. |
 |            |       |       |          |            |
