@@ -63,4 +63,11 @@
 | 2026-06-07 | 11:30 | 12:30 |  1.0h    |  Filling out Thesis project README with the distilled version of the project architecture |
 | 2026-06-25 | 08:00 | 09:00 |  1.0h    |  Working with coding agents to begin implementing diffusionLM based architecture for ML |
 | 2026-06-26 | 06:30 | 08:30 |  2.0h    |  Working with coding agents to begin implementing diffusionLM based architecture for ML. Refining the process along the way. |
+| 2026-06-27 | 08:00 | 09:00 |  1.0h    |  Checking over implemented architecture and pre-training pipeline. Working on setting up cloud compute training for V1. |
+| 2026-06-27 | 10:00 | 12:00 |  2.0h    |  Checking over implemented architecture and pre-training pipeline. Working on setting up cloud compute training for V1. Also working on script to help guide context window needed. |
+| 2026-06-27 | 13:30 | 16:00 |  2.5h    |  Researching context window size for diffusion models and industry standards for reclaiming flexible-length generation. |
+| 2026-07-01 | 16:00 | 18:00 |  2.0h    |  Down-scaling model and dataset to sizes manageable to train locally. Looking for proof of concept of learning and verification that the pre-training pipeline works. |
+| 2026-07-01 | 21:00 | 22:00 |  1.0h    |  Debugging pre-training pipeline on downscaled model. Trying to run pipeline to attempt to underfit the small 25 replay pipeline. |
+| 2026-07-02 | 05:00 | 06:00 |  1.0h    |  Interpreting results of small over-fit attempt test. Planning to make changes and re-run. |
+| 2026-07-03 | 06:00 | 09:00 |  3.0h    |  Looking through results of 194 epoch over-fit attempt training run. Beginning to try and architect fine-tuning pipeline to test on the over-fitted model. |
 |            |       |       |          |            |

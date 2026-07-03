@@ -109,12 +109,14 @@ Work Guidance must reflect current standards. Verification must reflect existing
 - When the user requests a durable behavior change, record it here or in the relevant child `AGENTS.md`.
 - Agents must integrate jdocmunch and jcodemunch with DOX: use semantic retrieval to understand the codebase, then update DOX when changes alter durable architecture or workflows.
 - Code changes must be made with whole-project architecture in mind. Avoid shortest-path feature patches that ignore neighboring systems, shared helpers, schemas, or downstream consumers.
+- `Thesis_ML` models must never receive absolute game time, frame numbers, `game_loop`, or timestamp-derived values. Keep time only as non-model metadata for ordering or post-sampling evaluation; sequence position is Llama 3.1-style frequency-scaled RoPE configured in YAML.
 
 ## Child DOX Index
 
-- No child `AGENTS.md` files currently exist. This root contract applies to the full workspace until narrower contracts are created.
+- `Thesis_ML/AGENTS.md`: Local contract for thesis ML preprocessing, budget-driven replay windows, dynamic collation, model training, and verification.
 - `SC2-gamestate-extractor/`: Git submodule for replay parsing, game-state extraction, lifecycle tracking, parquet output, feature engineering, extractor tests, and its own uv-managed Python project.
 - `Thesis_ML/`: Git submodule for thesis ML research, schemas, specs, configs, experiments, notebooks, model code, and its own uv-managed Python project.
+- `Thesis_ML/scripts/`: Thesis dataset analysis utilities. `estimate_context_window.py` derives the root quickstart parquet location from the repository layout and writes token-length reports under `Thesis_ML/scripts/output/` without persisting machine-specific paths.
 - `bots/`: Bot workspace containing local bot folders plus `reallySC2Bot`, `whatSC2Bot`, and `whySC2Bot` submodules. Treat each bot submodule as an independent code boundary.
 - `tests/`: Root test suite for replay extraction behavior using mocks and focused regression coverage.
 - `docs/`: Root architecture, usage, API, planning, research, troubleshooting, and data dictionary documentation.
