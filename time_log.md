@@ -70,4 +70,5 @@
 | 2026-07-01 | 21:00 | 22:00 |  1.0h    |  Debugging pre-training pipeline on downscaled model. Trying to run pipeline to attempt to underfit the small 25 replay pipeline. |
 | 2026-07-02 | 05:00 | 06:00 |  1.0h    |  Interpreting results of small over-fit attempt test. Planning to make changes and re-run. |
 | 2026-07-03 | 06:00 | 09:00 |  3.0h    |  Looking through results of 194 epoch over-fit attempt training run. Beginning to try and architect fine-tuning pipeline to test on the over-fitted model. |
+| 2026-07-03 | 14:00 | 15:00 |  1.0h    |  Working to implement and test fine-tuning. |
 |            |       |       |          |            |
