@@ -1,0 +1,35 @@
+========================================================================
+token_corpus_count.py  --  corpus-wide token frequency counter
+========================================================================
+
+WHAT IT DOES
+  Scans a directory of replay .parquet files and writes a JSON report
+  listing every content token and how many times it appears across the
+  whole corpus. Counting reuses the exact Thesis_ML serializer functions
+  (parse_entity_columns / parse_upgrades), so the numbers faithfully match
+  how many times the model sees each token in its reconstruction canvas.
+
+  See the top of token_corpus_count.py for the full methodology.
+
+RUN THE EXAMPLE (from the repo root: local-play-bootstrap-main)
+  Input : data\quickstart\parquet   (directory of .parquet replay files)
+  Output: scripts\Outputs\token_corpus_counts.json
+
+  Copy-paste this one line:
+
+  uv run --project Thesis_ML python scripts/token_corpus_count.py --input-dir data/quickstart/parquet --output-dir scripts/Outputs
+
+NOTES
+  * "uv run --project Thesis_ML" runs the script inside the Thesis_ML uv
+    environment (where pandas / pyarrow / thesis_ml live) while keeping the
+    working directory at the repo root so the relative paths above resolve.
+  * Running with no arguments uses those same defaults:
+        uv run --project Thesis_ML python scripts/token_corpus_count.py
+  * Optional flags:
+        --pattern "*.parquet"        glob for selecting files
+        --output-name NAME.json      change the output filename
+  * The report's "content_token_counts" is the main result (token -> count,
+    sorted most-frequent first). "content_token_counts_by_kind" splits it
+    into entity vs upgrade tokens, and "structural_token_counts" reports
+    [DELIMITER]/[END]/outcome special tokens.
+========================================================================

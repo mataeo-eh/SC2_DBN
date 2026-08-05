@@ -49,6 +49,7 @@ pysc2/
 *.parquet
 *.SC2Replay
 replays/*.SC2Replay
+scripts/Outputs/
 
 # Testing
 .pytest_cache/

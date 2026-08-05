@@ -122,7 +122,7 @@ Work Guidance must reflect current standards. Verification must reflect existing
 - `docs/`: Root architecture, usage, API, planning, research, troubleshooting, and data dictionary documentation.
 - `research/` and `Reference_Files/`: Investigation notes, historical extraction references, API findings, and prototype material. Preserve provenance and avoid treating old references as current behavior without source verification.
 - `ML_PoC/`: Root ML proof-of-concept notebooks, tokenization experiments, and prototype assets. Keep data schemas and tokenization assumptions aligned with extractor outputs and `Thesis_ML/`.
-- `scripts/` and `diagnostics/`: One-off and reusable operational checks for replay data, raw API behavior, migration, and debugging.
+- `scripts/` and `diagnostics/`: One-off and reusable operational checks for replay data, raw API behavior, migration, and debugging. `scripts/token_corpus_count.py` reuses the `Thesis_ML` serializer to count corpus-wide content-token exposure; its reproducible JSON reports under `scripts/Outputs/` are generated local artifacts.
 - `examples/`, `README_LOCAL_PLAY.md`, `README_SC2_PIPELINE.md`, `IMPLEMENTATION_SUMMARY.md`, `CHANGELOG.md`, `CONTRIBUTING.md`, and `TODO.md`: Root usage, onboarding, history, and project-management documentation.
 - `config/`, `config_new/`, `schemas/`, `game_info/`, `maps/`, `prompts/`, and `runners/`: Runtime configuration, schema material, SC2 metadata, map assets, prompt material, and execution helpers.
 - `python-sc2.wiki/`, `plan/`, and `img/`: Reference docs, planning material, and image assets.
