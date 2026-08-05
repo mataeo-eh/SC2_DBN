@@ -1,11 +1,11 @@
-- ROC to see if better than random guessing - Naive Bayes
+- Remove 'creeptumor' from extraction and retro-actively remove it from the entire dataset. Similar to kd8charge; do not want it treated like a 'regular' entity.
 - Look into research 32 about the weird unit edge cases and how to handle weird state transitions for units like zerg eggs and the archon cocoon
 - Add parameters for choosing which columns to write to parquet files after the information has been extracted from a replay.
 - Look into adding the ability to run the pipeline under p1 observance, p2 observance, or observer perfect information observance.
     - This will allow gathering data of what p1 sees of p2 and having a ground truth for what p2 has
         - This can augment the secondary training task of intra-timestep set completion prediction.
             - Gives a high fidelity practice of intra-timestep prediction accuracy for training.      
-- Add a column for every unit thst contains its tags. 
+- Add a column for every unit that contains its tags.
     - Lets you capture stuff like is flying. or biological. or mech. etc. 
 - Look more into feature selection algorithms to determine what features to pass a model for strategy prediction
 - Look into using UV and FastAPI to create the project in a way it can have the back end managed and then have a front-end webpage host that can interact with the code using FastAPI for quicker and clearer iterating on the EDA notebooks.

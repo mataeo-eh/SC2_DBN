@@ -67,8 +67,14 @@
 | 2026-06-27 | 10:00 | 12:00 |  2.0h    |  Checking over implemented architecture and pre-training pipeline. Working on setting up cloud compute training for V1. Also working on script to help guide context window needed. |
 | 2026-06-27 | 13:30 | 16:00 |  2.5h    |  Researching context window size for diffusion models and industry standards for reclaiming flexible-length generation. |
 | 2026-07-01 | 16:00 | 18:00 |  2.0h    |  Down-scaling model and dataset to sizes manageable to train locally. Looking for proof of concept of learning and verification that the pre-training pipeline works. |
-| 2026-07-01 | 21:00 | 22:00 |  1.0h    |  Debugging pre-training pipeline on downscaled model. Trying to run pipeline to attempt to underfit the small 25 replay pipeline. |
+| 2026-07-01 | 21:00 | 22:00 |  1.0h    |  Debugging pre-training pipeline on downscaled model. Trying to run pipeline to attempt to overfit the small 25 replay pipeline. |
 | 2026-07-02 | 05:00 | 06:00 |  1.0h    |  Interpreting results of small over-fit attempt test. Planning to make changes and re-run. |
 | 2026-07-03 | 06:00 | 09:00 |  3.0h    |  Looking through results of 194 epoch over-fit attempt training run. Beginning to try and architect fine-tuning pipeline to test on the over-fitted model. |
 | 2026-07-03 | 14:00 | 15:00 |  1.0h    |  Working to implement and test fine-tuning. |
+| 2026-07-04 | 08:00 | 10:00 |  2.0h    |  Checking implementation of small model but full small dataset local test. Fixing bugs in pipeline. |
+| 2026-07-04 | 14:00 | 16:00 |  2.0h    |  Attempting to debug and fix vRAM spike on resume state runs triggering sudden OOM errors. |
+| 2026-07-04 | 19:30 | 21:30 |  2.0h    |  Found bug with pre-training pipeline with Win/Loss prediction added. Fixing pre-training pipeline. Addressing GPU data starvation problem in pre-training pipeline. |
+| 2026-07-07 | 16:30 | 18:30 |  2.0h    |  Working on building inference task visualizations. Trying to resolve very small train loss with very poor inference performance when inferencing on samples from the training set. |
+| 2026-07-08 | 16:30 | 18:30 |  2.0h    |  Removing input from pre-training pipeline |
+| 2026-07-09 | 06:00 | 07:00 |  1.0h    |  Setting up pre-training V2. |
 |            |       |       |          |            |
