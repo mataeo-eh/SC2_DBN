@@ -27,6 +27,7 @@
 ## Architecture Contract
 
 - Every code change must improve or preserve the architecture of the whole project, not only satisfy the nearest feature request.
+- Any change that affects the `Thesis_ML` learnable pipeline or its model-facing plumbing must update every affected section in `Thesis_ML/Model_Architecture/MODEL_ARCHITECTURE.md`, update the canonical `MODEL_ARCHITECTURE_DIAGRAM.mmd`, and regenerate its SVG/PNG in the same change. Use `Thesis_ML/Model_Architecture/UPDATE_PROMPT.md`; Git history, not parallel architecture files, preserves prior states.
 - Before editing, identify the subsystem boundary, existing ownership, data flow, public API, and downstream consumers that could be affected.
 - Reuse existing helpers, schemas, adapters, fixtures, and workflows. Do not create a new shared helper when an adequate one already exists.
 - If two features need the same internal logic, prefer extracting a cohesive shared helper at the right ownership boundary over duplicating logic.
@@ -107,6 +108,7 @@ Work Guidance must reflect current standards. Verification must reflect existing
 ## User Preferences
 
 - When the user requests a durable behavior change, record it here or in the relevant child `AGENTS.md`.
+- The `Thesis_ML/Model_Architecture/` reference must always describe current live source and merged configuration. Never leave stale architecture numbers, diagrams, behaviors, or historical variants in that directory.
 - Agents must integrate jdocmunch and jcodemunch with DOX: use semantic retrieval to understand the codebase, then update DOX when changes alter durable architecture or workflows.
 - Code changes must be made with whole-project architecture in mind. Avoid shortest-path feature patches that ignore neighboring systems, shared helpers, schemas, or downstream consumers.
 - `Thesis_ML` models must never receive absolute game time, frame numbers, `game_loop`, or timestamp-derived values. Keep time only as non-model metadata for ordering or post-sampling evaluation; sequence position is Llama 3.1-style frequency-scaled RoPE configured in YAML.
@@ -116,6 +118,7 @@ Work Guidance must reflect current standards. Verification must reflect existing
 - `Thesis_ML/AGENTS.md`: Local contract for thesis ML preprocessing, budget-driven replay windows, dynamic collation, model training, and verification.
 - `SC2-gamestate-extractor/`: Git submodule for replay parsing, game-state extraction, lifecycle tracking, parquet output, feature engineering, extractor tests, and its own uv-managed Python project.
 - `Thesis_ML/`: Git submodule for thesis ML research, schemas, specs, configs, experiments, notebooks, model code, and its own uv-managed Python project.
+- `Thesis_ML/Model_Architecture/`: Current implementation-level model reference, canonical Mermaid graph source, directly viewable SVG/PNG renderings, deterministic renderer, and reusable architecture-update prompt; its local `AGENTS.md` defines mandatory freshness and verification rules.
 - `Thesis_ML/scripts/`: Thesis dataset analysis utilities. `estimate_context_window.py` derives the root quickstart parquet location from the repository layout and writes token-length reports under `Thesis_ML/scripts/output/` without persisting machine-specific paths.
 - `bots/`: Bot workspace containing local bot folders plus `reallySC2Bot`, `whatSC2Bot`, and `whySC2Bot` submodules. Treat each bot submodule as an independent code boundary.
 - `tests/`: Root test suite for replay extraction behavior using mocks and focused regression coverage.
