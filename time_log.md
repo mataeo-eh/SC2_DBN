@@ -80,6 +80,7 @@
 | 2026-08-04 | 09:00 | 11:00 |  2.0h    |  Writing prompts to overhaul model architecture and pipeline. |
 | 2026-08-05 | 10:00 | 12:00 |  2.0h    |  Working with coding agents to implement pipeline architecture shift to uniform state diffusion. |
 | 2026-08-06 | 16:00 | 19:00 |  3.0h    |  Beginning training, interpreting, and fixing bugs in overfitV2 training test. Attempting to isolate and diagnose code/logic bugs preventing rare class tokens from being memorized. |
-| 2026-08-06 | 06:00 | 09:00 |  3.0h    | Continuing over-fit training, fixes more small training code bugs. Interpreting results and trying to reason about continued inability to memorize the rare tokens ([END] and [WIN] and [LOSS]) |
-| 2026-08-06 | 10:00 | 13:30 |  3.5h    | Continuing over-fit training. Trying to interpret results and design a new test that will allow the model to truly exhibit over-fitting and pure memorization behaviour. |
+| 2026-08-07 | 06:00 | 09:00 |  3.0h    | Continuing over-fit training, fixes more small training code bugs. Interpreting results and trying to reason about continued inability to memorize the rare tokens ([END] and [WIN] and [LOSS]) |
+| 2026-08-07 | 10:00 | 15:00 |  5.0h    | Continuing over-fit training. Trying to interpret results and design a new test that will allow the model to truly exhibit over-fitting and pure memorization behaviour. |
+| 2026-08-08 | 06:00 | 07:00 |  1.0h    | Reading through partial results of extra positional encodings ablation test. Promising for using frozen KV cache to speed up training. |
 |            |       |       |          |            |
