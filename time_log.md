@@ -83,4 +83,5 @@
 | 2026-08-07 | 06:00 | 09:00 |  3.0h    | Continuing over-fit training, fixes more small training code bugs. Interpreting results and trying to reason about continued inability to memorize the rare tokens ([END] and [WIN] and [LOSS]) |
 | 2026-08-07 | 10:00 | 15:00 |  5.0h    | Continuing over-fit training. Trying to interpret results and design a new test that will allow the model to truly exhibit over-fitting and pure memorization behaviour. |
 | 2026-08-08 | 06:00 | 07:00 |  1.0h    | Reading through partial results of extra positional encodings ablation test. Promising for using frozen KV cache to speed up training. |
+| 2026-08-09 | 06:00 | 09:00 |  3.0h    | Interpreting results of BOS/EOS base vocab overfitting results. Starting new test to see if model can overfit with regularization parameters turned off. Testing if model performs better at high t when trained on 25% high t sequences. |
 |            |       |       |          |            |
