@@ -115,7 +115,7 @@ Work Guidance must reflect current standards. Verification must reflect existing
 
 ## Child DOX Index
 
-- `Thesis_ML/AGENTS.md`: Local contract for thesis ML preprocessing, budget-driven replay windows, dynamic collation, model training, and verification.
+- `Thesis_ML/AGENTS.md`: Local contract for thesis ML preprocessing, budget-driven replay windows, dynamic collation, model training, and verification; full-corpus V3 uses six-row microbatches with seven-batch accumulation to stay within the local 8 GiB GPU budget.
 - `SC2-gamestate-extractor/`: Git submodule for replay parsing, game-state extraction, lifecycle tracking, parquet output, feature engineering, extractor tests, and its own uv-managed Python project.
 - `Thesis_ML/`: Git submodule for thesis ML research, schemas, specs, configs, experiments, notebooks, model code, and its own uv-managed Python project.
 - `Thesis_ML/Model_Architecture/`: Current implementation-level model reference, canonical Mermaid graph source, directly viewable SVG/PNG renderings, deterministic renderer, and reusable architecture-update prompt; its local `AGENTS.md` defines mandatory freshness and verification rules.
